@@ -40,17 +40,17 @@
   @media (prefers-reduced-motion:reduce){.hero .wind path{animation:none;stroke-dasharray:none;opacity:.10}}
   .hero .wrap{position:relative;z-index:2;padding:54px 20px 46px}
   .hero .kicker{font-family:'Space Grotesk',sans-serif;font-size:.74rem;font-weight:600;
-    letter-spacing:.18em;text-transform:uppercase;color:var(--jade);margin-bottom:10px}
-  .hero h1{font-family:'Fraunces',serif;font-weight:700;font-size:2.9rem;line-height:1;
-    letter-spacing:-.025em}
+    letter-spacing:.18em;text-transform:uppercase;color:var(--jade);margin-bottom:14px}
+  .hero h1{font-family:'Fraunces',serif;font-weight:700;font-size:2.9rem;line-height:1.08;
+    letter-spacing:-.025em;padding-bottom:2px}
   .hero p{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--ink-2);
-    font-size:1.05rem;margin-top:10px;max-width:50ch}
+    font-size:1.05rem;margin-top:16px;max-width:50ch}
 
   main{padding:40px 0 60px}
 
   /* player section */
   .player{margin-bottom:34px}
-  .player-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .player-head{display:flex;align-items:center;gap:12px;margin-bottom:22px}
   .player-head .av{width:38px;height:38px;border-radius:50%;flex:none;
     background:linear-gradient(135deg,var(--jade),var(--jade-d));color:#fff;
     display:flex;align-items:center;justify-content:center;
@@ -66,18 +66,18 @@
 
   .char{display:block;text-decoration:none;color:inherit;position:relative;
     background:#fff;border:1px solid var(--line);border-radius:var(--r);
-    padding:18px 20px;box-shadow:var(--shadow);transition:.18s;overflow:hidden}
+    padding:16px 20px 18px;box-shadow:var(--shadow);transition:.18s;overflow:hidden}
   .char::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
     background:linear-gradient(180deg,var(--jade),var(--jade-d));opacity:.85}
   a.char:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:var(--line-2)}
-  .char-name{font-family:'Fraunces',serif;font-weight:600;font-size:1.32rem;
-    letter-spacing:-.01em;padding-right:96px}
-  .char-sub{font-size:.86rem;color:var(--ink-2);margin-top:3px}
-  .char-status{position:absolute;top:18px;right:18px;font-size:.64rem;font-weight:600;
-    text-transform:uppercase;letter-spacing:.05em;padding:3px 10px;border-radius:999px}
+  .char-status{display:inline-block;font-size:.62rem;font-weight:600;
+    text-transform:uppercase;letter-spacing:.06em;padding:3px 10px;border-radius:999px;margin-bottom:9px}
   .char-status.ready{background:var(--jade-soft);color:var(--jade-d)}
   .char-status.pending{background:#FBF0D8;color:var(--sand-d)}
-  .char .go{margin-top:12px;font-size:.78rem;font-weight:600;color:var(--jade-d);
+  .char-name{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;
+    letter-spacing:-.01em;line-height:1.12}
+  .char-sub{font-size:.86rem;color:var(--ink-2);margin-top:4px}
+  .char .go{margin-top:13px;font-size:.78rem;font-weight:600;color:var(--jade-d);
     font-family:'Space Grotesk',sans-serif;display:flex;align-items:center;gap:5px}
   span.char.pending-card{opacity:.72;cursor:default}
   span.char.pending-card::before{background:var(--line-2);opacity:.6}
@@ -121,23 +121,23 @@
     <div class="chars">
 
       <a class="char" href="lucho/usoryn.html">
+        <span class="char-status ready">Ficha lista</span>
         <div class="char-name">Usoryn Bravoviento</div>
         <div class="char-sub">Halfling · Pícaro 1 / Explorador 5 (Cazador)</div>
-        <span class="char-status ready">Ficha lista</span>
         <div class="go">Abrir ficha →</div>
       </a>
 
       <span class="char pending-card">
+        <span class="char-status pending">Ficha pendiente</span>
         <div class="char-name">Darvin Norris</div>
         <div class="char-sub">Humano · Monje nivel 12</div>
-        <span class="char-status pending">Ficha pendiente</span>
         <div class="go">Próximamente</div>
       </span>
 
       <span class="char pending-card">
+        <span class="char-status pending">Ficha pendiente</span>
         <div class="char-name">Auriana Granunde</div>
         <div class="char-sub">Aasimar · Clérigo nivel 6</div>
-        <span class="char-status pending">Ficha pendiente</span>
         <div class="go">Próximamente</div>
       </span>
 
@@ -155,9 +155,9 @@
     <div class="chars">
 
       <span class="char pending-card">
+        <span class="char-status pending">Pendiente</span>
         <div class="char-name">Personaje por agregar</div>
         <div class="char-sub">Checho añade aquí sus fichas (ver README)</div>
-        <span class="char-status pending">Pendiente</span>
         <div class="go">Próximamente</div>
       </span>
 

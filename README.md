@@ -47,9 +47,10 @@ Para que tu personaje aparezca en la página de inicio, hay que añadir una tarj
 
 ```html
 <a class="char" href="checho/kaelen.html">
+  <span class="char-status ready">Ficha lista</span>
   <div class="char-name">Kaelen</div>
   <div class="char-sub">Elfo · Mago nivel 8</div>
-  <span class="char-status ready">Ficha lista</span>
+  <div class="go">Abrir ficha →</div>
 </a>
 ```
 
