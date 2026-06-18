@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darvin Norris — Hoja de Personaje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFAF8; --ink:#1C1715; --ink-2:#564A43;
+    --amber:#D97A2B; --amber-d:#B25E18; --amber-soft:#FBEBDB;
+    --jade:#4A4039; --jade-d:#2E2620; --jade-soft:#EAE4DE;
+    --coal:#2A2320; --coal-2:#3D332E;
+    --ember:#E04A2E; --gold:#D8A23E; --gold-d:#A9791F;
+    --mist:#F1ECE7; --line:#E4DBD3; --line-2:#D2C5BA;
+    --bad:#C0432E; --good:#B25E18;
+    --shadow:0 1px 2px rgba(28,23,21,.04),0 4px 16px rgba(28,23,21,.07);
+    --shadow-lg:0 2px 8px rgba(28,23,21,.07),0 12px 36px rgba(28,23,21,.12);
+    --r:14px; --r-sm:9px;
+    --nav-h:54px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 14px)}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--paper); color:var(--ink);
+    line-height:1.55; font-size:15px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(251,250,248,.82);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{display:flex;align-items:center;gap:18px;height:100%}
+  .nav .brand{
+    font-family:'Fraunces',serif;font-weight:600;font-size:1.02rem;
+    letter-spacing:-.01em;white-space:nowrap;display:flex;align-items:center;gap:9px;
+    text-decoration:none;color:inherit;transition:.15s;border-radius:8px;padding:5px 9px;margin-left:-9px;
+  }
+  a.brand:hover{background:var(--mist)}
+  .nav .brand .back{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;
+    color:var(--amber);line-height:1;margin-right:1px}
+  .nav .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--amber);
+    box-shadow:0 0 0 3px var(--amber-soft);flex:none}
+  .nav ul{list-style:none;display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+  .nav ul::-webkit-scrollbar{display:none}
+  .nav a{
+    display:block;padding:7px 12px;border-radius:8px;font-size:.82rem;font-weight:500;
+    color:var(--ink-2);text-decoration:none;white-space:nowrap;transition:.15s;
+  }
+  .nav a:hover{background:var(--mist);color:var(--ink)}
+  .nav a.active{background:var(--amber-soft);color:var(--amber-d);font-weight:600}
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{padding:46px 0 8px;scroll-margin-top:var(--nav-h)}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:22px}
+  .sec-head .eyebrow{
+    font-family:'Space Grotesk',sans-serif;font-size:.72rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--amber);
+    flex:none;white-space:nowrap;
+  }
+  .sec-head h2{
+    font-family:'Fraunces',serif;font-weight:600;font-size:1.85rem;letter-spacing:-.02em;line-height:1;
+  }
+  .sec-head .rule{flex:1;height:1px;background:var(--line);align-self:center}
+
+  .grid{display:grid;gap:16px}
+
+  .col2,.col2r,.col-side,.col-side-r,.col-narrow,.col3{display:grid;gap:16px}
+  @media(min-width:760px){
+    .col2{grid-template-columns:1fr 1fr}
+    .col2r{grid-template-columns:1fr 1fr}
+    .col-side{grid-template-columns:1.35fr 1fr}
+    .col-side-r{grid-template-columns:1.6fr 1fr}
+    .col-narrow{grid-template-columns:1fr 2fr}
+    .col3{grid-template-columns:repeat(3,1fr)}
+  }
+  .col2r>*:nth-child(1){order:2}
+  .col2r>*:nth-child(2){order:1}
+  @media(min-width:760px){
+    .col2r>*:nth-child(1){order:0}
+    .col2r>*:nth-child(2){order:0}
+  }
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--r);
+    padding:18px 20px;box-shadow:var(--shadow);
+  }
+  .card h3{
+    font-family:'Space Grotesk',sans-serif;font-size:.74rem;font-weight:600;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-2);
+    margin-bottom:13px;display:flex;align-items:center;gap:8px;
+  }
+  .card h3::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--amber);transform:rotate(45deg);flex:none}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(120% 130% at 86% 110%, rgba(224,74,46,.12), transparent 52%),
+      radial-gradient(90% 120% at 10% 100%, rgba(217,122,43,.14), transparent 48%),
+      linear-gradient(180deg,#fff,#fff);
+    border-bottom:1px solid var(--line);
+  }
+  .hero .wrap{padding-top:40px;padding-bottom:34px;position:relative;z-index:2}
+  /* ember signature — rising sparks */
+  .hero .embers{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+  .hero .embers i{
+    position:absolute;bottom:-12px;width:5px;height:5px;border-radius:50%;
+    background:radial-gradient(circle,var(--gold),var(--ember));
+    opacity:0;animation:rise linear infinite;
+    box-shadow:0 0 6px rgba(224,74,46,.6);
+  }
+  @keyframes rise{
+    0%{transform:translateY(0) translateX(0) scale(1);opacity:0}
+    12%{opacity:.85}
+    70%{opacity:.55}
+    100%{transform:translateY(-340px) translateX(var(--drift,14px)) scale(.3);opacity:0}
+  }
+  @media (prefers-reduced-motion:reduce){.hero .embers{display:none}}
+
+  .hero-top{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px 22px;margin-bottom:24px}
+  .hero .kicker{
+    font-family:'Space Grotesk',sans-serif;font-size:.74rem;font-weight:600;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--amber);margin-bottom:8px;
+  }
+  .hero h1{
+    font-family:'Fraunces',serif;font-weight:700;font-size:3.4rem;line-height:.95;
+    letter-spacing:-.025em;
+  }
+  .hero .tagline{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+    font-size:1.06rem;color:var(--ink-2);margin-top:8px;max-width:48ch;
+  }
+  .hero .classline{margin-left:auto;text-align:right;align-self:flex-end}
+  .hero .classline .lvl{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.5rem;
+    color:var(--amber-d);line-height:1;
+  }
+  .hero .classline .cl{font-size:.86rem;color:var(--ink-2);margin-top:3px}
+
+  .hero-meta{display:flex;flex-wrap:wrap;gap:7px}
+  .meta-chip{
+    font-size:.78rem;background:#fff;border:1px solid var(--line);border-radius:999px;
+    padding:4px 12px;color:var(--ink-2);box-shadow:var(--shadow);
+  }
+  .meta-chip b{color:var(--ink);font-weight:600}
+
+  .tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:26px}
+  .tile{
+    background:#fff;border:1px solid var(--line);border-radius:var(--r);
+    padding:14px 12px;text-align:center;box-shadow:var(--shadow);position:relative;
+  }
+  .tile .v{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.7rem;
+    color:var(--ink);line-height:1}
+  .tile .l{font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink-2);margin-top:6px;font-weight:500}
+  .tile.accent{background:linear-gradient(180deg,var(--amber),var(--amber-d));border-color:var(--amber-d)}
+  .tile.accent .v{color:#fff}
+  .tile.accent .l{color:rgba(255,255,255,.82)}
+
+  @media(max-width:880px){
+    .hero h1{font-size:2.5rem}
+    .hero .classline{margin-left:0;text-align:left;width:100%}
+    .tiles{grid-template-columns:repeat(3,1fr)}
+  }
+  @media(max-width:520px){
+    .tiles{grid-template-columns:repeat(2,1fr)}
+    .sec-head h2{font-size:1.5rem}
+  }
+
+  /* ---------- ABILITIES ---------- */
+  .abilities{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+  .abil{background:#fff;border:1px solid var(--line);border-radius:var(--r);
+    box-shadow:var(--shadow);overflow:hidden}
+  .abil .top{padding:13px 12px 11px;text-align:center;position:relative;
+    background:linear-gradient(180deg,var(--mist),#fff)}
+  .abil .nm{font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-2);font-weight:600}
+  .abil .mod{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2rem;
+    line-height:1;margin-top:3px}
+  .abil .sc{display:inline-block;margin-top:6px;font-size:.72rem;font-weight:600;
+    background:var(--ink);color:#fff;border-radius:999px;padding:1px 10px}
+  .abil ul{list-style:none;padding:7px 9px 9px}
+  .abil li{display:flex;justify-content:space-between;gap:6px;align-items:center;
+    font-size:.74rem;padding:3px 2px;border-bottom:1px dotted var(--line)}
+  .abil li:last-child{border-bottom:none}
+  .abil li .n{display:flex;align-items:center;gap:5px;color:var(--ink-2)}
+  .abil li .x{font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--ink)}
+  .abil li.sv{background:var(--amber-soft);margin:0 -9px;padding:3px 11px;border-bottom:none}
+  .abil li.sv .n,.abil li.sv .x{color:var(--amber-d);font-weight:600}
+  .pip{width:7px;height:7px;border-radius:50%;border:1.5px solid var(--amber);flex:none}
+  .pip.p{background:var(--amber)}
+  .pip.e{background:var(--amber);box-shadow:inset 0 0 0 1.5px #fff}
+  .leg{font-size:.7rem;color:var(--ink-2);margin-top:10px;display:flex;gap:14px;flex-wrap:wrap}
+  .leg span{display:flex;align-items:center;gap:5px}
+  @media(max-width:880px){.abilities{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:520px){.abilities{grid-template-columns:repeat(2,1fr)}}
+
+  /* ---------- TABLES ---------- */
+  table.tbl{width:100%;border-collapse:collapse;font-size:.82rem}
+  .card{overflow-x:auto}
+  table.tbl th{
+    text-align:left;font-family:'Space Grotesk',sans-serif;font-size:.66rem;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);font-weight:600;
+    padding:0 10px 7px;border-bottom:1.5px solid var(--line-2)}
+  table.tbl td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  table.tbl tr:last-child td{border-bottom:none}
+  table.tbl td.c{text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600}
+  table.tbl .atk{color:var(--amber-d)}
+  .badge{display:inline-block;font-size:.68rem;font-weight:600;padding:1px 8px;border-radius:999px;
+    background:var(--jade-soft);color:var(--jade-d);font-family:'Inter',sans-serif}
+  .badge.off{background:var(--mist);color:var(--ink-2)}
+  .badge.amber{background:var(--amber-soft);color:var(--amber-d)}
+  .note{font-size:.74rem;color:var(--ink-2);margin-top:10px;line-height:1.5}
+  .note strong{color:var(--ink)}
+  .callout{background:var(--amber-soft);border-left:3px solid var(--amber);
+    border-radius:0 var(--r-sm) var(--r-sm) 0;padding:10px 14px;font-size:.8rem;margin-top:12px}
+  .callout b{color:var(--amber-d)}
+  .callout.jade{background:var(--jade-soft);border-left-color:var(--jade)}
+  .callout.jade b{color:var(--jade-d)}
+
+  dl.defs dt{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.82rem;
+    color:var(--ink);margin-top:11px;display:flex;align-items:center;gap:7px}
+  dl.defs dt:first-child{margin-top:0}
+  dl.defs dt .tag{font-size:.62rem;font-weight:600;background:var(--mist);color:var(--ink-2);
+    padding:1px 7px;border-radius:999px;font-family:'Inter',sans-serif}
+  dl.defs dd{font-size:.78rem;color:var(--ink-2);margin:2px 0 0}
+
+  /* ---------- FEATURE LIST ---------- */
+  /* balanced multi-column card flow (masonry-like, avoids uneven-column gaps) */
+  .cards-flow{column-gap:16px}
+  @media(min-width:760px){.cards-flow{column-count:2}}
+  .cards-flow>.card{break-inside:avoid;margin-bottom:16px;width:100%}
+  .feats{display:flex;flex-direction:column;gap:13px}
+  /* balanced multi-column flow for level progression (avoids uneven-column gaps) */
+  .feats-flow{column-gap:22px}
+  @media(min-width:760px){.feats-flow{column-count:2}}
+  .feats-flow .ft{break-inside:avoid;margin-bottom:13px;display:inline-block;width:100%}
+  .ft{position:relative;padding-left:16px}
+  .ft::before{content:"";position:absolute;left:0;top:5px;bottom:5px;width:3px;
+    border-radius:3px;background:var(--amber);opacity:.5}
+  .ft.sub::before{background:var(--jade)}
+  .ft.gm::before{background:var(--gold)}
+  .ft h4{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:600;
+    display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+  /* level tag — neutral, consistent */
+  .ft h4 .lv{font-size:.6rem;font-weight:700;background:var(--ink);color:#fff;
+    padding:1px 7px;border-radius:5px;letter-spacing:.03em;font-family:'Space Grotesk',sans-serif}
+  /* origin tag — colored by source */
+  .ft h4 .or{font-size:.6rem;font-weight:600;padding:1px 8px;border-radius:999px;
+    text-transform:uppercase;letter-spacing:.04em}
+  .ft h4 .or.cls{background:var(--amber-soft);color:var(--amber-d)}
+  .ft h4 .or.sub{background:var(--jade-soft);color:var(--jade-d)}
+  .ft h4 .or.gm{background:#F3E6C8;color:var(--gold-d)}
+  .ft h4 .or.asi{background:var(--mist);color:var(--ink-2)}
+  /* legacy tag (used in Especie/Trasfondo cards) */
+  .ft h4 .tag{font-size:.62rem;font-weight:600;background:var(--mist);color:var(--ink-2);
+    padding:1px 8px;border-radius:999px}
+  .ft p{font-size:.8rem;color:var(--ink-2);margin-top:3px}
+
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{font-size:.78rem;background:#fff;border:1px solid var(--line);border-radius:999px;
+    padding:4px 12px;box-shadow:var(--shadow)}
+  .chip.hot{background:var(--amber);color:#fff;border-color:var(--amber-d);font-weight:600}
+  .chip.jade{background:var(--jade-soft);color:var(--jade-d);border-color:transparent}
+
+  /* ---------- COMPANIONS ---------- */
+  .pals{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .pal{background:#fff;border:1px solid var(--line);border-radius:var(--r);
+    padding:15px 16px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+  .pal .ph{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+  .pal .pe{font-size:1.5rem;flex:none;line-height:1}
+  .pal .pn{font-family:'Fraunces',serif;font-weight:600;font-size:1.1rem;line-height:1.1}
+  .pal .pr{font-size:.66rem;color:var(--ink-2);text-transform:uppercase;letter-spacing:.06em;
+    font-family:'Space Grotesk',sans-serif;font-weight:600;margin-top:2px}
+  .pal p{font-size:.8rem;color:var(--ink-2);line-height:1.5;flex:1}
+  .pal .pt{display:inline-block;margin-top:11px;align-self:flex-start;font-size:.62rem;font-weight:600;
+    text-transform:uppercase;letter-spacing:.05em;padding:2px 10px;border-radius:999px}
+  .pal .pt.mount{background:var(--amber);color:#fff}
+  .pal .pt.load{background:var(--mist);color:var(--ink-2)}
+  .pal .pt.pet{background:var(--jade-soft);color:var(--jade-d)}
+  @media(max-width:680px){.pals{grid-template-columns:1fr}}
+
+  /* ---------- RESOURCES ---------- */
+  .res{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .rc{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:13px 15px;
+    box-shadow:var(--shadow)}
+  .rc .rv{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.5rem;color:var(--amber-d);line-height:1}
+  .rc .rn{font-size:.78rem;font-weight:600;margin-top:5px}
+  .rc .rd{font-size:.7rem;color:var(--ink-2);margin-top:2px}
+  @media(max-width:760px){.res{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:440px){.res{grid-template-columns:1fr}}
+
+  /* ---------- EQUIPMENT ---------- */
+  .slots{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .slot{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);
+    padding:10px 12px;position:relative;box-shadow:var(--shadow);
+    display:flex;flex-direction:column}
+  .slot.locked{background:linear-gradient(180deg,#FBF3E4,#fff);border-color:#EBD7A8}
+  .slot .sl{font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);font-weight:600;display:block}
+  .slot .it{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.92rem;margin-top:2px;display:block;padding-right:72px}
+  .slot .bn{font-size:.72rem;color:var(--ink-2);margin-top:2px;display:block}
+  .slot .st{position:absolute;top:9px;right:10px;font-size:.58rem;font-weight:600;
+    text-transform:uppercase;letter-spacing:.05em;padding:1px 7px;border-radius:999px;
+    background:var(--jade-soft);color:var(--jade-d)}
+  .slot .st.att-yes{background:var(--amber-soft);color:var(--amber-d)}
+  .slot .st.att-no{background:var(--mist);color:var(--ink-2)}
+  .slot .st.att-q{background:#F3E6C8;color:var(--gold-d)}
+  .slot .st.prov{background:var(--mist);color:var(--ink-2)}
+  .slot .at{display:inline-block;margin-top:5px;font-size:.58rem;background:var(--gold);color:#4a3200;
+    padding:0 7px;border-radius:999px;font-weight:600;align-self:flex-start}
+
+  .container{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);
+    margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
+  .container .ch{background:var(--mist);padding:8px 12px;display:flex;align-items:baseline;gap:8px;
+    border-bottom:1px solid var(--line)}
+  .container .ci{font-size:1rem}
+  .container .cn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.86rem}
+  .container .cd{font-size:.66rem;color:var(--ink-2);margin-left:auto;font-style:italic}
+  .container .cb{display:flex;flex-wrap:wrap;gap:6px;padding:11px 12px}
+  .container .ci-item{font-size:.74rem;background:var(--paper);border:1px solid var(--line);
+    border-radius:999px;padding:2px 10px}
+  .container .ci-item.coin{background:var(--amber);color:#fff;border-color:var(--amber-d);font-weight:600}
+  .container.stable{border-color:#CBE0D8}
+  .container.stable .ch{background:linear-gradient(180deg,#E4F1EC,#DAEAE3);border-bottom-color:#CBE0D8}
+  .container.stable .cn{color:var(--jade-d)}
+  .qty{opacity:.6;font-size:.92em}
+
+  .acbox{background:linear-gradient(180deg,var(--amber),var(--amber-d));border-radius:var(--r);
+    padding:18px;text-align:center;color:#fff;box-shadow:var(--shadow-lg)}
+  .acbox .n{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:3rem;line-height:.9}
+  .acbox .l{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-top:4px}
+  .bd-row{display:flex;justify-content:space-between;font-size:.78rem;padding:6px 2px;
+    border-bottom:1px dotted var(--line)}
+  .bd-row .v{font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--amber-d)}
+  .bd-row.tot{border-bottom:none;border-top:1.5px solid var(--line-2);margin-top:2px;padding-top:8px;
+    font-weight:700;font-size:.92rem}
+  .attune{display:flex;align-items:center;gap:7px;margin-top:14px;font-size:.72rem;color:var(--ink-2)}
+  .attune .lbl{font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:.62rem;color:var(--amber-d)}
+  .attune .s{width:13px;height:13px;border-radius:50%;border:2px solid var(--amber)}
+  .attune .s.on{background:var(--amber)}
+
+  /* ---------- STORY ---------- */
+  .story-ph{background:#fff;border:1.5px dashed var(--line-2);border-radius:var(--r);
+    padding:30px;text-align:center;color:var(--ink-2)}
+  .story-ph .ic{font-size:1.6rem;margin-bottom:8px}
+  .story-ph h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;color:var(--ink);margin-bottom:6px}
+  .story-ph p{font-size:.84rem;max-width:46ch;margin:0 auto}
+
+  /* ---------- FOOTER ---------- */
+  footer.foot{margin-top:50px;border-top:1px solid var(--line);padding:26px 0 40px;text-align:center}
+  footer.foot .t{font-family:'Fraunces',serif;font-style:italic;color:var(--ink-2);font-size:.92rem}
+  footer.foot .s{font-size:.72rem;color:var(--ink-2);opacity:.7;margin-top:6px}
+
+  @media print{
+    .nav{display:none}.hero .embers{display:none}
+    body{font-size:12px}section{padding:20px 0}
+    .card,.tool,.slot,.container,.rc{break-inside:avoid;box-shadow:none}
+  }
+
+  @media(max-width:560px){
+    .wrap{padding:0 14px}
+    .card{padding:15px 15px}
+    section{padding:34px 0 6px}
+    .hero h1{font-size:2.15rem}
+    .hero .wrap{padding-top:30px;padding-bottom:26px}
+    table.tbl{font-size:.8rem}
+    table.tbl th,table.tbl td{padding:7px 8px}
+    .nav .brand{font-size:.92rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Volver a las fichas de la mesa"><span class="back">←</span><span class="dot"></span>Darvin Norris</a>
+    <ul>
+      <li><a href="#resumen">Resumen</a></li>
+      <li><a href="#combate">Combate</a></li>
+      <li><a href="#rasgos">Rasgos</a></li>
+      <li><a href="#dotes">Dotes</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#establo">Establo</a></li>
+      <li><a href="#economia">Economía</a></li>
+      <li><a href="#historia">Historia</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero" id="resumen">
+  <div class="embers" id="embers"></div>
+  <div class="wrap">
+    <div class="hero-top">
+      <div>
+        <div class="kicker">Hoja de personaje · D&amp;D 2024</div>
+        <h1>Darvin Norris</h1>
+        <p class="tagline">Monje de la Mano Abierta — puños de disciplina y aliento de dragón.</p>
+      </div>
+      <div class="classline">
+        <div class="lvl">Nivel 12</div>
+        <div class="cl">Monje<br>Subclase: Guerrero de la Mano Abierta</div>
+      </div>
+    </div>
+
+    <div class="hero-meta">
+      <span class="meta-chip">Especie <b>Humano</b></span>
+      <span class="meta-chip">Trasfondo <b>Vagabundo</b></span>
+      <span class="meta-chip">Tamaño <b>Mediano</b></span>
+      <span class="meta-chip">Competencia <b>+4</b></span>
+      <span class="meta-chip">Idiomas <b>Común · Élfico</b></span>
+    </div>
+
+    <div class="tiles">
+      <div class="tile accent"><div class="v">22</div><div class="l">Clase de Armadura</div></div>
+      <div class="tile"><div class="v">149</div><div class="l">Puntos de Golpe</div></div>
+      <div class="tile"><div class="v">+7</div><div class="l">Iniciativa</div></div>
+      <div class="tile"><div class="v">15 m</div><div class="l">Velocidad</div></div>
+      <div class="tile"><div class="v">19</div><div class="l">Percep. Pasiva</div></div>
+      <div class="tile"><div class="v">17</div><div class="l">CD de Rasgos</div></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ===================== COMBATE ===================== -->
+<section id="combate">
+  <div class="sec-head">
+    <span class="eyebrow">Combate</span>
+    <h2>Combate</h2>
+    <span class="rule"></span>
+  </div>
+
+  <div class="card" style="margin-bottom:16px">
+    <h3>Características y salvaciones</h3>
+    <div class="abilities">
+      <div class="abil">
+        <div class="top"><div class="nm">Fuerza</div><div class="mod">+0</div><span class="sc">11</span></div>
+        <ul>
+          <li class="sv"><span class="n">Salvación ●</span><span class="x">+4</span></li>
+          <li><span class="n"><span class="pip p"></span>Atletismo</span><span class="x">+4</span></li>
+        </ul>
+      </div>
+      <div class="abil">
+        <div class="top"><div class="nm">Destreza</div><div class="mod" style="color:var(--amber-d)">+5</div><span class="sc">20</span></div>
+        <ul>
+          <li class="sv"><span class="n">Salvación ●</span><span class="x">+9</span></li>
+          <li><span class="n"><span class="pip p"></span>Acrobacias</span><span class="x">+9</span></li>
+          <li><span class="n"><span class="pip p"></span>Sigilo</span><span class="x">+9</span></li>
+          <li><span class="n"><span class="pip p"></span>U. de Ladrón</span><span class="x">+9</span></li>
+        </ul>
+      </div>
+      <div class="abil">
+        <div class="top"><div class="nm">Constitución</div><div class="mod" style="color:var(--amber-d)">+4</div><span class="sc">19</span></div>
+        <ul>
+          <li class="sv"><span class="n">Salvación</span><span class="x">+4</span></li>
+          <li><span class="n" style="font-size:.68rem;opacity:.8">Amuleto de Salud</span><span class="x"></span></li>
+        </ul>
+      </div>
+      <div class="abil">
+        <div class="top"><div class="nm">Inteligencia</div><div class="mod">+1</div><span class="sc">13</span></div>
+        <ul>
+          <li class="sv"><span class="n">Salvación</span><span class="x">+1</span></li>
+        </ul>
+      </div>
+      <div class="abil">
+        <div class="top"><div class="nm">Sabiduría</div><div class="mod" style="color:var(--amber-d)">+5</div><span class="sc">20</span></div>
+        <ul>
+          <li class="sv"><span class="n">Salvación</span><span class="x">+5</span></li>
+          <li><span class="n"><span class="pip p"></span>Perspicacia</span><span class="x">+9</span></li>
+          <li><span class="n"><span class="pip p"></span>Percepción</span><span class="x">+9</span></li>
+        </ul>
+      </div>
+      <div class="abil">
+        <div class="top"><div class="nm">Carisma</div><div class="mod" style="color:var(--amber-d)">+2</div><span class="sc">14</span></div>
+        <ul>
+          <li class="sv"><span class="n">Salvación</span><span class="x">+2</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="leg">
+      <span><span class="pip p"></span> Competencia</span>
+      <span>● Salvación competente (Fue · Des)</span>
+      <span>A nivel 14: competencia en todas las salvaciones (Superviviente Disciplinado).</span>
+    </div>
+  </div>
+
+  <div class="cards-flow">
+      <div class="card">
+        <h3>Ataques sin armas · arma principal</h3>
+        <table class="tbl">
+          <thead><tr><th>Ataque</th><th style="width:52px">Atq</th><th>Daño</th><th>Tipo</th></tr></thead>
+          <tbody>
+            <tr><td>Golpe sin armas</td><td class="c atk">+9</td><td>1d10+5</td><td>Cont. o <b>Fuerza</b>*</td></tr>
+            <tr><td>Bastón de Sangre <span style="opacity:.6">(como arma de monje)</span></td><td class="c atk">+10</td><td>1d10+6</td><td>Cont.</td></tr>
+          </tbody>
+        </table>
+        <p class="note">* <strong>Golpes Potenciados</strong> (nivel 6): eliges daño Contundente o de Fuerza en cada golpe. Dado de Artes Marciales actual: <strong>1d10</strong>.</p>
+      </div>
+
+      <div class="card">
+        <h3>Economía de turno · 5 golpes</h3>
+        <table class="tbl">
+          <thead><tr><th>Fase</th><th>Ataques</th><th style="width:64px">Coste</th></tr></thead>
+          <tbody>
+            <tr><td>Acción — Ataque Extra</td><td>2 × (1d10+5)</td><td class="c">—</td></tr>
+            <tr><td>Acc. adicional — Ráfaga de Golpes</td><td>3 × (1d10+5)</td><td class="c atk">1 PC</td></tr>
+            <tr><td><b>Total por turno</b></td><td><b>5d10 + 25</b></td><td class="c">~52</td></tr>
+          </tbody>
+        </table>
+        <div class="callout">
+          <b>Turno óptimo</b> — Aplica <b>Golpe Aturdidor</b> (1 PC) en un golpe de la Acción para forzar TS Constitución CD 17. En cada golpe de Ráfaga aplica <b>Técnica de la Mano Abierta</b> (Derribar / Desconcertar / Empujar). Si quieres más daño, enciende <b>Rugido del Dragón</b>: +1d4 de fuego por ataque durante 4 turnos = hasta +5d4 fuego/turno.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Bastón Ritual de Sangre +1 · a distancia</h3>
+        <table class="tbl">
+          <thead><tr><th>Habilidad</th><th>Efecto</th><th style="width:64px">Coste</th></tr></thead>
+          <tbody>
+            <tr><td><b>Balas de Sangre</b></td><td>8d8 fuerza a 30 pies (~36)</td><td class="c atk">2 cargas</td></tr>
+            <tr><td><b>Drenaje de Sangre</b></td><td>Recupera 1d4 PG por golpe, 1 hora</td><td class="c atk">3 cargas</td></tr>
+            <tr><td><b>Cargas de Sangre</b></td><td>+1 al bono del arma por carga (máx +4)</td><td class="c">3 base</td></tr>
+          </tbody>
+        </table>
+        <p class="note"><strong>Cargar Sangre:</strong> acción gratuita, drena 10 PG → +1 carga (se recuperan tras 1 hora).</p>
+      </div>
+
+      <div class="card">
+        <h3>Defensas activas</h3>
+        <dl class="defs">
+          <dt>Desviar Ataques <span class="tag">reacción</span></dt>
+          <dd>Reduce daño cont./perf./cort. en 1d10 + 17. Si llega a 0, rediriges (TS Des CD 17, 2d10+5).</dd>
+          <dt>Evasión</dt>
+          <dd>En TS de Destreza por mitad de daño: sin daño si éxito, mitad si fallas.</dd>
+          <dt>Autorrestablecimiento</dt>
+          <dd>Al final de cada turno eliminas Asustado, Envenenado o Hechizado.</dd>
+          <dt>Anillo de Acción Libre</dt>
+          <dd>Inmune a Paralizado, Apresado y ralentización mágica. Ignora terreno difícil.</dd>
+          <dt>Resistencias</dt>
+          <dd>Fuego (Canilleras de Escama de Dragón).</dd>
+        </dl>
+      </div>
+
+      <div class="card">
+        <h3>Golpe Aturdidor</h3>
+        <p class="note" style="margin-top:0">1×/turno al impactar, gasta <strong>1 PC</strong>: el objetivo hace TS <strong>Constitución CD 17</strong>.</p>
+        <div class="callout" style="margin-top:10px"><b>Falla:</b> Aturdido hasta tu próximo turno. <b>Supera:</b> velocidad a la mitad + ventaja en el siguiente ataque contra él.</div>
+      </div>
+
+      <div class="card">
+        <h3>Técnica de la Mano Abierta</h3>
+        <p class="note" style="margin-top:0">Con cada golpe de <strong>Ráfaga de Golpes</strong>, elige un efecto:</p>
+        <dl class="defs" style="margin-top:8px">
+          <dt>Derribar</dt><dd>TS Destreza CD 17 o Derribado.</dd>
+          <dt>Desconcertar</dt><dd>Sin ataques de oportunidad hasta su próximo turno.</dd>
+          <dt>Empujar</dt><dd>TS Fuerza CD 17 o empujado 4,5 m.</dd>
+        </dl>
+      </div>
+
+      <div class="card">
+        <h3>Estados que infliges o sufres</h3>
+        <dl class="defs">
+          <dt>Aturdido</dt>
+          <dd>Incapacitado: sin acciones ni reacciones, no puede moverse. Falla TS de Fuerza y Destreza. Los ataques contra él tienen ventaja.</dd>
+          <dt>Derribado <span class="tag">Prone</span></dt>
+          <dd>Solo gatea o gasta media velocidad en levantarse. Desventaja en sus ataques. Ataques c. a c. contra él (a 1,5 m) con ventaja; a distancia con desventaja.</dd>
+          <dt>Apresado <span class="tag">Restrained</span></dt>
+          <dd>Velocidad 0. Ataques contra él con ventaja; sus ataques con desventaja. Desventaja en TS de Destreza. <b>Darvin es inmune</b> (Anillo de Acción Libre).</dd>
+          <dt>Paralizado</dt>
+          <dd>Incapacitado, no se mueve ni habla. Falla TS de Fuerza y Destreza. Impactos c. a c. a 1,5 m son críticos automáticos. <b>Darvin es inmune</b>.</dd>
+          <dt>Hechizado · Asustado · Envenenado</dt>
+          <dd>Darvin los elimina al final de su turno (Autorrestablecimiento). Asustado y Envenenado dan desventaja en ataques; Hechizado impide atacar al causante.</dd>
+          <dt>Cegado</dt>
+          <dd>No ve y falla pruebas de vista. Sus ataques con desventaja; los ataques contra él, con ventaja.</dd>
+        </dl>
+      </div>
+
+      <div class="card">
+        <h3>Acciones y movimiento</h3>
+        <dl class="defs">
+          <dt>Destrabarse <span class="tag">Disengage</span></dt>
+          <dd>Tu movimiento no provoca ataques de oportunidad. Darvin lo hace gratis como acción adicional (Defensa Paciente / Paso del Viento).</dd>
+          <dt>Esquivar <span class="tag">Dodge</span></dt>
+          <dd>Hasta tu próximo turno, los ataques contra ti tienen desventaja y tienes ventaja en TS de Destreza.</dd>
+          <dt>Correr <span class="tag">Dash</span></dt>
+          <dd>Ganas movimiento extra igual a tu velocidad este turno.</dd>
+          <dt>Ataque de oportunidad</dt>
+          <dd>Reacción que provocas cuando una criatura sale de tu alcance c. a c. sin Destrabarse.</dd>
+          <dt>Terreno difícil</dt>
+          <dd>Cada 1,5 m cuesta 1,5 m extra. Darvin lo ignora (Anillo de Acción Libre).</dd>
+          <dt>Inspiración Heroica</dt>
+          <dd>La ganas tras cada Descanso Largo. Gástala para repetir cualquier dado tras tirarlo; usas el nuevo resultado. Solo una a la vez.</dd>
+        </dl>
+      </div>
+  </div>
+</section>
+
+<!-- ===================== RASGOS ===================== -->
+<section id="rasgos">
+  <div class="sec-head">
+    <span class="eyebrow">Personaje</span>
+    <h2>Rasgos y competencias</h2>
+    <span class="rule"></span>
+  </div>
+
+  <div class="col2r">
+    <div class="card">
+      <h3>Especie · Humano</h3>
+      <div class="feats">
+        <div class="ft"><h4>Ingenioso</h4><p>Obtienes Inspiración Heroica al terminar cada Descanso Largo.</p></div>
+        <div class="ft"><h4>Diestro</h4><p>Competencia en una habilidad a elección → <b>Percepción</b>.</p></div>
+        <div class="ft"><h4>Versátil</h4><p>Una dote de origen a elección → <b>Duro</b> (+24 PG a nivel 12).</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Trasfondo · Vagabundo</h3>
+      <div class="feats">
+        <div class="ft"><h4>Características</h4><p>+1 Destreza, +2 Sabiduría (elección del jugador).</p></div>
+        <div class="ft"><h4>Dote de origen <span class="tag">Afortunado</span></h4><p>4 Puntos de Suerte: ventaja a una tirada propia o desventaja a un atacante. Decisión antes de tirar el d20.</p></div>
+        <div class="ft"><h4>Competencias</h4><p>Perspicacia, Sigilo y Utensilios de Ladrón.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>Progresión de rasgos por nivel · Monje 1–12</h3>
+    <div class="leg" style="margin-top:-4px;margin-bottom:16px">
+      <span><span class="or cls" style="display:inline-block">Clase</span> Monje base</span>
+      <span><span class="or sub" style="display:inline-block">Mano Abierta</span> Subclase</span>
+      <span><span class="or gm" style="display:inline-block">GM</span> Homebrew otorgado</span>
+      <span><span class="or asi" style="display:inline-block">Mejora</span> Característica/dote</span>
+    </div>
+    <div class="feats feats-flow">
+        <div class="ft"><h4>Artes Marciales <span class="lv">Niv 1</span> <span class="or cls">Clase</span></h4><p>Dominas el combate sin armas y con armas de monje. Puedes hacer un Ataque sin Armas como acción adicional. Tu Dado de Artes Marciales es 1d10 y puedes usarlo en lugar del daño normal de tus Ataques sin Armas o armas de monje. Usas Destreza en lugar de Fuerza para las tiradas de ataque y daño de Ataques sin Armas y armas de monje, y para la CD de presa/empujón.</p></div>
+        <div class="ft"><h4>Defensa sin Armadura <span class="lv">Niv 1</span> <span class="or cls">Clase</span></h4><p>Mientras no lleves armadura ni portes escudo, tu Clase de Armadura base es 10 + tu modificador de Destreza + tu modificador de Sabiduría = <b>20 base</b>.</p></div>
+        <div class="ft"><h4>Concentración de Monje <span class="lv">Niv 2</span> <span class="or cls">Clase</span></h4><p>Tienes 12 Puntos de Concentración (ki) que recuperas tras un descanso corto o largo. CD de salvación de tus rasgos = 8 + Sab + competencia = <b>17</b>. Conoces tres usos:</p></div>
+        <div class="ft" style="padding-left:30px"><h4 style="font-size:.82rem">Ráfaga de Golpes</h4><p>Gasta 1 PC para hacer dos Ataques sin Armas como acción adicional (tres a partir de nivel 10).</p></div>
+        <div class="ft" style="padding-left:30px"><h4 style="font-size:.82rem">Defensa Paciente</h4><p>Puedes Destrabarte como acción adicional gratis. De forma alternativa, gasta 1 PC para Destrabarte y Esquivar con la misma acción adicional. Con Concentración Agudizada (niv 10) ganas además PG temporales = 2 tiradas de Dado A.M.</p></div>
+        <div class="ft" style="padding-left:30px"><h4 style="font-size:.82rem">Paso del Viento</h4><p>Puedes Correr como acción adicional gratis. De forma alternativa, gasta 1 PC para Destrabarte y Correr con la misma acción adicional, y tu distancia de salto se duplica. Con Concentración Agudizada (niv 10) puedes mover contigo a una criatura voluntaria Grande o menor sin provocar ataques de oportunidad.</p></div>
+        <div class="ft"><h4>Metabolismo Asombroso <span class="lv">Niv 2</span> <span class="or cls">Clase</span></h4><p>Una vez por descanso largo, al tirar iniciativa recuperas todos los Puntos de Concentración gastados y recuperas PG iguales a tu nivel de monje más una tirada de tu Dado de Artes Marciales.</p></div>
+        <div class="ft"><h4>Movimiento sin Armadura <span class="lv">Niv 2</span> <span class="or cls">Clase</span></h4><p>Tu velocidad aumenta mientras no lleves armadura ni escudo. A nivel 12 el bono es <b>+6 m</b> (velocidad total 15 m).</p></div>
+        <div class="ft"><h4>Desviar Ataques <span class="lv">Niv 3</span> <span class="or cls">Clase</span></h4><p>Cuando un ataque que te acierte incluya daño contundente, cortante o perforante, usas tu reacción para reducir el daño total en 1d10 + tu modificador de Destreza + tu nivel de monje. Si reduces el daño a 0, gastas 1 PC para redirigir parte de la fuerza: elige una criatura a 1,5 m (si fue c. a c.) o a 18 m (si fue a distancia); debe superar una TS de Destreza o sufrir 2 tiradas de Dado A.M. + Des del mismo tipo de daño.</p></div>
+        <div class="ft sub"><h4>Técnica de la Mano Abierta <span class="lv">Niv 3</span> <span class="or sub">Mano Abierta</span></h4><p>Siempre que aciertes a una criatura con un ataque proporcionado por Ráfaga de Golpes, puedes imponerle un efecto: <b>Derribar</b> (TS Destreza o Derribado), <b>Desconcertar</b> (sin ataques de oportunidad hasta su próximo turno) o <b>Empujar</b> (TS Fuerza o empujado 4,5 m).</p></div>
+        <div class="ft asi"><h4>Dote Atleta <span class="lv">Niv 4</span> <span class="or asi">Mejora</span></h4><p>Mejora de característica → dote Atleta. +1 a Destreza. Ganas velocidad de trepar igual a tu velocidad. Levantarte de Derribado solo cuesta 5 pies de movimiento.</p></div>
+        <div class="ft"><h4>Caída Lenta <span class="lv">Niv 4</span> <span class="or cls">Clase</span></h4><p>Puedes usar una reacción al caer para reducir el daño de caída que sufras en una cantidad igual a cinco veces tu nivel de monje (60 a nivel 12).</p></div>
+        <div class="ft"><h4>Ataque Adicional <span class="lv">Niv 5</span> <span class="or cls">Clase</span></h4><p>Puedes atacar dos veces, en lugar de una, siempre que realices la acción de Atacar en tu turno.</p></div>
+        <div class="ft"><h4>Golpe Aturdidor <span class="lv">Niv 5</span> <span class="or cls">Clase</span></h4><p>Una vez por turno, cuando aciertes a una criatura con un arma de monje o un Ataque sin Armas, puedes gastar 1 PC para intentar un golpe aturdidor. El objetivo hace TS de Constitución (CD 17). Si falla, queda Aturdido hasta el inicio de tu próximo turno. Si supera, su velocidad se reduce a la mitad hasta el inicio de tu próximo turno y el siguiente ataque contra él antes de entonces tiene ventaja.</p></div>
+        <div class="ft"><h4>Golpes Potenciados <span class="lv">Niv 6</span> <span class="or cls">Clase</span></h4><p>Siempre que inflijas daño con tu Ataque sin Armas, puedes elegir que cause daño de Fuerza o su tipo de daño normal.</p></div>
+        <div class="ft sub"><h4>Plenitud de Cuerpo <span class="lv">Niv 6</span> <span class="or sub">Mano Abierta</span></h4><p>Como acción adicional, puedes tirar tu Dado de Artes Marciales y recuperar PG iguales al resultado más tu modificador de Sabiduría (1 PG mínimo). Usos = tu modificador de Sabiduría (5 veces), recuperados tras un descanso largo.</p></div>
+        <div class="ft"><h4>Evasión <span class="lv">Niv 7</span> <span class="or cls">Clase</span></h4><p>Cuando un efecto te permita hacer una TS de Destreza para sufrir solo la mitad del daño, no recibes daño alguno si la superas y solo la mitad si la fallas. No te beneficias de este rasgo si estás Incapacitado.</p></div>
+        <div class="ft asi"><h4>Mejora de Característica <span class="lv">Niv 8</span> <span class="or asi">Mejora</span></h4><p>+2 a Destreza (la lleva a 20, modificador +5).</p></div>
+        <div class="ft"><h4>Movimiento Acrobático <span class="lv">Niv 9</span> <span class="or cls">Clase</span></h4><p>Mientras no lleves armadura ni portes escudo, puedes moverte por superficies verticales y sobre líquidos en tu turno sin caer durante el movimiento.</p></div>
+        <div class="ft"><h4>Autorrestablecimiento <span class="lv">Niv 10</span> <span class="or cls">Clase</span></h4><p>Por pura fuerza de voluntad, al final de cada uno de tus turnos puedes eliminar de ti uno de estos estados: Asustado, Envenenado o Hechizado. Además, privarte de comida y bebida no te aplica niveles de cansancio.</p></div>
+        <div class="ft"><h4>Concentración Agudizada <span class="lv">Niv 10</span> <span class="or cls">Clase</span></h4><p>Tus Defensa Paciente, Paso del Viento y Ráfaga de Golpes mejoran (ver arriba). En particular, <b>Ráfaga de Golpes pasa a hacer 3 ataques</b> en lugar de 2.</p></div>
+        <div class="ft sub"><h4>Paso Veloz <span class="lv">Niv 11</span> <span class="or sub">Mano Abierta</span></h4><p>Cuando utilices una acción adicional que no sea Paso del Viento, podrás usar también Paso del Viento inmediatamente después de esa acción adicional.</p></div>
+        <div class="ft gm"><h4>Rugido del Dragón <span class="lv">Niv 11</span> <span class="or gm">GM</span></h4><p>Golpe homebrew obtenido por entrenamiento. Gastas <b>1 PC</b>: obtienes <b>+1d4 de daño de fuego por cada ataque</b> durante <b>4 turnos</b>. (Confirmar economía exacta con el GM.)</p></div>
+        <div class="ft asi"><h4>Mejora de Característica <span class="lv">Niv 12</span> <span class="or asi">Mejora</span></h4><p>+2 a Sabiduría (la lleva a 20, modificador +5).</p></div>
+        <div class="ft gm"><h4>Golpe Lejano <span class="lv">Niv 12</span> <span class="or gm">GM</span></h4><p>Golpe homebrew del «Libro del Camino Marcial» (21 días de estudio completados). Gastas <b>2 PC</b>: proyectas un golpe normal de <b>daño contundente hasta 30 pies</b>, durante <b>2 rondas</b>.</p></div>
+    </div>
+  </div>
+
+  <div class="col-narrow" style="margin-top:16px">
+    <div class="card">
+      <h3>Competencias y mejoras</h3>
+      <p class="note" style="margin-top:0"><strong>Armaduras:</strong> ninguna.<br><strong>Armas:</strong> simples y marciales c. a c. con propiedad Ligera.<br><strong>Salvaciones:</strong> Fuerza y Destreza.<br><strong>Herramienta:</strong> Flauta.<br><strong>Idiomas:</strong> Común, Élfico.</p>
+      <div style="height:10px"></div>
+      <p class="note" style="margin-top:0"><strong>Mejoras de característica:</strong> Niv 4 dote Atleta (+1 Des, trepar = velocidad); Niv 8 +2 Des; Niv 12 +2 Sab.</p>
+    </div>
+
+    <div class="card">
+      <h3>Recursos por descanso</h3>
+      <div class="res">
+        <div class="rc"><div class="rv">12</div><div class="rn">Puntos de Concentración</div><div class="rd">Descanso corto/largo</div></div>
+        <div class="rc"><div class="rv">5</div><div class="rn">Plenitud de Cuerpo</div><div class="rd">Descanso largo</div></div>
+        <div class="rc"><div class="rv">4</div><div class="rn">Puntos de Suerte</div><div class="rd">Descanso largo</div></div>
+        <div class="rc"><div class="rv">1</div><div class="rn">Metabolismo Asombroso</div><div class="rd">Al tirar iniciativa</div></div>
+        <div class="rc"><div class="rv">1</div><div class="rn">Inspiración Heroica</div><div class="rd">Cada descanso largo</div></div>
+        <div class="rc"><div class="rv">×1</div><div class="rn">Poción Superior</div><div class="rd">Consumible · 8d4+8</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DOTES ===================== -->
+<section id="dotes">
+  <div class="sec-head">
+    <span class="eyebrow">Personaje</span>
+    <h2>Dotes</h2>
+    <span class="rule"></span>
+  </div>
+
+  <div class="callout" style="margin-top:0;margin-bottom:18px">
+    <b>Tres dotes</b> — Dos de origen (Afortunado del trasfondo, Duro de la especie) y una general (Atleta, tomada en la mejora de nivel 4).
+  </div>
+
+  <div class="col3">
+    <div class="card">
+      <h3>Afortunado <span style="margin-left:auto;font-size:.62rem;font-weight:600;background:var(--amber-soft);color:var(--amber-d);padding:1px 8px;border-radius:999px;text-transform:none;letter-spacing:0">Origen · Vagabundo</span></h3>
+      <p class="note" style="margin-top:0">Tienes <b>Puntos de Suerte</b> iguales a tu bonificador de competencia (<b>4</b> a nivel 12), que recuperas tras un descanso largo.</p>
+      <dl class="defs" style="margin-top:10px">
+        <dt>Ventaja</dt>
+        <dd>Antes de tirar un d20 para una prueba, ataque o salvación, gasta 1 punto para tener Ventaja en esa tirada.</dd>
+        <dt>Desventaja</dt>
+        <dd>Cuando una criatura te ataca, gasta 1 punto para imponerle Desventaja en esa tirada de ataque.</dd>
+      </dl>
+      <p class="note">Decides gastar el punto <strong>antes</strong> de tirar el d20.</p>
+    </div>
+
+    <div class="card">
+      <h3>Duro <span style="margin-left:auto;font-size:.62rem;font-weight:600;background:var(--amber-soft);color:var(--amber-d);padding:1px 8px;border-radius:999px;text-transform:none;letter-spacing:0">Origen · Versátil</span></h3>
+      <p class="note" style="margin-top:0">Al adquirir esta dote, tus <b>Puntos de Golpe máximos aumentan</b> en una cantidad igual al doble de tu nivel de personaje.</p>
+      <div class="callout" style="margin-top:10px"><b>Para Darvin:</b> +24 PG en total a nivel 12. A partir de aquí, cada nivel que subas suma <b>+2 PG</b> adicionales.</div>
+    </div>
+
+    <div class="card">
+      <h3>Atleta <span style="margin-left:auto;font-size:.62rem;font-weight:600;background:var(--mist);color:var(--ink-2);padding:1px 8px;border-radius:999px;text-transform:none;letter-spacing:0">General · Niv 4</span></h3>
+      <p class="note" style="margin-top:0">Dote general (prerrequisito: nivel 4+, Fuerza o Destreza 13+). Obtienes:</p>
+      <dl class="defs" style="margin-top:10px">
+        <dt>Mejora de característica</dt>
+        <dd>+1 a Fuerza o Destreza (máx 20). Darvin lo aplicó a <b>Destreza</b>.</dd>
+        <dt>Velocidad de trepar</dt>
+        <dd>Ganas una velocidad de trepar igual a tu velocidad.</dd>
+        <dt>Levantarse ágil</dt>
+        <dd>Cuando estés Derribado, levantarte solo te cuesta 5 pies de movimiento (en vez de la mitad de tu velocidad).</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EQUIPO ===================== -->
+<section id="equipo">
+  <div class="sec-head">
+    <span class="eyebrow">Inventario</span>
+    <h2>Equipo</h2>
+    <span class="rule"></span>
+  </div>
+
+  <div class="callout jade" style="margin-top:0;margin-bottom:18px">
+    <b>Criterio de sintonización</b> — Los objetos custom se asumen <b>sin sintonización</b> hasta que el GM lo confirme. Sintonización oficial usada: <b>3/3</b> (Amuleto de Salud, Brazales de Defensa, Anillo de Acción Libre).
+  </div>
+
+  <div class="col-side-r">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="card">
+        <h3>Objetos equipados</h3>
+        <div class="slots" id="gearSlots"></div>
+        <div class="leg" style="margin-top:12px">
+          <span><span class="st att-yes" style="position:static">Sí</span> Sintoniza</span>
+          <span><span class="st att-no" style="position:static">No</span> No requiere</span>
+          <span><span class="st att-q" style="position:static">?</span> Custom · por confirmar con el GM</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Contenedores</h3>
+        <div id="containers"></div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="acbox">
+        <div class="n" id="acNum">22</div>
+        <div class="l">Clase de Armadura</div>
+      </div>
+      <div class="card">
+        <h3>Desglose de CA</h3>
+        <div id="breakdown"></div>
+        <div class="attune">
+          <span class="lbl">Sintonización</span>
+          <span class="s" id="at0"></span><span class="s" id="at1"></span><span class="s" id="at2"></span>
+          <span id="atLabel" style="margin-left:auto;font-weight:600">3/3</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>En reserva (no equipado)</h3>
+    <table class="tbl">
+      <thead><tr><th>Objeto</th><th>Descripción</th><th style="width:120px">Sintoniza</th></tr></thead>
+      <tbody>
+        <tr><td><b>Capa de Protección</b></td><td>+1 a la CA y +1 a todas las tiradas de salvación mientras la lleves puesta.</td><td><span class="badge">Sí · oficial</span></td></tr>
+        <tr><td><b>Anillo de Protección</b> <span class="qty">×2</span></td><td>+1 a la CA y +1 a las salvaciones. No puedes sintonizar dos copias a la vez, así que solo uno aportaría.</td><td><span class="badge">Sí · oficial</span></td></tr>
+        <tr><td><b>Piedra de Ioun (Fuerza)</b></td><td>Orbita tu cabeza; tu Fuerza aumenta en 2 (máx 20). Cuenta como objeto que llevas puesto; hasta 3 piedras a la vez.</td><td><span class="badge">Sí · oficial</span></td></tr>
+        <tr><td><b>Manoplas de Mithril</b></td><td>Arma de monje, daño máximo 1d6. A nivel 12 tu Dado de Artes Marciales (1d10) rinde más, así que son útiles solo por sabor.</td><td><span class="badge off">Custom · ?</span></td></tr>
+        <tr><td><b>Bastón del Dragón +1</b></td><td>Bonificador +1; añade 1d4 de daño eléctrico; alcance de 10 pies (un cuadro extra).</td><td><span class="badge off">Custom · ?</span></td></tr>
+        <tr><td><b>Brazaletes de Escama de Dragón</b></td><td>Otorgan resistencia al daño de ácido.</td><td><span class="badge off">Custom · ?</span></td></tr>
+        <tr><td><b>Guantes de Escama de Dragón Blanco</b></td><td>Otorgan resistencia al daño de frío.</td><td><span class="badge off">Custom · ?</span></td></tr>
+      </tbody>
+    </table>
+    <p class="note">Prestado: <strong>Collar de Sanilla</strong> (al personaje de Andy) — invoca un ángel que inflige 8d6 de daño radiante en 20 pies, 1 vez por descanso largo. Requiere sintonización.</p>
+  </div>
+</section>
+
+<!-- ===================== ESTABLO ===================== -->
+<section id="establo">
+  <div class="sec-head">
+    <span class="eyebrow">Aliados</span>
+    <h2>Establo y compañeros</h2>
+    <span class="rule"></span>
+  </div>
+
+  <div class="pals">
+    <div class="pal">
+      <div class="ph"><span class="pe">🦖</span><div><div class="pn">T-Rock</div><div class="pr">Montura</div></div></div>
+      <p>Tiranosaurio Rex encogido al tamaño de un velociraptor, así que Darvin puede montarlo. Lleva una tiara de comunicación para hablar con él.</p>
+      <span class="pt mount">Montable</span>
+    </div>
+    <div class="pal">
+      <div class="ph"><span class="pe">🫏</span><div><div class="pn">Ruperto</div><div class="pr">Bestia de carga</div></div></div>
+      <p>Burro de carga común. Transporta el equipaje y los suministros de Darvin. No es montura.</p>
+      <span class="pt load">Carga</span>
+    </div>
+    <div class="pal">
+      <div class="ph"><span class="pe">🐧</span><div><div class="pn">El 10</div><div class="pr">Mascota</div></div></div>
+      <p>Un pingüino terrible. Realmente es terrible.</p>
+      <span class="pt pet">Compañero</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ECONOMÍA ===================== -->
+<section id="economia">
+  <div class="sec-head">
+    <span class="eyebrow">Recursos</span>
+    <h2>Economía y voto de pobreza</h2>
+    <span class="rule"></span>
+  </div>
+
+  <div class="col-side">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="card">
+        <h3>Tesoro actual</h3>
+        <table class="tbl">
+          <thead><tr><th>Moneda</th><th style="width:40%">Cantidad</th></tr></thead>
+          <tbody>
+            <tr><td>Platino (pp)</td><td class="c atk">29.909</td></tr>
+            <tr><td>Oro (po)</td><td class="c atk">5</td></tr>
+          </tbody>
+        </table>
+        <p class="note">Equivalente total: 29.909 pp × 10 + 5 po = <strong>299.095 po</strong> en valor de oro.</p>
+      </div>
+
+      <div class="card">
+        <h3>Ingreso semanal · El Dojo</h3>
+        <p class="note" style="margin-top:0">Darvin regenta un dojo en su ciudad natal que deja un beneficio bruto de <strong>154,75 po por semana</strong>.</p>
+        <table class="tbl" style="margin-top:10px">
+          <thead><tr><th>Concepto</th><th style="width:42%">Monto</th></tr></thead>
+          <tbody>
+            <tr><td>Beneficio bruto semanal</td><td class="c">154,75 po</td></tr>
+            <tr><td>Voto de pobreza (20%)</td><td class="c" style="color:var(--ember)">−30,95 po</td></tr>
+            <tr><td><b>Ingreso neto para Darvin</b></td><td class="c atk">123,80 po</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="acbox" style="background:linear-gradient(180deg,var(--jade),var(--jade-d))">
+        <div class="n" style="font-size:2.1rem">20%</div>
+        <div class="l">Voto de Pobreza</div>
+      </div>
+      <div class="card">
+        <h3>El Comedor Comunitario</h3>
+        <p class="note" style="margin-top:0">Darvin destina el <strong>20%</strong> de lo que genera a un comedor comunitario. Compra los productos <strong>frescos en el mercado local</strong> de forma deliberada: así el dinero vuelve a circular entre la gente del pueblo y el apoyo llega a quienes más lo necesitan.</p>
+        <div class="callout jade"><b>Principio:</b> el dinero no se acumula, se mueve. Cada compra en el mercado es ayuda directa a la comunidad.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HISTORIA ===================== -->
+<section id="historia">
+  <div class="sec-head">
+    <span class="eyebrow">Trasfondo</span>
+    <h2>Historia</h2>
+    <span class="rule"></span>
+  </div>
+
+  <div class="story-ph">
+    <div class="ic">✍️</div>
+    <h4>Narrativa pendiente</h4>
+    <p>Apariencia, personalidad, trasfondo, personajes clave y motivaciones de Darvin Norris. Por completar en una próxima sesión de trabajo.</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="t">"La disciplina es el fuego; el golpe, solo su chispa."</div>
+  <div class="s">Darvin Norris · Hoja consolidada al Nivel 12 · D&amp;D 2024</div>
+</footer>
+
+</main>
+
+<script>
+  const DEX = 5, WIS = 5;
+  // Equipped items. ac = AC bonus, base unarmored = 10 + DEX + WIS
+  const gear = [
+    { slot:'Cara', name:'Venda de la Vida', bn:'Detecta vida 60 pies (oculta/invisible)', custom:true, att:'?' },
+    { slot:'Garganta', name:'Amuleto de Salud', bn:'Constitución = 19', attune:true, att:'yes' },
+    { slot:'Cuerpo', name:'Traje de la Tortuga', bn:'+2 iniciativa · lanzar Volar · esfera 4★', custom:true, att:'?' },
+    { slot:'Pies', name:'Canilleras Escama de Dragón', bn:'Resistencia a fuego', custom:true, att:'?' },
+    { slot:'Brazos', name:'Brazales de Defensa', bn:'+2 CA', ac:2, attune:true, att:'yes' },
+    { slot:'Anillo', name:'Anillo de Acción Libre', bn:'Anti-control · ignora terreno difícil', attune:true, att:'yes' },
+    { slot:'Arma', name:'Bastón Ritual de Sangre +1', bn:'A la espalda · Balas de Sangre', custom:true, att:'?' },
+  ];
+  const containers = [
+    { icon:'🎒', name:'Equipaje (en Ruperto)', desc:'Suministros de campamento',
+      items:['Raciones <span class="qty">×días</span>','Cuerda','Odre de agua','Linterna','Pedernal y yesca','Flauta'] },
+    { icon:'👜', name:'Cinturón y bolsas', desc:'Acceso rápido',
+      items:['Poción Superior de Curación <span class="qty">×1</span>','Utensilios de ladrón','<span class="ci-item coin">Monedas</span>'] },
+  ];
+  function renderGear(){
+    const c=document.getElementById('gearSlots');c.innerHTML='';
+    const att={yes:['Sintoniza · Sí','att-yes'], no:['Sintoniza · No','att-no'], '?':['Sintoniza · ?','att-q']};
+    gear.forEach(it=>{
+      const d=document.createElement('div');
+      d.className='slot';
+      const a=att[it.att]||att['no'];
+      const badge=`<span class="st ${a[1]}">${a[0]}</span>`;
+      d.innerHTML=`<span class="sl">${it.slot}</span><span class="it">${it.name}</span><span class="bn">${it.bn}</span>${badge}${it.custom?'<span class="at">Custom · GM</span>':''}`;
+      c.appendChild(d);
+    });
+  }
+  function renderContainers(){
+    const c=document.getElementById('containers');c.innerHTML='';
+    containers.forEach(ct=>{
+      const box=document.createElement('div');box.className='container'+(ct.stable?' stable':'');
+      const items=ct.items.map(it=>it.includes('ci-item')?it:`<span class="ci-item">${it}</span>`).join('');
+      box.innerHTML=`<div class="ch"><span class="ci">${ct.icon}</span><span class="cn">${ct.name}</span><span class="cd">${ct.desc}</span></div><div class="cb">${items}</div>`;
+      c.appendChild(box);
+    });
+  }
+  function recalc(){
+    let ac=10+DEX+WIS, rows=[{l:'Base',v:10},{l:'Destreza',v:'+'+DEX},{l:'Sabiduría',v:'+'+WIS}];
+    gear.forEach(g=>{if(!g.ac)return;rows.push({l:g.name,v:'+'+g.ac});ac+=g.ac;});
+    document.getElementById('acNum').textContent=ac;
+    const bd=document.getElementById('breakdown');bd.innerHTML='';
+    rows.forEach(r=>{const d=document.createElement('div');d.className='bd-row';d.innerHTML=`<span>${r.l}</span><span class="v">${r.v}</span>`;bd.appendChild(d);});
+    const t=document.createElement('div');t.className='bd-row tot';t.innerHTML=`<span>CA Total</span><span class="v">${ac}</span>`;bd.appendChild(t);
+    const attuned=gear.filter(g=>g.attune).length;
+    for(let k=0;k<3;k++)document.getElementById('at'+k).classList.toggle('on',k<attuned);
+    document.getElementById('atLabel').textContent=attuned+'/3';
+  }
+  renderGear();renderContainers();recalc();
+
+  // rising embers
+  (function(){
+    const host=document.getElementById('embers');
+    if(!host || window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    const N=18;
+    for(let i=0;i<N;i++){
+      const e=document.createElement('i');
+      const left=Math.random()*100;
+      const dur=5+Math.random()*5;
+      const delay=Math.random()*8;
+      const size=3+Math.random()*4;
+      const drift=(Math.random()*40-20).toFixed(0)+'px';
+      e.style.left=left+'%';
+      e.style.width=e.style.height=size+'px';
+      e.style.animationDuration=dur+'s';
+      e.style.animationDelay=delay+'s';
+      e.style.setProperty('--drift',drift);
+      host.appendChild(e);
+    }
+  })();
+
+  // nav active state on scroll
+  const secs=[...document.querySelectorAll('section,header.hero')];
+  const links=[...document.querySelectorAll('.nav a')];
+  const obs=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){
+      const id=e.target.id;links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));
+    }});
+  },{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(s=>obs.observe(s));
+</script>
+
+</body>
+</html>
