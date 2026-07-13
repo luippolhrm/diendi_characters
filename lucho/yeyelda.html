@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yeyelda — Hoja de Personaje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F9FAFB; --ink:#1B1E22; --ink-2:#4A5158; --ink-3:#6F7880;
+    --oso:#5C4433; --oso-d:#43301F; --oso-soft:#EFE8E1;
+    --fogata:#D9BE93; --fogata-d:#8F6F3E; --fogata-soft:#F6EFDF;
+    --furia:#8E3B34; --furia-d:#6E2A24; --furia-soft:#F4E5E2;
+    --pino:#37503F; --pino-d:#263B2D; --pino-soft:#E4EBE6;
+    --niebla:#AEBDC4; --niebla-soft:#EDF1F3; --niebla-d:#5E7280;
+    --mist:#EFF1F2; --line:#E1E5E7; --line-2:#CBD2D5;
+    --good:#2E8B57; --good-soft:#E2F1E9;
+    --shadow:0 1px 2px rgba(27,30,34,.04),0 4px 16px rgba(27,30,34,.06);
+    --shadow-lg:0 2px 8px rgba(27,30,34,.06),0 12px 36px rgba(27,30,34,.10);
+    --r:14px; --r-sm:9px;
+    --nav-h:54px;
+    --coin-ink:#3A2C05;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 14px)}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);
+    line-height:1.55;font-size:15px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+  /* NAV */
+  .nav{position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(249,250,251,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;gap:18px;height:100%}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;
+    font-weight:600;font-size:17px;color:var(--ink);text-decoration:none;white-space:nowrap}
+  .brand .back{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;
+    border-radius:8px;border:1px solid var(--line);color:var(--oso);background:#fff;transition:.18s;font-size:16px}
+  .brand .back:hover{background:var(--oso);color:#fff;border-color:var(--oso)}
+  .navlinks{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+  .navlinks::-webkit-scrollbar{display:none}
+  .navlinks a{font-size:13px;font-weight:500;color:var(--ink-2);text-decoration:none;
+    padding:7px 11px;border-radius:8px;white-space:nowrap;transition:.15s}
+  .navlinks a:hover{background:var(--mist);color:var(--ink)}
+  .navlinks a.active{background:var(--oso-soft);color:var(--oso);font-weight:600}
+
+  /* HERO */
+  .hero{position:relative;padding:38px 0 30px;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;
+    background:radial-gradient(120% 80% at 80% -10%,var(--niebla-soft) 0%,transparent 55%),
+      radial-gradient(90% 70% at 6% 0%,var(--pino-soft) 0%,transparent 52%),
+      radial-gradient(60% 50% at 50% 110%,var(--fogata-soft) 0%,transparent 60%);opacity:.9}
+  /* Firma: la niebla que deriva — capas lentas de bruma cruzando el hero */
+  .mists{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+  .fog{position:absolute;left:-45%;width:190%;height:130px;filter:blur(22px);opacity:.5;
+    background:radial-gradient(60% 100% at 28% 55%,var(--niebla) 0%,transparent 70%),
+      radial-gradient(42% 85% at 68% 40%,var(--niebla) 0%,transparent 74%),
+      radial-gradient(30% 70% at 90% 60%,var(--niebla) 0%,transparent 78%);
+    animation:derivar 52s linear infinite alternate}
+  .fog.f2{top:34%;height:110px;opacity:.32;animation-duration:74s;animation-direction:alternate-reverse}
+  .fog.f3{bottom:-14px;height:150px;opacity:.44;animation-duration:40s}
+  .fog.f1{top:-10px}
+  @keyframes derivar{
+    from{transform:translateX(-5%)}
+    to{transform:translateX(5%)}
+  }
+  @media(prefers-reduced-motion:reduce){.fog{animation:none}}
+  .hero .wrap{position:relative;z-index:1}
+  .eyebrow{font-family:'Space Grotesk',monospace;font-size:12px;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--pino-d);margin-bottom:8px}
+  .hero h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(34px,6vw,52px);
+    line-height:1.02;letter-spacing:-.01em;color:var(--ink);margin-bottom:6px}
+  .hero .sub{font-size:15px;color:var(--ink-2);max-width:56ch;margin-bottom:20px}
+  .hero .sub b{color:var(--oso);font-weight:600}
+
+  .hero-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+  .hero-head .hh-left{flex:1;min-width:280px}
+  .hero-head .hh-right{text-align:right;flex-shrink:0;padding-top:6px}
+  .hh-right .lvl-n{font-family:'Fraunces',serif;font-weight:700;font-size:26px;line-height:1;color:var(--oso)}
+  .hh-right .cls-main{font-size:14.5px;color:var(--ink-2);margin-top:6px}
+  .hh-right .cls-sub{font-size:13px;color:var(--ink-3);margin-top:2px}
+
+  .meta-chips{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 22px}
+  .chip{font-size:12.5px;color:var(--ink-2);background:#fff;border:1px solid var(--line);
+    border-radius:20px;padding:6px 14px}
+  .chip b{color:var(--ink);font-weight:600}
+
+  .tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+  .tile{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);
+    padding:12px;box-shadow:var(--shadow);position:relative}
+  .tile .lbl{font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--ink-2);margin-bottom:3px}
+  .tile .val{font-family:'Space Grotesk',monospace;font-weight:700;font-size:25px;line-height:1;color:var(--ink)}
+  .tile .val small{font-size:13px;font-weight:600;color:var(--ink-2)}
+  .tile.accent .val{color:var(--oso)} .tile.gold .val{color:var(--fogata-d)} .tile.ruby .val{color:var(--furia-d)}
+
+  /* SECTIONS */
+  section{padding:34px 0;border-top:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:13px;margin-bottom:18px}
+  .sec-head .n{font-family:'Space Grotesk',monospace;font-size:13px;font-weight:600;color:var(--fogata-d);letter-spacing:.05em}
+  .sec-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:26px;letter-spacing:-.01em;color:var(--ink)}
+
+  .grid{display:grid;gap:14px}
+  .g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
+  .card h3{font-family:'Fraunces',serif;font-weight:600;font-size:17px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .card h3 .dot{width:8px;height:8px;border-radius:50%;background:var(--oso);flex-shrink:0}
+
+  /* Definiciones */
+  .defs{display:grid;grid-template-columns:repeat(2,1fr);gap:11px 16px}
+  .def{font-size:12.5px;line-height:1.5}
+  .def dt{font-weight:600;color:var(--ink);margin-bottom:2px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+  .def dt .en{font-family:'Space Grotesk',monospace;font-size:10px;font-weight:600;color:var(--ink-3);
+    background:var(--mist);padding:1px 6px;border-radius:4px}
+  .def dt .tag{font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    background:var(--furia-soft);color:var(--furia-d);padding:1px 7px;border-radius:20px}
+  .def dd{color:var(--ink-2);margin:0}
+  .def dd b{color:var(--ink)}
+  @media(max-width:680px){.defs{grid-template-columns:1fr}}
+
+  /* ABILITY BLOCKS */
+  .abils{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;align-items:start}
+  .abil{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);
+    overflow:hidden;display:flex;flex-direction:column}
+  .abil .ab-top{padding:13px 10px 11px;text-align:center;position:relative}
+  .abil .ab-top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+    background:linear-gradient(90deg,var(--niebla),var(--oso),var(--pino))}
+  .abil .name{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2)}
+  .abil .mod{font-family:'Space Grotesk',monospace;font-weight:700;font-size:30px;line-height:1.05;color:var(--ink);margin:3px 0 4px}
+  .abil .score{display:inline-block;font-family:'Space Grotesk',monospace;font-size:12px;font-weight:700;
+    color:#fff;background:var(--ink);padding:2px 9px;border-radius:20px}
+  .abil .ab-list{display:flex;flex-direction:column}
+  .abil .ab-row{display:flex;justify-content:space-between;align-items:center;gap:6px;
+    padding:6px 10px;font-size:11.5px;border-top:1px solid var(--mist)}
+  .abil .ab-row .rn{color:var(--ink-2);display:flex;align-items:center;gap:5px}
+  .abil .ab-row .rv{font-family:'Space Grotesk',monospace;font-weight:600;color:var(--ink);flex-shrink:0}
+  .abil .ab-row.sv{background:var(--oso-soft)}
+  .abil .ab-row.sv .rn{color:var(--oso);font-weight:600} .abil .ab-row.sv .rv{color:var(--oso)}
+  .abil .ab-row .pc{width:5px;height:5px;border-radius:50%;background:var(--oso);flex-shrink:0}
+  .abil .ab-note{padding:7px 10px;font-size:10.5px;color:var(--ink-3);border-top:1px solid var(--mist);font-style:italic}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th{text-align:left;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--ink-2);padding:0 8px 8px;border-bottom:1px solid var(--line)}
+  td{padding:9px 8px;border-bottom:1px solid var(--mist);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  .mono{font-family:'Space Grotesk',monospace;font-weight:600}
+  .pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:var(--mist);color:var(--ink-2);margin:1px 0}
+  .pill.gold{background:var(--fogata-soft);color:var(--fogata-d)} .pill.ruby{background:var(--furia-soft);color:var(--furia-d)}
+  .pill.oso{background:var(--oso-soft);color:var(--oso)} .pill.good{background:var(--good-soft);color:var(--good)}
+  .pill.steel{background:var(--niebla-soft);color:var(--niebla-d)} .pill.pino{background:var(--pino-soft);color:var(--pino)}
+
+  /* FEATURE CARDS */
+  .fcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px 17px;box-shadow:var(--shadow);
+    position:relative;overflow:hidden}
+  .fcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--fogata)}
+  .fcard.buff::before{background:var(--oso)} .fcard.dmg::before{background:var(--furia)}
+  .fcard.util::before{background:var(--fogata)} .fcard.heal::before{background:var(--good)}
+  .fcard.steel::before{background:var(--niebla)} .fcard.pino::before{background:var(--pino)}
+  .fcard .ftop{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:9px}
+  .fcard .fname{font-family:'Fraunces',serif;font-weight:600;font-size:16px}
+  .fcard .fen{font-family:'Space Grotesk',monospace;font-size:10.5px;font-weight:600;color:var(--ink-3)}
+  .fcard .fmeta{font-family:'Space Grotesk',monospace;font-size:11.5px;font-weight:600;color:var(--fogata-d);
+    margin-left:auto;background:var(--fogata-soft);padding:2px 8px;border-radius:6px;white-space:nowrap}
+  .fcard .fmeta.big{font-size:13px}
+  .fcard .fmeta.oso{background:var(--oso-soft);color:var(--oso)}
+  .fcard .fmeta.rub{background:var(--furia-soft);color:var(--furia-d)}
+  .fcard .fmeta.stl{background:var(--niebla-soft);color:var(--niebla-d)}
+  .frow{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-3);margin-bottom:9px;
+    font-family:'Space Grotesk',monospace;font-weight:500}
+  .frow span b{color:var(--ink-2);font-weight:600}
+  .fcard .fdesc{font-size:13.5px;color:var(--ink-2);line-height:1.5}
+  .fcard .fdesc b{color:var(--ink);font-weight:600}
+  .fcalc{margin-top:10px;padding:9px 11px;background:var(--mist);border-radius:var(--r-sm);
+    font-size:12.5px;color:var(--ink-2)}
+  .fcalc .lab{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:3px}
+  .fcalc b{font-family:'Space Grotesk',monospace;color:var(--oso);font-weight:700}
+  .fcalc.dmg b{color:var(--furia-d)}
+
+  .callout{background:linear-gradient(180deg,var(--oso-soft),#fff);border:1px solid var(--oso);
+    border-radius:var(--r);padding:16px 18px;box-shadow:var(--shadow)}
+  .callout h3{font-family:'Fraunces',serif;font-weight:600;font-size:17px;color:var(--oso);margin-bottom:8px}
+  .callout p, .callout li{font-size:13.5px;color:var(--ink-2)} .callout b{color:var(--ink)}
+
+  /* Grupos con contador */
+  .grp-head{margin:8px 0 13px}
+  .grp-head .gh-row{display:flex;align-items:center;gap:11px}
+  .grp-head .gt{font-family:'Fraunces',serif;font-weight:600;font-size:18px;color:var(--ink)}
+  .grp-head .gc{font-family:'Space Grotesk',monospace;font-size:11px;font-weight:700;
+    background:var(--mist);color:var(--ink-2);padding:2px 9px;border-radius:20px;letter-spacing:.03em}
+  .grp-head .gc.oso{background:var(--oso-soft);color:var(--oso)}
+  .grp-head .gc.rub{background:var(--furia-soft);color:var(--furia-d)}
+  .grp-head .gline{flex:1;height:1px;background:var(--line)}
+  .grp-head .gh-note{font-size:12.5px;color:var(--ink-3);margin-top:5px}
+  .grp-head .gh-note b{color:var(--ink-2)}
+
+  /* Rasgos */
+  .ft{position:relative;padding-left:16px;break-inside:avoid;margin-bottom:13px}
+  .ft::before{content:"";position:absolute;left:0;top:5px;bottom:5px;width:3px;
+    border-radius:3px;background:var(--oso);opacity:.55}
+  .ft.race::before{background:var(--niebla)}
+  .ft.lock::before{background:var(--line-2)}
+  .ft h4{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;
+    display:flex;align-items:center;gap:7px;flex-wrap:wrap;color:var(--ink)}
+  .ft h4 .lv{font-size:10px;font-weight:700;background:var(--ink);color:#fff;
+    padding:1px 7px;border-radius:5px;letter-spacing:.03em;font-family:'Space Grotesk',monospace}
+  .ft h4 .or{font-size:10px;font-weight:600;padding:1px 8px;border-radius:20px;
+    text-transform:uppercase;letter-spacing:.04em}
+  .ft h4 .or.cls{background:var(--oso-soft);color:var(--oso)}
+  .ft h4 .or.race{background:var(--niebla-soft);color:var(--niebla-d)}
+  .ft h4 .or.feat{background:var(--fogata-soft);color:var(--fogata-d)}
+  .ft h4 .or.bg{background:var(--pino-soft);color:var(--pino)}
+  .ft p{font-size:13px;color:var(--ink-2);margin-top:3px;line-height:1.5}
+  .ft p b{color:var(--ink)}
+  .feats-flow{column-gap:22px}
+  @media(min-width:760px){.feats-flow{column-count:2}}
+
+  /* EQUIPO */
+  .eq-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);padding:13px 15px;box-shadow:var(--shadow)}
+  .eq-card .eq-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+  .eq-card .eq-slot{font-family:'Space Grotesk',monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
+  .eq-card .eq-badge{font-family:'Space Grotesk',monospace;font-size:9px;font-weight:700;letter-spacing:.04em;
+    text-transform:uppercase;padding:2px 8px;border-radius:20px;background:var(--good-soft);color:var(--good)}
+  .eq-card .eq-badge.no{background:var(--mist);color:var(--ink-3)}
+  .eq-card .eq-name{font-family:'Fraunces',serif;font-weight:600;font-size:15.5px;color:var(--ink);margin-bottom:3px}
+  .eq-card .eq-desc{font-size:12px;color:var(--ink-2);line-height:1.45}
+  .eq-card .eq-desc b{color:var(--ink)}
+  .eq-card.special{background:var(--fogata-soft);border-color:var(--fogata)}
+
+  .ca-big{background:linear-gradient(180deg,var(--oso),var(--oso-d));color:#fff;border-radius:var(--r);
+    padding:22px;text-align:center;box-shadow:var(--shadow-lg)}
+  .ca-big .ca-n{font-family:'Fraunces',serif;font-weight:700;font-size:46px;line-height:1}
+  .ca-big .ca-l{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;margin-top:4px;opacity:.9}
+  .ca-panel{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;box-shadow:var(--shadow);margin-top:14px}
+  .ca-panel h3{font-family:'Fraunces',serif;font-weight:600;font-size:15px;margin-bottom:11px;display:flex;align-items:center;gap:8px}
+  .ca-panel h3 .dot{width:7px;height:7px;border-radius:50%;background:var(--oso);flex-shrink:0}
+  .ca-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--mist);font-size:13px;color:var(--ink-2)}
+  .ca-row .v{font-family:'Space Grotesk',monospace;font-weight:600;color:var(--ink)}
+  .ca-row.total{border-bottom:none;border-top:2px solid var(--line);margin-top:2px;padding-top:9px;font-weight:600;color:var(--ink)}
+  .ca-row.total .v{color:var(--oso);font-size:15px}
+  .att-row{display:flex;justify-content:space-between;align-items:center;margin-top:11px;font-size:11px;
+    font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3)}
+  .att-dots{display:flex;gap:5px}
+  .att-dots .ad{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--oso)}
+
+  .cont{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:15px 17px;box-shadow:var(--shadow);margin-bottom:12px}
+  .cont .cont-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:11px;gap:10px;flex-wrap:wrap}
+  .cont .cont-name{font-family:'Fraunces',serif;font-weight:600;font-size:15px;color:var(--ink);display:flex;align-items:center;gap:8px}
+  .cont .cont-tag{font-size:11.5px;color:var(--ink-3);font-style:italic}
+  .cont .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .cont .ic{font-size:12px;color:var(--ink-2);background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:5px 12px}
+  .cont .ic b{color:var(--ink);font-weight:600}
+  .cont .ic small{color:var(--ink-3)}
+  .cont .ic.coin{background:var(--fogata);color:var(--coin-ink);border-color:var(--fogata-d);font-weight:600}
+
+  /* Historia */
+  .lore{max-width:780px;margin:0 auto}
+  .lore .chronicle{background:#fff;border:1px solid var(--line);border-radius:var(--r);
+    padding:26px 30px;box-shadow:var(--shadow);margin-bottom:18px}
+  .lore .chronicle h3{font-family:'Fraunces',serif;font-weight:600;font-size:18px;color:var(--fogata-d);
+    margin:18px 0 9px}
+  .lore .chronicle h3:first-child{margin-top:0}
+  .lore .chronicle p{font-size:14.5px;color:var(--ink-2);margin-bottom:13px;line-height:1.7}
+  .lore .chronicle p b{color:var(--ink)} .lore .chronicle p i{color:var(--pino)}
+  .lore .chronicle p:first-of-type::first-letter{font-family:'Fraunces',serif;font-size:52px;
+    font-weight:600;float:left;line-height:.8;margin:6px 9px 0 0;color:var(--oso)}
+  .lore-sub{font-family:'Fraunces',serif;font-weight:600;font-size:20px;color:var(--ink);
+    margin:26px 0 14px;display:flex;align-items:center;gap:11px}
+  .lore-sub::after{content:"";flex:1;height:1px;background:var(--line)}
+  .motiv{background:var(--mist);border-radius:var(--r-sm);padding:14px 17px;margin-bottom:10px}
+  .motiv p{font-size:13.5px;color:var(--ink-2);margin:0}
+  .motiv b{color:var(--ink)}
+  .mysteries{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .mystery{background:var(--pino-soft);border:1px solid var(--pino);border-radius:var(--r-sm);
+    padding:12px 15px;font-size:13.5px;color:var(--pino-d);font-weight:500;display:flex;gap:9px;align-items:flex-start}
+  .mystery .qm{font-family:'Fraunces',serif;font-weight:700;font-size:18px;line-height:1;flex-shrink:0}
+  @media(max-width:680px){.mysteries{grid-template-columns:1fr}}
+
+  .footer{padding:40px 0 60px;text-align:center;color:var(--ink-2);font-size:13px;border-top:1px solid var(--line)}
+  .footer b{color:var(--oso)}
+
+  @media(max-width:820px){.tiles{grid-template-columns:repeat(3,1fr)} .abils{grid-template-columns:repeat(3,1fr)}
+    .g3{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.tiles{grid-template-columns:repeat(2,1fr)} .abils{grid-template-columns:repeat(2,1fr)}
+    .g2,.g3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="../index.html"><span class="back">←</span> Yeyelda</a>
+  <div class="navlinks">
+    <a href="#resumen" class="active">Resumen</a>
+    <a href="#combate">Combate</a>
+    <a href="#furia">La Furia</a>
+    <a href="#rasgos">Rasgos</a>
+    <a href="#equipo">Equipo</a>
+    <a href="#historia">Historia</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="resumen">
+  <div class="mists">
+    <div class="fog f1"></div>
+    <div class="fog f2"></div>
+    <div class="fog f3"></div>
+  </div>
+  <div class="wrap">
+    <div class="hero-head">
+      <div class="hh-left">
+        <div class="eyebrow">La Sin-Sangre · Niebla y Oso</div>
+        <h1>Yeyelda</h1>
+        <p class="sub">Bárbara semiorca criada para ser despiadada — <b>la mano más fuerte del campamento se negó al golpe final</b>.</p>
+      </div>
+      <div class="hh-right">
+        <div class="lvl-n">Nivel 1</div>
+        <div class="cls-main">Bárbara</div>
+        <div class="cls-sub">Senda Primaria a nivel 3 🔒</div>
+      </div>
+    </div>
+    <div class="meta-chips">
+      <span class="chip">Especie <b>Orca</b> (Herencia Mixta: semiorca · Mediano)</span>
+      <span class="chip">Trasfondo <b>Soldado</b></span>
+      <span class="chip">Alineamiento <b>Caótica Buena</b></span>
+      <span class="chip">Competencia <b>+2</b></span>
+      <span class="chip">Edad <b>21</b> · 2,5 m · 87 kg</span>
+      <span class="chip">Ojos <b>pardos</b> · Piel <b>morena</b> · Pelo <b>negro</b></span>
+    </div>
+    <div class="tiles">
+      <div class="tile accent"><div class="lbl">Clase Arm.</div><div class="val">15</div></div>
+      <div class="tile"><div class="lbl">Puntos Golpe</div><div class="val">15</div></div>
+      <div class="tile"><div class="lbl">Iniciativa</div><div class="val">+2</div></div>
+      <div class="tile"><div class="lbl">Velocidad</div><div class="val">30<small>ft · 9m</small></div></div>
+      <div class="tile"><div class="lbl">Perc. Pasiva</div><div class="val">10</div></div>
+      <div class="tile ruby"><div class="lbl">Usos de Furia</div><div class="val">2</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- COMBATE -->
+<section id="combate">
+  <div class="sec-head"><span class="n">01</span><h2>Combate</h2></div>
+
+  <div class="abils" style="margin-bottom:16px">
+    <div class="abil">
+      <div class="ab-top"><div class="name">Fuerza</div><div class="mod">+4</div><span class="score">18</span></div>
+      <div class="ab-list">
+        <div class="ab-row sv"><span class="rn"><span class="pc"></span>Salvación</span><span class="rv">+6</span></div>
+        <div class="ab-row"><span class="rn"><span class="pc"></span>Atletismo</span><span class="rv">+6</span></div>
+      </div>
+    </div>
+    <div class="abil">
+      <div class="ab-top"><div class="name">Destreza</div><div class="mod">+2</div><span class="score">14</span></div>
+      <div class="ab-list">
+        <div class="ab-row"><span class="rn">Salvación</span><span class="rv">+2</span></div>
+        <div class="ab-row"><span class="rn">Acrobacias</span><span class="rv">+2</span></div>
+        <div class="ab-row"><span class="rn">Juego de Manos</span><span class="rv">+2</span></div>
+        <div class="ab-row"><span class="rn">Sigilo</span><span class="rv">+2</span></div>
+      </div>
+    </div>
+    <div class="abil">
+      <div class="ab-top"><div class="name">Constitución</div><div class="mod">+3</div><span class="score">16</span></div>
+      <div class="ab-list">
+        <div class="ab-row sv"><span class="rn"><span class="pc"></span>Salvación</span><span class="rv">+5</span></div>
+      </div>
+      <div class="ab-note">El motor de su CA y sus PG.</div>
+    </div>
+    <div class="abil">
+      <div class="ab-top"><div class="name">Inteligencia</div><div class="mod">+0</div><span class="score">11</span></div>
+      <div class="ab-list">
+        <div class="ab-row"><span class="rn">Salvación</span><span class="rv">+0</span></div>
+        <div class="ab-row"><span class="rn">C. Arcano</span><span class="rv">+0</span></div>
+        <div class="ab-row"><span class="rn">Historia</span><span class="rv">+0</span></div>
+        <div class="ab-row"><span class="rn">Investigación</span><span class="rv">+0</span></div>
+        <div class="ab-row"><span class="rn">Naturaleza</span><span class="rv">+0</span></div>
+        <div class="ab-row"><span class="rn">Religión</span><span class="rv">+0</span></div>
+      </div>
+    </div>
+    <div class="abil">
+      <div class="ab-top"><div class="name">Sabiduría</div><div class="mod">+0</div><span class="score">10</span></div>
+      <div class="ab-list">
+        <div class="ab-row"><span class="rn">Salvación</span><span class="rv">+0</span></div>
+        <div class="ab-row"><span class="rn"><span class="pc"></span>Supervivencia</span><span class="rv">+2</span></div>
+        <div class="ab-row"><span class="rn"><span class="pc"></span>T. con Animales</span><span class="rv">+2</span></div>
+        <div class="ab-row"><span class="rn">Medicina</span><span class="rv">+0</span></div>
+        <div class="ab-row"><span class="rn">Percepción</span><span class="rv">+0</span></div>
+        <div class="ab-row"><span class="rn">Perspicacia</span><span class="rv">+0</span></div>
+      </div>
+      <div class="ab-note">La escuela de Tomas: rastro y bestias.</div>
+    </div>
+    <div class="abil">
+      <div class="ab-top"><div class="name">Carisma</div><div class="mod">+1</div><span class="score">13</span></div>
+      <div class="ab-list">
+        <div class="ab-row"><span class="rn">Salvación</span><span class="rv">+1</span></div>
+        <div class="ab-row"><span class="rn"><span class="pc"></span>Intimidación</span><span class="rv">+3</span></div>
+        <div class="ab-row"><span class="rn">Engaño</span><span class="rv">+1</span></div>
+        <div class="ab-row"><span class="rn">Interpretación</span><span class="rv">+1</span></div>
+        <div class="ab-row"><span class="rn">Persuasión</span><span class="rv">+1</span></div>
+      </div>
+      <div class="ab-note">2,5 metros de argumento.</div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--ink-3);margin:-4px 0 18px">
+    <span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--oso);vertical-align:middle"></span> Competencia (+2) ·
+    <b style="color:var(--oso)">Salvaciones competentes:</b> Fuerza y Constitución (Bárbara) ·
+    En Furia: <b>ventaja</b> en pruebas y salvaciones de Fuerza · Sin bonos de objetos.
+  </p>
+
+  <div class="grid g2">
+    <div class="card">
+      <h3><span class="dot"></span> Ataques</h3>
+      <table>
+        <thead><tr><th>Arma</th><th>Atq</th><th>Daño</th><th>Notas</th></tr></thead>
+        <tbody>
+          <tr><td><b>Hacha de dos manos</b></td><td class="mono" style="color:var(--oso)">+6</td><td class="mono">1d12+4</td><td>Cortante · Pesada · A Dos Manos · <span class="pill oso">Hendir — activa</span></td></tr>
+          <tr><td><b>Hacha de mano</b> <span style="opacity:.6">×4</span></td><td class="mono" style="color:var(--oso)">+6</td><td class="mono">1d6+4</td><td>Cortante · Ligera · Arrojadiza 20/60 ft (6/18 m) · <span class="pill oso">Vex — activa</span></td></tr>
+          <tr><td>Jabalina <span style="opacity:.6">×4 · de Vashka</span></td><td class="mono">+6</td><td class="mono">1d6+4</td><td>Perforante · Arrojadiza 30/120 ft (9/36 m) · <span class="pill">Slow — no activa</span></td></tr>
+          <tr><td>Lanza</td><td class="mono">+6</td><td class="mono">1d6+4</td><td>Perforante · Versátil (1d8+4) · Arrojadiza 20/60 ft · <span class="pill">Sap — no activa</span></td></tr>
+          <tr><td>Arco corto</td><td class="mono">+4</td><td class="mono">1d6+2</td><td>Perforante · Munición 80/320 ft (24/96 m) · A Dos Manos · usa DES: <b>sin</b> daño de Furia</td></tr>
+        </tbody>
+      </table>
+      <div class="fcalc" style="margin-top:12px"><span class="lab">Atacante Salvaje (dote · 1×/turno)</span>
+      Al impactar con un arma, tira <b>los dados de daño del arma dos veces</b> y usa el resultado que prefieras.</div>
+      <div class="fcalc"><span class="lab">Plan de combate</span>
+      Hachón a dos manos como arma principal → si cae o lo suelta, <b>un hacha de mano en cada puño</b>: ataca con una y la propiedad Ligera le da un ataque extra con la otra como acción adicional (el extra no suma el +4; solo 1d6, +2 en Furia).</div>
+    </div>
+    <div class="card">
+      <h3><span class="dot" style="background:var(--furia)"></span> Defensas</h3>
+      <table>
+        <tbody>
+          <tr><td><b>Furia</b></td><td><span class="pill ruby">activa</span></td><td><b>Resistencia</b> al daño Contundente, Perforante y Cortante: recibe <b>la mitad</b>.</td></tr>
+          <tr><td><b>Defensa sin Armadura</b></td><td><span class="pill oso">siempre</span></td><td>CA <b>15</b> sin armadura (10 + DES + CON). Compatible con escudo: llegaría a <b>17</b> si usara uno.</td></tr>
+          <tr><td><b>Aguante Incansable</b></td><td><span class="pill steel">1/desc. largo</span></td><td>Si baja a <b>0 PG</b> sin morir directamente, queda en <b>1 PG</b>.</td></tr>
+          <tr><td><b>Subidón de Adrenalina</b></td><td><span class="pill steel">×2</span></td><td>Correr como acción adicional + <b>2 PG temporales</b> por uso.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="grp-head" style="margin-top:24px">
+    <div class="gh-row"><span class="gt">Maestría de armas</span><span class="gc">2 activas · sin ranuras libres</span><span class="gline"></span></div>
+    <div class="gh-note">La Bárbara domina 2 propiedades de maestría, intercambiables al terminar un descanso largo. Alternativas anotadas: <b>Slow</b> (jabalina · −10 ft de velocidad al dañar) y <b>Sap</b> (lanza · desventaja en el próximo ataque del objetivo).</div>
+  </div>
+  <div class="grid g2">
+    <div class="fcard buff"><div class="ftop"><span class="fname">Hendir</span><span class="fen">Cleave</span><span class="fmeta oso">Hacha de dos manos · activa</span></div>
+      <div class="fdesc">Al <b>impactar</b> un ataque cuerpo a cuerpo, puedes hacer otra tirada de ataque con la misma arma contra una <b>segunda criatura a 5 ft (1,5 m) de la primera</b> y a tu alcance. Si impacta, sufre el daño del arma <b>sin</b> tu modificador: <b>1d12</b> (en Furia: 1d12+2). Una vez por turno. Yeyelda corta leña.</div></div>
+    <div class="fcard buff"><div class="ftop"><span class="fname">Vex</span><span class="fen">Enfadar</span><span class="fmeta oso">Hacha de mano · activa</span></div>
+      <div class="fdesc">Si <b>impactas y haces daño</b> con esta arma, ganas <b>ventaja en tu próxima tirada de ataque contra esa criatura</b> antes del final de tu próximo turno. El combo natural de sus dos hachas gemelas.</div></div>
+  </div>
+
+  <div class="grp-head" style="margin-top:24px">
+    <div class="gh-row"><span class="gt">Términos que le importan a Yeyelda</span><span class="gline"></span></div>
+    <div class="gh-note">Definiciones oficiales PHB 2024, puestas donde se usan.</div>
+  </div>
+  <div class="card">
+    <dl class="defs">
+      <div class="def"><dt>Incapacitado <span class="en">Incapacitated</span> <span class="tag">corta la Furia</span></dt><dd>No puedes realizar acciones, acciones adicionales ni reacciones; pierdes la concentración y no puedes hablar. <b>Si Yeyelda queda Incapacitada, su Furia termina de inmediato.</b></dd></div>
+      <div class="def"><dt>Inconsciente <span class="en">Unconscious</span></dt><dd>Incapacitado, Derribado, suelta lo que sostiene, no percibe el entorno; los ataques cercanos le impactan con ventaja y los críticos a 5 ft son automáticos al impactar. <b>El kit de sanador de Yeyelda estabiliza a una criatura Inconsciente a 0 PG sin prueba.</b></dd></div>
+      <div class="def"><dt>PG Temporales <span class="en">Temporary Hit Points</span></dt><dd>Colchón de puntos que se pierde primero y <b>no se acumula</b> (si recibes más, eliges quedarte los nuevos o los actuales). El Subidón de Adrenalina otorga <b>2</b> por uso.</dd></div>
+      <div class="def"><dt>Resistencia <span class="en">Resistance</span></dt><dd>Recibes <b>la mitad del daño</b> de ese tipo. La Furia se la da contra lo Contundente, Perforante y Cortante — su durabilidad efectiva contra daño físico se duplica.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- LA FURIA -->
+<section id="furia">
+  <div class="sec-head"><span class="n">02</span><h2>La Furia</h2></div>
+
+  <div class="grid g3" style="margin-bottom:14px">
+    <div class="tile ruby"><div class="lbl">Usos disponibles</div><div class="val">2</div></div>
+    <div class="tile"><div class="lbl">Recupera</div><div class="val" style="font-size:15px;padding-top:6px">1 en corto<br>todos en largo</div></div>
+    <div class="tile ruby"><div class="lbl">Daño de Furia</div><div class="val">+2</div></div>
+  </div>
+
+  <div class="fcard dmg" style="margin-bottom:16px"><div class="ftop"><span class="fname">Furia</span><span class="fen">Rage</span><span class="fmeta rub big">acción adicional</span></div>
+    <div class="frow"><span><b>Activación</b> Acción adicional (no con armadura pesada)</span><span><b>Duración</b> hasta 10 min</span><span><b>Usos</b> 2</span></div>
+    <div class="fdesc">Mientras la Furia está activa: <b>Resistencia</b> al daño Contundente, Perforante y Cortante · <b>+2 al daño</b> en ataques que usen Fuerza (armas o golpes sin arma) · <b>Ventaja</b> en pruebas de característica y tiradas de salvación de <b>Fuerza</b> · no puede lanzar conjuros ni concentrarse en ellos.<br><br>
+    Se apaga al final de tu siguiente turno <b>salvo que</b>: ataques a una criatura enemiga, fuerces una tirada de salvación, o uses tu <b>acción adicional para extenderla</b>. Termina antes si quedas <b>Incapacitada</b> o vistes armadura pesada.</div>
+    <div class="fcalc dmg"><span class="lab">Hachón en Furia</span>Ataque +6 · daño <b>1d12+6</b> (prom. ≈12.5, con Atacante Salvaje ≈13.9) · Hendir al segundo objetivo: <b>1d12+2</b></div>
+    <div class="fcalc"><span class="lab">Su gatillo</span>La Furia de Yeyelda no es rabia de guerra: es <b>ferocidad protectora</b>. Ver a alguien maltratar a un animal suelta todo lo que el campamento puso en ella.</div>
+  </div>
+
+  <div class="callout">
+    <h3>◆ Próximos hitos de la Sin-Sangre</h3>
+    <p><b>Nivel 2:</b> <b>Ataque Temerario (Reckless Attack)</b> — ventaja en los ataques de Fuerza del turno a cambio de que le ataquen con ventaja hasta su próximo turno · <b>Sentido del Peligro (Danger Sense)</b> — ventaja en salvaciones de Destreza salvo Incapacitada. <b>Nivel 3:</b> <b>Senda Primaria</b> (subclase a elegir) · <b>Conocimiento Primario</b> (+1 habilidad de la lista; en Furia, ciertas pruebas pueden hacerse con Fuerza) · 3.ª Furia. <b>Nivel 4:</b> Mejora de característica o dote — idea abierta: <b>Dual Wielder</b> para empuñar hacha de batalla + hacha de mano. <i>PG al subir: la mesa tira el d12 (1d12+3 por nivel).</i></p>
+  </div>
+</section>
+
+<!-- RASGOS -->
+<section id="rasgos">
+  <div class="sec-head"><span class="n">03</span><h2>Rasgos y Competencias</h2></div>
+
+  <div class="grp-head"><div class="gh-row"><span class="gt">Progresión — Bárbara 1</span><span class="gline"></span></div>
+    <div class="gh-note"><span class="pill oso">Clase</span> Bárbara (PHB 2024) · <span class="pill steel">Especie</span> Orca (PHB 2024) · <span class="pill pino">Trasfondo</span> Soldado · <span class="pill gold">Dote</span> de origen</div>
+  </div>
+  <div class="card feats-flow" style="margin-bottom:16px">
+    <div class="ft"><h4>Furia <span class="lv">Niv 1</span> <span class="or cls">Clase</span></h4><p><b>2 usos</b>. Resistencia física, +2 al daño con Fuerza, ventaja en pruebas y salvaciones de Fuerza. Detalle completo en la sección <b>La Furia</b>. Recupera 1 uso en descanso corto y todos en el largo.</p></div>
+    <div class="ft"><h4>Defensa sin Armadura <span class="lv">Niv 1</span> <span class="or cls">Clase</span></h4><p>Sin armadura, CA = <b>10 + mod DES + mod CON = 15</b>. No es un castigo por vestir armadura: es un reemplazo — y para Yeyelda, su fórmula siempre gana. <b>Compatible con escudo</b>.</p></div>
+    <div class="ft"><h4>Maestría con Armas <span class="lv">Niv 1</span> <span class="or cls">Clase</span></h4><p>Domina la propiedad de maestría de <b>2 armas</b>, intercambiables tras descanso largo. Activas: <b>Hendir</b> (hachón) y <b>Vex</b> (hacha de mano).</p></div>
+    <div class="ft lock"><h4>Ataque Temerario · Sentido del Peligro <span class="lv">🔒 Niv 2</span> <span class="or cls">Clase</span></h4><p>Ventaja al atacar a cambio de recibirla, y ventaja en salvaciones de Destreza. <b>Llegan al subir a nivel 2.</b></p></div>
+    <div class="ft lock"><h4>Senda Primaria · Conocimiento Primario <span class="lv">🔒 Niv 3</span> <span class="or cls">Clase</span></h4><p>Subclase (Berserker, Corazón Salvaje, Árbol del Mundo o Zelote) + 1 habilidad extra. <b>Decisión pendiente para nivel 3.</b></p></div>
+  </div>
+
+  <div class="grp-head"><div class="gh-row"><span class="gt">Especie — Orca</span><span class="gc">PHB 2024 · Herencia Mixta: semiorca</span><span class="gline"></span></div></div>
+  <div class="card feats-flow" style="margin-bottom:16px">
+    <div class="ft race"><h4>Visión en la Oscuridad <span class="or race">Orca</span></h4><p>Alcance <b>120 ft (36 m)</b>: la luz tenue le parece brillante y la oscuridad, luz tenue (en grises). El doble del alcance común — nacida para las noches del campamento.</p></div>
+    <div class="ft race"><h4>Subidón de Adrenalina <span class="fen">Adrenaline Rush</span> <span class="or race">Orca</span></h4><p><b>Correr (Dash) como acción adicional</b>; al hacerlo gana <b>2 PG temporales</b> (= bono de competencia). <b>2 usos</b>; recupera todos con descanso corto o largo. Nota táctica: comparte la acción adicional con activar/extender la Furia.</p></div>
+    <div class="ft race"><h4>Aguante Incansable <span class="fen">Relentless Endurance</span> <span class="or race">Orca</span></h4><p>Cuando el daño la dejaría a <b>0 PG</b> sin matarla directamente, puede quedar en <b>1 PG</b>. Una vez por descanso largo. El rasgo que ya la definía en su hoja original.</p></div>
+  </div>
+
+  <div class="grp-head"><div class="gh-row"><span class="gt">Trasfondo — Soldado</span><span class="gc">PHB 2024</span><span class="gline"></span></div>
+    <div class="gh-note">El campamento de guerra hecho mecánica: +2 FUE / +1 CON, Atletismo, Intimidación, naipes — y el entrenamiento letal de la dote.</div>
+  </div>
+  <div class="card feats-flow" style="margin-bottom:16px">
+    <div class="ft"><h4>Atacante Salvaje <span class="fen">Savage Attacker</span> <span class="or feat">Dote</span></h4><p><b>Una vez por turno</b>, al impactar a un objetivo con un arma, tira <b>los dados de daño del arma dos veces</b> y usa cualquiera de los dos resultados. El entrenamiento del campamento vive en su cuerpo, aunque su corazón vaya para otro lado.</p></div>
+    <div class="ft"><h4>Origen de atributos <span class="or bg">Soldado</span></h4><p>El trasfondo aplicó <b>+2 a Fuerza y +1 a Constitución</b> sobre su tirada base (16/14/15/11/10/13) — el resultado reproduce exactamente los números de su hoja original de 2014.</p></div>
+  </div>
+
+  <div class="card">
+    <h3><span class="dot" style="background:var(--pino)"></span> Competencias e idiomas</h3>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+      <span class="pill oso">Armas sencillas y marciales</span>
+      <span class="pill oso">Armadura ligera y media</span>
+      <span class="pill oso">Escudos</span>
+      <span class="pill gold">Naipes (set de juego)</span>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <span class="pill pino">Común</span>
+      <span class="pill pino">Orco</span>
+      <span class="pill pino">Goblin</span>
+      <span style="font-size:12px;color:var(--ink-3);align-self:center">— los dos últimos, aprendidos en campamentos y campos de batalla</span>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo">
+  <div class="sec-head"><span class="n">04</span><h2>Equipo</h2></div>
+
+  <div class="grid" style="grid-template-columns:1.6fr 1fr;gap:16px;align-items:start">
+    <div>
+      <div class="grp-head" style="margin-top:0">
+        <div class="gh-row"><span class="gt">Objetos equipados</span><span class="gline"></span></div>
+      </div>
+      <div class="grid g2">
+        <div class="eq-card">
+          <div class="eq-head"><span class="eq-slot">Arma principal</span><span class="eq-badge">Equipada</span></div>
+          <div class="eq-name">Hacha de dos manos</div>
+          <div class="eq-desc"><b>1d12+4 cortante</b>. Marcial · Pesada · A Dos Manos · Maestría <b>Hendir</b>. La herencia del campamento.</div>
+        </div>
+        <div class="eq-card">
+          <div class="eq-head"><span class="eq-slot">Cinturón</span><span class="eq-badge">A mano</span></div>
+          <div class="eq-name">Hachas de mano ×4</div>
+          <div class="eq-desc"><b>1d6+4 cortante</b> · Ligeras · Arrojadizas 20/60 ft · Maestría <b>Vex</b>. El plan B: una en cada puño.</div>
+        </div>
+        <div class="eq-card special">
+          <div class="eq-head"><span class="eq-slot">Cuerpo</span><span class="eq-badge">Equipada</span></div>
+          <div class="eq-name">Ropa de viaje de piel de oso</div>
+          <div class="eq-desc"><b>Sin propiedades mecánicas</b> (confirmado con el GM). No es un trofeo de caza: es <b>una mortaja que camina</b> — la piel del oso que acompañó a morir.</div>
+        </div>
+        <div class="eq-card">
+          <div class="eq-head"><span class="eq-slot">Espalda</span><span class="eq-badge no">Llevado</span></div>
+          <div class="eq-name">Arco corto + carcaj</div>
+          <div class="eq-desc"><b>1d6+2 perforante</b> · 80/320 ft · 20 flechas. Usa Destreza: <b>sin</b> daño de Furia. Del equipamiento militar.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="ca-big">
+        <div class="ca-n">15</div>
+        <div class="ca-l">Clase de Armadura</div>
+      </div>
+      <div class="ca-panel">
+        <h3><span class="dot"></span> Desglose de CA</h3>
+        <div class="ca-row"><span>Defensa sin Armadura (base)</span><span class="v">10</span></div>
+        <div class="ca-row"><span>Mod. Destreza</span><span class="v">+2</span></div>
+        <div class="ca-row"><span>Mod. Constitución</span><span class="v">+3</span></div>
+        <div class="ca-row total"><span>CA Total</span><span class="v">15</span></div>
+        <div class="ca-row" style="border-bottom:none;padding-top:8px"><span style="font-size:12px;color:var(--ink-3)">Con escudo (compatible): 17 · No viste armadura: su fórmula siempre da más.</span></div>
+        <div class="att-row"><span>Sintonización</span>
+          <span class="att-dots"><span class="ad"></span><span class="ad"></span><span class="ad"></span></span>
+          <span style="color:var(--ink-2)">0/3</span>
+        </div>
+      </div>
+      <div class="ca-panel">
+        <h3><span class="dot" style="background:var(--fogata)"></span> Monedas</h3>
+        <div class="ca-row"><span>Oro (PO)</span><span class="v">29</span></div>
+        <div class="ca-row total" style="border-top:none"><span style="font-weight:400;color:var(--ink-3);font-size:12px">15 (Bárbara · paquete A) + 14 (Soldado · paquete A)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grp-head" style="margin-top:26px">
+    <div class="gh-row"><span class="gt">Contenedores</span><span class="gline"></span></div>
+  </div>
+  <div class="cont">
+    <div class="cont-head"><span class="cont-name">🎒 Paquete de Explorador</span><span class="cont-tag">Equipo de aventura y campamento</span></div>
+    <div class="chips">
+      <span class="ic">Mochila <small>hasta 30 lb</small></span>
+      <span class="ic">Petate</span>
+      <span class="ic">Aceite <small>×2 frascos</small></span>
+      <span class="ic">Raciones <small>×10 días</small></span>
+      <span class="ic">Cuerda</span>
+      <span class="ic">Yesquero</span>
+      <span class="ic">Antorchas <small>×10</small></span>
+      <span class="ic">Odre de agua</span>
+    </div>
+  </div>
+  <div class="cont">
+    <div class="cont-head"><span class="cont-name">⚔️ Arsenal de respaldo</span><span class="cont-tag">Inventario · no equipado</span></div>
+    <div class="chips">
+      <span class="ic"><b>Jabalinas ×4</b> <small>de Vashka · 1d6+4 · 30/120 ft</small></span>
+      <span class="ic">Lanza <small>1d6+4 · versátil 1d8</small></span>
+    </div>
+  </div>
+  <div class="cont">
+    <div class="cont-head"><span class="cont-name">🐻 Recuerdos de la Sin-Sangre</span><span class="cont-tag">Trasfondo y objetos personales</span></div>
+    <div class="chips">
+      <span class="ic"><b>Naipes</b> <small>«imbatible», dice ella</small></span>
+      <span class="ic">Kit de sanador <small>×10 usos · estabiliza a 0 PG</small></span>
+      <span class="ic coin">29 PO</span>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORIA -->
+<section id="historia">
+  <div class="sec-head"><span class="n">05</span><h2>Crónica de la Sin-Sangre</h2></div>
+
+  <div class="lore">
+    <div class="chronicle">
+      <h3>Los rastreadores que se rastrearon</h3>
+      <p><b>Vashka</b> era exploradora de una horda de guerra orca: la que iba delante, leyendo el terreno. <b>Tomas</b> era un guardabosques humano que protegía las tierras salvajes por las que la horda cruzaba. Se encontraron como se encuentran dos rastreadores: cada uno siguiendo al otro sin saberlo, en círculos, durante semanas. Cuando por fin se emboscaron mutuamente en el mismo instante, ninguno atacó — se quedaron mirando, hacha y arco a medio alzar, y algo parecido a la risa lo arruinó todo. Se vieron durante dos estaciones, cada vez que la horda acampaba cerca de sus bosques. Después la horda marchó, como siempre marcha. Yeyelda nació en el campamento, orca a los ojos de todos. Vashka nunca dijo el nombre del padre.</p>
+
+      <h3>Dos escuelas</h3>
+      <p>En el campamento la entrenaron para la guerra, y era un prodigio: más fuerte que orcos adultos a los catorce. Pero cada vez que la horda acampaba en tierras que Tomas rondaba, Yeyelda se escabullía — y él la esperaba. De él aprendió lo que ningún capitán enseñaba: <b>leer huellas, moverse por lo salvaje, curar animales, hablarles con el cuerpo antes que con la voz</b>. Tomas le enseñó todo lo que sabía en noches robadas, sin poder decirle nunca, en voz alta, por qué le enseñaba como un padre.</p>
+
+      <h3>La niña de los lobos</h3>
+      <p>En el campamento, lo aprendido con Tomas la volvió la cuidadora no oficial de los <b>lobos de guerra</b>: los alimentaba, los curaba, les ponía nombres secretos. Los lobos no veían a la semiorca enorme que asustaba a los reclutas nuevos. Los lobos la veían a <i>ella</i>.</p>
+
+      <h3>El rito</h3>
+      <p>A los dieciséis llegó su rito de sangre: matar su primera presa ante la horda entera. Le trajeron al lobo más débil de la camada que ella misma había criado. Yeyelda levantó el hacha… y la clavó en el suelo. Soltó al lobo hacia el bosque y esperó el castigo de pie. Desde ese día algo quedó sellado: <b>puede pelear, romper y aterrar — pero su mano se niega a dar el golpe final</b>. En los años de batalla que vinieron y fueron, rompió escudos, huesos y voluntades; el golpe final siempre lo dio otro.</p>
+
+      <h3>El exilio</h3>
+      <p>La horda la marcó como <i>sin-sangre</i> y la expulsó con lo puesto. La noche antes, Vashka le dejó junto al petate, en silencio, raciones para dos semanas y <b>sus propias jabalinas</b> — las mismas cuatro que Yeyelda lleva hoy. Nunca dijo una palabra. No hizo falta. Yeyelda buscó los bosques de Tomas… y encontró el puesto de guardabosques quemado, viejo de meses. Ni cuerpo, ni rastro. <i>El mejor rastreador que conoció no deja huellas</i> — eso se dice ella para poder dormir.</p>
+
+      <h3>El oso de ojos de niebla</h3>
+      <p>Su primer invierno sola, en las montañas, se cruzó con un oso enorme que arrasaba todo a su paso — enfermo de algo que no era rabia, con <b>algo blanco y frío en la mirada, como niebla</b>. Cualquier guerrero lo habría matado. Yeyelda hizo lo que Tomas le había enseñado y lo que nadie más habría intentado: bajó el hacha, plantó el cuerpo, y le habló. Tardó horas. El oso cargó dos veces y dos veces ella aguantó sin responder. Al final, el animal se derrumbó a su lado, y Yeyelda pasó tres días acompañándolo mientras la enfermedad de niebla lo apagaba, dándole calor, agua y una voz. Murió sin miedo, con la cabeza en su regazo.</p>
+      <p>Esa noche entendió algo que el entrenamiento y hasta Tomas solo habían rozado: <b>que puede llegar adonde nadie más llega — que las bestias más rotas y furiosas la reconocen</b>, porque ella también es una criatura enorme y temible con algo suave por dentro. Con la piel del oso se hizo su ropa de viaje: no un trofeo de caza, sino <b>una mortaja que camina</b>. La lleva puesta para no olvidar que la ferocidad y la ternura pueden morir juntas si nadie las acompaña.</p>
+
+      <h3>Las nieblas</h3>
+      <p>Bajando de esas montañas, el camino desapareció. La misma niebla fría de los ojos del oso se cerró a su alrededor tres días, y al abrirse, <b>las estrellas eran otras</b>. En estas tierras grises, una semiorca de dos metros y medio vestida de oso no recibe bienvenidas: recibe puertas cerradas y niños que corren. Ella sonríe igual. Casi siempre funciona mal.</p>
+      <p><b>Mientras tanto</b>, juega naipes en cada taberna que no la echa. Es <i>muy buena</i> — imbatible, dice. La verdad: en la horda la dejaban ganar, primero por miedo, con los años por cariño. Nadie se lo ha dicho. Ojalá nadie se lo diga jamás.</p>
+    </div>
+
+    <div class="lore-sub">Personalidad</div>
+    <div class="motiv">
+      <p>La dualidad hecha persona: <b>una guerrera brutalmente fuerte y alguien profundamente amable que termina asustando por su apariencia</b>. El trato con los animales es la parte que más ama de sí misma — su amabilidad encarnada. Los animales no juzgan su tamaño ni sus colmillos: sienten la intención. Las personas, casi nunca.</p>
+    </div>
+
+    <div class="lore-sub">Conflicto interno y motivación</div>
+    <div class="motiv">
+      <p><b>Su gatillo:</b> no soporta que maltraten a un animal. Verlo suelta toda la furia y la agresividad que lleva dentro — todo lo que el campamento puso en ella y que se niega a usar para lo que fue hecho. Su Furia no es rabia de guerra: es <b>ferocidad protectora</b>. Su amabilidad y su brutalidad son la misma cosa apuntando a lados distintos.</p>
+    </div>
+    <div class="motiv">
+      <p><b>Lo que busca:</b> tres cosas, aunque solo admite dos. Entender <b>qué es la niebla</b> que enfermó al oso y ahora la rodea. Encontrar un lugar donde alguien la mire dos veces — la segunda, de verdad. Y (esta no la admite) hallar <b>el rastro de Tomas</b>, o al menos un bosque que se parezca a los suyos.</p>
+    </div>
+
+    <div class="lore-sub">Hilos abiertos</div>
+    <div class="mysteries">
+      <div class="mystery"><span class="qm">?</span><span>¿Qué fue de Tomas? Su puesto quemado, sin cuerpo ni rastro — y el mejor rastreador no deja huellas.</span></div>
+      <div class="mystery"><span class="qm">?</span><span>¿Qué era la enfermedad de niebla del oso — y qué quiere de ella la niebla que la trajo a estas tierras?</span></div>
+      <div class="mystery"><span class="qm">?</span><span>¿Le dirá alguien, alguna vez, la verdad sobre los naipes?</span></div>
+      <div class="mystery"><span class="qm">?</span><span>¿Bajo qué cielo la dejaron las nieblas? Las estrellas eran otras — y nadie le ha dicho aún el nombre de estas tierras.</span></div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div style="text-align:center;padding:30px 20px 0;max-width:780px;margin:0 auto">
+  <p style="font-family:'Fraunces',serif;font-style:italic;font-size:17px;color:var(--oso);line-height:1.5">«Ella sonríe igual. Casi siempre funciona mal.»</p>
+</div>
+
+<div class="footer">
+  <b>Yeyelda</b> · Hoja consolidada al Nivel 1 · D&amp;D 2024
+</div>
+
+<script>
+  const links = document.querySelectorAll('.navlinks a');
+  const secs = [...links].map(a => document.querySelector(a.getAttribute('href')));
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){
+      const id = e.target.id;
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+id));
+    }});
+  }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+  secs.forEach(s => s && obs.observe(s));
+</script>
+</body>
+</html>
