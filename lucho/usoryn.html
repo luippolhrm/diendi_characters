@@ -169,6 +169,41 @@
     .sec-head h2{font-size:1.5rem}
   }
 
+  /* ---------- STATUS BAR (franja de estado) ---------- */
+  .statusbar{background:#fff;border-bottom:1px solid var(--line);border-top:1px dashed var(--line-2)}
+  .statusbar .wrap{display:flex;align-items:center;gap:13px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
+  .sb-lbl{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--jade-d)}
+  .sb-rest{font-family:'Space Grotesk',sans-serif;font-size:.72rem;font-weight:600;
+    border-radius:999px;padding:6px 14px;cursor:pointer;transition:.15s;-webkit-tap-highlight-color:transparent}
+  .sb-rest.lg{color:#fff;background:linear-gradient(180deg,var(--jade),var(--jade-d));border:1px solid var(--jade-d)}
+  .sb-rest.sm{color:var(--jade-d);background:var(--jade-soft);border:1px solid var(--jade)}
+  .sb-rest:hover{filter:brightness(1.06)}
+  .sb-rest:active{transform:translateY(1px)}
+  .sb-insp{display:flex;align-items:center;gap:7px;font-size:.72rem;color:var(--ink-2)}
+  .sb-pip{width:18px;height:18px;border-radius:50%;border:2px solid var(--jade);background:#fff;
+    cursor:pointer;padding:0;transition:.12s;-webkit-tap-highlight-color:transparent}
+  .sb-pip:hover{border-color:var(--jade-d);transform:scale(1.08)}
+  .sb-pip.spent{background:var(--jade);border-color:var(--jade-d);box-shadow:inset 0 0 0 3px #fff}
+  .sb-save{font-size:.68rem;color:var(--ink-2);opacity:.7;margin-left:auto}
+  @media (prefers-reduced-motion:reduce){.sb-rest,.sb-pip{transition:none}.sb-pip:hover{transform:none}}
+  @media(max-width:560px){.sb-save{display:none}}
+
+  /* ---------- HIT DICE CARD ---------- */
+  .hd-row{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px dotted var(--line)}
+  .hd-row:last-of-type{border-bottom:none}
+  .hd-lbl{font-size:.8rem;color:var(--ink-2)}
+  .hd-pips{display:inline-flex;gap:6px}
+  .hd-pip{width:19px;height:19px;border-radius:50%;border:2px solid var(--jade);background:#fff;
+    cursor:pointer;padding:0;transition:.12s;-webkit-tap-highlight-color:transparent}
+  .hd-pip:hover{border-color:var(--jade-d);transform:scale(1.08)}
+  .hd-pip.spent{background:var(--jade);border-color:var(--jade-d);box-shadow:inset 0 0 0 3px #fff}
+  .hd-note{font-size:.68rem;color:var(--ink-2);margin-top:9px;padding-top:8px;border-top:1px dotted var(--line)}
+  .hp-num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.3rem;color:var(--jade-d);line-height:1}
+  .hp-bar{height:8px;background:var(--mist);border-radius:4px;margin-top:10px;overflow:hidden}
+  .hp-bar i{display:block;height:100%;background:var(--jade)}
+  @media (prefers-reduced-motion:reduce){.hd-pip{transition:none}.hd-pip:hover{transform:none}}
+
   /* ---------- ABILITIES ---------- */
   .abilities{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
   .abil{background:#fff;border:1px solid var(--line);border-radius:var(--r);
@@ -333,26 +368,51 @@
   .slot .at{display:inline-block;margin-top:5px;font-size:.58rem;background:var(--sand);color:#5a3d00;
     padding:0 7px;border-radius:999px;font-weight:600}
 
-  .container{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);
-    margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
-  .container .ch{background:var(--mist);padding:8px 12px;display:flex;align-items:baseline;gap:8px;
+  /* ---------- ZONES + CONTAINERS (equipo) ---------- */
+  .zone{margin-bottom:20px}
+  .zone:last-child{margin-bottom:0}
+  .zone-head{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+  .zone-dot{width:8px;height:8px;border-radius:2px;transform:rotate(45deg);background:var(--jade);flex:none}
+  .zone-name{font-family:'Space Grotesk',sans-serif;font-size:.74rem;font-weight:600;
+    letter-spacing:.07em;text-transform:uppercase;color:var(--jade-d)}
+  .zone-sub{font-size:.68rem;color:var(--ink-2);opacity:.75;font-style:italic;margin-left:auto}
+
+  .icn{width:19px;height:19px;flex:none;color:var(--jade-d)}
+  .icn svg{display:block;width:100%;height:100%}
+
+  .zone-grid{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:760px){.zone-grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:1100px){.zone-grid{grid-template-columns:repeat(3,1fr)}}
+
+  .container{border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;height:100%}
+  .container .ch{background:var(--mist);padding:8px 13px;display:flex;align-items:center;gap:9px;
     border-bottom:1px solid var(--line)}
-  .container .ci{font-size:1rem}
-  .container .cn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.86rem}
-  .container .cd{font-size:.66rem;color:var(--ink-2);margin-left:auto;font-style:italic}
-  .container .cb{display:flex;flex-wrap:wrap;gap:6px;padding:11px 12px}
-  .container .ci-item{font-size:.74rem;background:var(--paper);border:1px solid var(--line);
-    border-radius:999px;padding:2px 10px}
-  .container .ci-item.coin{background:var(--jade);color:#fff;border-color:var(--jade-d);font-weight:600}
-  .container.home{border-color:#EAD9A8}
-  .container.home .ch{background:linear-gradient(180deg,#FBF6E8,#F7EFD8);border-bottom-color:#EAD9A8}
-  .container.home .cn{color:#8a6d2e}
-  .container.home .home-tag{margin-left:auto;font-size:.6rem;font-weight:600;text-transform:uppercase;
-    letter-spacing:.06em;color:#8a6d2e;background:#fff;border:1px solid #EAD9A8;
-    padding:1px 9px;border-radius:999px;font-style:normal}
-  .container.home .cd{margin-left:10px}
-  .container.home .ci-item{background:#fff;border-color:#EBDFC0}
+  .container .cn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.85rem}
+  .container .cd{font-size:.65rem;color:var(--ink-2);margin-left:auto;font-style:italic}
+  .container .cb{padding:9px 13px}
+
+  .ci-line{display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px dotted var(--line)}
+  .ci-line:last-child{border-bottom:none}
+  .ci-line .cin{font-size:.82rem;flex:1}
+  .ci-line .ciq{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:600;color:var(--jade-d);white-space:nowrap}
+  .ci-line .ciq.none{opacity:.4;font-weight:400;font-family:'Inter',sans-serif}
+  .ci-line .ciq.coin{color:var(--jade-d)}
   .qty{opacity:.6;font-size:.92em}
+
+  .home-block{background:linear-gradient(180deg,#FBF6E8,#F7EFD8);border:1px solid #EAD9A8;
+    border-radius:var(--r);padding:16px 18px;margin-top:16px}
+  .home-block .hh{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+  .home-block .icn{color:#8a6d2e}
+  .home-block .ht{font-family:'Space Grotesk',sans-serif;font-size:.72rem;font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;color:#8a6d2e}
+  .home-block .hb{font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;
+    color:#8a6d2e;background:#fff;border:1px solid #EAD9A8;padding:1px 9px;border-radius:999px;margin-left:auto}
+  .home-body{display:grid;grid-template-columns:1fr;gap:0 24px}
+  @media(min-width:700px){.home-body{grid-template-columns:1fr 1fr}}
+  .home-block .ci-line{border-bottom-color:#F0E5CC}
+  .home-block .ci-line .ciq{color:#8a6d2e}
+  .home-block .ci-line .ciq.none{color:#8a6d2e}
+
 
   .acbox{background:linear-gradient(180deg,var(--jade),var(--jade-d));border-radius:var(--r);
     padding:18px;text-align:center;color:#fff;box-shadow:var(--shadow-lg)}
@@ -481,6 +541,17 @@
   </div>
 </header>
 
+<!-- ===================== FRANJA DE ESTADO DE SESIÓN ===================== -->
+<div class="statusbar">
+  <div class="wrap">
+    <span class="sb-lbl">Estado de sesión</span>
+    <button type="button" id="btnLong" class="sb-rest lg">Descanso largo</button>
+    <button type="button" id="btnShort" class="sb-rest sm">Descanso corto</button>
+    <span class="sb-insp">Inspiración Heroica <button type="button" class="sb-pip" data-track="insp" data-max="1" aria-label="Inspiración Heroica"></button></span>
+    <span class="sb-save">Se guarda en este navegador</span>
+  </div>
+</div>
+
 <main class="wrap">
 
 <!-- ===================== COMBATE ===================== -->
@@ -489,6 +560,29 @@
     <span class="eyebrow">01</span>
     <h2>Combate</h2>
     <span class="rule"></span>
+  </div>
+
+  <div class="col2" style="margin-bottom:16px">
+    <div class="card">
+      <h3>Puntos de golpe</h3>
+      <div style="display:flex;align-items:baseline;gap:8px">
+        <span class="hp-num">39</span><span style="font-size:.8rem;color:var(--ink-2)">/ 39 máx.</span>
+      </div>
+      <div class="hp-bar"><i style="width:100%"></i></div>
+      <p class="note" style="margin-bottom:0">Dado de golpe: gástalos en descanso corto para curarte (tirada + mod. CON, que es +0 para Usoryn).</p>
+    </div>
+    <div class="card">
+      <h3>Dados de golpe <span style="font-weight:400;text-transform:none;letter-spacing:0;opacity:.6;font-family:Inter;margin-left:auto">Se guarda en este navegador</span></h3>
+      <div class="hd-row">
+        <span class="hd-lbl">d8 <span style="opacity:.6">· Pícaro</span></span>
+        <div class="hd-pips" data-track="hd8" data-max="1"></div>
+      </div>
+      <div class="hd-row">
+        <span class="hd-lbl">d10 <span style="opacity:.6">· Explorador</span></span>
+        <div class="hd-pips" data-track="hd10" data-max="5"></div>
+      </div>
+      <p class="hd-note">Relleno = gastado. Al descanso largo recuperas la mitad del total: <b>3 de 6</b>. Toca una casilla para gastar/recuperar; el tipo que recuperas lo eliges tú.</p>
+    </div>
   </div>
 
   <div class="card" style="margin-bottom:16px">
@@ -560,7 +654,7 @@
   <div class="col-side">
     <div style="display:flex;flex-direction:column;gap:16px">
       <div class="card">
-        <h3>Hookpak · arma personalizada</h3>
+        <h3>Hoopak · arma personalizada</h3>
         <table class="tbl">
           <thead><tr><th>Modo</th><th style="width:52px">Atq</th><th>Daño</th><th style="width:64px">Maestría</th></tr></thead>
           <tbody>
@@ -571,6 +665,7 @@
             <tr><td>Tirachinas <span style="opacity:.6">30/120</span></td><td class="c atk">+10</td><td>1d6+5 contundente</td><td><span class="badge">Vex</span></td></tr>
           </tbody>
         </table>
+        <p class="note"><strong>Arma elegida para Maestría (1/2).</strong> Sap en modos cuerpo a cuerpo · Vex en tirachinas, según el modo en uso.</p>
       </div>
 
       <div class="card">
@@ -582,7 +677,7 @@
             <tr><td>Honda <span style="opacity:.6">30/120</span></td><td class="c atk">+10</td><td>1d4+5 contundente</td><td><span class="badge off">Slow*</span></td></tr>
           </tbody>
         </table>
-        <p class="note">* <strong>Slow</strong> no está entre las 2 maestrías activas (Vex y Sap). Intercambiable al terminar un descanso largo.</p>
+        <p class="note">* <strong>Slow inactiva:</strong> la Honda no ocupa ninguna de las 2 elecciones de Maestría (Hoopak y Espada corta). Intercambiable al terminar un descanso largo.</p>
       </div>
 
       <div class="card">
@@ -620,12 +715,12 @@
       <div class="card">
         <h3>Maestrías de arma</h3>
         <dl class="defs">
-          <dt>Vex <span class="tag">activa</span></dt>
+          <dt>Vex <span class="tag">Hoopak (tirachinas) / Espada corta · activa</span></dt>
           <dd>Si impactas, tu próximo ataque contra ese objetivo se hace con ventaja.</dd>
-          <dt>Sap <span class="tag">activa</span></dt>
+          <dt>Sap <span class="tag">Hoopak (cuerpo a cuerpo) · activa</span></dt>
           <dd>Si impactas, el objetivo tiene desventaja en su próxima tirada de ataque antes de tu siguiente turno.</dd>
-          <dt>Slow <span class="tag">Honda · no activa</span></dt>
-          <dd>Si impactas y causas daño, reduces la velocidad del objetivo en 3 m hasta el inicio de tu próximo turno.</dd>
+          <dt>Slow <span class="tag">Honda · inactiva</span></dt>
+          <dd>Si impactas y causas daño, reduces la velocidad del objetivo en 3 m hasta el inicio de tu próximo turno. No ocupa ninguna de las 2 elecciones de Maestría; intercambiable al terminar un descanso largo.</dd>
         </dl>
       </div>
 
@@ -665,6 +760,24 @@
     <div class="s"><div class="v">1</div><div class="l">Concentración máx.</div></div>
   </div>
 
+  <!-- Casillas de sesión: se guardan en este navegador (localStorage) -->
+  <div class="card" style="margin-bottom:18px">
+    <h3>Espacios y usos de sesión <span style="font-weight:400;text-transform:none;letter-spacing:0;opacity:.6;font-family:Inter;margin-left:auto">Se guarda en este navegador</span></h3>
+    <div class="hd-row">
+      <span class="hd-lbl">Espacios Nv1</span>
+      <div class="hd-pips" data-track="n1" data-max="4"></div>
+    </div>
+    <div class="hd-row">
+      <span class="hd-lbl">Espacios Nv2</span>
+      <div class="hd-pips" data-track="n2" data-max="2"></div>
+    </div>
+    <div class="hd-row">
+      <span class="hd-lbl">Marca del Cazador gratis <span style="opacity:.6">· Enemigo Predilecto</span></span>
+      <div class="hd-pips" data-track="marca" data-max="2"></div>
+    </div>
+    <p class="hd-note">Relleno = gastado. El botón <b>Descanso largo</b> (arriba) repone todo esto. Un espacio Nv1 puede cubrirse con uno de Nv2 si te quedas sin Nv1 — tú eliges cuál marcar.</p>
+  </div>
+
   <div class="spells">
     <div class="spell feat">
       <div class="sh">
@@ -678,7 +791,7 @@
         <span><b>Duración:</b> Concentración, hasta 1 h</span>
       </div>
       <p class="stext">Marcas a una criatura visible como tu presa. Infliges <strong>+1d6 de daño de Fuerza</strong> cada vez que la golpeas con una tirada de ataque, y tienes ventaja en pruebas de Sabiduría (Percepción o Supervivencia) para encontrarla. Si el objetivo cae a 0 PG, puedes usar una acción adicional para mover la marca a otra criatura visible.</p>
-      <div class="sup"><b>Espacio superior:</b> con Nv 3–4 la concentración dura hasta 8 h; con Nv 5+ hasta 24 h. Siempre preparada por Enemigo Predilecto, sin contar contra el límite.</div>
+      <div class="sup"><b>Espacio superior:</b> con Nv 3–4 la concentración dura hasta 8 h; con Nv 5+ hasta 24 h. <b>Enemigo Predilecto:</b> puede lanzar Marca del Cazador sin gastar espacio 2 veces por descanso largo; siempre preparada, sin contar contra el límite.</div>
     </div>
 
     <div class="spell">
@@ -737,6 +850,7 @@
         <span><b>Duración:</b> 1 hora</span>
       </div>
       <p class="stext">La velocidad del objetivo tocado aumenta en <strong>3 m (10 ft)</strong> hasta que el conjuro termine. No requiere concentración.</p>
+      <div class="sup"><b>Espacio superior:</b> +1 criatura adicional por cada nivel de espacio por encima de 1.</div>
     </div>
 
     <div class="spell">
@@ -748,9 +862,11 @@
         <span><b>Duración:</b> Conc., hasta 10 min</span>
       </div>
       <p class="stext">Esfera de silencio absoluto de <strong>6 m de radio</strong>. Ningún sonido se crea dentro ni la atraviesa. Las criaturas dentro son inmunes al daño de trueno y quedan <strong>Ensordecidas</strong>. Impide lanzar conjuros con componente verbal dentro de la esfera.</p>
-      <div class="sup"><b>Como ritual:</b> +10 min de lanzamiento, sin gastar espacio de conjuro. El Explorador 2024 puede lanzar rituales.</div>
+      <div class="sup"><b>Como ritual:</b> en 2024, cualquier conjuro preparado con la etiqueta Ritual puede lanzarse como ritual (+10 min de lanzamiento, sin gastar espacio de conjuro).</div>
     </div>
   </div>
+
+  <p class="note" style="margin-top:6px">Definiciones de escuelas, etiquetas y condiciones → <a href="../reglas.html" style="color:var(--jade-d)">Reglas de la mesa</a>.</p>
 </section>
 
 <!-- ===================== RASGOS ===================== -->
@@ -787,7 +903,7 @@
     <h3>Clase · Explorador (niveles 1–5) · Cazador</h3>
     <div class="col2">
       <div class="feats">
-        <div class="ft"><h4>Enemigo Predilecto <span class="tag">Exp 1</span></h4><p>Siempre tiene preparada Marca del Cazador sin contar contra el límite. Puede lanzarla sin gastar espacio un número de veces por descanso largo según la tabla.</p></div>
+        <div class="ft"><h4>Enemigo Predilecto <span class="tag">Exp 1</span></h4><p>Puede lanzar Marca del Cazador sin gastar espacio 2 veces por descanso largo. Siempre tiene preparada Marca del Cazador sin contar contra el límite.</p></div>
         <div class="ft"><h4>Maestría de Armas <span class="tag">Exp 1</span></h4><p>Maestrías activas: Vex y Sap (máximo 2). Intercambiables al terminar un descanso largo.</p></div>
         <div class="ft"><h4>Estilo de Combate: Tiro con Arco <span class="tag">Exp 1</span></h4><p>+2 a las tiradas de ataque con armas a distancia. Usoryn lo aplica a honda y tirachinas — su estilo de tirador.</p></div>
         <div class="ft"><h4>Explorador Experto <span class="tag">Exp 2</span></h4><p>Pericia en Investigación (+8) y Persuasión (+6); velocidad +3 m (hasta 12 m); 2 idiomas adicionales.</p></div>
@@ -824,6 +940,9 @@
     <span style="width:6px;height:6px;border-radius:2px;background:var(--jade);transform:rotate(45deg)"></span>
     Herramientas <span style="font-weight:400;text-transform:none;letter-spacing:0;opacity:.7;font-family:Inter">— Si eres competente, sumas tu bono de competencia; si lo eres también en la habilidad usada, además tienes ventaja (PHB 2024, pág. 221).</span>
   </h3>
+  <div class="callout" style="margin-top:0;margin-bottom:14px">
+    <b>Fabricación rápida (Crafter):</b> una vez por descanso largo, fabricas gratis un objeto no mágico con estas herramientas (materias primas normalmente ≤ 20 po). Además, −20 % al comprar cualquier objeto no mágico. Reglas de fabricación (materias = mitad del precio, tiempo = precio ÷ 10 días) → Manual del Jugador, Capítulo 6.
+  </div>
   <div class="tools">
     <div class="tool">
       <div class="th"><span class="tn">Herramientas de Ladrón</span><span class="tt">Pícaro</span><span class="ta">Destreza</span></div>
@@ -852,7 +971,7 @@
     <div class="tool">
       <div class="th"><span class="tn">Herrero</span><span class="tt">Crafter</span><span class="ta">Fuerza</span></div>
       <div class="lblrow"><span class="lbl">Utilizar</span>Apalancar para abrir o sellar una puerta o recipiente (CD 20).</div>
-      <div class="lblrow"><span class="lbl">Fabrica</span>Casi cualquier arma de metal, armadura media y pesada, proyectiles de honda, bolas de metal, cadenas, garfios.</div>
+      <div class="lblrow"><span class="lbl">Fabrica</span>Casi cualquier arma de metal, armadura media y pesada, abrojos, bolas de metal, proyectiles de honda, cadenas, garfios.</div>
       <div class="tc" style="background:var(--mist)"><b style="color:var(--ink-2)">+2 sin ventaja</b> · no tiene una habilidad de Fuerza competente que dé ventaja.</div>
     </div>
   </div>
@@ -876,10 +995,6 @@
         <h3>Armas equipadas</h3>
         <div class="slots" id="weaponSlots"></div>
       </div>
-      <div class="card">
-        <h3>Contenedores</h3>
-        <div id="containers"></div>
-      </div>
     </div>
 
     <div style="display:flex;flex-direction:column;gap:16px">
@@ -902,6 +1017,12 @@
       </div>
     </div>
   </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>Contenedores</h3>
+    <div id="zones"></div>
+  </div>
+  <div id="homeChest"></div>
 </section>
 
 <!-- ===================== PROYECTILES ===================== -->
@@ -913,51 +1034,23 @@
   </div>
 
   <div class="callout" style="margin-top:0;margin-bottom:18px">
-    <b>Arsenal del tirador</b> — Municiones para Hookpak, Honda o lanzamiento a mano (nunca arcos ni ballestas).
-    Fabricadas con Herrero, Carpintero, Alfarero o Soplador de Vidrio. Origen:
-    <span class="src make">fabricado</span> <span class="src buy">comprado</span> <span class="src nat">natural</span> <span class="src todo">por conseguir</span>.
-  </div>
-
-  <!-- Stock fabricado destacado -->
-  <div class="invbar">
-    <div class="inv">
-      <div class="big">6<small>/10</small></div>
-      <div class="meta"><b>Estrella de Fuego</b>Listas para usar. Fabricación: Soplador de Vidrio o Alfarero.
-        <span class="bars"><i style="width:60px;background:var(--jade)"></i><i style="width:40px;background:var(--line-2)"></i></span>
-      </div>
-    </div>
-    <div class="inv">
-      <div class="big">4<small> llevados</small></div>
-      <div class="meta"><b>Huevos Podridos</b>4 en el morral colgante. Reserva en casa: 25 en almacén · 60 en proceso (natural).</div>
-    </div>
-    <div class="inv">
-      <div class="big" style="color:var(--sand-d)">1</div>
-      <div class="meta"><b>Caja de huevos</b>Por fabricar (Carpintero). Faltan materiales por conseguir.</div>
-    </div>
+    <b>Componentes oficiales + herramientas competentes + recipiente = objeto ensamblado.</b> El ingenio está en el despliegue, no en inventar reglas. Arsenal 100% basado en PHB 2024 (fuente: transcripción Devir en Notion, Capítulo 6).
+    Municiones para Hoopak, Honda/Honda Grande o lanzamiento a mano (nunca arcos ni ballestas). Origen:
+    <span class="src make">fabricado</span> <span class="src buy">comprado</span> <span class="src todo">por conseguir</span>.
+    <br><br>Este es el <b>recetario</b>: qué existe y qué hace cada munición. Las <b>cantidades que llevas ahora</b> viven en el morral colgante de <a href="#equipo" style="color:var(--jade-d)">Equipo</a>.
   </div>
 
   <div class="col2">
     <div class="card">
       <h3>Control de movimiento</h3>
       <table class="tbl">
-        <thead><tr><th>Proyectil</th><th>Efecto</th><th style="width:34%">Materiales · origen</th></tr></thead>
+        <thead><tr><th>Munición</th><th>Regla oficial</th><th style="width:32%">Materiales · origen</th></tr></thead>
         <tbody>
-          <tr><td><b>Bolsas de Tachuelas</b></td><td>Área 1,5 m terreno difícil. TS Des CD 13 o Derribado (Prone).</td><td><span class="mats">Tachuelas · bolsa de tela · cordel 3 m</span><br><span class="src make">Herrero</span> <span class="src buy">comprado</span></td></tr>
-          <tr><td><b>Honda Grande</b></td><td>Lanza objetos hasta 1 kg. Rango 15/45 m.</td><td><span class="mats">2 estacas · tira de cuero</span><br><span class="src make">Carpintero</span> <span class="src buy">cuero comprado</span></td></tr>
-          <tr><td><b>Boleadoras</b></td><td>TS Des CD 13 o Apresado (Restrained) 1 turno. Rango 6/18 m.</td><td><span class="mats">Bolas de metal ×2 · cuerda</span><br><span class="src make">Herrero</span> <span class="src buy">cordel comprado</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="card">
-      <h3>Alteración sensorial</h3>
-      <table class="tbl">
-        <thead><tr><th>Proyectil</th><th>Efecto</th><th style="width:34%">Materiales · origen</th></tr></thead>
-        <tbody>
-          <tr><td><b>Huevos Podridos</b> <span class="stk">×4 · reserva en casa</span></td><td>TS Con CD 12 o desventaja en Percepción y Carisma 10 min.</td><td><span class="mats">Huevos comunes dejados pudrir</span><br><span class="src nat">natural</span></td></tr>
-          <tr><td><b>Bola de Pimienta</b></td><td>TS Con CD 13 o Cegado (Blinded) 1 turno.</td><td><span class="mats">Pimienta en polvo · polvo de hueso · vial</span><br><span class="src make">Soplador de Vidrio</span></td></tr>
-          <tr><td><b>Bola de Tinta</b></td><td>Desventaja en ataques a distancia 1 turno.</td><td><span class="mats">Tinta negra · resina · vial o jarro</span><br><span class="src make">Soplador / Alfarero</span></td></tr>
-          <tr><td><b>Estrella de Luz</b></td><td>Luz tenue 1,5 m. No puede Esconderse ni ser Invisible. 1 min.</td><td><span class="mats">Mineral / hongo luminoso / cristal molido · vial</span><br><span class="src make">Soplador / Alfarero</span></td></tr>
+          <tr><td><b>Abrojos</b> <span style="opacity:.6">(tachuelas)</span></td><td>Acción de utilizar: zona 1,5 m a ≤1,5 m. TS Des CD 15 o 1 perforante y velocidad 0 hasta el inicio de su próximo turno. 10 min recuperarlos.</td><td><span class="mats">1 po, 1 kg</span><br><span class="src make">Herrero</span> <span class="src buy">comprado</span></td></tr>
+          <tr><td><b>Bolas de metal</b></td><td>Acción de utilizar: zona 3 m a ≤3 m. TS Des CD 10 o Derribado. 10 min recuperarlas.</td><td><span class="mats">1 po</span><br><span class="src make">Herrero</span> <span class="src buy">comprado</span></td></tr>
+          <tr><td><b>Red</b></td><td>Sustituye un ataque; objetivo ≤4,5 m. TS Des CD 16 (8+DES+comp) o Apresado hasta liberarse. Liberarse: acción, Fuerza (Atletismo) CD 10. Destruir la red: CA 10, 5 PG.</td><td><span class="mats">1 po</span><br><span class="src buy">comprado</span></td></tr>
+          <tr><td><b>Honda Grande</b> <span style="opacity:.6">(homebrew de despliegue)</span></td><td>2 estacas + tira de cuero. Lanza cargas de hasta <strong>2 kg</strong> a 15/45 m con acción completa; cualquier usuario.</td><td><span class="mats">2 estacas · tira de cuero</span><br><span class="src make">Carpintero</span> <span class="src buy">cuero comprado</span></td></tr>
+          <tr><td><b>Boleadoras</b> <span style="opacity:.6">(reskin de Red)</span></td><td>Sustituye un ataque; objetivo ≤4,5 m. TS Des CD 16 (8+DES+comp) o Apresado. Liberarse: acción, Fuerza (Atletismo) CD 10. Destruir: CA 10, 5 PG.</td><td><span class="mats">Bolas de metal ×2 · cuerda</span><br><span class="src make">Herrero</span> <span class="src buy">cordel comprado</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -965,31 +1058,44 @@
     <div class="card">
       <h3>Daño directo y fuego</h3>
       <table class="tbl">
-        <thead><tr><th>Proyectil</th><th>Efecto</th><th style="width:34%">Materiales · origen</th></tr></thead>
+        <thead><tr><th>Munición</th><th>Regla oficial</th><th style="width:32%">Materiales · origen</th></tr></thead>
         <tbody>
-          <tr><td><b>Bola de Acero</b></td><td>Munición estándar. Daño base del arma. Autosuficiente en campo.</td><td><span class="mats">Metal (acero)</span><br><span class="src make">Herrero</span></td></tr>
-          <tr><td><b>Bola de Plata</b></td><td>Ignora resistencias/inmunidades a daño no mágico (DMG 2024).</td><td><span class="mats">Plata (costo mayor)</span><br><span class="src make">Herrero</span></td></tr>
-          <tr><td><b>Estrella de Fuego</b> <span class="stk">6/10</span></td><td>2d4 fuego. Puede encender objetos.</td><td><span class="mats">Fuego alquímico · vial de vidrio o cerámica</span><br><span class="src make">Soplador / Alfarero</span></td></tr>
-          <tr><td><b>Molotov</b></td><td>2d4 fuego. Puede encender objetos. <span style="opacity:.6">(pendiente validar vs Estrella de Fuego)</span></td><td><span class="mats">Botella de vidrio · aceite · paño</span><br><span class="src make">Soplador</span> <span class="src buy">aceite comprado</span></td></tr>
+          <tr><td><b>Balines comunes</b></td><td>20 por bolsa, 4 pc. Munición estándar de Honda/Honda Grande.</td><td><span class="mats">4 pc / 20</span><br><span class="src make">Herrero</span></td></tr>
+          <tr><td><b>Balines de plata</b></td><td>Munición mundana sin regla especial. Ignoran resistencias/inmunidades a daño no mágico (DMG 2024).</td><td><span class="mats">Plata (costo mayor)</span><br><span class="src make">Herrero</span></td></tr>
+          <tr><td><b>Estrella de Fuego</b> <span style="opacity:.6">(Fuego de alquimista)</span></td><td>Sustituye un ataque; objetivo visible ≤6 m. TS Des CD 16 o 1d4 fuego y comienza a Arder (1d4/turno hasta que una acción lo apague).</td><td><span class="mats">50 po</span><br><span class="src buy">comprado</span> o rellenado del bidón</td></tr>
+          <tr><td><b>Ácido</b></td><td>Sustituye un ataque; ≤6 m. TS Des CD 16 o 2d6 ácido.</td><td><span class="mats">25 po</span><br><span class="src buy">comprado</span></td></tr>
+          <tr><td><b>Aceite / Molotov</b></td><td>Empapar objetivo (sustituye un ataque, CD 16; +5 fuego si arde antes de 1 min) o zona 1,5 m ardiendo 2 asaltos (5 fuego). Molotov = botella + aceite + paño + corcho, mismo efecto con paño encendido.</td><td><span class="mats">Aceite 1 pp</span><br><span class="src buy">comprado</span></td></tr>
+          <tr><td><b>Agua bendita</b></td><td>Sustituye un ataque; CD 16 o 2d8 radiante a muertos vivientes e infernales.</td><td><span class="mats">25 po — solo compra, sin receta de fabricación en 2024</span><br><span class="src buy">comprado</span></td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="card">
-      <h3>Tácticos y contenedores</h3>
+      <h3>Social y utilidad</h3>
       <table class="tbl">
-        <thead><tr><th>Objeto</th><th>Efecto</th><th style="width:34%">Materiales · origen</th></tr></thead>
+        <thead><tr><th>Munición</th><th>Regla oficial</th><th style="width:32%">Materiales · origen</th></tr></thead>
         <tbody>
-          <tr><td><b>Bola de Humo</b></td><td>Zona oscurecida 1,5 m radio. Cegado (Blinded). 1 min. Se disipa con viento fuerte.</td><td><span class="mats">Resina · aceite · tiza · vial o jarro</span><br><span class="src make">Soplador / Alfarero</span> <span class="src buy">comprado</span></td></tr>
-          <tr><td><b>Caja de huevos</b></td><td>4 compartimentos acolchados. Va en el morral colgante. Fast Crafting en descanso largo.</td><td><span class="mats">Tablas de madera · paja o tela · clavos</span><br><span class="src make">Carpintero</span> <span class="src todo">por conseguir</span></td></tr>
+          <tr><td><b>Veneno básico</b></td><td>Acción adicional: impregna un arma o 3 municiones. +1d4 veneno adicional; efectividad 1 minuto o hasta que inflija su daño, lo que ocurra primero.</td><td><span class="mats">100 po</span><br><span class="src buy">comprado</span></td></tr>
+          <tr><td><b>Perfume</b></td><td>1 h de ventaja en Carisma (Persuasión) con humanoide indiferente a ≤1,5 m.</td><td><span class="mats">5 po</span><br><span class="src buy">comprado</span></td></tr>
         </tbody>
       </table>
-      <p class="note" style="margin-bottom:6px"><strong>Compatibles con Honda Grande</strong> (hasta 1 kg · 15/45 m):</p>
+      <p class="note" style="margin-bottom:0"><strong>Nota:</strong> este recetario no lleva cantidades. Lo que cargas ahora mismo (con su ×N) está en el morral colgante de <a href="#equipo" style="color:var(--jade-d)">Equipo</a>. Reglas de fabricación (materias primas, tiempos, herramientas) → Manual del Jugador, Capítulo 6.</p>
+    </div>
+
+    <div class="card">
+      <h3>Ensamblados (homebrew de despliegue)</h3>
+      <table class="tbl">
+        <thead><tr><th>Objeto</th><th>Descripción</th><th style="width:32%">Materiales · origen</th></tr></thead>
+        <tbody>
+          <tr><td><b>Vasija de Abrojos</b></td><td>Vasija cerámica + Abrojos oficiales + tapón. Al romperse despliega el efecto oficial exacto en el punto de impacto. Lanzable a mano (6/18), Hoopak o Honda Grande.</td><td><span class="mats">Cerámica · abrojos · tapón</span><br><span class="src make">Alfarero + Carpintero</span></td></tr>
+          <tr><td><b>Vasija de Bolas de metal</b></td><td>Vasija cerámica + Bolas de metal oficiales + tapón. Al romperse despliega el efecto oficial exacto en el punto de impacto. Lanzable a mano (6/18), Hoopak o Honda Grande.</td><td><span class="mats">Cerámica · bolas de metal · tapón</span><br><span class="src make">Alfarero + Carpintero</span></td></tr>
+        </tbody>
+      </table>
+      <p class="note" style="margin-bottom:6px"><strong>Compatibles con Honda Grande</strong> (hasta 2 kg · 15/45 m):</p>
       <div class="chips">
-        <span class="chip">Frasco de aceite · 0,5 kg</span><span class="chip">Bomba de humo · 0,4 kg</span>
-        <span class="chip">Red improvisada · 0,8 kg</span><span class="chip">Jarro · 0,6 kg</span>
-        <span class="chip">Roca · 0,7 kg</span><span class="chip">Veneno/ácido · 0,5 kg</span>
-        <span class="chip">Bola de pimienta · 0,5 kg</span>
+        <span class="chip">Red enrollada</span><span class="chip">Vasija de Abrojos</span>
+        <span class="chip">Vasija de Bolas de metal</span><span class="chip">Botella de aceite</span>
+        <span class="chip">Molotov múltiple</span><span class="chip">Jarro</span>
       </div>
     </div>
   </div>
@@ -1070,22 +1176,114 @@
     { slot:'Cuello', name:'Amuleto de Jade', type:'plot', ac:0, save:0, equipped:true, locked:true, note:'Trama · poder dormido' },
   ];
   const weapons = [
-    { slot:'Principal', name:'Hookpak', bonus:'5 modos · Vex / Sap' },
+    { slot:'Principal', name:'Hoopak', bonus:'5 modos · Vex / Sap' },
     { slot:'Secundaria', name:'Espada Corta', bonus:'1d6+5 · Vex' },
     { slot:'A distancia', name:'Honda', bonus:'1d4+5 · 30/120' },
   ];
-  const containers = [
-    { icon:'🎒', name:'Mochila', desc:'Objetos grandes y de campamento',
-      items:['Raciones <span class="qty">×5 días</span>','Cuerda <span class="qty">15 m</span>','Odre de agua','Linterna con capucha','Velas <span class="qty">×10</span>','Frascos de aceite <span class="qty">×7</span>','Pedernal y yesca','Pata de cabra'] },
-    { icon:'👜', name:'Morral colgante', desc:'Munición y proyectiles listos',
-      items:['Bolas de metal <span class="qty">(munición)</span>','Bolas de plata <span class="qty">×2</span>','Estrellas de Fuego <span class="qty">×6</span>','Huevos podridos <span class="qty">×4</span>','Bolas de pimienta','Bolas de humo','Boleadoras','Campana'] },
-    { icon:'🧷', name:'Morral de cinturón · 1', desc:'Herramientas y materias primas',
-      items:['Herramientas de Ladrón','Fuego alquímico','Tinta · resina','Pimienta · polvo de hueso','Viales de vidrio y cerámica','Tachuelas · cordel','Tira de cuero · estacas'] },
-    { icon:'🧷', name:'Morral de cinturón · 2', desc:'Objetos pequeños y valiosos',
-      items:['<span class="ci-item coin">340 GP</span>'] },
-    { icon:'🪵', name:'Baúl en casa', desc:'Donde me esté quedando · no lo cargo', home:true,
-      items:['Huevos podridos <span class="qty">×25 en almacén</span>','Huevos pudriéndose <span class="qty">×60 en proceso</span>','Materias primas de repuesto','Fuego alquímico de reserva','Viales y frascos vacíos','Tablas de madera · clavos','Ropa de muda','Recuerdos de Brisasol'] },
+  // Banco de iconos SVG (monolínea, heredan color). Uno por tipo genérico de objeto.
+  const ICONS = {
+    bag:    '<path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
+    pouch:  '<rect x="4" y="9" width="16" height="11" rx="2"/><path d="M8 9V7a4 4 0 0 1 8 0v2"/>',
+    coinbag:'<ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v10c0 1.7 3.1 3 7 3s7-1.3 7-3V7"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/>',
+    chest:  '<rect x="4" y="10" width="16" height="9" rx="1.5"/><path d="M4 10l1.5-4h13L20 10"/><path d="M10 14h4"/>',
+    coin:   '<circle cx="12" cy="12" r="8"/><path d="M12 8v8M9.5 10h5M9.5 14h5"/>',
+    ball:   '<circle cx="9" cy="10" r="4"/><circle cx="15.5" cy="15" r="4"/>',
+    fire:   '<path d="M12 3c2.5 3.5 5 5.5 5 9a5 5 0 0 1-10 0c0-1.4.6-2.6 1.5-3.8.6 1 1.3 1.6 2 1.8C10 8.5 10.5 5.6 12 3Z"/>',
+    lockpick:'<circle cx="8" cy="15" r="3.5"/><path d="M10.5 12.5 19 4M16 7l2 2M14 9l2 2"/>',
+    cloth:  '<path d="M4 7c4 0 4 10 8 10s4-10 8-10"/><path d="M4 13c4 0 4 6 8 6"/>',
+    vial:   '<path d="M10 3h4v3l3 4v11H7V10l3-4Z"/><path d="M10 6h4"/>',
+    bottle: '<path d="M9 3h6v3l-1.5 2v13h-3V8L9 6Z"/><path d="M9.5 6h5"/>',
+    food:   '<path d="M6 20V9l6-5 6 5v11Z"/><path d="M10 20v-5h4v5"/>',
+    candle: '<rect x="9" y="8" width="6" height="13" rx="1"/><path d="M12 8V5M12 5c0-1 1-1.5 1-2.5"/>',
+    rope:   '<path d="M5 6c3 0 3 4 6 4s3-4 6-4"/><path d="M5 12c3 0 3 4 6 4s3-4 6-4"/><path d="M5 18c3 0 3 3 6 3"/>',
+    lantern:'<path d="M8 4h8l-1 4 3 3v9H6v-9l3-3Z"/><circle cx="12" cy="15" r="2.5"/>',
+    spark:  '<path d="M4 15l7-7 3 3-7 7Z"/><path d="M15 5l2 2M18 8l2 2M16 12l3 3"/>',
+    crowbar:'<path d="M5 19l6-6M9 5l10 10-2 2L7 7Z"/>',
+    stake:  '<path d="M12 3v14M8 21l4-4 4 4"/>',
+    leather:'<path d="M4 12c2-4 6-4 8-4s6 0 8 4c-2 4-6 4-8 4s-6 0-8-4Z"/>',
+    tool:   '<circle cx="7" cy="17" r="3"/><path d="M9 15l9-9 2 2-9 9"/><path d="M16 4l2 2"/>',
+    shirt:  '<path d="M8 4l4 2 4-2 3 3-2 3-1-1v11H8V9l-1 1-2-3Z"/>',
+    memory: '<path d="M12 5l2.5 5 5.5.8-4 3.9.9 5.5L12 17.5 7.1 20.2l.9-5.5-4-3.9 5.5-.8Z"/>',
+    plug:   '<path d="M9 4h6v5a3 3 0 0 1-6 0Z"/><path d="M12 9v11"/>',
+    water:  '<path d="M12 3c3.5 4.5 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 2.5-6.5 6-11Z"/>',
+  };
+  function icon(key){ return `<span class="icn">${(function(){const svg=ICONS[key]||ICONS.bag; return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${svg}</svg>`;})()}</span>`; }
+
+  // Ítem: {n:nombre, q:cantidad(opcional, "—" si no hay), ic:icono}
+  const zones = [
+    { name:'A mano', sub:'sin gastar acción', containers:[
+      { icon:'bag', name:'Morral colgante', desc:'munición · fuente de cantidades', items:[
+        {n:'Balines comunes', q:'×20', ic:'ball'},
+        {n:'Estrellas de Fuego', q:'×6', ic:'fire'},
+        {n:'Balines de plata', q:'×2', ic:'ball'},
+      ]},
+      { icon:'pouch', name:'Morral de cinturón · 1', desc:'herramientas y ensamblaje', items:[
+        {n:'Herramientas de Ladrón', ic:'lockpick'},
+        {n:'Paños', ic:'cloth'},
+        {n:'Corchos', ic:'plug'},
+        {n:'Tapones', ic:'plug'},
+        {n:'Cordel', ic:'rope'},
+      ]},
+      { icon:'coinbag', name:'Morral de cinturón · 2', desc:'objetos pequeños y valiosos', items:[
+        {n:'Monedas', q:'340 GP', ic:'coin', coin:true},
+      ]},
+    ]},
+    { name:'Hay que sacarlo', sub:'fuera de combate', containers:[
+      { icon:'bag', name:'Mochila', desc:'campamento', items:[
+        {n:'Frascos de aceite', q:'×6', ic:'vial'},
+        {n:'Raciones', q:'5 días', ic:'food'},
+        {n:'Velas', q:'×10', ic:'candle'},
+        {n:'Cuerda', q:'15 m', ic:'rope'},
+        {n:'Odre de agua', ic:'water'},
+        {n:'Linterna con capucha', ic:'lantern'},
+        {n:'Pedernal y yesca', ic:'spark'},
+        {n:'Pata de cabra', ic:'crowbar'},
+      ]},
+      { icon:'stake', name:'Honda Grande', desc:'desmontada · atada a la mochila', items:[
+        {n:'2 estacas', ic:'stake'},
+        {n:'Tira de cuero', ic:'leather'},
+      ]},
+    ]},
   ];
+  const homeChest = { name:'Baúl en casa', desc:'donde me esté quedando · no lo cargo', items:[
+    {n:'Bidón de fuego alquímico', q:'×10 cargas', ic:'fire'},
+    {n:'Viales vacíos', q:'×10', ic:'vial'},
+    {n:'Botellas de vidrio vacías', q:'×6', ic:'bottle'},
+    {n:'Herramientas de Herrero', ic:'tool'},
+    {n:'Herramientas de Carpintero', ic:'tool'},
+    {n:'Herramientas de Alfarero', ic:'tool'},
+    {n:'Herramientas de Soplador de Vidrio', ic:'tool'},
+    {n:'Ropa de muda', ic:'shirt'},
+    {n:'Recuerdos de Brisasol', ic:'memory'},
+  ]};
+
+  function containerHTML(ct){
+    const body = ct.items.map(it=>
+      `<div class="ci-line">${icon(it.ic)}<span class="cin">${it.n}${it.pending?' <em style="opacity:.55;font-style:italic">(por detallar)</em>':''}</span><span class="ciq${it.q?'':' none'}${it.coin?' coin':''}">${it.q||'—'}</span></div>`
+    ).join('');
+    return `<div class="container"><div class="ch">${icon(ct.icon)}<span class="cn">${ct.name}</span><span class="cd">${ct.desc}</span></div><div class="cb">${body}</div></div>`;
+  }
+
+  function renderZones(){
+    const el = document.getElementById('zones');
+    el.innerHTML = zones.map(z => `
+      <div class="zone">
+        <div class="zone-head"><span class="zone-dot"></span><span class="zone-name">${z.name}</span><span class="zone-sub">${z.sub}</span></div>
+        <div class="zone-grid">${z.containers.map(containerHTML).join('')}</div>
+      </div>`).join('');
+  }
+  function renderHomeChest(){
+    const el = document.getElementById('homeChest');
+    const body = homeChest.items.map(it=>
+      `<div class="ci-line">${icon(it.ic)}<span class="cin">${it.n}${it.pending?' <em style="opacity:.55;font-style:italic">(por detallar)</em>':''}</span><span class="ciq${it.q?'':' none'}">${it.q||'—'}</span></div>`
+    ).join('');
+    el.innerHTML = `<div class="home-block">
+      <div class="hh">${icon('chest')}<span class="ht">${homeChest.name}</span><span class="hb">No lo cargas</span></div>
+      <div class="home-body">${body}</div>
+      <p style="font-size:.7rem;color:#8a6d2e;opacity:.85;margin-top:11px;padding-top:9px;border-top:1px dotted #F0E5CC">Pendiente: comprar más aceite para rellenar las botellas de vidrio vacías.</p>
+    </div>`;
+  }
+
   function renderArmor(){
     const c=document.getElementById('armorSlots');c.innerHTML='';
     armor.forEach(it=>{
@@ -1104,24 +1302,6 @@
       c.appendChild(d);
     });
   }
-  function renderContainers(){
-    const c=document.getElementById('containers');c.innerHTML='';
-    let homeSep=false;
-    containers.forEach(ct=>{
-      if(ct.home&&!homeSep){
-        homeSep=true;
-        const sep=document.createElement('div');
-        sep.style.cssText='display:flex;align-items:center;gap:10px;margin:16px 0 11px;font-size:.66rem;font-family:Space Grotesk,sans-serif;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#8a6d2e';
-        sep.innerHTML='<span style="flex:none">No transportado</span><span style="flex:1;height:1px;background:#EAD9A8"></span>';
-        c.appendChild(sep);
-      }
-      const box=document.createElement('div');box.className='container'+(ct.home?' home':'');
-      const items=ct.items.map(it=>it.includes('ci-item')?it:`<span class="ci-item">${it}</span>`).join('');
-      const tag=ct.home?'<span class="home-tag">🔒 En casa</span>':'';
-      box.innerHTML=`<div class="ch"><span class="ci">${ct.icon}</span><span class="cn">${ct.name}</span><span class="cd">${ct.desc}</span>${tag}</div><div class="cb">${items}</div>`;
-      c.appendChild(box);
-    });
-  }
   function recalc(){
     let ac=10,rows=[];
     const body=armor.find(a=>a.type==='armor'&&a.equipped);
@@ -1137,7 +1317,7 @@
     const sb=armor.filter(a=>a.save&&a.equipped).reduce((s,a)=>s+a.save,0);
     document.getElementById('savesNote').innerHTML=sb>0?`Anillo y Capa otorgan <strong>+${sb} a todas las salvaciones</strong> y +${sb} a la CA.`:'Sin bonos de objeto.';
   }
-  renderArmor();renderWeapons();renderContainers();recalc();
+  renderArmor();renderWeapons();renderZones();renderHomeChest();recalc();
 
   // nav active state on scroll
   const secs=[...document.querySelectorAll('section,header.hero')];
@@ -1148,6 +1328,81 @@
     }});
   },{rootMargin:'-45% 0px -50% 0px'});
   secs.forEach(s=>obs.observe(s));
+
+  // ---------- TRACKER DE SESIÓN (localStorage, este navegador) ----------
+  (function(){
+    const KEY = 'usoryn-tracker-v1';
+    // Todos los grupos de casillas: espacios/marca/dados (.hd-pips) + inspiración en la franja (.sb-pip)
+    const groups = [...document.querySelectorAll('[data-track]')];
+
+    // Qué repone el DESCANSO LARGO. Inspiración no (la da el GM).
+    // Los dados de golpe tienen regla propia (mitad del total), se manejan aparte.
+    const longRestFull = { n1:true, n2:true, marca:true };
+
+    let state = {};
+    try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ state = {}; }
+    function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} }
+
+    function pipClass(g){ return g.classList.contains('sb-pip') ? 'sb-pip' : (g.classList.contains('hd-pips') ? 'hd-pip' : 'hd-pip'); }
+
+    function build(){
+      groups.forEach(g=>{
+        const id = g.dataset.track, max = +g.dataset.max;
+        if(typeof state[id] !== 'number') state[id] = 0;
+        // La casilla de inspiración es el propio botón (sb-pip), no un contenedor
+        if(g.classList.contains('sb-pip')){
+          g.classList.toggle('spent', state[id] > 0);
+          if(!g.dataset.bound){
+            g.dataset.bound = '1';
+            g.addEventListener('click', ()=>{ state[id] = state[id] > 0 ? 0 : 1; save(); build(); });
+          }
+          return;
+        }
+        // Grupos de casillas (hd-pips): reconstruye los pips
+        const cls = pipClass(g);
+        g.innerHTML = '';
+        for(let i=0;i<max;i++){
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = cls + (i < state[id] ? ' spent' : '');
+          b.setAttribute('aria-label', (i < state[id] ? 'Gastado' : 'Disponible') + ' — ' + id);
+          b.addEventListener('click', ()=>{
+            const spent = state[id];
+            state[id] = (i + 1 === spent) ? i : i + 1; // clic en la última gastada la recupera; si no, gasta hasta aquí
+            save(); build();
+          });
+          g.appendChild(b);
+        }
+      });
+    }
+
+    // DESCANSO LARGO: repone espacios y Marca por completo; dados de golpe a la mitad del total (3 de 6)
+    const btnLong = document.getElementById('btnLong');
+    if(btnLong) btnLong.addEventListener('click', ()=>{
+      for(const id in longRestFull) if(longRestFull[id]) state[id] = 0;
+      // Dados: recuperar hasta la mitad del TOTAL (6/2 = 3). Prioriza recuperar d10 (los más numerosos); el resto lo ajustas a mano.
+      const total = 6, recover = Math.floor(total/2); // 3
+      let toRecover = recover;
+      // recuperar primero d10, luego d8
+      for(const id of ['hd10','hd8']){
+        const spent = state[id] || 0;
+        const give = Math.min(spent, toRecover);
+        state[id] = spent - give;
+        toRecover -= give;
+      }
+      save(); build();
+    });
+
+    // DESCANSO CORTO: no repone recursos de Usoryn (no tiene recursos de descanso corto).
+    // Solo confirma que puedes gastar dados de golpe para curarte. No cambia casillas.
+    const btnShort = document.getElementById('btnShort');
+    if(btnShort) btnShort.addEventListener('click', ()=>{
+      btnShort.textContent = 'Gasta dados abajo ↓';
+      setTimeout(()=>{ btnShort.textContent = 'Descanso corto'; }, 1800);
+    });
+
+    build();
+  })();
 </script>
 
 </body>
