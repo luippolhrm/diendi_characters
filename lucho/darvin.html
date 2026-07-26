@@ -16,6 +16,8 @@
     --ember:#E04A2E; --gold:#D8A23E; --gold-d:#A9791F;
     --mist:#F1ECE7; --line:#E4DBD3; --line-2:#D2C5BA;
     --bad:#C0432E; --good:#B25E18;
+    --home-bg1:#FBF3E4; --home-bg2:#F7E9CE; --home-line:#E8D3A0; --home-dot:#F0E2BC;
+    --amber-ink:#4A3200; --amber-att:#F3E6C8; --slot-locked-1:#FBF3E4; --slot-locked-2:#EBD7A8;
     --shadow:0 1px 2px rgba(28,23,21,.04),0 4px 16px rgba(28,23,21,.07);
     --shadow-lg:0 2px 8px rgba(28,23,21,.07),0 12px 36px rgba(28,23,21,.12);
     --r:14px; --r-sm:9px;
@@ -174,33 +176,31 @@
     .sec-head h2{font-size:1.5rem}
   }
 
-  /* ---------- ABILITIES ---------- */
-  .abilities{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+  /* ---------- ABILITIES (marcado canónico .abils, igual a Ki'yaj) ---------- */
+  .abils{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
   .abil{background:#fff;border:1px solid var(--line);border-radius:var(--r);
-    box-shadow:var(--shadow);overflow:hidden}
-  .abil .top{padding:13px 12px 11px;text-align:center;position:relative;
+    box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+  .abil .ab-top{padding:13px 12px 11px;text-align:center;position:relative;
     background:linear-gradient(180deg,var(--mist),#fff)}
-  .abil .nm{font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;
+  .abil .name{font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;
     color:var(--ink-2);font-weight:600}
   .abil .mod{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2rem;
     line-height:1;margin-top:3px}
-  .abil .sc{display:inline-block;margin-top:6px;font-size:.72rem;font-weight:600;
+  .abil .score{display:inline-block;margin-top:6px;font-size:.72rem;font-weight:600;
     background:var(--ink);color:#fff;border-radius:999px;padding:1px 10px}
-  .abil ul{list-style:none;padding:7px 9px 9px}
-  .abil li{display:flex;justify-content:space-between;gap:6px;align-items:center;
+  .abil .ab-list{display:flex;flex-direction:column;padding:7px 9px 9px}
+  .abil .ab-row{display:flex;justify-content:space-between;gap:6px;align-items:center;
     font-size:.74rem;padding:3px 2px;border-bottom:1px dotted var(--line)}
-  .abil li:last-child{border-bottom:none}
-  .abil li .n{display:flex;align-items:center;gap:5px;color:var(--ink-2)}
-  .abil li .x{font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--ink)}
-  .abil li.sv{background:var(--amber-soft);margin:0 -9px;padding:3px 11px;border-bottom:none}
-  .abil li.sv .n,.abil li.sv .x{color:var(--amber-d);font-weight:600}
-  .pip{width:7px;height:7px;border-radius:50%;border:1.5px solid var(--amber);flex:none}
-  .pip.p{background:var(--amber)}
-  .pip.e{background:var(--amber);box-shadow:inset 0 0 0 1.5px #fff}
+  .abil .ab-row:last-child{border-bottom:none}
+  .abil .ab-row .rn{display:flex;align-items:center;gap:5px;color:var(--ink-2)}
+  .abil .ab-row .rv{font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--ink)}
+  .abil .ab-row.sv{background:var(--amber-soft);margin:0 -9px;padding:3px 11px;border-bottom:none}
+  .abil .ab-row.sv .rn,.abil .ab-row.sv .rv{color:var(--amber-d);font-weight:600}
+  .pc{width:7px;height:7px;border-radius:50%;border:1.5px solid var(--amber);flex:none;display:inline-block;background:var(--amber)}
   .leg{font-size:.7rem;color:var(--ink-2);margin-top:10px;display:flex;gap:14px;flex-wrap:wrap}
   .leg span{display:flex;align-items:center;gap:5px}
-  @media(max-width:880px){.abilities{grid-template-columns:repeat(3,1fr)}}
-  @media(max-width:520px){.abilities{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:880px){.abils{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:520px){.abils{grid-template-columns:repeat(2,1fr)}}
 
   /* ---------- TABLES ---------- */
   table.tbl{width:100%;border-collapse:collapse;font-size:.82rem}
@@ -233,12 +233,10 @@
   dl.defs dd{font-size:.78rem;color:var(--ink-2);margin:2px 0 0}
 
   /* ---------- FEATURE LIST ---------- */
-  /* balanced multi-column card flow (masonry-like, avoids uneven-column gaps) */
   .cards-flow{column-gap:16px}
   @media(min-width:760px){.cards-flow{column-count:2}}
   .cards-flow>.card{break-inside:avoid;margin-bottom:16px;width:100%}
   .feats{display:flex;flex-direction:column;gap:13px}
-  /* balanced multi-column flow for level progression (avoids uneven-column gaps) */
   .feats-flow{column-gap:22px}
   @media(min-width:760px){.feats-flow{column-count:2}}
   .feats-flow .ft{break-inside:avoid;margin-bottom:13px;display:inline-block;width:100%}
@@ -249,17 +247,14 @@
   .ft.gm::before{background:var(--gold)}
   .ft h4{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:600;
     display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-  /* level tag — neutral, consistent */
   .ft h4 .lv{font-size:.6rem;font-weight:700;background:var(--ink);color:#fff;
     padding:1px 7px;border-radius:5px;letter-spacing:.03em;font-family:'Space Grotesk',sans-serif}
-  /* origin tag — colored by source */
   .ft h4 .or{font-size:.6rem;font-weight:600;padding:1px 8px;border-radius:999px;
     text-transform:uppercase;letter-spacing:.04em}
   .ft h4 .or.cls{background:var(--amber-soft);color:var(--amber-d)}
   .ft h4 .or.sub{background:var(--jade-soft);color:var(--jade-d)}
-  .ft h4 .or.gm{background:#F3E6C8;color:var(--gold-d)}
+  .ft h4 .or.gm{background:var(--amber-att);color:var(--gold-d)}
   .ft h4 .or.asi{background:var(--mist);color:var(--ink-2)}
-  /* legacy tag (used in Especie/Trasfondo cards) */
   .ft h4 .tag{font-size:.62rem;font-weight:600;background:var(--mist);color:var(--ink-2);
     padding:1px 8px;border-radius:999px}
   .ft p{font-size:.8rem;color:var(--ink-2);margin-top:3px}
@@ -297,54 +292,81 @@
   @media(max-width:760px){.res{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:440px){.res{grid-template-columns:1fr}}
 
-  /* ---------- EQUIPMENT ---------- */
-  .slots{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-  .slot{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);
+  /* ---------- EQUIPMENT (marcado canónico .eq-card, igual a Ki'yaj) ---------- */
+  .eq-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .eq-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);
     padding:10px 12px;position:relative;box-shadow:var(--shadow);
     display:flex;flex-direction:column}
-  .slot.locked{background:linear-gradient(180deg,#FBF3E4,#fff);border-color:#EBD7A8}
-  .slot .sl{font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);font-weight:600;display:block}
-  .slot .it{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.92rem;margin-top:2px;display:block;padding-right:72px}
-  .slot .bn{font-size:.72rem;color:var(--ink-2);margin-top:2px;display:block}
-  .slot .st{position:absolute;top:9px;right:10px;font-size:.58rem;font-weight:600;
+  .eq-card.locked{background:linear-gradient(180deg,var(--slot-locked-1),#fff);border-color:var(--slot-locked-2)}
+  .eq-card .eq-slot{font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);font-weight:600;display:block}
+  .eq-card .eq-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.92rem;margin-top:2px;display:block;padding-right:72px}
+  .eq-card .eq-desc{font-size:.72rem;color:var(--ink-2);margin-top:2px;display:block}
+  .eq-card .eq-badge{position:absolute;top:9px;right:10px;font-size:.58rem;font-weight:600;
     text-transform:uppercase;letter-spacing:.05em;padding:1px 7px;border-radius:999px;
     background:var(--jade-soft);color:var(--jade-d)}
-  .slot .st.att-yes{background:var(--amber-soft);color:var(--amber-d)}
-  .slot .st.att-no{background:var(--mist);color:var(--ink-2)}
-  .slot .st.att-q{background:#F3E6C8;color:var(--gold-d)}
-  .slot .st.prov{background:var(--mist);color:var(--ink-2)}
-  .slot .at{display:inline-block;margin-top:5px;font-size:.58rem;background:var(--gold);color:#4a3200;
+  .eq-card .eq-badge.att-yes{background:var(--amber-soft);color:var(--amber-d)}
+  .eq-card .eq-badge.att-no{background:var(--mist);color:var(--ink-2)}
+  .eq-card .eq-badge.att-q{background:var(--amber-att);color:var(--gold-d)}
+  .eq-card .eq-gm{display:inline-block;margin-top:5px;font-size:.58rem;background:var(--gold);color:var(--amber-ink);
     padding:0 7px;border-radius:999px;font-weight:600;align-self:flex-start}
 
-  .container{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);
-    margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
-  .container .ch{background:var(--mist);padding:8px 12px;display:flex;align-items:baseline;gap:8px;
+  /* ---------- CONTENEDORES (zonas por accesibilidad + líneas con icono SVG,
+     igual a Ki'yaj/Usoryn — reemplaza los chips con emoji de la versión anterior) ---------- */
+  .icn{width:19px;height:19px;flex:none;color:var(--amber-d)}
+  .icn svg{display:block;width:100%;height:100%}
+  .zone{margin-bottom:20px}
+  .zone:last-child{margin-bottom:0}
+  .zone-head{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+  .zone-dot{width:8px;height:8px;border-radius:2px;transform:rotate(45deg);background:var(--amber);flex:none}
+  .zone-name{font-family:'Space Grotesk',sans-serif;font-size:.74rem;font-weight:600;letter-spacing:.07em;
+    text-transform:uppercase;color:var(--amber-d)}
+  .zone-sub{font-size:.68rem;color:var(--ink-2);opacity:.75;font-style:italic;margin-left:auto}
+  .zone-grid{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:600px){.zone-grid{grid-template-columns:1fr 1fr}}
+
+  .container{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;
+    box-shadow:var(--shadow);height:100%}
+  .container .chd{background:var(--mist);padding:8px 13px;display:flex;align-items:center;gap:9px;
     border-bottom:1px solid var(--line)}
-  .container .ci{font-size:1rem}
   .container .cn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.86rem}
   .container .cd{font-size:.66rem;color:var(--ink-2);margin-left:auto;font-style:italic}
-  .container .cb{display:flex;flex-wrap:wrap;gap:6px;padding:11px 12px}
-  .container .ci-item{font-size:.74rem;background:var(--paper);border:1px solid var(--line);
-    border-radius:999px;padding:2px 10px}
-  .container .ci-item.coin{background:var(--amber);color:#fff;border-color:var(--amber-d);font-weight:600}
-  .container.stable{border-color:#CBE0D8}
-  .container.stable .ch{background:linear-gradient(180deg,#E4F1EC,#DAEAE3);border-bottom-color:#CBE0D8}
-  .container.stable .cn{color:var(--jade-d)}
+  .container .cb{padding:9px 13px}
+  .ci-line{display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px dotted var(--line)}
+  .ci-line:last-child{border-bottom:none}
+  .ci-line .cin{font-size:.82rem;flex:1}
+  .ci-line .ciq{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:600;color:var(--amber-d);white-space:nowrap}
+  .ci-line .ciq.none{opacity:.4;font-weight:400;font-family:'Inter',sans-serif}
+
+  .home-block{background:linear-gradient(180deg,var(--home-bg1),var(--home-bg2));border:1px solid var(--home-line);
+    border-radius:var(--r);padding:16px 18px;margin-top:16px}
+  .home-block .hh{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+  .home-block .icn{color:var(--gold-d)}
+  .home-block .ht{font-family:'Space Grotesk',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--gold-d)}
+  .home-block .hb{font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--gold-d);
+    background:#fff;border:1px solid var(--home-line);padding:1px 9px;border-radius:999px;margin-left:auto}
+  .home-block .ci-line{border-bottom-color:var(--home-dot)}
+  .home-block .ci-line .ciq{color:var(--gold-d)}
   .qty{opacity:.6;font-size:.92em}
 
-  .acbox{background:linear-gradient(180deg,var(--amber),var(--amber-d));border-radius:var(--r);
+  /* CA (marcado canónico .ca-big/.ca-panel, igual a Ki'yaj). El .acbox jade de Economía
+     (voto de pobreza) NO se toca — es un uso distinto de la misma idea visual, se deja aparte. */
+  .ca-big{background:linear-gradient(180deg,var(--amber),var(--amber-d));border-radius:var(--r);
     padding:18px;text-align:center;color:#fff;box-shadow:var(--shadow-lg)}
-  .acbox .n{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:3rem;line-height:.9}
-  .acbox .l{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-top:4px}
-  .bd-row{display:flex;justify-content:space-between;font-size:.78rem;padding:6px 2px;
+  .ca-big .ca-n{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:3rem;line-height:.9}
+  .ca-big .ca-l{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-top:4px}
+  .ca-panel{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;
+    box-shadow:var(--shadow)}
+  .ca-row{display:flex;justify-content:space-between;font-size:.78rem;padding:6px 2px;
     border-bottom:1px dotted var(--line)}
-  .bd-row .v{font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--amber-d)}
-  .bd-row.tot{border-bottom:none;border-top:1.5px solid var(--line-2);margin-top:2px;padding-top:8px;
+  .ca-row .v{font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--amber-d)}
+  .ca-row.total{border-bottom:none;border-top:1.5px solid var(--line-2);margin-top:2px;padding-top:8px;
     font-weight:700;font-size:.92rem}
-  .attune{display:flex;align-items:center;gap:7px;margin-top:14px;font-size:.72rem;color:var(--ink-2)}
-  .attune .lbl{font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:.62rem;color:var(--amber-d)}
-  .attune .s{width:13px;height:13px;border-radius:50%;border:2px solid var(--amber)}
-  .attune .s.on{background:var(--amber)}
+  .att-row{display:flex;align-items:center;gap:7px;margin-top:14px;font-size:.72rem;color:var(--ink-2)}
+  .att-row .lbl{font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:.62rem;color:var(--amber-d)}
+  .att-dots{display:flex;gap:5px}
+  .att-dots .ad{width:13px;height:13px;border-radius:50%;border:2px solid var(--amber)}
+  .att-dots .ad.on{background:var(--amber)}
 
   /* ---------- STORY ---------- */
   .story-ph{background:#fff;border:1.5px dashed var(--line-2);border-radius:var(--r);
@@ -357,6 +379,45 @@
   footer.foot{margin-top:50px;border-top:1px solid var(--line);padding:26px 0 40px;text-align:center}
   footer.foot .t{font-family:'Fraunces',serif;font-style:italic;color:var(--ink-2);font-size:.92rem}
   footer.foot .s{font-size:.72rem;color:var(--ink-2);opacity:.7;margin-top:6px}
+
+  /* ---------- SISTEMA DE SESIÓN (base común de la mesa, paleta ámbar) ---------- */
+  .statusbar{background:#fff;border-bottom:1px solid var(--line);border-top:1px dashed var(--line-2)}
+  .statusbar .wrap{display:flex;align-items:center;gap:13px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
+  .sb-lbl{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--amber-d)}
+  .sb-rest{font-family:'Space Grotesk',sans-serif;font-size:.72rem;font-weight:600;border-radius:999px;
+    padding:6px 14px;cursor:pointer;transition:.15s;-webkit-tap-highlight-color:transparent}
+  .sb-rest.lg{color:#fff;background:linear-gradient(180deg,var(--amber),var(--amber-d));border:1px solid var(--amber-d)}
+  .sb-rest.sm{color:var(--amber-d);background:var(--amber-soft);border:1px solid var(--amber)}
+  .sb-rest:hover{filter:brightness(1.06)}
+  .sb-insp{display:flex;align-items:center;gap:7px;font-size:.72rem;color:var(--ink-2)}
+  .sb-pip{width:18px;height:18px;border-radius:50%;border:2px solid var(--amber);background:#fff;
+    cursor:pointer;padding:0;transition:.12s;-webkit-tap-highlight-color:transparent}
+  .sb-pip.spent{background:var(--amber);border-color:var(--amber-d);box-shadow:inset 0 0 0 3px #fff}
+  .sb-save{font-size:.68rem;color:var(--ink-2);opacity:.7;margin-left:auto}
+  @media (prefers-reduced-motion:reduce){.sb-rest,.sb-pip{transition:none}}
+  @media(max-width:560px){.sb-save{display:none}}
+
+  .hd-row{display:flex;align-items:center;justify-content:space-between;padding:6px 0;
+    border-bottom:1px dotted var(--line);gap:10px;flex-wrap:wrap}
+  .hd-row:last-of-type{border-bottom:none}
+  .hd-lbl{font-size:.8rem;color:var(--ink-2)}
+  .hd-pips{display:inline-flex;gap:6px;flex-wrap:wrap;max-width:220px}
+  .hd-pip{width:19px;height:19px;border-radius:50%;border:2px solid var(--amber);background:#fff;
+    cursor:pointer;padding:0;transition:.12s}
+  .hd-pip.spent{background:var(--amber);border-color:var(--amber-d);box-shadow:inset 0 0 0 3px #fff}
+  .hd-note{font-size:.68rem;color:var(--ink-2);margin-top:9px;padding-top:8px;border-top:1px dotted var(--line)}
+  .hp-num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.3rem;color:var(--amber-d);line-height:1}
+  .hp-bar{height:8px;background:var(--mist);border-radius:4px;margin-top:10px;overflow:hidden}
+  .hp-bar i{display:block;height:100%;background:var(--amber)}
+
+  .pool{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .pool .pv{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.9rem;color:var(--amber-d);min-width:2.2ch;text-align:center}
+  .pool .pmax{font-size:.74rem;color:var(--ink-2)}
+  .pool button{min-width:30px;height:30px;border-radius:9px;border:1.5px solid var(--amber);background:#fff;
+    color:var(--amber-d);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;
+    cursor:pointer;padding:0 7px;transition:.12s}
+  .pool button:hover{background:var(--amber-soft)}
 
   @media print{
     .nav{display:none}.hero .embers{display:none}
@@ -430,6 +491,16 @@
   </div>
 </header>
 
+<div class="statusbar">
+  <div class="wrap">
+    <span class="sb-lbl">Estado de sesión</span>
+    <button type="button" id="btnLong" class="sb-rest lg">Descanso largo</button>
+    <button type="button" id="btnShort" class="sb-rest sm">Descanso corto</button>
+    <span class="sb-insp">Inspiración Heroica <button type="button" class="sb-pip" data-track="insp" data-max="1" aria-label="Inspiración Heroica"></button></span>
+    <span class="sb-save">Se guarda en este navegador</span>
+  </div>
+</div>
+
 <main class="wrap">
 
 <!-- ===================== COMBATE ===================== -->
@@ -440,55 +511,73 @@
     <span class="rule"></span>
   </div>
 
+  <div class="grid" style="grid-template-columns:1fr 1fr;margin-bottom:16px">
+    <div class="card">
+      <h3>Puntos de golpe</h3>
+      <div style="display:flex;align-items:baseline;gap:8px">
+        <span class="hp-num">149</span><span style="font-size:.8rem;color:var(--ink-2)">/ 149 máx.</span>
+      </div>
+      <div class="hp-bar"><i style="width:100%"></i></div>
+    </div>
+    <div class="card">
+      <h3>Dados de Golpe</h3>
+      <div class="hd-row">
+        <span class="hd-lbl">d8 <span style="opacity:.6">· Monje</span></span>
+        <div class="hd-pips" data-track="hd8" data-max="12"></div>
+      </div>
+      <p class="hd-note">Relleno = gastado. Al descanso largo recuperas la mitad del total: <b>6 de 12</b>.</p>
+    </div>
+  </div>
+
   <div class="card" style="margin-bottom:16px">
     <h3>Características y salvaciones</h3>
-    <div class="abilities">
+    <div class="abils">
       <div class="abil">
-        <div class="top"><div class="nm">Fuerza</div><div class="mod">+0</div><span class="sc">11</span></div>
-        <ul>
-          <li class="sv"><span class="n">Salvación ●</span><span class="x">+4</span></li>
-          <li><span class="n"><span class="pip p"></span>Atletismo</span><span class="x">+4</span></li>
-        </ul>
+        <div class="ab-top"><div class="name">Fuerza</div><div class="mod">+0</div><span class="score">11</span></div>
+        <div class="ab-list">
+          <div class="ab-row sv"><span class="rn">Salvación ●</span><span class="rv">+4</span></div>
+          <div class="ab-row"><span class="rn"><span class="pc"></span>Atletismo</span><span class="rv">+4</span></div>
+        </div>
       </div>
       <div class="abil">
-        <div class="top"><div class="nm">Destreza</div><div class="mod" style="color:var(--amber-d)">+5</div><span class="sc">20</span></div>
-        <ul>
-          <li class="sv"><span class="n">Salvación ●</span><span class="x">+9</span></li>
-          <li><span class="n"><span class="pip p"></span>Acrobacias</span><span class="x">+9</span></li>
-          <li><span class="n"><span class="pip p"></span>Sigilo</span><span class="x">+9</span></li>
-          <li><span class="n"><span class="pip p"></span>U. de Ladrón</span><span class="x">+9</span></li>
-        </ul>
+        <div class="ab-top"><div class="name">Destreza</div><div class="mod" style="color:var(--amber-d)">+5</div><span class="score">20</span></div>
+        <div class="ab-list">
+          <div class="ab-row sv"><span class="rn">Salvación ●</span><span class="rv">+9</span></div>
+          <div class="ab-row"><span class="rn"><span class="pc"></span>Acrobacias</span><span class="rv">+9</span></div>
+          <div class="ab-row"><span class="rn"><span class="pc"></span>Sigilo</span><span class="rv">+9</span></div>
+          <div class="ab-row"><span class="rn"><span class="pc"></span>U. de Ladrón</span><span class="rv">+9</span></div>
+        </div>
       </div>
       <div class="abil">
-        <div class="top"><div class="nm">Constitución</div><div class="mod" style="color:var(--amber-d)">+4</div><span class="sc">19</span></div>
-        <ul>
-          <li class="sv"><span class="n">Salvación</span><span class="x">+4</span></li>
-          <li><span class="n" style="font-size:.68rem;opacity:.8">Amuleto de Salud</span><span class="x"></span></li>
-        </ul>
+        <div class="ab-top"><div class="name">Constitución</div><div class="mod" style="color:var(--amber-d)">+4</div><span class="score">19</span></div>
+        <div class="ab-list">
+          <div class="ab-row"><span class="rn">Salvación</span><span class="rv">+4</span></div>
+          <div class="ab-row"><span class="rn" style="font-size:.68rem;opacity:.8">Amuleto de Salud</span><span class="rv"></span></div>
+        </div>
       </div>
       <div class="abil">
-        <div class="top"><div class="nm">Inteligencia</div><div class="mod">+1</div><span class="sc">13</span></div>
-        <ul>
-          <li class="sv"><span class="n">Salvación</span><span class="x">+1</span></li>
-        </ul>
+        <div class="ab-top"><div class="name">Inteligencia</div><div class="mod">+1</div><span class="score">13</span></div>
+        <div class="ab-list">
+          <div class="ab-row"><span class="rn">Salvación</span><span class="rv">+1</span></div>
+        </div>
       </div>
       <div class="abil">
-        <div class="top"><div class="nm">Sabiduría</div><div class="mod" style="color:var(--amber-d)">+5</div><span class="sc">20</span></div>
-        <ul>
-          <li class="sv"><span class="n">Salvación</span><span class="x">+5</span></li>
-          <li><span class="n"><span class="pip p"></span>Perspicacia</span><span class="x">+9</span></li>
-          <li><span class="n"><span class="pip p"></span>Percepción</span><span class="x">+9</span></li>
-        </ul>
+        <div class="ab-top"><div class="name">Sabiduría</div><div class="mod" style="color:var(--amber-d)">+5</div><span class="score">20</span></div>
+        <div class="ab-list">
+          <div class="ab-row"><span class="rn">Salvación</span><span class="rv">+5</span></div>
+          <div class="ab-row"><span class="rn"><span class="pc"></span>Perspicacia</span><span class="rv">+9</span></div>
+          <div class="ab-row"><span class="rn"><span class="pc"></span>Percepción</span><span class="rv">+9</span></div>
+        </div>
       </div>
       <div class="abil">
-        <div class="top"><div class="nm">Carisma</div><div class="mod" style="color:var(--amber-d)">+2</div><span class="sc">14</span></div>
-        <ul>
-          <li class="sv"><span class="n">Salvación</span><span class="x">+2</span></li>
-        </ul>
+        <div class="ab-top"><div class="name">Carisma</div><div class="mod" style="color:var(--amber-d)">+2</div><span class="score">14</span></div>
+        <div class="ab-list">
+          <div class="ab-row"><span class="rn">Salvación</span><span class="rv">+2</span></div>
+        </div>
       </div>
     </div>
     <div class="leg">
-      <span><span class="pip p"></span> Competencia</span>
+      <span><span class="pc"></span> Competencia</span>
       <span>● Salvación competente (Fue · Des)</span>
       <span>A nivel 14: competencia en todas las salvaciones (Superviviente Disciplinado).</span>
     </div>
@@ -532,7 +621,12 @@
             <tr><td><b>Cargas de Sangre</b></td><td>+1 al bono del arma por carga (máx +4)</td><td class="c">3 base</td></tr>
           </tbody>
         </table>
-        <p class="note"><strong>Cargar Sangre:</strong> acción gratuita, drena 10 PG → +1 carga (se recuperan tras 1 hora).</p>
+        <p class="note"><strong>Cargar Sangre:</strong> acción gratuita, drena 10 PG → +1 carga (se recuperan tras 1 hora, misma regla que un descanso corto).</p>
+        <div class="hd-row" style="margin-top:10px;padding-top:10px;border-top:1px solid var(--line)">
+          <span class="hd-lbl">Cargas disponibles <span style="font-weight:400;opacity:.6">· sesión</span></span>
+          <div class="pool" data-track="cargas" data-max="3" data-pool="1"></div>
+        </div>
+        <p class="hd-note" style="margin-top:6px">Máximo base 3. La 4ª carga temporal (vía Cargar Sangre) no la captura este contador — anótala aparte si la usas.</p>
       </div>
 
       <div class="card">
@@ -679,15 +773,25 @@
     </div>
 
     <div class="card">
-      <h3>Recursos por descanso</h3>
-      <div class="res">
-        <div class="rc"><div class="rv">12</div><div class="rn">Puntos de Concentración</div><div class="rd">Descanso corto/largo</div></div>
-        <div class="rc"><div class="rv">5</div><div class="rn">Plenitud de Cuerpo</div><div class="rd">Descanso largo</div></div>
-        <div class="rc"><div class="rv">4</div><div class="rn">Puntos de Suerte</div><div class="rd">Descanso largo</div></div>
-        <div class="rc"><div class="rv">1</div><div class="rn">Metabolismo Asombroso</div><div class="rd">Al tirar iniciativa</div></div>
-        <div class="rc"><div class="rv">1</div><div class="rn">Inspiración Heroica</div><div class="rd">Cada descanso largo</div></div>
-        <div class="rc"><div class="rv">×1</div><div class="rn">Poción Superior</div><div class="rd">Consumible · 8d4+8</div></div>
+      <h3>Recursos de sesión <span style="font-weight:400;text-transform:none;letter-spacing:0;opacity:.6;font-family:Inter;margin-left:auto">Se guarda en este navegador</span></h3>
+      <div class="hd-row">
+        <span class="hd-lbl">Puntos de Concentración (Ki)</span>
+        <div class="hd-pips" data-track="pc" data-max="12"></div>
       </div>
+      <div class="hd-row">
+        <span class="hd-lbl">Plenitud de Cuerpo <span style="opacity:.6">· Mano Abierta</span></span>
+        <div class="hd-pips" data-track="pdc" data-max="5"></div>
+      </div>
+      <div class="hd-row">
+        <span class="hd-lbl">Puntos de Suerte <span style="opacity:.6">· Afortunado</span></span>
+        <div class="hd-pips" data-track="suerte" data-max="4"></div>
+      </div>
+      <div class="hd-row">
+        <span class="hd-lbl">Metabolismo Asombroso</span>
+        <div class="hd-pips" data-track="meta" data-max="1"></div>
+      </div>
+      <p class="hd-note">Relleno = gastado. Ki repone en <b>ambos</b> descansos (único caso en la mesa). El resto solo en descanso largo. Metabolismo se gasta al tirar iniciativa — márcalo tú mismo en ese momento. Inspiración Heroica vive en la franja de estado (arriba del todo) porque Ingenioso la otorga automáticamente cada descanso largo, a diferencia de otros personajes.</p>
+      <div class="note" style="margin-top:10px;padding-top:8px;border-top:1px dotted var(--line)"><strong>Poción Superior de Curación</strong> ×1 — consumible, va en Equipo, no en este tracker.</div>
     </div>
   </div>
 </section>
@@ -754,30 +858,31 @@
     <div style="display:flex;flex-direction:column;gap:16px">
       <div class="card">
         <h3>Objetos equipados</h3>
-        <div class="slots" id="gearSlots"></div>
+        <div class="eq-cards" id="gearSlots"></div>
         <div class="leg" style="margin-top:12px">
-          <span><span class="st att-yes" style="position:static">Sí</span> Sintoniza</span>
-          <span><span class="st att-no" style="position:static">No</span> No requiere</span>
-          <span><span class="st att-q" style="position:static">?</span> Custom · por confirmar con el GM</span>
+          <span><span class="eq-badge att-yes" style="position:static">Sí</span> Sintoniza</span>
+          <span><span class="eq-badge att-no" style="position:static">No</span> No requiere</span>
+          <span><span class="eq-badge att-q" style="position:static">?</span> Custom · por confirmar con el GM</span>
         </div>
       </div>
       <div class="card">
         <h3>Contenedores</h3>
-        <div id="containers"></div>
+        <div id="zones"></div>
       </div>
+      <div id="homeChest"></div>
     </div>
 
     <div style="display:flex;flex-direction:column;gap:16px">
-      <div class="acbox">
-        <div class="n" id="acNum">22</div>
-        <div class="l">Clase de Armadura</div>
+      <div class="ca-big">
+        <div class="ca-n" id="acNum">22</div>
+        <div class="ca-l">Clase de Armadura</div>
       </div>
-      <div class="card">
+      <div class="ca-panel">
         <h3>Desglose de CA</h3>
         <div id="breakdown"></div>
-        <div class="attune">
+        <div class="att-row">
           <span class="lbl">Sintonización</span>
-          <span class="s" id="at0"></span><span class="s" id="at1"></span><span class="s" id="at2"></span>
+          <span class="att-dots"><span class="ad" id="at0"></span><span class="ad" id="at1"></span><span class="ad" id="at2"></span></span>
           <span id="atLabel" style="margin-left:auto;font-weight:600">3/3</span>
         </div>
       </div>
@@ -866,9 +971,9 @@
     </div>
 
     <div style="display:flex;flex-direction:column;gap:16px">
-      <div class="acbox" style="background:linear-gradient(180deg,var(--jade),var(--jade-d))">
-        <div class="n" style="font-size:2.1rem">20%</div>
-        <div class="l">Voto de Pobreza</div>
+      <div class="ca-big" style="background:linear-gradient(180deg,var(--jade),var(--jade-d))">
+        <div class="ca-n" style="font-size:2.1rem">20%</div>
+        <div class="ca-l">Voto de Pobreza</div>
       </div>
       <div class="card">
         <h3>El Comedor Comunitario</h3>
@@ -913,45 +1018,88 @@
     { slot:'Anillo', name:'Anillo de Acción Libre', bn:'Anti-control · ignora terreno difícil', attune:true, att:'yes' },
     { slot:'Arma', name:'Bastón Ritual de Sangre +1', bn:'A la espalda · Balas de Sangre', custom:true, att:'?' },
   ];
-  const containers = [
-    { icon:'🎒', name:'Equipaje (en Ruperto)', desc:'Suministros de campamento',
-      items:['Raciones <span class="qty">×días</span>','Cuerda','Odre de agua','Linterna','Pedernal y yesca','Flauta'] },
-    { icon:'👜', name:'Cinturón y bolsas', desc:'Acceso rápido',
-      items:['Poción Superior de Curación <span class="qty">×1</span>','Utensilios de ladrón','<span class="ci-item coin">Monedas</span>'] },
+  const ICONS = {
+    bag:    '<path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
+    pouch:  '<rect x="4" y="9" width="16" height="11" rx="2"/><path d="M8 9V7a4 4 0 0 1 8 0v2"/>',
+    coinbag:'<ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v10c0 1.7 3.1 3 7 3s7-1.3 7-3V7"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/>',
+    chest:  '<rect x="4" y="10" width="16" height="9" rx="1.5"/><path d="M4 10l1.5-4h13L20 10"/><path d="M10 14h4"/>',
+    food:   '<path d="M6 20V9l6-5 6 5v11Z"/><path d="M10 20v-5h4v5"/>',
+    rope:   '<path d="M5 6c3 0 3 4 6 4s3-4 6-4"/><path d="M5 12c3 0 3 4 6 4s3-4 6-4"/><path d="M5 18c3 0 3 3 6 3"/>',
+    water:  '<path d="M12 3c3.5 4.5 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 2.5-6.5 6-11Z"/>',
+    lantern:'<path d="M8 4h8l-1 4 3 3v9H6v-9l3-3Z"/><circle cx="12" cy="15" r="2.5"/>',
+    spark:  '<path d="M4 15l7-7 3 3-7 7Z"/><path d="M15 5l2 2M18 8l2 2M16 12l3 3"/>',
+    music:  '<circle cx="7" cy="17" r="3"/><circle cx="16" cy="15" r="3"/><path d="M10 17V5l9-2v12"/>',
+    vial:   '<path d="M10 3h4v3l3 4v11H7V10l3-4Z"/><path d="M10 6h4"/>',
+    tool:   '<circle cx="7" cy="17" r="3"/><path d="M9 15l9-9 2 2-9 9"/><path d="M16 4l2 2"/>',
+    coin:   '<circle cx="12" cy="12" r="8"/><path d="M12 8v8M9.5 10h5M9.5 14h5"/>',
+  };
+  function icon(key){ return `<span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ICONS[key]||ICONS.bag}</svg></span>`; }
+
+  const zones = [
+    { name:'A mano', sub:'sin gastar acción', containers:[
+      { icon:'pouch', name:'Cinturón y bolsas', desc:'acceso rápido', items:[
+        {n:'Poción Superior de Curación', q:'×1', ic:'vial'},
+        {n:'Utensilios de ladrón', ic:'tool'},
+        {n:'Monedas', q:'', ic:'coin', coin:true},
+      ]},
+    ]},
   ];
+  const homeChest = { name:'Equipaje en Ruperto', desc:'suministros de campamento, no en el cuerpo de Darvin', items:[
+    {n:'Raciones', q:'×días', ic:'food'},
+    {n:'Cuerda', ic:'rope'},
+    {n:'Odre de agua', ic:'water'},
+    {n:'Linterna', ic:'lantern'},
+    {n:'Pedernal y yesca', ic:'spark'},
+    {n:'Flauta', ic:'music'},
+  ]};
   function renderGear(){
     const c=document.getElementById('gearSlots');c.innerHTML='';
     const att={yes:['Sintoniza · Sí','att-yes'], no:['Sintoniza · No','att-no'], '?':['Sintoniza · ?','att-q']};
     gear.forEach(it=>{
       const d=document.createElement('div');
-      d.className='slot';
+      d.className='eq-card';
       const a=att[it.att]||att['no'];
-      const badge=`<span class="st ${a[1]}">${a[0]}</span>`;
-      d.innerHTML=`<span class="sl">${it.slot}</span><span class="it">${it.name}</span><span class="bn">${it.bn}</span>${badge}${it.custom?'<span class="at">Custom · GM</span>':''}`;
+      const badge=`<span class="eq-badge ${a[1]}">${a[0]}</span>`;
+      d.innerHTML=`<span class="eq-slot">${it.slot}</span><span class="eq-name">${it.name}</span><span class="eq-desc">${it.bn}</span>${badge}${it.custom?'<span class="eq-gm">Custom · GM</span>':''}`;
       c.appendChild(d);
     });
   }
-  function renderContainers(){
-    const c=document.getElementById('containers');c.innerHTML='';
-    containers.forEach(ct=>{
-      const box=document.createElement('div');box.className='container'+(ct.stable?' stable':'');
-      const items=ct.items.map(it=>it.includes('ci-item')?it:`<span class="ci-item">${it}</span>`).join('');
-      box.innerHTML=`<div class="ch"><span class="ci">${ct.icon}</span><span class="cn">${ct.name}</span><span class="cd">${ct.desc}</span></div><div class="cb">${items}</div>`;
-      c.appendChild(box);
-    });
+  function containerHTML(ct){
+    const body = ct.items.map(it=>
+      `<div class="ci-line">${icon(it.ic)}<span class="cin">${it.n}</span><span class="ciq${it.q?'':' none'}">${it.q||'—'}</span></div>`
+    ).join('');
+    return `<div class="container"><div class="chd">${icon(ct.icon)}<span class="cn">${ct.name}</span><span class="cd">${ct.desc}</span></div><div class="cb">${body}</div></div>`;
+  }
+  function renderZones(){
+    const el = document.getElementById('zones');
+    el.innerHTML = zones.map(z => `
+      <div class="zone">
+        <div class="zone-head"><span class="zone-dot"></span><span class="zone-name">${z.name}</span><span class="zone-sub">${z.sub}</span></div>
+        <div class="zone-grid">${z.containers.map(containerHTML).join('')}</div>
+      </div>`).join('');
+  }
+  function renderHomeChest(){
+    const el = document.getElementById('homeChest');
+    const body = homeChest.items.map(it=>
+      `<div class="ci-line">${icon(it.ic)}<span class="cin">${it.n}</span><span class="ciq${it.q?'':' none'}">${it.q||'—'}</span></div>`
+    ).join('');
+    el.innerHTML = `<div class="home-block">
+      <div class="hh">${icon('chest')}<span class="ht">${homeChest.name}</span><span class="hb">No lo carga</span></div>
+      <div class="ci-line-wrap">${body}</div>
+    </div>`;
   }
   function recalc(){
     let ac=10+DEX+WIS, rows=[{l:'Base',v:10},{l:'Destreza',v:'+'+DEX},{l:'Sabiduría',v:'+'+WIS}];
     gear.forEach(g=>{if(!g.ac)return;rows.push({l:g.name,v:'+'+g.ac});ac+=g.ac;});
     document.getElementById('acNum').textContent=ac;
     const bd=document.getElementById('breakdown');bd.innerHTML='';
-    rows.forEach(r=>{const d=document.createElement('div');d.className='bd-row';d.innerHTML=`<span>${r.l}</span><span class="v">${r.v}</span>`;bd.appendChild(d);});
-    const t=document.createElement('div');t.className='bd-row tot';t.innerHTML=`<span>CA Total</span><span class="v">${ac}</span>`;bd.appendChild(t);
+    rows.forEach(r=>{const d=document.createElement('div');d.className='ca-row';d.innerHTML=`<span>${r.l}</span><span class="v">${r.v}</span>`;bd.appendChild(d);});
+    const t=document.createElement('div');t.className='ca-row total';t.innerHTML=`<span>CA Total</span><span class="v">${ac}</span>`;bd.appendChild(t);
     const attuned=gear.filter(g=>g.attune).length;
     for(let k=0;k<3;k++)document.getElementById('at'+k).classList.toggle('on',k<attuned);
     document.getElementById('atLabel').textContent=attuned+'/3';
   }
-  renderGear();renderContainers();recalc();
+  renderGear();renderZones();renderHomeChest();recalc();
 
   // rising embers
   (function(){
@@ -983,6 +1131,101 @@
     }});
   },{rootMargin:'-45% 0px -50% 0px'});
   secs.forEach(s=>obs.observe(s));
+
+  /* ========== TRACKER DE SESIÓN (localStorage, este navegador) ========== */
+  (function(){
+    const KEY = 'darvin-tracker-v1';
+    const groups = [...document.querySelectorAll('[data-track]')];
+    /* CONFIG DE DARVIN — verificada contra el Manual (Monje, PHB 2024) + rasgos propios */
+    const RESTORE = {
+      pc:      { long:'all', short:'all' },   // Puntos de Concentración: único recurso que repone en AMBOS descansos
+      pdc:     { long:'all', short:'none' },  // Plenitud de Cuerpo (subclase)
+      suerte:  { long:'all', short:'none' },  // Puntos de Suerte (Afortunado)
+      meta:    { long:'all', short:'none' },  // Metabolismo Asombroso
+      insp:    { long:'all', short:'none' },  // Inspiración Heroica — Ingenioso la otorga cada descanso largo (caso único en la mesa)
+      cargas:  { long:'all', short:'all' },   // Cargas de Sangre: se recuperan "tras 1 hora" ≈ descanso corto
+    };
+    const HD_POOL = ['hd8'];
+
+    let state = {};
+    try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ state = {}; }
+    function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} }
+
+    function build(){
+      groups.forEach(g=>{
+        const id = g.dataset.track, max = +g.dataset.max;
+        if(typeof state[id] !== 'number') state[id] = 0;
+        if(g.dataset.pool){
+          const spent = state[id]||0;
+          const left = Math.max(0, max - spent);
+          g.innerHTML = '';
+          const mk = (txt,d)=>{
+            const b = document.createElement('button'); b.type='button'; b.textContent=txt;
+            b.addEventListener('click', ()=>{
+              state[id] = Math.min(max, Math.max(0, (state[id]||0) + d));
+              save(); build();
+            });
+            return b;
+          };
+          if(max >= 10) g.appendChild(mk('−5', 5));
+          g.appendChild(mk('−', 1));
+          const v = document.createElement('span'); v.className='pv'; v.textContent = left; g.appendChild(v);
+          const m = document.createElement('span'); m.className='pmax'; m.textContent = '/ ' + max; g.appendChild(m);
+          g.appendChild(mk('+', -1));
+          if(max >= 10) g.appendChild(mk('+5', -5));
+          return;
+        }
+        if(g.classList.contains('sb-pip')){
+          g.classList.toggle('spent', state[id] > 0);
+          if(!g.dataset.bound){
+            g.dataset.bound = '1';
+            g.addEventListener('click', ()=>{ state[id] = state[id] > 0 ? 0 : 1; save(); build(); });
+          }
+          return;
+        }
+        g.innerHTML = '';
+        for(let i=0;i<max;i++){
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'hd-pip' + (i < state[id] ? ' spent' : '');
+          b.addEventListener('click', ()=>{
+            const spent = state[id];
+            state[id] = (i + 1 === spent) ? i : i + 1;
+            save(); build();
+          });
+          g.appendChild(b);
+        }
+      });
+    }
+
+    function applyRest(kind){
+      for(const id in RESTORE){
+        const rule = RESTORE[id][kind];
+        if(rule === 'all') state[id] = 0;
+        else if(typeof rule === 'number') state[id] = Math.max(0, (state[id]||0) - rule);
+      }
+      if(kind === 'long' && HD_POOL.length){
+        const total = HD_POOL.reduce((s,id)=>{
+          const g = groups.find(g=>g.dataset.track===id);
+          return s + (g ? +g.dataset.max : 0);
+        },0);
+        let toRecover = Math.floor(total/2);
+        for(const id of HD_POOL){
+          const spent = state[id]||0;
+          const give = Math.min(spent, toRecover);
+          state[id] = spent - give; toRecover -= give;
+        }
+      }
+      save(); build();
+    }
+
+    const btnLong = document.getElementById('btnLong');
+    if(btnLong) btnLong.addEventListener('click', ()=>applyRest('long'));
+    const btnShort = document.getElementById('btnShort');
+    if(btnShort) btnShort.addEventListener('click', ()=>applyRest('short'));
+
+    build();
+  })();
 </script>
 
 </body>
