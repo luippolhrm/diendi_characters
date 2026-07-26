@@ -581,7 +581,7 @@
         <span class="hd-lbl">d10 <span style="opacity:.6">· Explorador</span></span>
         <div class="hd-pips" data-track="hd10" data-max="5"></div>
       </div>
-      <p class="hd-note">Relleno = gastado. Al descanso largo recuperas la mitad del total: <b>3 de 6</b>. Toca una casilla para gastar/recuperar; el tipo que recuperas lo eliges tú.</p>
+      <p class="hd-note">Relleno = gastado. Al descanso largo recuperas <b>todos</b> los dados de golpe (regla 2024 — cambió respecto a 2014, que era la mitad). Toca una casilla para gastar/recuperar.</p>
     </div>
   </div>
 
@@ -1376,20 +1376,11 @@
       });
     }
 
-    // DESCANSO LARGO: repone espacios y Marca por completo; dados de golpe a la mitad del total (3 de 6)
+    // DESCANSO LARGO: repone espacios y Marca por completo; dados de golpe se reponen COMPLETOS (regla 2024)
     const btnLong = document.getElementById('btnLong');
     if(btnLong) btnLong.addEventListener('click', ()=>{
       for(const id in longRestFull) if(longRestFull[id]) state[id] = 0;
-      // Dados: recuperar hasta la mitad del TOTAL (6/2 = 3). Prioriza recuperar d10 (los más numerosos); el resto lo ajustas a mano.
-      const total = 6, recover = Math.floor(total/2); // 3
-      let toRecover = recover;
-      // recuperar primero d10, luego d8
-      for(const id of ['hd10','hd8']){
-        const spent = state[id] || 0;
-        const give = Math.min(spent, toRecover);
-        state[id] = spent - give;
-        toRecover -= give;
-      }
+      for(const id of ['hd10','hd8']) state[id] = 0;
       save(); build();
     });
 

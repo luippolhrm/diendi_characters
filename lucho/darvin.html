@@ -525,7 +525,7 @@
         <span class="hd-lbl">d8 <span style="opacity:.6">· Monje</span></span>
         <div class="hd-pips" data-track="hd8" data-max="12"></div>
       </div>
-      <p class="hd-note">Relleno = gastado. Al descanso largo recuperas la mitad del total: <b>6 de 12</b>.</p>
+      <p class="hd-note">Relleno = gastado. Al descanso largo recuperas <b>todos</b> los dados de golpe (regla 2024 — cambió respecto a 2014, que era la mitad).</p>
     </div>
   </div>
 
@@ -1204,17 +1204,8 @@
         if(rule === 'all') state[id] = 0;
         else if(typeof rule === 'number') state[id] = Math.max(0, (state[id]||0) - rule);
       }
-      if(kind === 'long' && HD_POOL.length){
-        const total = HD_POOL.reduce((s,id)=>{
-          const g = groups.find(g=>g.dataset.track===id);
-          return s + (g ? +g.dataset.max : 0);
-        },0);
-        let toRecover = Math.floor(total/2);
-        for(const id of HD_POOL){
-          const spent = state[id]||0;
-          const give = Math.min(spent, toRecover);
-          state[id] = spent - give; toRecover -= give;
-        }
+      if(kind === 'long'){
+        for(const id of HD_POOL) state[id] = 0;
       }
       save(); build();
     }

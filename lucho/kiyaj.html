@@ -481,7 +481,7 @@
         <span class="hd-lbl">d10 <span style="opacity:.6">· Paladín</span></span>
         <div class="hd-pips" data-track="hd10" data-max="4"></div>
       </div>
-      <p class="hd-note">Relleno = gastado. Al descanso largo recuperas la mitad del total: <b>2 de 4</b>.</p>
+      <p class="hd-note">Relleno = gastado. Al descanso largo recuperas <b>todos</b> los dados de golpe (regla 2024 — cambió respecto a 2014, que era la mitad).</p>
     </div>
     <div class="card">
       <h3><span class="dot"></span>Imposición de Manos</h3>
@@ -1077,17 +1077,8 @@
         if(rule === 'all') state[id] = 0;
         else if(typeof rule === 'number') state[id] = Math.max(0, (state[id]||0) - rule);
       }
-      if(kind === 'long' && HD_POOL.length){
-        const total = HD_POOL.reduce((s,id)=>{
-          const g = groups.find(g=>g.dataset.track===id);
-          return s + (g ? +g.dataset.max : 0);
-        },0);
-        let toRecover = Math.floor(total/2);
-        for(const id of HD_POOL){
-          const spent = state[id]||0;
-          const give = Math.min(spent, toRecover);
-          state[id] = spent - give; toRecover -= give;
-        }
+      if(kind === 'long'){
+        for(const id of HD_POOL) state[id] = 0;
       }
       save(); build();
     }
