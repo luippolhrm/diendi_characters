@@ -20,6 +20,9 @@
     --shadow-lg:0 2px 8px rgba(23,20,29,.06),0 12px 36px rgba(23,20,29,.10);
     --r:14px; --r-sm:9px;
     --nav-h:54px;
+    --home-bg1:#FBF6E8; --home-bg2:#F7EFD8; --home-line:#EAD9A8;
+    --home-dot:#F0E5CC; --home-ink:#8A6D2E;
+    --spark-hi:#CDB9F0; --silver-hi:#F2F4FA; --coin-ink:#3A2C05;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 14px)}
@@ -52,11 +55,11 @@
   /* Chispas psiónicas: cristales violeta-plata que ascienden */
   .psionics{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
   .spark{position:absolute;bottom:-14px;
-    background:linear-gradient(135deg,#CDB9F0,var(--violet));
+    background:linear-gradient(135deg,var(--spark-hi),var(--violet));
     box-shadow:0 0 9px 2px rgba(108,75,168,.5),0 0 3px 1px rgba(210,214,228,.8);
     transform:rotate(45deg);border-radius:2px;
     animation:ascend linear infinite;opacity:0}
-  .spark.silver{background:linear-gradient(135deg,#F2F4FA,var(--silver));
+  .spark.silver{background:linear-gradient(135deg,var(--silver-hi),var(--silver));
     box-shadow:0 0 8px 2px rgba(174,180,196,.55)}
   @keyframes ascend{
     0%{transform:translateY(0) translateX(0) rotate(45deg) scale(.5);opacity:0}
@@ -273,7 +276,7 @@
   .cont .ic{font-size:12px;color:var(--ink-2);background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:5px 12px}
   .cont .ic b{color:var(--ink);font-weight:600}
   .cont .ic small{color:var(--ink-3)}
-  .cont .ic.coin{background:var(--gold);color:#3a2c05;border-color:var(--gold-d);font-weight:600}
+  .cont .ic.coin{background:var(--gold);color:var(--coin-ink);border-color:var(--gold-d);font-weight:600}
 
   /* Historia */
   .lore{max-width:780px;margin:0 auto}
@@ -308,6 +311,75 @@
     .g3{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:560px){.tiles{grid-template-columns:repeat(2,1fr)} .abils{grid-template-columns:repeat(2,1fr)}
     .g2,.g3{grid-template-columns:1fr}}
+
+  /* ========== SISTEMA DE SESIÓN (base común de la mesa, paleta violeta) ========== */
+  .statusbar{background:#fff;border-bottom:1px solid var(--line);border-top:1px dashed var(--line-2)}
+  .statusbar .wrap{display:flex;align-items:center;gap:13px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
+  .sb-lbl{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--violet-d)}
+  .sb-rest{font-family:'Space Grotesk',sans-serif;font-size:.72rem;font-weight:600;border-radius:999px;padding:6px 14px;cursor:pointer;transition:.15s;-webkit-tap-highlight-color:transparent}
+  .sb-rest.lg{color:#fff;background:linear-gradient(180deg,var(--violet),var(--violet-d));border:1px solid var(--violet-d)}
+  .sb-rest.sm{color:var(--violet-d);background:var(--violet-soft);border:1px solid var(--violet)}
+  .sb-rest:hover{filter:brightness(1.06)}
+  .sb-rest:active{transform:translateY(1px)}
+  .sb-insp{display:flex;align-items:center;gap:7px;font-size:.72rem;color:var(--ink-2)}
+  .sb-pip{width:18px;height:18px;border-radius:50%;border:2px solid var(--violet);background:#fff;cursor:pointer;padding:0;transition:.12s;-webkit-tap-highlight-color:transparent}
+  .sb-pip:hover{border-color:var(--violet-d);transform:scale(1.08)}
+  .sb-pip.spent{background:var(--violet);border-color:var(--violet-d);box-shadow:inset 0 0 0 3px #fff}
+  .sb-save{font-size:.68rem;color:var(--ink-2);opacity:.7;margin-left:auto}
+  @media (prefers-reduced-motion:reduce){.sb-rest,.sb-pip{transition:none}.sb-pip:hover{transform:none}}
+  @media(max-width:560px){.sb-save{display:none}}
+
+  .hd-row{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px dotted var(--line);gap:10px;flex-wrap:wrap}
+  .hd-row:last-of-type{border-bottom:none}
+  .hd-lbl{font-size:.8rem;color:var(--ink-2)}
+  .hd-pips{display:inline-flex;gap:6px}
+  .hd-pip{width:19px;height:19px;border-radius:50%;border:2px solid var(--violet);background:#fff;cursor:pointer;padding:0;transition:.12s;-webkit-tap-highlight-color:transparent}
+  .hd-pip:hover{border-color:var(--violet-d);transform:scale(1.08)}
+  .hd-pip.spent{background:var(--violet);border-color:var(--violet-d);box-shadow:inset 0 0 0 3px #fff}
+  .hd-note{font-size:.68rem;color:var(--ink-2);margin-top:9px;padding-top:8px;border-top:1px dotted var(--line)}
+  .hp-num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.3rem;color:var(--violet-d);line-height:1}
+  .hp-bar{height:8px;background:var(--mist);border-radius:4px;margin-top:10px;overflow:hidden}
+  .hp-bar i{display:block;height:100%;background:var(--violet)}
+  @media (prefers-reduced-motion:reduce){.hd-pip{transition:none}.hd-pip:hover{transform:none}}
+
+  .pool{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .pool .pv{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.9rem;color:var(--violet-d);min-width:2.2ch;text-align:center}
+  .pool .pmax{font-size:.74rem;color:var(--ink-2)}
+  .pool button{min-width:30px;height:30px;border-radius:9px;border:1.5px solid var(--violet);background:#fff;color:var(--violet-d);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;padding:0 7px;transition:.12s;-webkit-tap-highlight-color:transparent}
+  .pool button:hover{background:var(--violet-soft)}
+  @media (prefers-reduced-motion:reduce){.pool button{transition:none}}
+
+  .icn{width:19px;height:19px;flex:none;color:var(--violet-d)}
+  .icn svg{display:block;width:100%;height:100%}
+  .zone{margin-bottom:20px}
+  .zone:last-child{margin-bottom:0}
+  .zone-head{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+  .zone-dot{width:8px;height:8px;border-radius:2px;transform:rotate(45deg);background:var(--violet);flex:none}
+  .zone-name{font-family:'Space Grotesk',sans-serif;font-size:.74rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--violet-d)}
+  .zone-sub{font-size:.68rem;color:var(--ink-2);opacity:.75;font-style:italic;margin-left:auto}
+  .zone-grid{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:760px){.zone-grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:1100px){.zone-grid{grid-template-columns:repeat(3,1fr)}}
+  .container{border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;height:100%}
+  .container .chd{background:var(--mist);padding:8px 13px;display:flex;align-items:center;gap:9px;border-bottom:1px solid var(--line)}
+  .container .cn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.85rem}
+  .container .cd{font-size:.65rem;color:var(--ink-2);margin-left:auto;font-style:italic}
+  .container .cb{padding:9px 13px}
+  .ci-line{display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px dotted var(--line)}
+  .ci-line:last-child{border-bottom:none}
+  .ci-line .cin{font-size:.82rem;flex:1}
+  .ci-line .ciq{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:600;color:var(--violet-d);white-space:nowrap}
+  .ci-line .ciq.none{opacity:.4;font-weight:400;font-family:'Inter',sans-serif}
+  .ci-line .ciq.coin{color:var(--gold-d)}
+  .home-block{background:linear-gradient(180deg,var(--home-bg1),var(--home-bg2));border:1px solid var(--home-line);border-radius:var(--r);padding:16px 18px;margin-top:16px}
+  .home-block .hh{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+  .home-block .icn{color:var(--home-ink)}
+  .home-block .ht{font-family:'Space Grotesk',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--home-ink)}
+  .home-block .hb{font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--home-ink);background:#fff;border:1px solid var(--home-line);padding:1px 9px;border-radius:999px;margin-left:auto}
+  .home-body{display:grid;grid-template-columns:1fr;gap:0 24px}
+  @media(min-width:700px){.home-body{grid-template-columns:1fr 1fr}}
+  .home-block .ci-line{border-bottom-color:var(--home-dot)}
+  .home-block .ci-line .ciq{color:var(--home-ink)}
 </style>
 </head>
 <body>
@@ -377,11 +449,46 @@
   </div>
 </header>
 
+<!-- ===== FRANJA DE ESTADO DE SESIÓN ===== -->
+<div class="statusbar">
+  <div class="wrap">
+    <span class="sb-lbl">Estado de sesión</span>
+    <button type="button" id="btnLong" class="sb-rest lg">Descanso largo</button>
+    <button type="button" id="btnShort" class="sb-rest sm">Descanso corto</button>
+    <span class="sb-insp">Inspiración Heroica <button type="button" class="sb-pip" data-track="insp" data-max="1" aria-label="Inspiración Heroica"></button></span>
+    <span class="sb-save">Se guarda en este navegador</span>
+  </div>
+</div>
+
 <div class="wrap">
 
 <!-- COMBATE -->
 <section id="combate">
   <div class="sec-head"><span class="n">01</span><h2>Combate</h2></div>
+
+  <div class="grid g3" style="margin-bottom:16px">
+    <div class="card">
+      <h3><span class="dot"></span>Puntos de Golpe</h3>
+      <div style="display:flex;align-items:baseline;gap:8px">
+        <span class="hp-num">33</span><span style="font-size:.8rem;color:var(--ink-2)">/ 33 máx.</span>
+      </div>
+      <div class="hp-bar"><i style="width:100%"></i></div>
+      <p class="hd-note">Dado de golpe: gástalos en descanso corto para curarte (tirada + mod. CON +1).</p>
+    </div>
+    <div class="card">
+      <h3><span class="dot"></span>Dados de Golpe</h3>
+      <div class="hd-row">
+        <span class="hd-lbl">d10 <span style="opacity:.6">· Paladín</span></span>
+        <div class="hd-pips" data-track="hd10" data-max="4"></div>
+      </div>
+      <p class="hd-note">Relleno = gastado. Al descanso largo recuperas la mitad del total: <b>2 de 4</b>.</p>
+    </div>
+    <div class="card">
+      <h3><span class="dot"></span>Imposición de Manos</h3>
+      <div class="pool" data-track="lom" data-max="20" data-pool="1"></div>
+      <p class="hd-note">Reserva de 5 × nivel. Acción adicional: reparte los puntos que quieras · <b>5 pts</b> eliminan Envenenado. Repone completa en descanso largo.</p>
+    </div>
+  </div>
 
   <div class="abils" style="margin-bottom:16px">
     <div class="abil">
@@ -508,16 +615,17 @@
     <div class="tile accent"><div class="lbl">Bono Ataque</div><div class="val">+6</div></div>
   </div>
 
-  <div class="slots" style="margin-bottom:22px">
-    <div class="slot-grp">
-      <span class="sl-lbl">Espacios Nivel 1</span>
-      <span class="pips"><i class="pip"></i><i class="pip"></i><i class="pip"></i></span>
-      <span class="ct">×3</span>
+  <div class="card" style="margin-bottom:22px">
+    <h3><span class="dot"></span>Espacios y usos de sesión <span style="font-weight:400;font-size:.68rem;opacity:.6;font-family:Inter;margin-left:auto">Se guarda en este navegador</span></h3>
+    <div class="hd-row">
+      <span class="hd-lbl">Espacios Nivel 1</span>
+      <div class="hd-pips" data-track="n1" data-max="3"></div>
     </div>
-    <div class="slot-div"></div>
-    <div class="slot-grp">
-      <span class="sl-lbl">Foco: Símbolo Sagrado · Aptitud: Carisma · Se recuperan en descanso largo · Cambia 1 preparado por descanso largo</span>
+    <div class="hd-row">
+      <span class="hd-lbl">Castigo Divino gratis <span style="opacity:.6">· Castigo del Paladín</span></span>
+      <div class="hd-pips" data-track="castigo" data-max="1"></div>
     </div>
+    <p class="hd-note">Relleno = gastado. El botón <b>Descanso largo</b> (arriba) repone ambos. Foco: Símbolo Sagrado · Aptitud: Carisma · Cambia 1 preparado por descanso largo.</p>
   </div>
 
   <div class="grp-head">
@@ -547,7 +655,7 @@
 
   <div class="grp-head">
     <div class="gh-row"><span class="gt">Conjuros Preparados</span><span class="gc">5 elegidos · gastan espacio</span><span class="gline"></span></div>
-    <div class="gh-note">Los 5 que Ki'yaj prepara por defecto (cambiables tras descanso largo). Comodín anotado: <b>Escudo de Fe</b> para días de batalla pesada.</div>
+    <div class="gh-note">Los 5 que Ki'yaj prepara por defecto (cambiables tras descanso largo). Comodín anotado: <b>Castigo Atronador</b> para cuando convenga el empujón y el derribo.</div>
   </div>
   <div class="grid g2">
     <div class="fcard buff"><div class="ftop"><span class="fname">Bendición</span><span class="fen">Bless</span><span class="fmeta">+1d4</span></div>
@@ -561,15 +669,15 @@
     <div class="fcard dmg"><div class="ftop"><span class="fname">Castigo Furioso</span><span class="fen">Wrathful Smite</span><span class="fmeta rub">miedo · CD 14</span></div>
       <div class="frow"><span><b>Nivel</b> 1</span><span><b>Acción</b> Adicional, tras impactar</span><span><b>Conc.</b> 1 min</span></div>
       <div class="fdesc">Tras impactar con el arma: <b>+1d6 de daño necrótico</b> y el objetivo hace salvación de <b>Sabiduría (CD 14)</b> o queda <b>Asustado</b> de ti mientras dure (repite la salvación al final de sus turnos). El miedo como herramienta — y a nivel 7, tu aura lo convertirá en velocidad 0.</div></div>
-    <div class="fcard dmg"><div class="ftop"><span class="fname">Castigo Atronador</span><span class="fen">Thunderous Smite</span><span class="fmeta rub">+2d6 trueno</span></div>
-      <div class="frow"><span><b>Nivel</b> 1 · Evocación</span><span><b>Acción</b> Adicional, tras impactar</span></div>
-      <div class="fdesc">Tras impactar: <b>+2d6 de daño de trueno</b>, audible a <b>300 ft</b>, y el objetivo hace salvación de <b>Fuerza (CD 14)</b> o sale <b>empujado 10 ft y Derribado</b>. El golpe seco que todo el campo escucha.</div></div>
+    <div class="fcard buff"><div class="ftop"><span class="fname">Escudo de Fe</span><span class="fen">Shield of Faith</span><span class="fmeta vio">+2 CA</span></div>
+      <div class="frow"><span><b>Nivel</b> 1 · Abjuración</span><span><b>Acción</b> Adicional</span><span><b>Alcance</b> 60 ft</span><span><b>Conc.</b> 10 min</span></div>
+      <div class="fdesc">Una criatura a <b>60 ft</b> a tu elección (puedes ser tú) suma <b>+2 a la CA</b> mientras dure. Te llevaría a <b>CA 24</b>. La armadura que no se ve, pero se nota.</div></div>
     <div class="fcard buff"><div class="ftop"><span class="fname">Duelo Forzado</span><span class="fen">Compelled Duel</span><span class="fmeta vio">CD 14</span></div>
       <div class="frow"><span><b>Nivel</b> 1 · Encantamiento</span><span><b>Acción</b> Adicional</span><span><b>Alcance</b> 30 ft</span><span><b>Conc.</b> 1 min</span></div>
       <div class="fdesc">Salvación de <b>Sabiduría (CD 14)</b> o el objetivo queda obligado al duelo: <b>desventaja al atacar a cualquiera que no seas tú</b> y debe superar la salvación para alejarse a más de 30 ft. Termina si atacas a otra criatura. <i>"Tu pelea es conmigo."</i> — y tu CA es 22.</div></div>
-    <div class="fcard steel"><div class="ftop"><span class="fname">Escudo de Fe</span><span class="fen">Shield of Faith</span><span class="fmeta">comodín</span></div>
-      <div class="frow"><span><b>Nivel</b> 1 · Abjuración</span><span><b>Acción</b> Adicional</span><span><b>Conc.</b> 10 min</span></div>
-      <div class="fdesc"><b>No preparado por defecto.</b> +2 CA a una criatura a 60 ft. Anotado como el cambio de descanso largo favorito cuando se espera una batalla brutal (te llevaría a CA 24).</div></div>
+    <div class="fcard steel"><div class="ftop"><span class="fname">Castigo Atronador</span><span class="fen">Thunderous Smite</span><span class="fmeta">comodín</span></div>
+      <div class="frow"><span><b>Nivel</b> 1 · Evocación</span><span><b>Acción</b> Adicional, tras impactar</span></div>
+      <div class="fdesc"><b>No preparado por defecto.</b> Tras impactar: +2d6 de daño de trueno, audible a 300 ft, objetivo hace salvación de Fuerza (CD 14) o sale empujado 10 ft y Derribado. Anotado como el cambio de descanso largo favorito cuando conviene el control de posición.</div></div>
   </div>
 
   <div class="grp-head" style="margin-top:24px">
@@ -596,6 +704,15 @@
     <div class="tile accent"><div class="lbl">Usos disponibles</div><div class="val">2</div></div>
     <div class="tile"><div class="lbl">Recupera</div><div class="val" style="font-size:15px;padding-top:6px">1 en corto<br>todos en largo</div></div>
     <div class="tile gold"><div class="lbl">CD de efectos</div><div class="val">14</div></div>
+  </div>
+
+  <div class="card" style="margin-bottom:14px">
+    <h3><span class="dot"></span>Usos de sesión <span style="font-weight:400;font-size:.68rem;opacity:.6;font-family:Inter;margin-left:auto">Se guarda en este navegador</span></h3>
+    <div class="hd-row">
+      <span class="hd-lbl">Canalizar Divinidad</span>
+      <div class="hd-pips" data-track="cd" data-max="2"></div>
+    </div>
+    <p class="hd-note">Relleno = gastado. <b>Descanso corto repone 1 uso</b> · descanso largo repone todos.</p>
   </div>
   <div class="grid g3">
     <div class="fcard dmg"><div class="ftop"><span class="fname">Presencia Conquistadora</span><span class="fen">Conquering Presence</span><span class="fmeta rub big">CD 14</span></div>
@@ -737,38 +854,11 @@
   <div class="grp-head" style="margin-top:26px">
     <div class="gh-row"><span class="gt">Contenedores</span><span class="gline"></span></div>
   </div>
-  <div class="cont">
-    <div class="cont-head"><span class="cont-name">🎒 Paquete de Sacerdote</span><span class="cont-tag">Equipo de aventura y campamento</span></div>
-    <div class="chips">
-      <span class="ic">Mochila</span>
-      <span class="ic">Manta</span>
-      <span class="ic">Velas <small>×10</small></span>
-      <span class="ic">Yesquero</span>
-      <span class="ic">Caja de limosnas</span>
-      <span class="ic">Incensario</span>
-      <span class="ic">Vestiduras</span>
-      <span class="ic">Raciones <small>×7</small></span>
-      <span class="ic">Cantimplora</span>
-    </div>
+  <div class="card" style="margin-top:16px">
+    <h3><span class="dot"></span>Contenedores</h3>
+    <div id="zones"></div>
   </div>
-  <div class="cont">
-    <div class="cont-head"><span class="cont-name">⚔️ Arsenal de respaldo</span><span class="cont-tag">Inventario · no equipado</span></div>
-    <div class="chips">
-      <span class="ic">Jabalinas <small>×6 · 1d6+4 · 30/120 ft</small></span>
-      <span class="ic">Espada larga <small>(segunda)</small></span>
-      <span class="ic">Escudo <small>(segundo)</small></span>
-      <span class="ic">Cota de malla <small>CA 16</small></span>
-    </div>
-  </div>
-  <div class="cont">
-    <div class="cont-head"><span class="cont-name">🎖️ Recuerdos del soldado</span><span class="cont-tag">Trasfondo y objetos personales</span></div>
-    <div class="chips">
-      <span class="ic">Juego de dados <small>(cacho)</small></span>
-      <span class="ic">Insignia militar <small>trofeo de guerra</small></span>
-      <span class="ic">Muda de ropa</span>
-      <span class="ic coin">~210 PO</span>
-    </div>
-  </div>
+  <div id="homeChest"></div>
 </section>
 
 <!-- HISTORIA -->
@@ -842,6 +932,173 @@
     }});
   }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
   secs.forEach(s => s && obs.observe(s));
+</script>
+<script>
+  /* ========== SISTEMA DE SESIÓN — motor común de la mesa ========== */
+  const ICONS = {
+    bag:    '<path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
+    coinbag:'<ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v10c0 1.7 3.1 3 7 3s7-1.3 7-3V7"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/>',
+    chest:  '<rect x="4" y="10" width="16" height="9" rx="1.5"/><path d="M4 10l1.5-4h13L20 10"/><path d="M10 14h4"/>',
+    coin:   '<circle cx="12" cy="12" r="8"/><path d="M12 8v8M9.5 10h5M9.5 14h5"/>',
+    cloth:  '<path d="M4 7c4 0 4 10 8 10s4-10 8-10"/><path d="M4 13c4 0 4 6 8 6"/>',
+    food:   '<path d="M6 20V9l6-5 6 5v11Z"/><path d="M10 20v-5h4v5"/>',
+    candle: '<rect x="9" y="8" width="6" height="13" rx="1"/><path d="M12 8V5M12 5c0-1 1-1.5 1-2.5"/>',
+    spark:  '<path d="M4 15l7-7 3 3-7 7Z"/><path d="M15 5l2 2M18 8l2 2M16 12l3 3"/>',
+    shirt:  '<path d="M8 4l4 2 4-2 3 3-2 3-1-1v11H8V9l-1 1-2-3Z"/>',
+    water:  '<path d="M12 3c3.5 4.5 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 2.5-6.5 6-11Z"/>',
+    sword:  '<path d="M20 4 8 16"/><path d="M6.5 13.5 10.5 17.5"/><path d="M8 18l-2 2M6 16l-2 2"/>',
+    shield: '<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6Z"/>',
+    armor:  '<path d="M8 4h8l2 4-2 1v11H8V9L6 8Z"/><path d="M12 4v4"/>',
+    spear:  '<path d="M19 5 7 17"/><path d="M19 5l-4 .5L18.5 9Z"/><path d="M7 17l-3 3"/>',
+    dice:   '<rect x="5" y="5" width="14" height="14" rx="2.5"/><circle cx="9.5" cy="9.5" r="1"/><circle cx="14.5" cy="9.5" r="1"/><circle cx="9.5" cy="14.5" r="1"/><circle cx="14.5" cy="14.5" r="1"/>',
+    badge:  '<circle cx="12" cy="9" r="4.5"/><path d="M9.5 13 8 21l4-2.5L16 21l-1.5-8"/>',
+    censer: '<path d="M6 11h12l-1.5 6h-9Z"/><path d="M9 11V9M15 11V9M12 11V8"/><path d="M12 5c0 .8.8 1.2.8 2"/>',
+  };
+  function icon(key){ return `<span class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ICONS[key]||ICONS.bag}</svg></span>`; }
+
+  const zones = [
+    { name:'A mano', sub:'sin gastar acción', containers:[
+      { icon:'spear', name:'Jabalinas al cinto', desc:'armas arrojadizas', items:[
+        {n:'Jabalinas (1d6+4 · 30/120 ft)', q:'×6', ic:'spear'},
+      ]},
+      { icon:'coinbag', name:'Bolsa de monedas', desc:'oro de campaña', items:[
+        {n:'Monedas', q:'~210 PO', ic:'coin', coin:true},
+      ]},
+    ]},
+    { name:'Hay que sacarlo', sub:'fuera de combate', containers:[
+      { icon:'bag', name:'Paquete de Sacerdote', desc:'aventura y campamento', items:[
+        {n:'Manta', ic:'cloth'},
+        {n:'Velas', q:'×10', ic:'candle'},
+        {n:'Yesquero', ic:'spark'},
+        {n:'Caja de limosnas', ic:'chest'},
+        {n:'Incensario', ic:'censer'},
+        {n:'Vestiduras', ic:'shirt'},
+        {n:'Raciones', q:'×7', ic:'food'},
+        {n:'Cantimplora', ic:'water'},
+      ]},
+      { icon:'badge', name:'Recuerdos del soldado', desc:'trasfondo y personales', items:[
+        {n:'Juego de dados (cacho)', ic:'dice'},
+        {n:'Insignia militar · trofeo de guerra', ic:'badge'},
+        {n:'Muda de ropa', ic:'shirt'},
+      ]},
+    ]},
+  ];
+  const homeChest = { name:'Campamento / posada', desc:'arsenal de respaldo', items:[
+    {n:'Espada larga (segunda)', ic:'sword'},
+    {n:'Escudo (segundo)', ic:'shield'},
+    {n:'Cota de malla (CA 16)', ic:'armor'},
+  ]};
+
+  function containerHTML(ct){
+    const body = ct.items.map(it=>
+      `<div class="ci-line">${icon(it.ic)}<span class="cin">${it.n}</span><span class="ciq${it.q?'':' none'}${it.coin?' coin':''}">${it.q||'—'}</span></div>`
+    ).join('');
+    return `<div class="container"><div class="chd">${icon(ct.icon)}<span class="cn">${ct.name}</span><span class="cd">${ct.desc}</span></div><div class="cb">${body}</div></div>`;
+  }
+  document.getElementById('zones').innerHTML = zones.map(z => `
+    <div class="zone">
+      <div class="zone-head"><span class="zone-dot"></span><span class="zone-name">${z.name}</span><span class="zone-sub">${z.sub}</span></div>
+      <div class="zone-grid">${z.containers.map(containerHTML).join('')}</div>
+    </div>`).join('');
+  document.getElementById('homeChest').innerHTML = `<div class="home-block">
+    <div class="hh">${icon('chest')}<span class="ht">${homeChest.name}</span><span class="hb">No lo carga</span></div>
+    <div class="home-body">${homeChest.items.map(it=>
+      `<div class="ci-line">${icon(it.ic)}<span class="cin">${it.n}</span><span class="ciq none">—</span></div>`
+    ).join('')}</div>
+  </div>`;
+
+  /* ---------- TRACKER (localStorage, este navegador) ---------- */
+  (function(){
+    const KEY = 'kiyaj-tracker-v1';
+    const groups = [...document.querySelectorAll('[data-track]')];
+    /* CONFIG DE KI'YAJ — verificada contra el Manual (Paladín, PHB 2024) */
+    const RESTORE = {
+      n1:      { long:'all', short:'none' },
+      cd:      { long:'all', short:1 },
+      castigo: { long:'all', short:'none' },
+      lom:     { long:'all', short:'none' },
+    };
+    const HD_POOL = ['hd10'];
+
+    let state = {};
+    try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ state = {}; }
+    function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} }
+
+    function build(){
+      groups.forEach(g=>{
+        const id = g.dataset.track, max = +g.dataset.max;
+        if(typeof state[id] !== 'number') state[id] = 0;
+        if(g.dataset.pool){
+          const spent = state[id]||0;
+          const left = Math.max(0, max - spent);
+          g.innerHTML = '';
+          const mk = (txt,d)=>{
+            const b = document.createElement('button'); b.type='button'; b.textContent=txt;
+            b.addEventListener('click', ()=>{
+              state[id] = Math.min(max, Math.max(0, (state[id]||0) + d));
+              save(); build();
+            });
+            return b;
+          };
+          if(max >= 10) g.appendChild(mk('−5', 5));
+          g.appendChild(mk('−', 1));
+          const v = document.createElement('span'); v.className='pv'; v.textContent = left; g.appendChild(v);
+          const m = document.createElement('span'); m.className='pmax'; m.textContent = '/ ' + max; g.appendChild(m);
+          g.appendChild(mk('+', -1));
+          if(max >= 10) g.appendChild(mk('+5', -5));
+          return;
+        }
+        if(g.classList.contains('sb-pip')){
+          g.classList.toggle('spent', state[id] > 0);
+          if(!g.dataset.bound){
+            g.dataset.bound = '1';
+            g.addEventListener('click', ()=>{ state[id] = state[id] > 0 ? 0 : 1; save(); build(); });
+          }
+          return;
+        }
+        g.innerHTML = '';
+        for(let i=0;i<max;i++){
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'hd-pip' + (i < state[id] ? ' spent' : '');
+          b.addEventListener('click', ()=>{
+            const spent = state[id];
+            state[id] = (i + 1 === spent) ? i : i + 1;
+            save(); build();
+          });
+          g.appendChild(b);
+        }
+      });
+    }
+
+    function applyRest(kind){
+      for(const id in RESTORE){
+        const rule = RESTORE[id][kind];
+        if(rule === 'all') state[id] = 0;
+        else if(typeof rule === 'number') state[id] = Math.max(0, (state[id]||0) - rule);
+      }
+      if(kind === 'long' && HD_POOL.length){
+        const total = HD_POOL.reduce((s,id)=>{
+          const g = groups.find(g=>g.dataset.track===id);
+          return s + (g ? +g.dataset.max : 0);
+        },0);
+        let toRecover = Math.floor(total/2);
+        for(const id of HD_POOL){
+          const spent = state[id]||0;
+          const give = Math.min(spent, toRecover);
+          state[id] = spent - give; toRecover -= give;
+        }
+      }
+      save(); build();
+    }
+
+    const btnLong = document.getElementById('btnLong');
+    if(btnLong) btnLong.addEventListener('click', ()=>applyRest('long'));
+    const btnShort = document.getElementById('btnShort');
+    if(btnShort) btnShort.addEventListener('click', ()=>applyRest('short'));
+
+    build();
+  })();
 </script>
 </body>
 </html>
