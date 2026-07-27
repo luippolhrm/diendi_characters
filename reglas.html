@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reglas rápidas — Mesa de Lucho</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Pizarra — paleta neutra propia de reglas.html, no ligada a ningún personaje */
+  --paper:#F3F4F6;
+  --ink:#22262B;
+  --ink-2:#4A4E54;
+  --ink-3:#6B6F75;
+  --mist:#E7E8EA;
+  --line:#D7D9DC;
+  --line-2:#C7C9CD;
+
+  --accent:#3E5C76;
+  --accent-d:#2A4457;
+  --accent-soft:#E4EAF0;
+
+  --amber:#B87A2E;
+  --amber-d:#8C5C1E;
+  --amber-soft:#F5E9D8;
+
+  --card-bg:#fff;
+
+  --r:14px;
+  --r-sm:9px;
+  --shadow:0 1px 2px rgba(34,38,43,.06), 0 4px 14px rgba(34,38,43,.05);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,.serif{font-family:'Fraunces',serif}
+.mono{font-family:'Space Grotesk',monospace}
+
+a{color:var(--accent-d)}
+
+/* Nav */
+nav{
+  position:sticky; top:0; z-index:20;
+  display:flex; align-items:center; gap:18px;
+  padding:14px 24px;
+  background:rgba(243,244,246,.88);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+nav .brand{
+  font-family:'Fraunces',serif; font-weight:600; font-size:15px;
+  color:var(--ink); text-decoration:none; white-space:nowrap;
+}
+nav .links{display:flex; gap:4px; flex-wrap:wrap}
+nav .links a{
+  font-size:13px; font-weight:500; text-decoration:none;
+  color:var(--ink-2); padding:6px 12px; border-radius:20px;
+}
+nav .links a.active, nav .links a:hover{
+  background:var(--accent-soft); color:var(--accent-d);
+}
+
+/* Header */
+header.intro{
+  max-width:820px; margin:0 auto; padding:56px 24px 28px;
+}
+header.intro .eyebrow{
+  font-family:'Space Grotesk',monospace; font-size:12px; font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--accent-d);
+  margin:0 0 10px;
+}
+header.intro h1{font-size:32px; font-weight:600; margin:0 0 10px}
+header.intro p.sub{color:var(--ink-2); font-size:15px; margin:0; max-width:60ch}
+
+main{max-width:820px; margin:0 auto; padding:0 24px 80px}
+
+section{padding-top:44px; scroll-margin-top:70px}
+section > h2{
+  font-size:20px; font-weight:600; margin:0 0 4px;
+  display:flex; align-items:baseline; gap:10px;
+}
+section > h2 .count{
+  font-family:'Space Grotesk',monospace; font-size:12px; font-weight:500;
+  color:var(--ink-3);
+}
+section > p.section-note{color:var(--ink-2); font-size:14px; margin:0 0 22px; max-width:64ch}
+
+.grid{display:grid; grid-template-columns:1fr; gap:12px}
+
+.fcard{
+  background:var(--card-bg);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  box-shadow:var(--shadow);
+  padding:16px 18px;
+  scroll-margin-top:70px;
+}
+.fcard .fhead, .example-card .fhead{
+  display:flex; align-items:baseline; justify-content:space-between; gap:10px;
+  margin-bottom:6px;
+}
+.fcard .fname{font-size:16px; font-weight:600}
+.fcard .fname .en{
+  font-family:'Inter',sans-serif; font-weight:400; font-size:12px; color:var(--ink-3);
+}
+.tag{
+  font-family:'Space Grotesk',monospace; font-size:10px; font-weight:600;
+  letter-spacing:.06em; text-transform:uppercase;
+  color:var(--amber-d); background:var(--amber-soft);
+  padding:3px 9px; border-radius:20px; white-space:nowrap;
+}
+.fcard p{margin:0 0 6px; font-size:14px; color:var(--ink)}
+.fcard p:last-child{margin-bottom:0}
+.fcard b{font-weight:600; color:var(--ink)}
+
+.fcard ol{margin:6px 0; padding-left:20px}
+.fcard ol li{font-size:14px; margin-bottom:5px}
+.fcard ol li:last-child{margin-bottom:0}
+
+.rule-table{width:100%; border-collapse:collapse; font-size:13px; margin-top:6px}
+.rule-table th{
+  text-align:left; font-weight:500; color:var(--ink-3);
+  padding:6px 8px; border-bottom:1px solid var(--line);
+}
+.rule-table td{padding:6px 8px; border-bottom:1px solid var(--mist)}
+.rule-table tr:last-child td{border-bottom:none}
+
+.example-card{
+  background:var(--accent-soft);
+  border:1px solid var(--line);
+  border-left:4px solid var(--accent);
+  border-radius:var(--r);
+  padding:18px 20px;
+}
+.example-card .fname{color:var(--accent-d); font-size:16px; font-weight:600}
+.example-card .tag-ex{
+  font-family:'Space Grotesk',monospace; font-size:10px; font-weight:600;
+  letter-spacing:.06em; text-transform:uppercase;
+  color:var(--accent-d); background:#fff;
+  border:1px solid var(--accent); padding:3px 9px; border-radius:20px; white-space:nowrap;
+}
+.example-card .setup{font-size:13px; color:var(--ink-2); margin:8px 0 12px; font-style:italic}
+.example-card ol{margin:0; padding-left:20px}
+.example-card ol li{font-size:14px; line-height:1.6; margin-bottom:9px}
+.example-card ol li:last-child{margin-bottom:0}
+.example-card b{font-weight:600}
+
+footer{
+  max-width:820px; margin:0 auto; padding:30px 24px 70px;
+  color:var(--ink-3); font-size:13px; border-top:1px solid var(--line);
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
+
+@media (max-width:480px){
+  header.intro{padding:40px 18px 22px}
+  main{padding:0 18px 60px}
+  nav{padding:12px 16px; gap:12px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">&larr; Reglas</a>
+  <div class="links" id="navLinks">
+    <a href="#fundamentos">Fundamentos</a>
+    <a href="#estados">Estados</a>
+    <a href="#acciones">Acciones</a>
+    <a href="#descansos">Descansos</a>
+    <a href="#combate">Combate</a>
+    <a href="#dano-y-curacion">Daño y curación</a>
+    <a href="#exploracion">Exploración</a>
+    <a href="#conjuros">Conjuros</a>
+    <a href="#ejemplos">Ejemplos</a>
+  </div>
+</nav>
+
+<header class="intro">
+  <p class="eyebrow">Consulta de mesa · D&amp;D 2024</p>
+  <h1>Reglas rápidas</h1>
+  <p class="sub">Definiciones oficiales del Manual del Jugador 2024 (Devir), transcritas para consultar durante la partida sin repetirlas en cada ficha de personaje. Fuente: PHB 2024, Apéndice C — Glosario de reglas.</p>
+</header>
+
+<main>
+
+<section id="fundamentos">
+  <h2>Fundamentos</h2>
+  <p class="section-note">La base sobre la que se apoya todo lo demás: modificadores, pruebas con d20 y competencia.</p>
+  <div class="grid">
+
+    <div class="fcard" id="modificadores-por-caracteristica">
+      <div class="fhead"><span class="fname">Modificadores por característica</span><span class="tag">fundamentos</span></div>
+      <table class="rule-table">
+        <tr><th>Puntuación</th><th>Modificador</th><th>Puntuación</th><th>Modificador</th></tr>
+        <tr><td>1</td><td>−5</td><td>18–19</td><td>+4</td></tr>
+        <tr><td>2–3</td><td>−4</td><td>20–21</td><td>+5</td></tr>
+        <tr><td>4–5</td><td>−3</td><td>22–23</td><td>+6</td></tr>
+        <tr><td>6–7</td><td>−2</td><td>24–25</td><td>+7</td></tr>
+        <tr><td>8–9</td><td>−1</td><td>26–27</td><td>+8</td></tr>
+        <tr><td>10–11</td><td>+0</td><td>28–29</td><td>+9</td></tr>
+        <tr><td>12–13</td><td>+1</td><td>30</td><td>+10</td></tr>
+        <tr><td>14–15</td><td>+2</td><td></td><td></td></tr>
+        <tr><td>16–17</td><td>+3</td><td></td><td></td></tr>
+      </table>
+    </div>
+
+    <div class="fcard" id="pruebas-con-d20">
+      <div class="fhead"><span class="fname">Pruebas con d20</span><span class="tag">fundamentos</span></div>
+      <p>Tira 1d20, suma el modificador por característica y el bonificador por competencia si aplica, y compara contra la CD (o la CA, en tiradas de ataque). Igualar o superar = éxito.</p>
+      <table class="rule-table">
+        <tr><th>Dificultad</th><th>CD</th></tr>
+        <tr><td>Muy fácil</td><td>5</td></tr>
+        <tr><td>Fácil</td><td>10</td></tr>
+        <tr><td>Dificultad media</td><td>15</td></tr>
+        <tr><td>Difícil</td><td>20</td></tr>
+        <tr><td>Muy difícil</td><td>25</td></tr>
+        <tr><td>Casi imposible</td><td>30</td></tr>
+      </table>
+      <p><b>Ventaja y desventaja.</b> Tira 2d20 y usa el más alto (ventaja) o el más bajo (desventaja). No se acumulan — varias ventajas siguen siendo solo 2d20. Si tienes ambas a la vez, se anulan y tiras 1d20.</p>
+      <p><b>Sacar 20 o 1 (en ataque).</b> Un 20 natural acierta sin importar modificadores ni CA — es un crítico. Un 1 natural falla sin importar modificadores ni CA.</p>
+    </div>
+
+    <div class="fcard" id="inspiracion-heroica">
+      <div class="fhead"><span class="fname">Inspiración heroica</span><span class="tag">fundamentos</span></div>
+      <p>Puedes gastarla para volver a tirar cualquier dado inmediatamente después de lanzarlo — debes quedarte con el nuevo resultado. Nunca puedes tener más de una a la vez; si recibes otra teniéndola ya, puedes cedérsela a un aliado que no la tenga.</p>
+    </div>
+
+    <div class="fcard" id="competencia">
+      <div class="fhead"><span class="fname">Competencia</span><span class="tag">fundamentos</span></div>
+      <table class="rule-table">
+        <tr><th>Nivel / VD</th><th>Bonificador</th></tr>
+        <tr><td>Hasta 4</td><td>+2</td></tr>
+        <tr><td>5–8</td><td>+3</td></tr>
+        <tr><td>9–12</td><td>+4</td></tr>
+        <tr><td>13–16</td><td>+5</td></tr>
+        <tr><td>17–20</td><td>+6</td></tr>
+        <tr><td>21–24</td><td>+7</td></tr>
+        <tr><td>25–28</td><td>+8</td></tr>
+        <tr><td>29–30</td><td>+9</td></tr>
+      </table>
+      <p>Se aplica a pruebas con d20 en habilidades, salvaciones o equipo donde tengas competencia, y a ataques y CD de conjuros. No se acumula: nunca se suma más de una vez a la misma tirada.</p>
+    </div>
+
+    <div class="fcard" id="habilidades">
+      <div class="fhead"><span class="fname">Habilidades</span><span class="tag">fundamentos</span></div>
+      <table class="rule-table">
+        <tr><th>Habilidad</th><th>Característica</th></tr>
+        <tr><td>Acrobacias</td><td>Destreza</td></tr>
+        <tr><td>Atletismo</td><td>Fuerza</td></tr>
+        <tr><td>Conocimiento arcano</td><td>Inteligencia</td></tr>
+        <tr><td>Engaño</td><td>Carisma</td></tr>
+        <tr><td>Historia</td><td>Inteligencia</td></tr>
+        <tr><td>Interpretación</td><td>Carisma</td></tr>
+        <tr><td>Intimidación</td><td>Carisma</td></tr>
+        <tr><td>Investigación</td><td>Inteligencia</td></tr>
+        <tr><td>Juego de manos</td><td>Destreza</td></tr>
+        <tr><td>Medicina</td><td>Sabiduría</td></tr>
+        <tr><td>Naturaleza</td><td>Inteligencia</td></tr>
+        <tr><td>Percepción</td><td>Sabiduría</td></tr>
+        <tr><td>Perspicacia</td><td>Sabiduría</td></tr>
+        <tr><td>Persuasión</td><td>Carisma</td></tr>
+        <tr><td>Religión</td><td>Inteligencia</td></tr>
+        <tr><td>Sigilo</td><td>Destreza</td></tr>
+        <tr><td>Supervivencia</td><td>Sabiduría</td></tr>
+        <tr><td>Trato con animales</td><td>Sabiduría</td></tr>
+      </table>
+      <p>El DM puede permitir aplicar competencia a una característica distinta de la habitual si la situación lo justifica (ej. Fuerza (Intimidación) en vez de Carisma (Intimidación)).</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="estados">
+  <h2>Estados <span class="count">15</span></h2>
+  <p class="section-note">Un estado es una situación temporal. No se acumulan, salvo el cansancio. Un estado termina cuando lo indica su propia definición o cuando otra regla lo contrarresta.</p>
+  <div class="grid">
+
+    <div class="fcard" id="agarrado">
+      <div class="fhead"><span class="fname">Agarrado <span class="en">Grappled</span></span><span class="tag">estado</span></div>
+      <p><b>Velocidad 0.</b> Tu velocidad es 0 y no puede aumentar.</p>
+      <p><b>Ataques afectados.</b> Tienes desventaja en las tiradas de ataque contra cualquier objetivo que no sea quien te agarra.</p>
+      <p><b>Desplazable.</b> Quien te agarra puede arrastrarte o transportarte al moverse, pero cada metro de movimiento le cuesta 1 m adicional, salvo que seas Diminuto o tu tamaño sea dos o más categorías inferior al suyo.</p>
+    </div>
+
+    <div class="fcard" id="apresado">
+      <div class="fhead"><span class="fname">Apresado <span class="en">Restrained</span></span><span class="tag">estado</span></div>
+      <p><b>Velocidad 0.</b> Tu velocidad es 0 y no puede aumentar.</p>
+      <p><b>Ataques afectados.</b> Las tiradas de ataque contra ti tienen ventaja y tus tiradas de ataque tienen desventaja.</p>
+      <p><b>Tiradas de salvación afectadas.</b> Tienes desventaja en las tiradas de salvación de Destreza.</p>
+    </div>
+
+    <div class="fcard" id="asustado">
+      <div class="fhead"><span class="fname">Asustado <span class="en">Frightened</span></span><span class="tag">estado</span></div>
+      <p><b>Pruebas de característica y ataques afectados.</b> Tienes desventaja en las pruebas de característica y las tiradas de ataque mientras la fuente de tu miedo esté en tu línea de visión.</p>
+      <p><b>No puedes acercarte.</b> No puedes acercarte voluntariamente a la fuente de tu miedo.</p>
+    </div>
+
+    <div class="fcard" id="aturdido">
+      <div class="fhead"><span class="fname">Aturdido <span class="en">Stunned</span></span><span class="tag">estado</span></div>
+      <p><b>Incapacitado.</b> Tienes el estado de incapacitado.</p>
+      <p><b>Tiradas de salvación afectadas.</b> Fallas automáticamente las tiradas de salvación de Fuerza y Destreza.</p>
+      <p><b>Ataques afectados.</b> Las tiradas de ataque contra ti tienen ventaja.</p>
+    </div>
+
+    <div class="fcard" id="cansancio">
+      <div class="fhead"><span class="fname">Cansancio <span class="en">Exhaustion</span></span><span class="tag">estado</span></div>
+      <p><b>Niveles de cansancio.</b> Este estado es acumulativo. Cada vez que lo recibas, suma 1 nivel de cansancio. Morirás si tu nivel de cansancio es 6.</p>
+      <p><b>Pruebas con d20 afectadas.</b> El resultado se reduce en 2 × tu nivel de cansancio.</p>
+      <p><b>Velocidad reducida.</b> Tu velocidad se reduce en 1,5 m × tu nivel de cansancio.</p>
+      <p><b>Eliminar niveles.</b> Tras finalizar un descanso largo, resta 1 nivel de cansancio.</p>
+    </div>
+
+    <div class="fcard" id="cegado">
+      <div class="fhead"><span class="fname">Cegado <span class="en">Blinded</span></span><span class="tag">estado</span></div>
+      <p><b>No puedes ver.</b> Fallas automáticamente todas las pruebas de característica que requieran la vista.</p>
+      <p><b>Ataques afectados.</b> Las tiradas de ataque contra ti tienen ventaja y tus tiradas de ataque tienen desventaja.</p>
+    </div>
+
+    <div class="fcard" id="derribado">
+      <div class="fhead"><span class="fname">Derribado <span class="en">Prone</span></span><span class="tag">estado</span></div>
+      <p><b>Movimiento restringido.</b> Tus únicas opciones de movimiento son arrastrarte o gastar movimiento igual a la mitad de tu velocidad (redondeando hacia abajo) para levantarte y poner fin a este estado. Si tu velocidad es 0, no puedes levantarte.</p>
+      <p><b>Ataques afectados.</b> Tienes desventaja en las tiradas de ataque. Las tiradas contra ti tienen ventaja si el atacante está a 1,5 m o menos; si no, tienen desventaja.</p>
+    </div>
+
+    <div class="fcard" id="ensordecido">
+      <div class="fhead"><span class="fname">Ensordecido <span class="en">Deafened</span></span><span class="tag">estado</span></div>
+      <p><b>No puedes oír.</b> Fallas automáticamente cualquier prueba de característica que requiera el oído.</p>
+    </div>
+
+    <div class="fcard" id="envenenado">
+      <div class="fhead"><span class="fname">Envenenado <span class="en">Poisoned</span></span><span class="tag">estado</span></div>
+      <p><b>Pruebas de característica y ataques afectados.</b> Tienes desventaja en las tiradas de ataque y las pruebas de característica.</p>
+    </div>
+
+    <div class="fcard" id="hechizado">
+      <div class="fhead"><span class="fname">Hechizado <span class="en">Charmed</span></span><span class="tag">estado</span></div>
+      <p><b>No puedes dañar a quien te haya hechizado.</b> No puedes atacar ni elegir como objetivo de efectos dañinos o mágicos a quien te haya hechizado.</p>
+      <p><b>Ventaja social.</b> Quien te haya hechizado tiene ventaja en las pruebas de característica para interactuar socialmente contigo.</p>
+    </div>
+
+    <div class="fcard" id="incapacitado">
+      <div class="fhead"><span class="fname">Incapacitado <span class="en">Incapacitated</span></span><span class="tag">estado</span></div>
+      <p><b>Inactivo.</b> No puedes llevar a cabo ninguna acción, acción adicional o reacción.</p>
+      <p><b>Pérdida de concentración.</b> Pierdes la concentración.</p>
+      <p><b>Mudo.</b> No puedes hablar.</p>
+      <p><b>Sorprendido.</b> Si tienes este estado cuando tiras iniciativa, tendrás desventaja en la tirada.</p>
+    </div>
+
+    <div class="fcard" id="inconsciente">
+      <div class="fhead"><span class="fname">Inconsciente <span class="en">Unconscious</span></span><span class="tag">estado</span></div>
+      <p><b>Inerte.</b> Tienes los estados de derribado e incapacitado y sueltas lo que estés sujetando. Al concluir, permaneces derribado.</p>
+      <p><b>Velocidad 0.</b> No puede aumentar.</p>
+      <p><b>Ataques afectados.</b> Las tiradas contra ti tienen ventaja.</p>
+      <p><b>Tiradas de salvación afectadas.</b> Fallas automáticamente las de Fuerza y Destreza.</p>
+      <p><b>Críticos automáticos.</b> Cualquier ataque que te acierte es crítico si el atacante está a 1,5 m o menos.</p>
+      <p><b>Ignorante.</b> No eres consciente de tu entorno.</p>
+    </div>
+
+    <div class="fcard" id="invisible">
+      <div class="fhead"><span class="fname">Invisible <span class="en">Invisible</span></span><span class="tag">estado</span></div>
+      <p><b>Sorpresa.</b> Si tienes este estado al tirar iniciativa, tendrás ventaja en la tirada.</p>
+      <p><b>Oculto.</b> No te afecta ningún efecto que requiera ver a su objetivo, salvo que el creador pueda verte de alguna forma. El equipo que llevas también se oculta.</p>
+      <p><b>Ataques afectados.</b> Las tiradas contra ti tienen desventaja y tus tiradas tienen ventaja, salvo contra quien pueda verte de algún modo.</p>
+    </div>
+
+    <div class="fcard" id="paralizado">
+      <div class="fhead"><span class="fname">Paralizado <span class="en">Paralyzed</span></span><span class="tag">estado</span></div>
+      <p><b>Incapacitado.</b> Tienes el estado de incapacitado.</p>
+      <p><b>Velocidad 0.</b> No puede aumentar.</p>
+      <p><b>Tiradas de salvación afectadas.</b> Fallas automáticamente las de Fuerza y Destreza.</p>
+      <p><b>Ataques afectados.</b> Las tiradas contra ti tienen ventaja.</p>
+      <p><b>Críticos automáticos.</b> Cualquier ataque que te acierte es crítico si el atacante está a 1,5 m o menos.</p>
+    </div>
+
+    <div class="fcard" id="petrificado">
+      <div class="fhead"><span class="fname">Petrificado <span class="en">Petrified</span></span><span class="tag">estado</span></div>
+      <p><b>Transformación.</b> Te conviertes, junto a tus objetos no mágicos, en una sustancia sólida e inanimada (normalmente piedra). Tu peso se multiplica por diez y dejas de envejecer.</p>
+      <p><b>Incapacitado.</b> Tienes el estado de incapacitado. <b>Velocidad 0,</b> no puede aumentar.</p>
+      <p><b>Ataques afectados.</b> Las tiradas contra ti tienen ventaja. <b>Tiradas de salvación afectadas.</b> Fallas automáticamente las de Fuerza y Destreza.</p>
+      <p><b>Resistencia al daño.</b> Tienes resistencia a todo el daño. <b>Inmunidad al veneno.</b> Tienes inmunidad al estado de envenenado.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="acciones">
+  <h2>Acciones <span class="count">12</span></h2>
+  <p class="section-note">En tu turno puedes moverte y llevar a cabo una acción. Solo puedes hacer una acción cada vez. Dos conceptos relacionados que verás citados en las fichas: acción adicional y reacción — no son acciones normales, son turnos especiales que solo existen si un rasgo o conjuro te los otorga explícitamente.</p>
+
+  <div class="grid" style="margin-bottom:14px">
+    <div class="fcard" id="accion-adicional">
+      <div class="fhead"><span class="fname">Acción adicional <span class="en">Bonus Action</span></span><span class="tag">acción</span></div>
+      <p>Una acción especial que puedes hacer en el mismo turno en que llevas a cabo una acción. No puedes realizar más de una por turno, y solo tienes acciones adicionales a tu disposición si una regla lo indica de forma explícita.</p>
+    </div>
+    <div class="fcard" id="reaccion">
+      <div class="fhead"><span class="fname">Reacción <span class="en">Reaction</span></span><span class="tag">acción</span></div>
+      <p>Una acción especial en respuesta a un suceso definido en su descripción. Puede llevarse a cabo en el turno de otra criatura o en el propio. Al usar una reacción, no podrás volver a hacerlo hasta el principio de tu siguiente turno. El ataque de oportunidad es la reacción más habitual.</p>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <div class="fcard" id="atacar">
+      <div class="fhead"><span class="fname">Atacar <span class="en">Attack</span></span><span class="tag">acción</span></div>
+      <p>Haces una tirada de ataque con un arma o un ataque sin armas.</p>
+      <p><b>Equiparse con armas.</b> Como parte de esta acción puedes equiparte o desequiparte de un arma, antes o después del ataque, aunque no la uses en él.</p>
+      <p><b>Moverse entre ataques.</b> Si tienes un rasgo (como Ataque adicional) que te permite atacar más de una vez, puedes repartir tu movimiento entre esos ataques.</p>
+    </div>
+
+    <div class="fcard" id="ayudar">
+      <div class="fhead"><span class="fname">Ayudar <span class="en">Help</span></span><span class="tag">acción</span></div>
+      <p><b>En una prueba de característica.</b> Un aliado cercano tendrá ventaja en la siguiente prueba que haga con la habilidad o herramienta elegida, hasta el principio de tu siguiente turno.</p>
+      <p><b>En una tirada de ataque.</b> Distraes a un enemigo a 1,5 m o menos de ti; la siguiente tirada de ataque de un aliado contra ese enemigo tiene ventaja, hasta el principio de tu siguiente turno.</p>
+    </div>
+
+    <div class="fcard" id="buscar">
+      <div class="fhead"><span class="fname">Buscar <span class="en">Search</span></span><span class="tag">acción</span></div>
+      <p>Haces una prueba de Sabiduría para distinguir algo que no resulta evidente: Medicina (dolencia o causa de muerte), Percepción (criatura u objeto oculto), Perspicacia (estado mental de una criatura) o Supervivencia (huellas o alimentos).</p>
+    </div>
+
+    <div class="fcard" id="correr">
+      <div class="fhead"><span class="fname">Correr <span class="en">Dash</span></span><span class="tag">acción</span></div>
+      <p>Consigues movimiento adicional para el turno, igual a tu velocidad tras aplicar los modificadores pertinentes. Puedes emplear una velocidad especial (nadando, volando) en lugar de la normal si la tienes.</p>
+    </div>
+
+    <div class="fcard" id="destrabarse">
+      <div class="fhead"><span class="fname">Destrabarse <span class="en">Disengage</span></span><span class="tag">acción</span></div>
+      <p>Tu movimiento no provocará ataques de oportunidad durante el resto del turno actual.</p>
+    </div>
+
+    <div class="fcard" id="esconderse">
+      <div class="fhead"><span class="fname">Esconderse <span class="en">Hide</span></span><span class="tag">acción</span></div>
+      <p>Prueba de Destreza (Sigilo) CD 15 mientras estás en zona muy oscura o tras cobertura tres cuartos/completa, fuera de la línea de visión enemiga. Si la superas, tienes el estado de invisible mientras permanezcas oculto. Dejas de estarlo si haces ruido, un enemigo te detecta, atacas o lanzas un conjuro con componente verbal.</p>
+    </div>
+
+    <div class="fcard" id="esquivar">
+      <div class="fhead"><span class="fname">Esquivar <span class="en">Dodge</span></span><span class="tag">acción</span></div>
+      <p>Hasta el principio de tu siguiente turno: las tiradas de ataque contra ti tienen desventaja si puedes ver al atacante, y tienes ventaja en tiradas de salvación de Destreza. Pierdes estos beneficios si tienes el estado de incapacitado o tu velocidad es 0.</p>
+    </div>
+
+    <div class="fcard" id="estudiar">
+      <div class="fhead"><span class="fname">Estudiar <span class="en">Study</span></span><span class="tag">acción</span></div>
+      <p>Prueba de Inteligencia para recordar un dato: Conocimiento arcano, Historia, Investigación, Naturaleza o Religión, según lo que trates de recordar.</p>
+    </div>
+
+    <div class="fcard" id="influir">
+      <div class="fhead"><span class="fname">Influir <span class="en">Influence</span></span><span class="tag">acción</span></div>
+      <p>Instas a un monstruo a hacer algo. Si es <b>voluntario</b> (concuerda con sus deseos) o <b>no voluntario</b> (le resulta aversivo), no hay prueba. Si está <b>indeciso</b>, haces una prueba de característica (Engaño, Interpretación, Intimidación, Persuasión o Trato con animales) contra CD 15 o la Inteligencia del monstruo, la que sea mayor.</p>
+    </div>
+
+    <div class="fcard" id="magia">
+      <div class="fhead"><span class="fname">Magia <span class="en">Magic</span></span><span class="tag">acción</span></div>
+      <p>Lanzas un conjuro con tiempo de lanzamiento de una acción, o usas un rasgo u objeto mágico que requiera esta acción. Si el conjuro tiene tiempo de lanzamiento de 1 minuto o más, repites esta acción cada turno de ese lanzamiento manteniendo concentración; si la pierdes, el conjuro falla pero no gastas el espacio.</p>
+    </div>
+
+    <div class="fcard" id="preparar-una-accion">
+      <div class="fhead"><span class="fname">Preparar una acción <span class="en">Ready</span></span><span class="tag">acción</span></div>
+      <p>Esperas a que ocurra algo concreto para actuar con tu reacción antes del principio de tu siguiente turno. Defines la circunstancia activadora y la acción (o hasta tu velocidad de movimiento) que harás en respuesta. Al preparar un conjuro, lo lanzas gastando sus recursos pero liberas su energía con la reacción; requiere concentración hasta el principio de tu siguiente turno.</p>
+    </div>
+
+    <div class="fcard" id="utilizar">
+      <div class="fhead"><span class="fname">Utilizar <span class="en">Use an Object</span></span><span class="tag">acción</span></div>
+      <p>Usas un objeto no mágico que requiera una acción para interactuar con él (más allá de la interacción gratuita que ya tienes por turno).</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="descansos">
+  <h2>Descansos <span class="count">2</span></h2>
+  <p class="section-note">Para empezar cualquiera de los dos descansos necesitas al menos 1 punto de golpe.</p>
+  <div class="grid">
+
+    <div class="fcard" id="descanso-corto">
+      <div class="fhead"><span class="fname">Descanso corto <span class="en">Short Rest</span></span><span class="tag">descanso</span></div>
+      <p>Periodo de inactividad de 1 hora sin nada más extenuante que leer, charlar, comer o montar guardia.</p>
+      <p><b>Gastar dados de golpe.</b> Puedes gastar uno o más dados de golpe para recuperar puntos de golpe: tira el dado, suma tu modificador por Constitución, recuperas ese total (mínimo 1). Decides si gastas otro tras cada tirada.</p>
+      <p><b>Rasgo especial.</b> Algunos rasgos se recargan con un descanso corto.</p>
+      <p><b>Interrumpir.</b> Se interrumpe si tiras iniciativa, lanzas un conjuro que no sea truco, o sufres daño. Un descanso corto interrumpido no otorga ningún beneficio.</p>
+    </div>
+
+    <div class="fcard" id="descanso-largo">
+      <div class="fhead"><span class="fname">Descanso largo <span class="en">Long Rest</span></span><span class="tag">descanso</span></div>
+      <p>Periodo de inactividad de al menos 8 horas: duermes un mínimo de 6 y haces como máximo 2 de actividades ligeras. Mientras duermes tienes el estado de inconsciente. Tras terminarlo, debes esperar al menos 16 horas para empezar otro.</p>
+      <p><b>Puntos de golpe al máximo.</b> Recuperas todos los puntos de golpe perdidos y <b>todos los dados de golpe gastados</b> — no la mitad. Si tus puntos de golpe máximos se habían reducido, vuelven a la normalidad.</p>
+      <p><b>Puntuaciones restablecidas.</b> Cualquier puntuación de característica reducida vuelve a la normalidad.</p>
+      <p><b>Cansancio reducido.</b> Si tienes el estado de cansancio, su nivel baja en 1.</p>
+      <p><b>Rasgo especial.</b> Algunos rasgos se recargan con un descanso largo.</p>
+      <p><b>Interrumpir.</b> Se interrumpe si tiras iniciativa, lanzas un conjuro que no sea truco, sufres daño, o caminas/haces ejercicio físico durante 1 hora. Si descansaste al menos 1 hora antes de la interrupción, obtienes los beneficios de un descanso corto. Puedes reanudarlo de inmediato; cada interrupción suma 1 hora adicional para completarlo.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="combate">
+  <h2>Combate</h2>
+  <p class="section-note">Primera pasada: estructura del turno, movimiento y ataques. Combate montado y bajo el agua quedan para una segunda pasada, son reglas de nicho.</p>
+  <div class="grid">
+
+    <div class="fcard" id="estructura-combate">
+      <div class="fhead"><span class="fname">Estructura de un combate</span><span class="tag">combate</span></div>
+      <p>Un asalto dura unos 6 segundos en el mundo del juego. Durante ese tiempo, cada participante juega un turno.</p>
+      <ol>
+        <li><b>Establecer posiciones.</b> El DM determina dónde se sitúan todos los personajes y monstruos.</li>
+        <li><b>Tirar iniciativa.</b> Todos los implicados tiran iniciativa, que determina el orden de los turnos.</li>
+        <li><b>Turnarse.</b> Cada participante juega su turno siguiendo el orden de iniciativa. El asalto termina cuando todos han jugado; se repite hasta que concluya el combate.</li>
+      </ol>
+      <p><b>Terminar el combate.</b> Concluye cuando un bando resulta vencido (muerto, inconsciente, rendido o huido) o cuando ambos bandos acuerdan terminarlo.</p>
+    </div>
+
+    <div class="fcard" id="iniciativa">
+      <div class="fhead"><span class="fname">Iniciativa</span><span class="tag">combate</span></div>
+      <p>Prueba de Destreza que determina el orden de los turnos. El DM tira por los monstruos; un grupo de criaturas idénticas comparte una única tirada.</p>
+      <p><b>Sorpresa.</b> Si el inicio del combate te pilla desprevenido, tienes desventaja en tu tirada de iniciativa.</p>
+      <p><b>Orden.</b> De mayor a menor iniciativa; no cambia entre asaltos.</p>
+      <p><b>Empates.</b> El DM decide el orden entre monstruos, los jugadores entre personajes; si el empate es entre un monstruo y un personaje, decide el DM.</p>
+    </div>
+
+    <div class="fcard" id="tu-turno">
+      <div class="fhead"><span class="fname">Tu turno</span><span class="tag">combate</span></div>
+      <p>Puedes moverte una distancia igual o menor a tu velocidad y llevar a cabo una acción, en el orden que prefieras.</p>
+      <p><b>Comunicarte.</b> Frases cortas o gestos no cuestan movimiento ni acción. Una explicación amplia o intentar persuadir a un enemigo sí requiere una acción.</p>
+      <p><b>Interactuar con objetos.</b> Una interacción gratuita por turno, como parte de tu movimiento o acción. Una segunda interacción requiere la acción de utilizar.</p>
+      <p><b>No hacer nada.</b> Puedes renunciar a moverte y actuar. Si no sabes qué hacer, valora esquivar o preparar una acción.</p>
+    </div>
+
+    <div class="fcard" id="movimiento-y-posicion">
+      <div class="fhead"><span class="fname">Movimiento y posición</span><span class="tag">combate</span></div>
+      <p><b>Terreno difícil.</b> Cada metro de movimiento en terreno difícil cuesta 1 m adicional.</p>
+      <p><b>Dividir el movimiento.</b> Puedes repartirlo antes y después de cualquier acción, acción adicional o reacción del mismo turno.</p>
+      <p><b>Tirarte al suelo.</b> Puedes adoptar el estado de derribado sin usar acción ni gastar velocidad, salvo que tu velocidad restante sea 0.</p>
+      <p><b>Moverte alrededor de otras criaturas.</b> Puedes atravesar el espacio de un aliado, una criatura incapacitada, una Diminuta, o una con tamaño dos categorías por encima o por debajo del tuyo. El espacio de otra criatura es terreno difícil para ti, salvo que sea Diminuta o aliada. No puedes terminar tu movimiento voluntariamente en un espacio ocupado; si terminas ahí de todos modos, quedas derribado salvo que seas Diminuto o más grande que la otra criatura.</p>
+    </div>
+
+    <div class="fcard" id="tamano-criatura">
+      <div class="fhead"><span class="fname">Tamaño y espacio de una criatura</span><span class="tag">combate</span></div>
+      <table class="rule-table">
+        <tr><th>Tamaño</th><th>Espacio (m)</th><th>Espacio (casillas)</th></tr>
+        <tr><td>Diminuto</td><td>0,75 × 0,75</td><td>4 por casilla</td></tr>
+        <tr><td>Pequeño</td><td>1,5 × 1,5</td><td>1 casilla</td></tr>
+        <tr><td>Mediano</td><td>1,5 × 1,5</td><td>1 casilla</td></tr>
+        <tr><td>Grande</td><td>3 × 3</td><td>4 casillas</td></tr>
+        <tr><td>Enorme</td><td>4,5 × 4,5</td><td>9 casillas</td></tr>
+        <tr><td>Gargantuesco</td><td>6 × 6</td><td>16 casillas</td></tr>
+      </table>
+    </div>
+
+    <div class="fcard" id="resolver-ataque">
+      <div class="fhead"><span class="fname">Hacer un ataque</span><span class="tag">combate</span></div>
+      <ol>
+        <li><b>Escoge un objetivo</b> dentro del alcance del ataque: una criatura, un objeto o un lugar.</li>
+        <li><b>Determina los modificadores.</b> El DM valora cobertura, ventaja/desventaja, y cualquier bonificador o penalizador de conjuros o capacidades especiales.</li>
+        <li><b>Resuelve el ataque.</b> Tirada de ataque: acierta si iguala o supera la CA del objetivo. Si acierta, tiras el daño, salvo que ese ataque siga otras normas.</li>
+      </ol>
+      <p><b>Objetivo oculto.</b> Si no puedes ver al objetivo, tienes desventaja en la tirada; si no está donde apuntas, fallas automáticamente. Si atacas a alguien que no puede verte, tienes ventaja. Estar escondido y atacar revela tu ubicación, aciertes o no.</p>
+    </div>
+
+    <div class="fcard" id="cobertura">
+      <div class="fhead"><span class="fname">Cobertura</span><span class="tag">combate</span></div>
+      <table class="rule-table">
+        <tr><th>Nivel</th><th>Beneficio</th><th>Lo proporciona</th></tr>
+        <tr><td>Media</td><td>+2 a CA y salv. Destreza</td><td>Cubre al menos la mitad del objetivo</td></tr>
+        <tr><td>Tres cuartos</td><td>+5 a CA y salv. Destreza</td><td>Cubre al menos tres cuartos</td></tr>
+        <tr><td>Completa</td><td>No puede ser objetivo directo</td><td>Cubre todo el objetivo</td></tr>
+      </table>
+      <p>Si hay varios obstáculos, solo se aplica el nivel más alto — no se suman.</p>
+    </div>
+
+    <div class="fcard" id="ataques-a-distancia">
+      <div class="fhead"><span class="fname">Ataques a distancia</span><span class="tag">combate</span></div>
+      <p><b>Alcance.</b> Más allá del alcance normal, la tirada tiene desventaja; más allá del alcance largo, no puedes atacar. Si el ataque tiene un único alcance, no puedes atacar más allá de él.</p>
+      <p><b>Junto a un enemigo.</b> Si haces un ataque a distancia estando a 1,5 m o menos de un enemigo que pueda verte y no esté incapacitado, tienes desventaja en la tirada.</p>
+    </div>
+
+    <div class="fcard" id="ataques-cuerpo-a-cuerpo">
+      <div class="fhead"><span class="fname">Ataques cuerpo a cuerpo</span><span class="tag">combate</span></div>
+      <p>Alcanzas a un objetivo a tu alcance, normalmente 1,5 m, salvo que la criatura tenga un alcance mayor indicado en su descripción.</p>
+    </div>
+
+    <div class="fcard" id="ataques-de-oportunidad">
+      <div class="fhead"><span class="fname">Ataques de oportunidad</span><span class="tag">combate</span></div>
+      <p>Puedes hacerlo cuando una criatura que puedas ver sale de tu alcance usando su acción, acción adicional, reacción o cualquiera de sus velocidades. Usas tu reacción para un ataque cuerpo a cuerpo con arma o sin armas, justo antes de que salga de tu alcance.</p>
+      <p><b>Evitarlo.</b> La acción de destrabarse lo evita. Tampoco se provoca si te teletransportas o si algo te mueve sin gastar tu movimiento, acción, acción adicional ni reacción.</p>
+    </div>
+
+    <div class="fcard" id="combate-montado">
+      <div class="fhead"><span class="fname">Combate montado</span><span class="tag">combate</span></div>
+      <p>Puedes usar como montura cualquier criatura voluntaria al menos una categoría de tamaño superior a ti, con la anatomía adecuada.</p>
+      <p><b>Montar y desmontar.</b> Durante tu movimiento, montas o desmontas de una criatura a 1,5 m o menos de ti, gastando la mitad de tu velocidad (redondeada hacia abajo).</p>
+      <p><b>Controlar una montura.</b> Solo si está entrenada para aceptar jinete. Su iniciativa pasa a ser la tuya y se mueve en tu turno según tus órdenes, con solo tres acciones disponibles: correr, destrabarse o esquivar. Una montura independiente conserva su propio orden de iniciativa y actúa por su cuenta.</p>
+      <p><b>Caerse.</b> Si un efecto mueve a tu montura en contra de su voluntad, o si te derriban a ti o a ella mientras estás montado, salvación de Destreza CD 10 — si fallas, caes con el estado de derribado en un espacio libre a 1,5 m de la montura.</p>
+    </div>
+
+    <div class="fcard" id="combate-bajo-el-agua">
+      <div class="fhead"><span class="fname">Combate bajo el agua</span><span class="tag">combate</span></div>
+      <p><b>Armas inadecuadas.</b> Un ataque cuerpo a cuerpo bajo el agua tiene desventaja si careces de velocidad nadando, salvo que el arma cause daño perforante. Un ataque a distancia bajo el agua falla automáticamente más allá del alcance normal, y tiene desventaja dentro de él.</p>
+      <p><b>Resistencia al fuego.</b> Todo lo que esté bajo el agua tiene resistencia al daño de fuego.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="dano-y-curacion">
+  <h2>Daño y curación</h2>
+  <div class="grid">
+
+    <div class="fcard" id="puntos-de-golpe">
+      <div class="fhead"><span class="fname">Puntos de golpe</span><span class="tag">daño</span></div>
+      <p>Miden el aguante físico y la voluntad de vivir. Tus PG actuales pueden oscilar entre tu máximo y 0. El daño se resta y no afecta tus capacidades mientras no llegues a 0.</p>
+      <p><b>Maltrecho.</b> Tienes la mitad de tus PG o menos. No tiene efecto propio, pero puede desencadenar otros efectos.</p>
+    </div>
+
+    <div class="fcard" id="tiradas-de-dano">
+      <div class="fhead"><span class="fname">Tiradas de daño</span><span class="tag">daño</span></div>
+      <p>Tiras los dados de daño, sumas los modificadores y aplicas el resultado. Un penalizador puede reducir el daño a 0, nunca a negativo.</p>
+      <p>Al atacar con un arma, sumas el mismo modificador por característica que usaste en la tirada de ataque. Los conjuros indican qué dados tirar y si suman modificador. Salvo que una regla diga lo contrario, no sumas tu modificador a un daño fijo que no use tirada.</p>
+    </div>
+
+    <div class="fcard" id="criticos">
+      <div class="fhead"><span class="fname">Críticos</span><span class="tag">daño</span></div>
+      <p>Tiras los dados de daño del ataque dos veces, sumas ambos resultados y añades los modificadores una sola vez. Los dados de daño adicionales (como el Ataque furtivo del pícaro) también se tiran dos veces.</p>
+    </div>
+
+    <div class="fcard" id="salvaciones-y-dano">
+      <div class="fhead"><span class="fname">Tiradas de salvación y daño</span><span class="tag">daño</span></div>
+      <p><b>Daño contra varios objetivos.</b> Si un efecto obliga a dos o más objetivos a salvar al mismo tiempo, el daño se tira una sola vez para todos.</p>
+      <p><b>Mitad del daño.</b> Al superar la tirada, muchos efectos causan la mitad del daño (redondeado hacia abajo) que habrías sufrido al fallarla.</p>
+    </div>
+
+    <div class="fcard" id="tipos-de-dano">
+      <div class="fhead"><span class="fname">Tipos de daño</span><span class="tag">daño</span></div>
+      <table class="rule-table">
+        <tr><th>Tipo</th><th>Ejemplos</th></tr>
+        <tr><td>Ácido</td><td>Enzimas digestivas, líquidos corrosivos</td></tr>
+        <tr><td>Contundente</td><td>Aplastamientos, caídas, objetos romos</td></tr>
+        <tr><td>Cortante</td><td>Garras, objetos cortantes</td></tr>
+        <tr><td>Frío</td><td>Agua gélida, ráfagas heladas</td></tr>
+        <tr><td>Fuego</td><td>Calor insoportable, llamas</td></tr>
+        <tr><td>Fuerza</td><td>Energía mágica pura</td></tr>
+        <tr><td>Necrótico</td><td>Energía que absorbe la vida</td></tr>
+        <tr><td>Perforante</td><td>Colmillos, objetos punzantes</td></tr>
+        <tr><td>Psíquico</td><td>Energía que desgarra la mente</td></tr>
+        <tr><td>Radiante</td><td>Energía sagrada, radiación abrasadora</td></tr>
+        <tr><td>Relámpago</td><td>Electricidad</td></tr>
+        <tr><td>Trueno</td><td>Sonido conmocionador</td></tr>
+        <tr><td>Veneno</td><td>Gas tóxico, veneno</td></tr>
+      </table>
+    </div>
+
+    <div class="fcard" id="resistencia-vulnerabilidad-inmunidad">
+      <div class="fhead"><span class="fname">Resistencia, vulnerabilidad e inmunidad</span><span class="tag">daño</span></div>
+      <p><b>Resistencia.</b> El daño de ese tipo se reduce a la mitad (redondeando hacia abajo).</p>
+      <p><b>Vulnerabilidad.</b> El daño de ese tipo se duplica.</p>
+      <p><b>Inmunidad.</b> No recibes daño de ese tipo, o el estado no te afecta si la inmunidad es a un estado.</p>
+      <p><b>No se acumulan.</b> Varias resistencias o vulnerabilidades al mismo tipo cuentan como una sola.</p>
+      <p><b>Orden de aplicación.</b> Primero los ajustes (bonificadores, penalizadores, multiplicadores), después las resistencias, y por último las vulnerabilidades. Ejemplo: 28 de daño de fuego, con un aura que reduce todo el daño en 5 y una criatura con resistencia a todo el daño y vulnerabilidad al fuego → 28−5=23, a la mitad por resistencia (redondeado) = 11, al doble por vulnerabilidad = 22.</p>
+    </div>
+
+    <div class="fcard" id="curacion">
+      <div class="fhead"><span class="fname">Curación</span><span class="tag">daño</span></div>
+      <p>Se recuperan PG con magia (como <i>curar heridas</i> o una poción) o con un descanso corto o largo. Los PG recuperados se suman a los actuales sin superar el máximo — el excedente se pierde.</p>
+    </div>
+
+    <div class="fcard" id="llegar-a-0-puntos-de-golpe">
+      <div class="fhead"><span class="fname">Llegar a 0 puntos de golpe</span><span class="tag">daño</span></div>
+      <p><b>Muerte de monstruos.</b> Un monstruo muere en cuanto sus PG llegan a 0 (salvo que el DM decida tratarlo como personaje).</p>
+      <p><b>PG máximos de 0.</b> Una criatura muere si sus PG máximos llegan a 0.</p>
+      <p><b>Daño considerable.</b> Si el daño reduce tus PG a 0 y sobra daño por asignar, mueres si ese sobrante es igual o mayor que tus PG máximos.</p>
+      <p><b>Caer inconsciente.</b> Si tus PG llegan a 0 sin morir al instante, tienes el estado de inconsciente hasta recuperar algún PG, y debes hacer tiradas de salvación contra muerte.</p>
+    </div>
+
+    <div class="fcard" id="salvacion-contra-muerte">
+      <div class="fhead"><span class="fname">Tirada de salvación contra muerte</span><span class="tag">daño</span></div>
+      <p>Al empezar tu turno con 0 PG, tiras 1d20 sin ningún modificador. 10 o más es éxito; menos de 10 es fallo.</p>
+      <p><b>Tres de un tipo.</b> Al tercer éxito te estabilizas; al tercer fallo mueres. No hace falta que sean consecutivos.</p>
+      <p><b>Sacar 1 o 20.</b> Un 1 cuenta como dos fallos; un 20 te devuelve 1 PG.</p>
+      <p><b>Daño con 0 PG.</b> Recibir cualquier daño con 0 PG cuenta como un fallo; si es un crítico, cuenta como dos. Si el daño iguala o supera tus PG máximos, mueres.</p>
+      <p><b>Estabilizar.</b> Acción de ayudar con prueba de Sabiduría (Medicina) CD 10. Una criatura estable no tira más salvaciones contra muerte pero sigue inconsciente; si sufre daño, deja de estar estable. Sin curación, recupera 1 PG tras 1d4 horas.</p>
+    </div>
+
+    <div class="fcard" id="noquear-a-una-criatura">
+      <div class="fhead"><span class="fname">Noquear a una criatura</span><span class="tag">daño</span></div>
+      <p>Si un ataque cuerpo a cuerpo reduciría a una criatura a 0 PG, puedes optar por dejarla en 1 PG. Queda inconsciente y comienza un descanso corto. Se mantiene inconsciente hasta recuperar algún PG o hasta que alguien supere una prueba de Sabiduría (Medicina) CD 10 para administrarle primeros auxilios.</p>
+    </div>
+
+    <div class="fcard" id="puntos-de-golpe-temporales">
+      <div class="fhead"><span class="fname">Puntos de golpe temporales</span><span class="tag">daño</span></div>
+      <p><b>Se pierden primero.</b> Si sufres daño teniéndolos, se restan de ahí antes que de tus PG normales.</p>
+      <p><b>Duración.</b> Hasta consumirse o hasta terminar un descanso largo.</p>
+      <p><b>No se acumulan.</b> Si ya tienes y recibes más, eliges cuáles conservar — no se suman.</p>
+      <p><b>No son PG ni curación.</b> No se pueden recuperar mediante curación, y recibirlos no cuenta como curación. No te devuelven la consciencia si tienes 0 PG.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="exploracion">
+  <h2>Exploración</h2>
+  <p class="section-note">Orden de marcha: conviene fijarlo al desplazarse — determina a quién afectan las trampas, quién detecta enemigos ocultos y quién queda más cerca si estalla un combate.</p>
+  <div class="grid">
+
+    <div class="fcard" id="vision-e-iluminacion">
+      <div class="fhead"><span class="fname">Visión e iluminación</span><span class="tag">exploración</span></div>
+      <p><b>Ligeramente oscuro</b> (luz tenue, neblina dispersa, follaje moderado). Desventaja en Sabiduría (Percepción) que dependa de la vista.</p>
+      <p><b>Muy oscuro</b> (oscuridad, niebla espesa, follaje denso). Tienes el estado de cegado al tratar de ver algo ahí.</p>
+      <p><b>Luz brillante.</b> Permite ver con normalidad. <b>Luz tenue.</b> Zona ligeramente oscura, frontera entre luz y oscuridad. <b>Oscuridad.</b> Zona muy oscura.</p>
+    </div>
+
+    <div class="fcard" id="sentir-vibraciones">
+      <div class="fhead"><span class="fname">Sentir vibraciones <span class="en">Tremorsense</span></span><span class="tag">sentido</span></div>
+      <p>Localiza criaturas y objetos en movimiento dentro de un alcance, siempre que ambos estén en contacto con la misma superficie o líquido. No detecta nada en el aire y no cuenta como visión.</p>
+    </div>
+
+    <div class="fcard" id="vision-ciega">
+      <div class="fhead"><span class="fname">Visión ciega <span class="en">Blindsight</span></span><span class="tag">sentido</span></div>
+      <p>Ves dentro de un alcance sin recurrir a la vista, incluso tras cobertura completa no; incluye ver a través del estado de cegado o la oscuridad, y detectar criaturas invisibles.</p>
+    </div>
+
+    <div class="fcard" id="vision-en-la-oscuridad">
+      <div class="fhead"><span class="fname">Visión en la oscuridad <span class="en">Darkvision</span></span><span class="tag">sentido</span></div>
+      <p>Dentro del alcance, ves con luz tenue como si fuera brillante, y en la oscuridad como si fuera luz tenue (solo tonos de gris).</p>
+    </div>
+
+    <div class="fcard" id="vision-verdadera">
+      <div class="fhead"><span class="fname">Visión verdadera <span class="en">Truesight</span></span><span class="tag">sentido</span></div>
+      <p>Dentro del alcance ves en la oscuridad normal y mágica, a criaturas invisibles, atraviesas ilusiones visuales (superando automáticamente sus salvaciones), distingues la forma verdadera de algo transformado, y ves en el Plano Etéreo.</p>
+    </div>
+
+    <div class="fcard" id="objetos">
+      <div class="fhead"><span class="fname">Interactuar con objetos</span><span class="tag">exploración</span></div>
+      <p><b>Qué es un objeto.</b> Un elemento específico e inanimado (ventana, puerta, espada, libro, mesa, silla, piedra) — no un edificio o vehículo compuesto de muchos objetos.</p>
+      <p><b>Tiempo limitado.</b> En situaciones apremiantes (como en combate), tienes una interacción gratuita por turno como parte de tu movimiento o acción. Cualquier otra requiere la acción de utilizar.</p>
+      <p><b>Encontrar objetos escondidos.</b> Si examinas las proximidades de algo oculto, el DM suele pedir Sabiduría (Percepción). Si registras un sitio que no está próximo al objeto, la prueba no revela su paradero, aciertes o no.</p>
+    </div>
+
+    <div class="fcard" id="capacidad-de-carga">
+      <div class="fhead"><span class="fname">Capacidad de carga</span><span class="tag">exploración</span></div>
+      <table class="rule-table">
+        <tr><th>Tamaño</th><th>Máximo</th><th>Arrastrar / levantar / empujar</th></tr>
+        <tr><td>Diminuto</td><td>Fue × 3,75 kg</td><td>Fue × 7,5 kg</td></tr>
+        <tr><td>Pequeño / Mediano</td><td>Fue × 7,5 kg</td><td>Fue × 15 kg</td></tr>
+        <tr><td>Grande</td><td>Fue × 15 kg</td><td>Fue × 30 kg</td></tr>
+        <tr><td>Enorme</td><td>Fue × 30 kg</td><td>Fue × 60 kg</td></tr>
+        <tr><td>Gargantuesco</td><td>Fue × 60 kg</td><td>Fue × 120 kg</td></tr>
+      </table>
+      <p>Si arrastras, levantas o empujas más del máximo, tu velocidad no supera 1,5 m.</p>
+    </div>
+
+    <div class="fcard" id="romper-objetos">
+      <div class="fhead"><span class="fname">Romper objetos</span><span class="tag">exploración</span></div>
+      <p>Como acción, rompes automáticamente un objeto no mágico frágil (vidrio, papel). Para algo más resistente, usa estas tablas.</p>
+      <table class="rule-table">
+        <tr><th>CA</th><th>Sustancia</th></tr>
+        <tr><td>11</td><td>Tela, papel, cuerda</td></tr>
+        <tr><td>13</td><td>Cristal, vidrio, hielo</td></tr>
+        <tr><td>15</td><td>Madera</td></tr>
+        <tr><td>17</td><td>Piedra</td></tr>
+        <tr><td>19</td><td>Hierro, acero</td></tr>
+        <tr><td>21</td><td>Mithral</td></tr>
+        <tr><td>23</td><td>Adamantina</td></tr>
+      </table>
+      <table class="rule-table">
+        <tr><th>Tamaño</th><th>Frágil</th><th>Resistente</th></tr>
+        <tr><td>Diminuto (botella, cerradura)</td><td>2 (1d4)</td><td>5 (2d4)</td></tr>
+        <tr><td>Pequeño (cofre, laúd)</td><td>3 (1d6)</td><td>10 (3d6)</td></tr>
+        <tr><td>Mediano (barril, candelabro)</td><td>4 (1d8)</td><td>18 (4d8)</td></tr>
+        <tr><td>Grande (carreta, mesa)</td><td>5 (1d10)</td><td>27 (5d10)</td></tr>
+      </table>
+      <p><b>Umbral de daño.</b> Objetos grandes suelen tener inmunidad a todo el daño salvo que un único ataque o efecto iguale o supere su umbral — entonces sufren todo ese daño. Lo que no llega al umbral es superficial y no reduce sus PG.</p>
+      <p><b>Tipos de daño y objetos.</b> Los objetos tienen inmunidad al daño psíquico y de veneno. El contundente sirve para destrozar, no para cortar. El papel y la tela pueden ser vulnerables al fuego.</p>
+    </div>
+
+    <div class="fcard" id="asfixia">
+      <div class="fhead"><span class="fname">Asfixia <span class="en">Suffocation</span></span><span class="tag">peligro</span></div>
+      <p>Aguantas la respiración 1 + tu modificador por Constitución en minutos (mínimo 30 segundos) antes de empezar a asfixiarte. Sin aire o ahogándote, sumas 1 nivel de cansancio al final de cada turno. Al recuperar el aliento, pierdes todos los niveles de cansancio sumados por asfixia.</p>
+    </div>
+
+    <div class="fcard" id="caidas">
+      <div class="fhead"><span class="fname">Caídas <span class="en">Falling</span></span><span class="tag">peligro</span></div>
+      <p>1d6 de daño contundente por cada 3 m caídos, hasta 20d6 máximo. Caes de bruces y derribado, salvo que evites el daño. Si caes al agua, puedes usar tu reacción y una prueba de Fuerza (Atletismo) o Destreza (Acrobacias) CD 15 para entrar de cabeza o de pie; si la superas, el daño se reduce a la mitad.</p>
+    </div>
+
+    <div class="fcard" id="deshidratacion">
+      <div class="fhead"><span class="fname">Deshidratación <span class="en">Dehydration</span></span><span class="tag">peligro</span></div>
+      <table class="rule-table">
+        <tr><th>Tamaño</th><th>Agua/día</th><th>Tamaño</th><th>Agua/día</th></tr>
+        <tr><td>Diminuto</td><td>1 l</td><td>Grande</td><td>16 l</td></tr>
+        <tr><td>Pequeño</td><td>4 l</td><td>Enorme</td><td>64 l</td></tr>
+        <tr><td>Mediano</td><td>4 l</td><td>Gargantuesco</td><td>256 l</td></tr>
+      </table>
+      <p>Si bebes menos de la mitad del agua necesaria, sumas 1 nivel de cansancio al final del día. No se elimina hasta beber la cantidad completa.</p>
+    </div>
+
+    <div class="fcard" id="desnutricion">
+      <div class="fhead"><span class="fname">Desnutrición <span class="en">Malnutrition</span></span><span class="tag">peligro</span></div>
+      <table class="rule-table">
+        <tr><th>Tamaño</th><th>Comida/día</th><th>Tamaño</th><th>Comida/día</th></tr>
+        <tr><td>Diminuto</td><td>125 g</td><td>Grande</td><td>2 kg</td></tr>
+        <tr><td>Pequeño</td><td>0,5 kg</td><td>Enorme</td><td>8 kg</td></tr>
+        <tr><td>Mediano</td><td>0,5 kg</td><td>Gargantuesco</td><td>32 kg</td></tr>
+      </table>
+      <p>Comer menos de la mitad: salvación de Constitución CD 10 o 1 nivel de cansancio al final del día. Sin comer nada 5 días: 1 nivel automático al quinto día, y otro más cada día siguiente sin comer. No se elimina hasta comer la cantidad completa.</p>
+    </div>
+
+    <div class="fcard" id="fuego">
+      <div class="fhead"><span class="fname">Fuego <span class="en">Fire</span></span><span class="tag">peligro</span></div>
+      <p>Una criatura u objeto que arda sufre 1d4 de daño de fuego al principio de cada uno de sus turnos. Como acción, puedes apagarlo adoptando el estado de derribado y rodando por el suelo. También se extingue si se moja, se sumerge o se ahoga.</p>
+    </div>
+
+    <div class="fcard" id="viajar">
+      <div class="fhead"><span class="fname">Ritmo de viaje</span><span class="tag">exploración</span></div>
+      <table class="rule-table">
+        <tr><th>Ritmo</th><th>Por minuto</th><th>Por hora</th><th>Por día</th></tr>
+        <tr><td>Rápido</td><td>120 m</td><td>6 km</td><td>45 km</td></tr>
+        <tr><td>Normal</td><td>90 m</td><td>4,5 km</td><td>36 km</td></tr>
+        <tr><td>Lento</td><td>60 m</td><td>3 km</td><td>27 km</td></tr>
+      </table>
+      <p><b>Rápido.</b> Desventaja en Sabiduría (Percepción o Supervivencia) y Destreza (Sigilo). <b>Normal.</b> Desventaja en Destreza (Sigilo). <b>Lento.</b> Ventaja en Sabiduría (Percepción o Supervivencia).</p>
+      <p>A caballo u otra montura, el grupo puede duplicar la distancia durante 1 hora; después la montura necesita un descanso corto o largo antes de repetirlo.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="conjuros">
+  <h2>Reglas de conjuros</h2>
+  <p class="section-note">Cómo funcionan los conjuros: obtenerlos, lanzarlos, escuelas, alcance, componentes, duración y efectos. Las descripciones de los 391 conjuros individuales no van aquí — esas viven en cada ficha de personaje.</p>
+  <div class="grid">
+
+    <div class="fcard" id="obtener-conjuros">
+      <div class="fhead"><span class="fname">Obtener conjuros</span><span class="tag">conjuros</span></div>
+      <p>Para lanzar un conjuro debes prepararlo en tu mente o acceder a él mediante un objeto mágico, como un pergamino de conjuro. Tus rasgos indican qué conjuros tienes, cuáles tienes siempre preparados y si puedes cambiar tu lista.</p>
+      <table class="rule-table">
+        <tr><th>Clase</th><th>¿Cuándo cambia?</th><th>Cantidad</th></tr>
+        <tr><td>Bardo</td><td>Al subir de nivel</td><td>Uno</td></tr>
+        <tr><td>Brujo</td><td>Al subir de nivel</td><td>Uno</td></tr>
+        <tr><td>Clérigo</td><td>Al finalizar un descanso largo</td><td>Cualquiera</td></tr>
+        <tr><td>Druida</td><td>Al finalizar un descanso largo</td><td>Cualquiera</td></tr>
+        <tr><td>Explorador</td><td>Al finalizar un descanso largo</td><td>Uno</td></tr>
+        <tr><td>Hechicero</td><td>Al subir de nivel</td><td>Uno</td></tr>
+        <tr><td>Mago</td><td>Al finalizar un descanso largo</td><td>Cualquiera</td></tr>
+        <tr><td>Paladín</td><td>Al finalizar un descanso largo</td><td>Uno</td></tr>
+      </table>
+      <p><b>Conjuros siempre preparados.</b> Si un rasgo te los otorga, no cuentan para el total de tu lista modificable.</p>
+      <p><b>Lanzar con armadura.</b> Necesitas entrenamiento con la armadura que llevas puesta; de lo contrario, es un lastre excesivo para lanzar conjuros.</p>
+    </div>
+
+    <div class="fcard" id="espacios-de-conjuro">
+      <div class="fhead"><span class="fname">Nivel y espacios de conjuro</span><span class="tag">conjuros</span></div>
+      <p>Todo conjuro tiene un nivel de 0 a 9. Los de nivel 0 son trucos, casi rutinarios de lanzar.</p>
+      <p>Un espacio de conjuro representa tu potencial mágico. Al lanzar un conjuro de nivel 1 o superior, gastas un espacio de ese nivel o de uno mayor — un conjuro de nivel 1 cabe en cualquier espacio, pero uno de nivel 2 necesita espacio de nivel 2 como mínimo. Los espacios gastados se recuperan tras un descanso largo.</p>
+      <p><b>Espacio de nivel superior.</b> Si usas un espacio de mayor nivel que el conjuro, este pasa a ser del nivel del espacio para ese lanzamiento. Algunos conjuros se vuelven más potentes así, como indica su descripción.</p>
+      <p><b>Un espacio por turno.</b> Solo puedes gastar un espacio de conjuro por turno, aunque tengas acción y acción adicional disponibles.</p>
+    </div>
+
+    <div class="fcard" id="lanzar-sin-espacios">
+      <div class="fhead"><span class="fname">Lanzar sin gastar espacios</span><span class="tag">conjuros</span></div>
+      <p><b>Trucos.</b> Se lanzan sin espacio de conjuro.</p>
+      <p><b>Rituales.</b> Un conjuro marcado "ritual" puede lanzarse así: 10 minutos más de tiempo, sin gastar espacio. Debes tenerlo preparado.</p>
+      <p><b>Capacidades especiales.</b> Algunos rasgos permiten lanzar conjuros concretos sin espacio, normalmente con otro límite (como "una vez al día").</p>
+      <p><b>Objetos mágicos.</b> Pergaminos de conjuro y objetos similares permiten lanzar sin espacio; su descripción indica cuántas veces.</p>
+    </div>
+
+    <div class="fcard" id="escuela-magica">
+      <div class="fhead"><span class="fname">Escuela mágica</span><span class="tag">conjuros</span></div>
+      <p>Cada conjuro pertenece a una escuela. No tienen regla propia, pero otras reglas las referencian.</p>
+      <table class="rule-table">
+        <tr><th>Escuela</th><th>Efectos típicos</th></tr>
+        <tr><td>Abjuración</td><td>Impide o deshace efectos dañinos</td></tr>
+        <tr><td>Adivinación</td><td>Revela información</td></tr>
+        <tr><td>Conjuración</td><td>Transporta criaturas u objetos</td></tr>
+        <tr><td>Encantamiento</td><td>Influye en las mentes</td></tr>
+        <tr><td>Evocación</td><td>Canaliza energía, a menudo destructiva</td></tr>
+        <tr><td>Ilusionismo</td><td>Engaña a la mente o los sentidos</td></tr>
+        <tr><td>Nigromancia</td><td>Manipula la vida y la muerte</td></tr>
+        <tr><td>Transmutación</td><td>Transforma criaturas u objetos</td></tr>
+      </table>
+    </div>
+
+    <div class="fcard" id="tiempo-de-lanzamiento">
+      <div class="fhead"><span class="fname">Tiempo de lanzamiento</span><span class="tag">conjuros</span></div>
+      <p>La mayoría de conjuros necesitan la acción de magia; otros piden acción adicional, reacción, o 1 minuto o más.</p>
+      <p><b>Reacción y acción adicional.</b> Si el tiempo de lanzamiento es una reacción, se lanza en respuesta al suceso que defina el conjuro. Algunos de acción adicional también responden a un suceso concreto.</p>
+      <p><b>Tiempos más largos.</b> Con 1 minuto o más, repites la acción de magia en cada turno y mantienes concentración mientras lanzas; si la pierdes, el conjuro falla sin gastar espacio y debes empezar de nuevo.</p>
+    </div>
+
+    <div class="fcard" id="alcance-conjuro">
+      <div class="fhead"><span class="fname">Alcance</span><span class="tag">conjuros</span></div>
+      <p><b>Distancia.</b> Expresado en metros. <b>Toque.</b> El efecto se origina en algo que tocas dentro de tu alcance. <b>Lanzador.</b> El conjuro se lanza sobre ti o emana de ti.</p>
+      <p>Un efecto desplazable no queda restringido por el alcance, salvo que la descripción diga lo contrario.</p>
+    </div>
+
+    <div class="fcard" id="componentes">
+      <div class="fhead"><span class="fname">Componentes</span><span class="tag">conjuros</span></div>
+      <p><b>Verbal (V).</b> Un canto pronunciado en voz normal; no funciona amordazado o en silencio mágico.</p>
+      <p><b>Somático (S).</b> Gestos enérgicos; necesitas al menos una mano libre.</p>
+      <p><b>Material (M).</b> Un objeto concreto; el conjuro no lo consume salvo que se indique. Puedes sustituir materiales sin coste por un saquito de componentes o un canalizador mágico, si tu rasgo lo permite.</p>
+    </div>
+
+    <div class="fcard" id="duracion-conjuro">
+      <div class="fhead"><span class="fname">Duración</span><span class="tag">conjuros</span></div>
+      <p><b>Concentración.</b> Sigue las reglas de concentración del glosario. <b>Instantáneo.</b> Efecto momentáneo, luego desaparece. <b>Periodo de tiempo.</b> Dura lo indicado (asaltos, minutos, horas); puedes terminarlo tú mismo sin acción si no estás incapacitado.</p>
+    </div>
+
+    <div class="fcard" id="efectos-conjuro">
+      <div class="fhead"><span class="fname">Efectos</span><span class="tag">conjuros</span></div>
+      <p><b>Objetivos.</b> Necesitas una ruta despejada (sin cobertura completa). Puedes elegirte a ti mismo salvo que el conjuro exija objetivo hostil o lo prohíba. Un objetivo no válido no sufre nada, pero el espacio de conjuro se gasta igual.</p>
+      <p><b>CD de salvación de conjuros = 8 + modificador por aptitud mágica + bonificador por competencia.</b></p>
+      <p><b>Modificador de ataque de conjuros = modificador por aptitud mágica + bonificador por competencia.</b></p>
+      <p><b>Combinar efectos.</b> Conjuros distintos se suman si sus duraciones se solapan. El mismo conjuro lanzado varias veces no se acumula — se aplica el efecto más potente, o el más reciente si son iguales.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="ejemplos">
+  <h2>Ejemplos</h2>
+  <p class="section-note">Personajes genéricos, no de tu mesa — solo para ver las reglas encadenadas en un turno real. Los términos subrayados enlazan a su regla.</p>
+  <div class="grid">
+
+    <div class="example-card" id="ejemplo-combate">
+      <div class="fhead"><span class="fname">Un turno de combate</span><span class="tag-ex">ejemplo</span></div>
+      <p class="setup">Vela, pícara, se enfrenta a un goblin. CA de Vela 15, bono de ataque con espada corta +6, daño 1d6+4 cortante más 2d6 de Ataque furtivo si tiene ventaja o un aliado junto al objetivo. El goblin tiene CA 13 y 7 PG.</p>
+      <ol>
+        <li><b><a href="#iniciativa">Tirar iniciativa.</a></b> Vela saca 18, suma +3 de Destreza = 21. Actúa antes que el goblin.</li>
+        <li><b>Movimiento.</b> Gasta parte de su velocidad para colocarse junto al goblin, dentro de su alcance de 1,5 m.</li>
+        <li><b><a href="#resolver-ataque">Acción: Atacar.</a></b> Escoge al goblin como objetivo. Un aliado ya está a su lado, así que tiene ventaja. Tira 2d20 (14 y 9, se queda con el 14) +6 = 20, supera la CA 13 → acierta.</li>
+        <li><b>Daño.</b> 1d6+4 del arma (9) + 2d6 de Ataque furtivo, activado porque tenía ventaja (7) = 16 de daño. Con solo 7 PG, <a href="#llegar-a-0-puntos-de-golpe">el goblin muere en el acto</a> — los monstruos mueren en cuanto llegan a 0 PG.</li>
+        <li><b>Resto del turno.</b> Le queda movimiento sin gastar; lo usa para ponerse a cubierto tras un pilar antes de que termine su turno.</li>
+      </ol>
+    </div>
+
+    <div class="example-card" id="ejemplo-exploracion">
+      <div class="fhead"><span class="fname">Un turno de exploración</span><span class="tag-ex">ejemplo</span></div>
+      <p class="setup">Bram, explorador, investiga una cripta. Bono de Sabiduría (Percepción) +5, bono de Destreza (Sigilo) +6. La sala tiene una única antorcha lejana.</p>
+      <ol>
+        <li><b><a href="#vision-e-iluminacion">Visión e iluminación.</a></b> La luz tenue deja la sala ligeramente oscura: desventaja en Percepción que dependa de la vista.</li>
+        <li><b><a href="#buscar">Acción: Buscar.</a></b> Quiere notar algo raro en un estante. Prueba de Sabiduría (Percepción) CD 15 con desventaja: tira 12 y 16, se queda con el 12, +5 = 17 → supera la CD y nota una rendija sospechosa en la pared.</li>
+        <li><b><a href="#objetos">Interactuar con objetos.</a></b> Mueve el estante como su interacción gratuita del turno, sin gastar su acción.</li>
+        <li><b>Peligro inesperado.</b> El estante activa una trampa de dardos. Salvación de Destreza CD 13: tira 9, +4 = 13 → supera por muy poco, sin daño.</li>
+        <li><b><a href="#esconderse">Acción: Esconderse.</a></b> Oye pasos en el pasillo. Prueba de Destreza (Sigilo) CD 15: tira 13, +6 = 19 → éxito. Obtiene el estado de <a href="#invisible">invisible</a> mientras permanezca oculto.</li>
+      </ol>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+Reglas rápidas · Mesa de Lucho · D&amp;D 2024 · Fuente: PHB 2024 (Devir), Capítulo 1 y Apéndice C · v1 completa: Fundamentos, Estados, Acciones, Descansos, Combate, Daño y curación, Exploración, Reglas de conjuros, Ejemplos
+</footer>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('#navLinks a');
+  var sections = Array.prototype.map.call(links, function(a){
+    return document.querySelector(a.getAttribute('href'));
+  });
+  if(!('IntersectionObserver' in window)) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        links.forEach(function(a){ a.classList.remove('active'); });
+        var idx = sections.indexOf(entry.target);
+        if(idx > -1) links[idx].classList.add('active');
+      }
+    });
+  }, {rootMargin:'-20% 0px -70% 0px'});
+  sections.forEach(function(s){ if(s) obs.observe(s); });
+})();
+</script>
+
+</body>
+</html>
