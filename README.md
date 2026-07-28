@@ -1,91 +1,78 @@
-# Fichas de Personaje — Campaña D&D 2024
+# Fichas de Personaje — D&D 2024
 
-Portada con las fichas de personaje de la mesa, organizadas por jugador.
-Sitio publicado con **GitHub Pages**.
+Sitio personal de Lucho para su mesa de D&D 2024, publicado con **GitHub Pages**. Portada con las fichas de sus personajes y una página de referencia rápida de reglas.
 
 ---
 
 ## 📂 Estructura del repositorio
 
 ```
-index.html          ← La portada. Lista a los jugadores y sus personajes.
-lucho/              ← Carpeta de cada jugador (una por persona)
+index.html          ← La portada. Enlaza a cada personaje y a las reglas rápidas.
+reglas.html          ← Consulta rápida de reglas PHB 2024 (estados, combate, conjuros, equipo…)
+lucho/                ← Carpeta con un archivo .html por personaje
   usoryn.html
   darvin.html
   auriana.html
-checho/
-  <tu-personaje>.html
-README.md           ← Este archivo
+  kiyaj.html
+  yevelda.html
+README.md            ← Este archivo
 ```
 
-Cada jugador tiene **su propia carpeta** (en minúsculas, sin espacios ni tildes).
-Dentro van las fichas, una por personaje, en formato `.html`.
+Todas las fichas viven en `lucho/`, un archivo por personaje.
+
+`reglas.html` vive en la raíz, junto a `index.html` — **no** dentro de `lucho/`, porque todas las fichas la enlazan como `../reglas.html`.
 
 ---
 
 ## ➕ Cómo subir un personaje nuevo
 
 1. Entra al repositorio en GitHub.
-2. Abre **tu carpeta** (por ejemplo `checho/`). Si aún no existe, la creas en el paso 4 escribiendo `checho/` antes del nombre del archivo.
+2. Abre la carpeta `lucho/`.
 3. Clic en **"Add file" → "Upload files"**.
 4. Arrastra tu archivo `.html`. Usa un nombre simple en minúsculas, sin espacios ni tildes:
    - ✅ `kaelen.html`, `mi-personaje.html`
    - ❌ `Mi Personaje.html`, `kaelén.html`
 5. Abajo, clic en **"Commit changes"** para guardar.
 
-> Si subes el archivo dentro de una carpeta que no existe todavía, GitHub la crea sola. Para eso, al subir, escribe el nombre de la carpeta y una barra antes del archivo en el campo de destino: `checho/kaelen.html`.
-
 ---
 
 ## 🔗 Cómo enlazar tu personaje en la portada
 
-La portada usa un **acordeón por jugador**: cada jugador es un bloque plegable y dentro van sus personajes como filas de lista.
+La portada (`index.html`) muestra a los personajes como una grilla de tarjetas, no como una lista por jugador. Cada tarjeta es un enlace `<a>` con un medallón de color, el nombre y una línea de especie/clase — no hay estados de "pendiente" ni nombre de campaña: una ficha solo se agrega a la portada cuando ya está lista.
 
 1. Abre `index.html` en GitHub y clic en el lápiz (✏️ "Edit").
-2. Busca el bloque de tu jugador (empieza con `<!-- JUGADOR: Checho -->`).
-3. Dentro de su `<div class="char-list">`, copia una fila existente y pégala cambiando los datos.
-
-Para un personaje **con ficha lista** (es un enlace `<a>`):
+2. Busca el bloque `<div class="chars">` bajo "Elige tu personaje".
+3. Copia una tarjeta existente completa y pégala debajo, cambiando los datos:
 
 ```html
-<a class="char" href="checho/kaelen.html">
-  <span class="marker"></span>
+<a class="char kaelen" href="lucho/kaelen.html">
+  <span class="medal">K</span>
   <span class="info">
     <span class="cn">Kaelen</span>
-    <span class="meta">Elfo · Mago nivel 8 <span class="camp">Nombre de la campaña</span></span>
+    <span class="meta"><b>Elfo</b> · Mago 8</span>
   </span>
-  <span class="right">
-    <span class="char-status ready">Lista</span>
-    <span class="arrow">→</span>
-  </span>
+  <span class="arrow">&rarr;</span>
 </a>
 ```
 
-Para un personaje **sin ficha todavía** (es un `<span>` no clicable):
-
-```html
-<span class="char pending-row">
-  <span class="marker"></span>
-  <span class="info">
-    <span class="cn">Kaelen</span>
-    <span class="meta">Elfo · Mago nivel 8 <span class="camp">Nombre de la campaña</span></span>
-  </span>
-  <span class="right">
-    <span class="char-status pending">Pendiente</span>
-  </span>
-</span>
-```
-
-- `href` → ruta a tu ficha (`carpeta/archivo.html`). Solo en la versión `<a>`.
+- `class="char kaelen"` y `href` → la clase debe ser un identificador único (nombre del personaje, en minúsculas) y coincidir con la ruta real del archivo.
+- `<span class="medal">K</span>` → la inicial del personaje.
 - `cn` → nombre del personaje.
-- `meta` → especie · clase y nivel.
-- `camp` → nombre de la campaña (reemplaza "Campaña por definir" cuando lo tengas).
-- Cuando una ficha quede lista, cambia el `<span class="char pending-row">` por `<a class="char" href="...">`, pon el estado en `ready` con texto "Lista" y añade la flecha `<span class="arrow">→</span>`.
+- `meta` → especie · clase y nivel (formato libre, corto).
 
-4. Si añades un personaje, actualiza también el conteo del jugador (`<span class="count">3 personajes</span>`).
+4. La tarjeta necesita además un color propio para el medallón. Dentro de `<style>`, busca el bloque `:root{...}` y agrega una línea con tu color junto a las demás (por ejemplo `--kaelen:#4A6FA5;`), y en el bloque de reglas `.char.NOMBRE .medal{background:var(--NOMBRE)}` agrega la tuya: `.char.kaelen .medal{background:var(--kaelen)}`.
+   - Si esto no te hace sentido o preferís no tocar el CSS a mano, pídele a Lucho (o a Claude) que te arme el snippet completo — es un cambio de dos líneas, pero hay que acertarle a la sintaxis.
 5. Clic en **"Commit changes"**.
 
-> **Campaña:** mientras no tengas el nombre, deja `Campaña por definir`. Cuando lo definas, reemplaza ese texto en cada personaje.
+---
+
+## 📖 Reglas rápidas (`reglas.html`)
+
+Página de consulta de mesa con las reglas del PHB 2024: estados, acciones, descansos, combate, daño y curación, exploración, conjuros y equipo (propiedades y maestrías de armas, armaduras, sintonización). Cada término tiene su propia ancla (`reglas.html#derribado`, `reglas.html#concentracion`, etc.).
+
+Las fichas de personaje enlazan a esos términos en vez de repetir la definición completa — por ejemplo, en vez de explicar qué es el estado Derribado dentro de la ficha de cada personaje, el nombre "Derribado" es un link a `../reglas.html#derribado`. Si tu ficha nueva menciona un estado, una acción o una regla que ya está en `reglas.html`, enlázala igual en vez de reexplicarla — así el sitio no repite el mismo texto en cinco lugares distintos.
+
+Si el término que necesitas no existe todavía en `reglas.html`, agrégalo primero (o pídeselo a Claude) antes de enlazarlo.
 
 ---
 
@@ -105,6 +92,9 @@ La portada vive en la raíz del sitio:
 Cada ficha es accesible directamente por su ruta:
 `https://<usuario>.github.io/<repositorio>/lucho/usoryn.html`
 
+Las reglas rápidas:
+`https://<usuario>.github.io/<repositorio>/reglas.html`
+
 **En el móvil:** abre la URL y usa "Añadir a pantalla de inicio" para tenerla como ícono de app.
 
 ---
@@ -113,4 +103,4 @@ Cada ficha es accesible directamente por su ruta:
 
 - Las fichas son archivos HTML autónomos: no dependen de nada externo salvo las fuentes (que cargan solas con internet).
 - Mantén los nombres de archivo y carpeta en minúsculas y sin tildes para evitar problemas de enlaces.
-- Si una ficha aún no existe, deja su tarjeta con estado `pending` y sin `href` (o apuntando a `#`).
+- Cada ficha se agrega a la portada solo cuando está terminada — no hay tarjetas de "personaje pendiente" en este sitio.
