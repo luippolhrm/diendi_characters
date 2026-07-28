@@ -109,6 +109,8 @@
   .defs{display:grid;grid-template-columns:repeat(2,1fr);gap:11px 16px}
   .def{font-size:12.5px;line-height:1.5}
   .def dt{font-weight:600;color:var(--ink);margin-bottom:2px;display:flex;align-items:center;gap:7px}
+  .def dt a{color:inherit;text-decoration:underline;text-decoration-color:var(--violet);text-underline-offset:3px}
+  .def dt a:hover{color:var(--violet)}
   .def dt .en{font-family:'Space Grotesk',monospace;font-size:10px;font-weight:600;color:var(--ink-3);
     background:var(--mist);padding:1px 6px;border-radius:4px;text-transform:none;letter-spacing:0}
   .def dd{color:var(--ink-2);margin:0}
@@ -252,6 +254,7 @@
   .grp-head .gline{flex:1;height:1px;background:var(--line)}
   .grp-head .gh-note{font-size:12.5px;color:var(--ink-3);margin-top:5px}
   .grp-head .gh-note b{color:var(--ink-2)}
+  .grp-head .gh-note a{color:var(--violet)}
 
   /* Grilla de habilidades */
   .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:6px 14px}
@@ -475,7 +478,7 @@
         <span class="hd-lbl">d8 <span style="opacity:.6">· Clériga</span></span>
         <div class="hd-pips" data-track="hd8" data-max="3"></div>
       </div>
-      <p class="hd-note">Relleno = gastado. Al descanso largo recuperas <b>todos</b> (regla 2024).</p>
+      <p class="hd-note">Relleno = gastado. Al <a href="../reglas.html#descanso-largo" style="color:var(--violet)">descanso largo</a> recuperas <b>todos</b> (regla 2024).</p>
     </div>
   </div>
 
@@ -545,7 +548,7 @@
         <tbody>
           <tr><td>Shield of the Cavalier +1</td><td class="mono">+4</td><td class="mono">1d6+2</td><td>1d6+1 mágico + mod. Fue · empuja 10 ft · derriba si es Pequeño</td></tr>
           <tr><td>Maza</td><td class="mono">+3</td><td class="mono">1d6+1</td><td>Arma simple · contundente · mod. Fue</td></tr>
-          <tr><td>Llama Sagrada</td><td class="mono">CD 13</td><td class="mono">1d8 rad.</td><td>Salv. Destreza · ignora cobertura</td></tr>
+          <tr><td>Llama Sagrada</td><td class="mono">CD 13</td><td class="mono">1d8 rad.</td><td>Salv. Destreza · ignora <a href="../reglas.html#cobertura" style="color:var(--violet)">cobertura</a></td></tr>
           <tr><td>Dardo Guía</td><td class="mono">+5</td><td class="mono">4d6 rad.</td><td>Ventaja al sig. atacante</td></tr>
         </tbody>
       </table>
@@ -554,9 +557,9 @@
       <h3><span class="dot"></span> Bonos y Resistencias</h3>
       <table>
         <tbody>
-          <tr><td><b>Resist. Necrótico</b></td><td><span class="pill rose">Celestial</span></td><td>Sufres <b>la mitad</b> del daño necrótico (energía de muerte/marchitamiento). Rasgo Aasimar.</td></tr>
-          <tr><td><b>Resist. Radiante</b></td><td><span class="pill gold">Celestial</span></td><td>Sufres <b>la mitad</b> del daño radiante (luz sagrada). Rasgo Aasimar.</td></tr>
-          <tr><td><b>Visión Oscuridad</b></td><td class="mono">60 ft</td><td>Ves en luz tenue como si fuera brillante, y en oscuridad como si fuera tenue (en grises) hasta 18 m.</td></tr>
+          <tr><td><b><a href="../reglas.html#resistencia-vulnerabilidad-inmunidad" style="color:inherit;text-decoration-color:var(--violet)">Resist.</a> Necrótico</b></td><td><span class="pill rose">Celestial</span></td><td>Sufres <b>la mitad</b> del daño necrótico (energía de muerte/marchitamiento). Rasgo Aasimar.</td></tr>
+          <tr><td><b><a href="../reglas.html#resistencia-vulnerabilidad-inmunidad" style="color:inherit;text-decoration-color:var(--violet)">Resist.</a> Radiante</b></td><td><span class="pill gold">Celestial</span></td><td>Sufres <b>la mitad</b> del daño radiante (luz sagrada). Rasgo Aasimar.</td></tr>
+          <tr><td><b><a href="../reglas.html#vision-en-la-oscuridad" style="color:inherit;text-decoration-color:var(--violet)">Visión Oscuridad</a></b></td><td class="mono">60 ft</td><td>Ves en luz tenue como si fuera brillante, y en oscuridad como si fuera tenue (en grises) hasta 18 m.</td></tr>
         </tbody>
       </table>
     </div>
@@ -564,31 +567,31 @@
 
   <div class="grp-head" style="margin-top:24px">
     <div class="gh-row"><span class="gt">Estados que aplica o cura</span><span class="gline"></span></div>
-    <div class="gh-note">Definiciones oficiales PHB 2024 de los estados que tocan los conjuros y rasgos de Auriana.</div>
+    <div class="gh-note">Cada estado enlaza a su definición oficial (PHB 2024) en <a href="../reglas.html#estados">Reglas rápidas</a> — aquí queda solo lo propio de Auriana.</div>
   </div>
   <div class="card">
     <dl class="defs">
-      <div class="def apply"><dt>Asustado <span class="tag">aplica</span></dt><dd>Desventaja en pruebas y ataques mientras vea la fuente del miedo. No puede acercarse voluntariamente a ella. <b>Lo causa Expulsar Muertos.</b></dd></div>
-      <div class="def apply"><dt>Incapacitado <span class="tag">aplica</span></dt><dd>Sin acciones, acciones adicionales ni reacciones. No puede concentrarse. <b>Lo causa Expulsar Muertos</b> (junto con Asustado).</dd></div>
-      <div class="def cure"><dt>Cegado <span class="tag">cura</span></dt><dd>No ve, falla pruebas que requieran vista. Sus ataques con desventaja; los ataques contra él con ventaja. <b>Lo quita Restablecimiento Menor.</b></dd></div>
-      <div class="def cure"><dt>Ensordecido <span class="tag">cura</span></dt><dd>No oye y falla pruebas que requieran oído. <b>Lo quita Restablecimiento Menor.</b></dd></div>
-      <div class="def cure"><dt>Envenenado <span class="tag">cura</span></dt><dd>Desventaja en tiradas de ataque y pruebas de característica. <b>Lo quita Restablecimiento Menor</b> (o la Antitoxina previene la salvación).</dd></div>
-      <div class="def cure"><dt>Paralizado <span class="tag">cura</span></dt><dd>Incapacitado, no se mueve ni habla. Falla salvaciones de Fuerza y Destreza. Golpes a 1,5 m son críticos. <b>Lo quita Restablecimiento Menor.</b></dd></div>
+      <div class="def apply"><dt><a href="../reglas.html#asustado">Asustado</a> <span class="tag">aplica</span></dt><dd><b>Lo causa Expulsar Muertos.</b></dd></div>
+      <div class="def apply"><dt><a href="../reglas.html#incapacitado">Incapacitado</a> <span class="tag">aplica</span></dt><dd><b>Lo causa Expulsar Muertos</b> (junto con Asustado).</dd></div>
+      <div class="def cure"><dt><a href="../reglas.html#cegado">Cegado</a> <span class="tag">cura</span></dt><dd><b>Lo quita Restablecimiento Menor.</b></dd></div>
+      <div class="def cure"><dt><a href="../reglas.html#ensordecido">Ensordecido</a> <span class="tag">cura</span></dt><dd><b>Lo quita Restablecimiento Menor.</b></dd></div>
+      <div class="def cure"><dt><a href="../reglas.html#envenenado">Envenenado</a> <span class="tag">cura</span></dt><dd><b>Lo quita Restablecimiento Menor</b> (o la Antitoxina previene la salvación).</dd></div>
+      <div class="def cure"><dt><a href="../reglas.html#paralizado">Paralizado</a> <span class="tag">cura</span></dt><dd><b>Lo quita Restablecimiento Menor.</b></dd></div>
     </dl>
   </div>
 
   <div class="grp-head" style="margin-top:24px">
     <div class="gh-row"><span class="gt">Acciones básicas en tu turno</span><span class="gline"></span></div>
-    <div class="gh-note">Lo que puede hacer cualquier personaje cada turno, sin gastar recursos.</div>
+    <div class="gh-note">Cada acción enlaza a su regla completa en <a href="../reglas.html#acciones">Reglas rápidas</a> — aquí, cómo la usa Auriana.</div>
   </div>
   <div class="card">
     <dl class="defs">
-      <div class="def"><dt>Atacar</dt><dd>Un ataque con la maza o un truco ofensivo (Llama Sagrada). Auriana no tiene Ataque Adicional.</dd></div>
-      <div class="def"><dt>Lanzar Conjuro <span class="en">Magic</span></dt><dd>Lanzas un conjuro con tiempo de lanzamiento de 1 acción, o usas Canalizar Divinidad.</dd></div>
-      <div class="def"><dt>Destrabarse <span class="en">Disengage</span></dt><dd>Tu movimiento este turno no provoca ataques de oportunidad al alejarte de enemigos.</dd></div>
-      <div class="def"><dt>Esquivar <span class="en">Dodge</span></dt><dd>Hasta tu próximo turno, los ataques contra ti tienen desventaja y tú tienes ventaja en salvaciones de Destreza.</dd></div>
-      <div class="def"><dt>Correr <span class="en">Dash</span></dt><dd>Ganas movimiento extra igual a tu velocidad (otros 9 m) este turno.</dd></div>
-      <div class="def"><dt>Ayudar <span class="en">Help</span></dt><dd>Das ventaja a un aliado en su próxima prueba o ataque, o estabilizas a un caído (con Medicina o kit).</dd></div>
+      <div class="def"><dt><a href="../reglas.html#atacar">Atacar</a></dt><dd>Un ataque con la maza o un truco ofensivo (Llama Sagrada). Auriana no tiene Ataque Adicional.</dd></div>
+      <div class="def"><dt><a href="../reglas.html#magia">Magia</a> <span class="en">Magic</span></dt><dd>Lanza un conjuro con tiempo de 1 acción, o usa Canalizar Divinidad.</dd></div>
+      <div class="def"><dt><a href="../reglas.html#destrabarse">Destrabarse</a> <span class="en">Disengage</span></dt><dd>Para retirarse del frente sin regalar ataques de oportunidad.</dd></div>
+      <div class="def"><dt><a href="../reglas.html#esquivar">Esquivar</a> <span class="en">Dodge</span></dt><dd>Su mejor defensa en turnos sin conjuro que lanzar.</dd></div>
+      <div class="def"><dt><a href="../reglas.html#correr">Correr</a> <span class="en">Dash</span></dt><dd>Otros 9 m de movimiento este turno.</dd></div>
+      <div class="def"><dt><a href="../reglas.html#ayudar">Ayudar</a> <span class="en">Help</span></dt><dd>Ventaja a un aliado, o <a href="../reglas.html#salvacion-contra-muerte">estabilizar</a> a un caído (Medicina o kit — ver dote Sanador).</dd></div>
     </dl>
   </div>
 </section>
@@ -613,7 +616,7 @@
       <span class="hd-lbl">Espacios Nivel 2</span>
       <div class="hd-pips" data-track="n2" data-max="2"></div>
     </div>
-    <p class="hd-note">Relleno = gastado. Se recuperan en descanso largo.</p>
+    <p class="hd-note">Relleno = gastado. Se recuperan en descanso largo. Reglas de <a href="../reglas.html#espacios-de-conjuro" style="color:var(--violet)">espacios de conjuro</a> y <a href="../reglas.html#concentracion" style="color:var(--violet)">concentración</a> en Reglas rápidas.</p>
   </div>
 
   <div class="grp-head">
@@ -644,8 +647,8 @@
     <div class="fcard heal"><div class="ftop"><span class="fname">Palabra de Curación</span><span class="fmeta big">1d4+3</span></div>
       <div class="frow"><span><b>Nivel</b> 1</span><span><b>Acción</b> Adicional</span><span><b>Alcance</b> 18 m</span><span><b>Comp.</b> V</span></div>
       <div class="fdesc">Una criatura que veas recupera <b>1d4 + Sabiduría (+3)</b> a distancia. Ideal para levantar a un aliado a 0 PG sin gastar tu acción.</div>
-      <div class="fcalc"><span class="lab">Curación efectiva (espacio nivel 1)</span>1d4+3 <b>+3</b> Discípulo = <b>1d4 + 6</b> · prom. <b>≈8.5 PG</b></div>
-      <div class="fscale"><span class="stag">Espacio sup.</span><span class="sval">+1d4 por nivel · con espacio <b>niv 2 → 2d4+3</b> (efec. 2d4+7)</span></div></div>
+      <div class="fcalc"><span class="lab">Lo que tiras (espacio nivel 1)</span>Tira <b>1d4 + 6</b> · prom. <b>≈8.5 PG</b> <span style="color:var(--ink-3)">(6 = 3 Sabiduría + 3 Discípulo)</span></div>
+      <div class="fscale"><span class="stag">Espacio niv 2</span><span class="sval">tira <b>2d4 + 7</b> <span style="color:var(--ink-3)">(7 = 3 Sabiduría + 4 Discípulo)</span></span></div></div>
     <div class="fcard buff"><div class="ftop"><span class="fname">Escudo de Fe</span><span class="fmeta">+2 CA</span></div>
       <div class="frow"><span><b>Nivel</b> 1</span><span><b>Acción</b> Adicional</span><span><b>Alcance</b> 18 m</span><span><b>Conc.</b> 10 min</span></div>
       <div class="fdesc">Una criatura gana <b>+2 a la CA</b> durante 10 min (concentración). Protege al aliado en vanguardia o a ti misma.</div></div>
@@ -659,12 +662,12 @@
       <div class="fdesc">Proteges a una criatura: quien quiera atacarla o apuntarle con un conjuro dañino hace salvación de <b>Sabiduría (CD 13)</b> o debe elegir otro objetivo. Se rompe si la criatura protegida ataca o lanza un conjuro dañino. Ideal para blindar a un aliado caído.</div></div>
     <div class="fcard heal"><div class="ftop"><span class="fname">Plegaria de Curación</span><span class="fmeta big">2d8+3</span></div>
       <div class="frow"><span><b>Nivel</b> 2</span><span><b>Lanzar</b> 10 min</span><span><b>Alcance</b> 9 m</span><span><b>Comp.</b> V</span></div>
-      <div class="fdesc">Hasta <b>5 criaturas</b> reciben los beneficios de un <b>descanso corto</b> y además recuperan <b>2d8 + Sabiduría (+3)</b>. Curación de grupo entre combates (no se puede usar en combate por el tiempo de lanzamiento).</div>
-      <div class="fcalc"><span class="lab">Curación efectiva (espacio nivel 2)</span>2d8+3 <b>+4</b> Discípulo = <b>2d8 + 7</b> por criatura · prom. <b>≈16 PG c/u</b></div>
+      <div class="fdesc">Hasta <b>5 criaturas</b> reciben los beneficios de un <b><a href="../reglas.html#descanso-corto" style="color:inherit;text-decoration-color:var(--good)">descanso corto</a></b> y además recuperan <b>2d8 + Sabiduría (+3)</b>. Curación de grupo entre combates (no se puede usar en combate por el tiempo de lanzamiento).</div>
+      <div class="fcalc"><span class="lab">Lo que tiras (espacio nivel 2)</span>Tira <b>2d8 + 7</b> por criatura · prom. <b>≈16 PG c/u</b> <span style="color:var(--ink-3)">(7 = 3 Sabiduría + 4 Discípulo)</span></div>
       <div class="fscale"><span class="stag">Espacio sup.</span><span class="sval">+1d8 por nivel por encima de 2</span></div></div>
     <div class="fcard buff"><div class="ftop"><span class="fname">Calmar Emociones</span><span class="fmeta">anti-control</span></div>
       <div class="frow"><span><b>Nivel</b> 2</span><span><b>Acción</b> Mágica</span><span><b>Alcance</b> 18 m</span><span><b>Conc.</b> 1 min</span></div>
-      <div class="fdesc">Esfera de 6 m: cada humanoide hace salvación de <b>Carisma (CD 13)</b>. Para cada uno eliges: <b>inmunidad a Hechizado y Asustado</b> (o suprime esos estados si ya los tiene), o vuelve a la criatura <b>indiferente</b> hacia objetivos hostiles. Anti-control de tu equipo o pausa de un enemigo.</div></div>
+      <div class="fdesc"><a href="../reglas.html#areas-de-efecto" style="color:inherit;text-decoration-color:var(--violet)">Esfera</a> de 6 m: cada humanoide hace salvación de <b>Carisma (CD 13)</b>. Para cada uno eliges: <b>inmunidad a <a href="../reglas.html#hechizado" style="color:inherit;text-decoration-color:var(--violet)">Hechizado</a> y <a href="../reglas.html#asustado" style="color:inherit;text-decoration-color:var(--violet)">Asustado</a></b> (o suprime esos estados si ya los tiene), o vuelve a la criatura <b>indiferente</b> hacia objetivos hostiles. Anti-control de tu equipo o pausa de un enemigo.</div></div>
   </div>
 
   <div class="grp-head" style="margin-top:24px">
@@ -675,8 +678,8 @@
     <div class="fcard heal"><div class="ftop"><span class="fname">Curar Heridas</span><span class="fmeta big">2d8+3</span></div>
       <div class="frow"><span><b>Nivel</b> 1</span><span><b>Acción</b> Mágica</span><span><b>Alcance</b> Toque</span><span><b>Comp.</b> V, S</span></div>
       <div class="fdesc">Una criatura que tocas recupera <b>2d8 + tu mod. de Sabiduría (+3)</b>.</div>
-      <div class="fcalc"><span class="lab">Curación efectiva (espacio nivel 1)</span>2d8+3 <b>+3</b> Discípulo = <b>2d8 + 6</b> · prom. <b>≈15 PG</b></div>
-      <div class="fscale"><span class="stag">Espacio sup.</span><span class="sval">+2d8 por nivel · con espacio <b>niv 2 → 4d8+3</b> (efec. 4d8+7)</span></div></div>
+      <div class="fcalc"><span class="lab">Lo que tiras (espacio nivel 1)</span>Tira <b>2d8 + 6</b> · prom. <b>≈15 PG</b> <span style="color:var(--ink-3)">(6 = 3 Sabiduría + 3 Discípulo)</span></div>
+      <div class="fscale"><span class="stag">Espacio niv 2</span><span class="sval">tira <b>4d8 + 7</b> <span style="color:var(--ink-3)">(7 = 3 Sabiduría + 4 Discípulo)</span></span></div></div>
     <div class="fcard buff"><div class="ftop"><span class="fname">Bendición</span><span class="fmeta">+1d4</span></div>
       <div class="frow"><span><b>Nivel</b> 1</span><span><b>Acción</b> Mágica</span><span><b>Conc.</b> 1 min</span></div>
       <div class="fdesc">Hasta 3 criaturas suman <b>1d4</b> a tiradas de ataque y salvación. <span style="color:var(--ink-3)">(También está en tus preparados — el Dominio te la regala igual.)</span></div></div>
@@ -685,13 +688,13 @@
       <div class="fdesc">Hasta <b>3 criaturas</b> aumentan su PG máximo y actual en <b>+5</b> durante 8 horas. Buff de aguante prolongado — se lanza antes de la pelea.</div></div>
     <div class="fcard buff"><div class="ftop"><span class="fname">Restablecimiento Menor</span><span class="fmeta">Cura estado</span></div>
       <div class="frow"><span><b>Nivel</b> 2</span><span><b>Acción</b> Mágica</span><span><b>Alcance</b> Toque</span><span><b>Comp.</b> V, S</span></div>
-      <div class="fdesc">Termina <b>una enfermedad</b> o <b>una condición</b>: Cegado, Ensordecido, Envenenado o Paralizado. Soporte clave contra estados.</div></div>
+      <div class="fdesc">Termina <b>una enfermedad</b> o <b>una condición</b>: <a href="../reglas.html#cegado" style="color:inherit;text-decoration-color:var(--violet)">Cegado</a>, <a href="../reglas.html#ensordecido" style="color:inherit;text-decoration-color:var(--violet)">Ensordecido</a>, <a href="../reglas.html#envenenado" style="color:inherit;text-decoration-color:var(--violet)">Envenenado</a> o <a href="../reglas.html#paralizado" style="color:inherit;text-decoration-color:var(--violet)">Paralizado</a>. Soporte clave contra estados.</div></div>
   </div>
 
   <div class="callout" style="margin-top:22px">
     <h3>◆ Discípulo de la Vida — tu curación mágica suma más</h3>
     <ul style="margin:0;padding-left:18px;font-size:13.5px;color:var(--ink-2);line-height:1.7">
-      <li>Todo <b>conjuro con espacio que cure PG</b> recupera <b>+2 + nivel del espacio</b> extra, solo en el turno que lo lanzas (espacio nivel 1 → <b>+3 PG</b>). Los números "efectivos" de las fichas ya lo incluyen.</li>
+      <li>Todo <b>conjuro con espacio que cure PG</b> recupera <b>+2 + nivel del espacio</b> extra, solo en el turno que lo lanzas (espacio nivel 1 → <b>+3 PG</b>). Las líneas "Lo que tiras" de cada conjuro ya lo incluyen.</li>
       <li><b>Palabra de Curación</b> es Acción Adicional: cura a distancia y aún te queda la acción para un truco como Llama Sagrada. <b>Regla 2024:</b> con un conjuro de Acción Adicional, el único otro conjuro ese turno es un truco (no otro con espacio).</li>
       <li>La <b>dote Repetir tiradas de curación</b> te deja volver a tirar cualquier dado de curación si sale un 1.</li>
     </ul>
@@ -720,11 +723,11 @@
   <div class="grid g2">
     <div class="fcard heal"><div class="ftop"><span class="fname">Preservar Vida</span><span class="fmeta big">15 PG</span></div>
       <div class="frow"><span><b>Acción</b> Mágica</span><span><b>Alcance</b> 9 m</span><span><b>Coste</b> 1 uso</span></div>
-      <div class="fdesc">Generas <b>5 × nivel clérigo = 15 PG</b> y los repartes entre criaturas <b>maltrechas (Bloodied)</b> a 9 m, incluida tú. <b>No sube a nadie por encima de la mitad de su PG máximo.</b> Tu botón anti-TPK: sanación de grupo sin gastar espacios.</div>
+      <div class="fdesc">Generas <b>5 × nivel clérigo = 15 PG</b> y los repartes entre criaturas <b>maltrechas (<a href="../reglas.html#puntos-de-golpe" style="color:inherit;text-decoration-color:var(--good)">Bloodied</a>)</b> a 9 m, incluida tú. <b>No sube a nadie por encima de la mitad de su PG máximo.</b> Tu botón anti-TPK: sanación de grupo sin gastar espacios.</div>
       <div class="fcalc"><span class="lab">Reserva</span><b>15 PG</b> a repartir · solo criaturas a mitad de vida o menos</div></div>
     <div class="fcard dmg"><div class="ftop"><span class="fname">Expulsar Muertos Vivientes</span><span class="fmeta">CD 13</span></div>
       <div class="frow"><span><b>Acción</b> Mágica</span><span><b>Alcance</b> 9 m</span><span><b>Coste</b> 1 uso</span></div>
-      <div class="fdesc">Cada No-Muerto a tu elección dentro de 9 m hace salvación de <b>Sabiduría</b>. Si falla: queda <b>Asustado e Incapacitado</b> 1 minuto y trata de alejarse de ti. Termina antes si la criatura sufre daño.</div>
+      <div class="fdesc">Cada No-Muerto a tu elección dentro de 9 m hace salvación de <b>Sabiduría</b>. Si falla: queda <b><a href="../reglas.html#asustado" style="color:inherit;text-decoration-color:var(--rose)">Asustado</a> e <a href="../reglas.html#incapacitado" style="color:inherit;text-decoration-color:var(--rose)">Incapacitado</a></b> 1 minuto y trata de alejarse de ti. Termina antes si la criatura sufre daño.</div>
       <div class="fcalc" style="background:var(--gold-soft);border-color:var(--gold-l)"><span class="lab" style="color:var(--gold-d)">A nivel 5</span>sumarás <b style="color:var(--gold-d)">Abrasar Muertos Vivientes</b>: 1d8 × Sabiduría de daño radiante.</div></div>
   </div>
 </section>
@@ -736,9 +739,9 @@
   <div class="grp-head"><span class="gt">Especie — Aasimar</span><span class="gc">5 rasgos celestiales</span><span class="gline"></span></div>
   <div class="grid g3" style="margin-bottom:14px">
     <div class="fcard dmg"><div class="ftop"><span class="fname">Resistencia Celestial</span><span class="fmeta">pasivo</span></div>
-      <div class="fdesc">Tienes <b>resistencia al daño necrótico y al daño radiante</b> — sufres la mitad. Muy útil contra no-muertos y conjuros sagrados/profanos.</div></div>
+      <div class="fdesc">Tienes <b><a href="../reglas.html#resistencia-vulnerabilidad-inmunidad" style="color:inherit;text-decoration-color:var(--rose)">resistencia</a> al daño necrótico y al daño radiante</b> — sufres la mitad. Muy útil contra no-muertos y conjuros sagrados/profanos.</div></div>
     <div class="fcard util"><div class="ftop"><span class="fname">Visión en la Oscuridad</span><span class="fmeta">60 ft</span></div>
-      <div class="fdesc">Ves en luz tenue como si fuera brillante, y en oscuridad como si fuera luz tenue (en grises) hasta <b>60 pies</b>.</div></div>
+      <div class="fdesc"><a href="../reglas.html#vision-en-la-oscuridad" style="color:inherit;text-decoration-color:var(--gold)">Ves en luz tenue como si fuera brillante</a>, y en oscuridad como si fuera luz tenue (en grises) hasta <b>60 pies</b>.</div></div>
     <div class="fcard heal"><div class="ftop"><span class="fname">Manos Curativas</span><span class="fmeta">2d4 · 1×día</span></div>
       <div class="frow"><span><b>Acción</b> Mágica</span><span><b>Alcance</b> Toque</span></div>
       <div class="fdesc">Tocas a una criatura y tiras <b>d4 igual a tu competencia (2 → 2d4)</b>; recupera ese total en PG. <b>1 vez por descanso largo</b>. No gasta espacio de conjuro.</div></div>
@@ -753,7 +756,7 @@
     <table><tbody>
       <tr><td><b>Alas Celestiales</b></td><td>Te salen alas: ganas <b>vuelo temporal</b> igual a tu velocidad. Bono: <b>+2 daño radiante</b> una vez por turno.</td></tr>
       <tr><td><b>Resplandor Interior</b></td><td>Emites <b>luz brillante 10 ft</b> + tenue 10 ft más. Al final de cada turno tuyo, enemigos a 10 ft sufren <b>+2 radiante</b>. Bono: +2 daño radiante 1×/turno.</td></tr>
-      <tr><td><b>Sudario Necrótico</b></td><td>Enemigos a 10 ft hacen salvación de <b>Carisma (CD 8 + CAR + competencia)</b> o quedan <b>Asustados</b> hasta tu próximo turno. Bono: +2 necrótico 1×/turno.</td></tr>
+      <tr><td><b>Sudario Necrótico</b></td><td>Enemigos a 10 ft hacen salvación de <b>Carisma (CD 8 + CAR + competencia)</b> o quedan <b><a href="../reglas.html#asustado" style="color:inherit;text-decoration-color:var(--rose)">Asustados</a></b> hasta tu próximo turno. Bono: +2 necrótico 1×/turno.</td></tr>
     </tbody></table>
     <p style="font-size:12px;color:var(--ink-3);margin-top:10px">⚠ Con CHA −2, el Sudario tiene CD baja (8 − 2 + 2 = <b>8</b>), poco fiable. <b>Alas</b> (movilidad) o <b>Resplandor</b> (daño de área) rinden mucho más para Auriana.</p>
   </div>
@@ -761,7 +764,7 @@
   <div class="grp-head"><span class="gt">Clase — Clériga · Dominio de la Vida</span><span class="gc dom">nivel 3</span><span class="gline"></span></div>
   <div class="grid g2" style="margin-bottom:14px">
     <div class="fcard buff"><div class="ftop"><span class="fname">Orden Divina: Protector</span><span class="fmeta">nivel 1</span></div>
-      <div class="fdesc">Al elegir Protector ganaste <b>competencia con armas marciales</b> y entrenamiento con <b>armadura pesada</b> — por eso puedes vestir la cota de malla y pelear en vanguardia.</div></div>
+      <div class="fdesc">Al elegir Protector ganaste <b>competencia con armas marciales</b> y <a href="../reglas.html#armaduras" style="color:inherit;text-decoration-color:var(--violet)">entrenamiento con <b>armadura pesada</b></a> — por eso puedes vestir la cota de malla y pelear en vanguardia.</div></div>
     <div class="fcard buff"><div class="ftop"><span class="fname">Canalizar Divinidad</span><span class="fmeta">2 usos</span></div>
       <div class="frow"><span><b>Recupera</b> 1 en desc. corto</span><span><b>Todos</b> en largo</span><span><b>CD</b> 13</span></div>
       <div class="fdesc">Energía divina que alimenta tus efectos: <b>Chispa Divina</b>, <b>Expulsar Muertos</b> y <b>Preservar Vida</b> (ver secciones Canalizar y Curación). Eliges cuál al usarla.</div></div>
@@ -779,7 +782,7 @@
   <div class="grid g2" style="margin-top:14px">
     <div class="card">
       <h3><span class="dot" style="background:var(--rose)"></span> Dote — Sanador <span style="font-size:11px;font-weight:400;color:var(--ink-3)">(de origen)</span></h3>
-      <p style="font-size:13.5px;color:var(--ink-2);margin-bottom:10px"><b>Médico de batalla.</b> Si tienes útiles de sanador, puedes gastar un uso y tratar a una criatura a 1,5 m o menos como <b>acción de Utilizar</b>. La criatura gasta uno de sus dados de puntos de golpe; tú tiras ese dado y la criatura recupera PG iguales al <b>resultado + tu bonificador de competencia (+2)</b>.</p>
+      <p style="font-size:13.5px;color:var(--ink-2);margin-bottom:10px"><b>Médico de batalla.</b> Si tienes útiles de sanador, puedes gastar un uso y tratar a una criatura a 1,5 m o menos como <b>acción de <a href="../reglas.html#utilizar" style="color:inherit;text-decoration-color:var(--rose)">Utilizar</a></b>. La criatura gasta uno de sus <a href="../reglas.html#descanso-corto" style="color:inherit;text-decoration-color:var(--rose)">dados de puntos de golpe</a>; tú tiras ese dado y la criatura recupera PG iguales al <b>resultado + tu bonificador de competencia (+2)</b>.</p>
       <p style="font-size:13.5px;color:var(--ink-2)"><b>Repetir tiradas de curación.</b> Siempre que tires un dado para determinar cuántos PG restauras con un conjuro o con médico de batalla, puedes <b>volver a tirarlo si sacas un 1</b> (debes usar el nuevo resultado).</p>
     </div>
     <div class="card">
@@ -813,7 +816,7 @@
         <div class="eq-card">
           <div class="eq-head"><span class="eq-slot">Brazo</span><span class="eq-badge">Equipado</span></div>
           <div class="eq-name">Shield of the Cavalier +1</div>
-          <div class="eq-desc"><b>+2 CA</b> (escudo) <b>+1</b> mágico. Golpe 1d6+1 + Fuerza, empuja 10 ft; derriba si el objetivo es Pequeño o menor. No requiere sintonización.</div>
+          <div class="eq-desc"><b>+2 CA</b> (escudo) <b>+1</b> mágico. Golpe 1d6+1 + Fuerza, empuja 10 ft; derriba si el objetivo es Pequeño o menor. No requiere <a href="../reglas.html#sintonizacion" style="color:inherit;text-decoration-color:var(--violet)">sintonización</a>.</div>
         </div>
         <div class="eq-card">
           <div class="eq-head"><span class="eq-slot">Arma</span><span class="eq-badge">Equipada</span></div>
@@ -823,7 +826,7 @@
         <div class="eq-card special">
           <div class="eq-head"><span class="eq-slot">Foco</span><span class="eq-badge no">Llevado</span></div>
           <div class="eq-name">Símbolo Sagrado</div>
-          <div class="eq-desc">Medallón de plata con un fénix. <b>Foco de conjuración divino</b>: sustituye componentes materiales. Llave espiritual narrativa.</div>
+          <div class="eq-desc">Medallón de plata con un fénix. <b>Foco de conjuración divino</b>: sustituye <a href="../reglas.html#componentes" style="color:inherit;text-decoration-color:var(--gold)">componentes materiales</a>. Llave espiritual narrativa.</div>
         </div>
       </div>
     </div>
@@ -839,7 +842,7 @@
         <div class="ca-row"><span>Escudo</span><span class="v">+2</span></div>
         <div class="ca-row"><span>Shield of the Cavalier +1</span><span class="v">+1</span></div>
         <div class="ca-row total"><span>CA Total</span><span class="v">19</span></div>
-        <div class="att-row"><span>Sintonización</span>
+        <div class="att-row"><span><a href="../reglas.html#sintonizacion" style="color:inherit;text-decoration:none">Sintonización</a></span>
           <span class="att-dots"><span class="ad"></span><span class="ad"></span><span class="ad"></span></span>
           <span style="color:var(--ink-2)">0/3</span>
         </div>
@@ -866,7 +869,7 @@
   <div class="grid g3">
     <div class="fcard heal"><div class="ftop"><span class="fname">Kit de Curación</span><span class="fmeta">10 usos</span></div>
       <div class="frow"><span><b>Acción</b> Utilizar</span><span><b>Sin tirada</b></span></div>
-      <div class="fdesc">Gastas <b>1 uso</b> para <b>estabilizar</b> a una criatura inconsciente a 0 PG, sin tirar Medicina. <b>No cura PG por sí solo.</b> Es lo que tu dote <b>Sanador</b> consume para el Médico de batalla (que sí cura).</div>
+      <div class="fdesc">Gastas <b>1 uso</b> para <b><a href="../reglas.html#estable" style="color:inherit;text-decoration-color:var(--good)">estabilizar</a></b> a una criatura inconsciente a 0 PG, sin tirar Medicina. <b>No cura PG por sí solo.</b> Es lo que tu dote <b>Sanador</b> consume para el Médico de batalla (que sí cura).</div>
       <div class="fcalc"><span class="lab">Recuerda</span>10 usos · repón comprando otro kit o fabricándolo con Herbolaria</div></div>
 
     <div class="fcard util"><div class="ftop"><span class="fname">Kit de Herbolaria</span><span class="fmeta">INT</span></div>
@@ -876,15 +879,15 @@
 
     <div class="fcard"><div class="ftop"><span class="fname">Poción de Curación</span><span class="fmeta">2d4+2</span></div>
       <div class="frow"><span><b>Acción</b> Adicional</span><span><b>Bebes o das</b></span></div>
-      <div class="fdesc">Recupera <b>2d4 + 2 PG</b> (prom. ≈7). Beberla es Acción Adicional; <b>administrarla a otro</b> es una acción de Utilizar. Consumible — no es un conjuro, no aplica Discípulo de la Vida.</div></div>
+      <div class="fdesc">Recupera <b>2d4 + 2 PG</b> (prom. ≈7). Beberla es Acción Adicional; <b>administrarla a otro</b> es una acción de <a href="../reglas.html#utilizar" style="color:inherit;text-decoration-color:var(--gold)">Utilizar</a>. Consumible — no es un conjuro, no aplica Discípulo de la Vida.</div></div>
 
     <div class="fcard"><div class="ftop"><span class="fname">Antitoxina</span><span class="fmeta">1 hora</span></div>
       <div class="frow"><span><b>Acción</b> Adicional</span><span><b>Bebes</b></span></div>
-      <div class="fdesc">Al beberla, tienes <b>ventaja en salvaciones contra Envenenado</b> durante <b>1 hora</b>. No otorga resistencia al daño de veneno, solo a la condición.</div></div>
+      <div class="fdesc">Al beberla, tienes <b>ventaja en salvaciones contra <a href="../reglas.html#envenenado" style="color:inherit;text-decoration-color:var(--gold)">Envenenado</a></b> durante <b>1 hora</b>. No otorga resistencia al daño de veneno, solo a la condición.</div></div>
 
     <div class="fcard"><div class="ftop"><span class="fname">Símbolo Sagrado</span><span class="fmeta">foco</span></div>
       <div class="frow"><span><b>Medallón de plata</b></span><span><b>Fénix</b></span></div>
-      <div class="fdesc">Tu <b>foco de conjuración divino</b>: sustituye los componentes materiales sin coste de tus conjuros. Debes tenerlo en la mano (o visible) para lanzar. Es además tu llave espiritual narrativa.</div></div>
+      <div class="fdesc">Tu <b>foco de conjuración divino</b>: sustituye los <a href="../reglas.html#componentes" style="color:inherit;text-decoration-color:var(--gold)">componentes materiales</a> sin coste de tus conjuros. Debes tenerlo en la mano (o visible) para lanzar. Es además tu llave espiritual narrativa.</div></div>
 
     <div class="fcard"><div class="ftop"><span class="fname">Paquete de Sacerdote</span><span class="fmeta">set</span></div>
       <div class="frow"><span><b>Equipo de aventura</b></span></div>
