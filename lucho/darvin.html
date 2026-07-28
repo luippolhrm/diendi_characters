@@ -228,6 +228,8 @@
   dl.defs dt{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.82rem;
     color:var(--ink);margin-top:11px;display:flex;align-items:center;gap:7px}
   dl.defs dt:first-child{margin-top:0}
+  dl.defs dt a{color:inherit;text-decoration:underline;text-decoration-color:var(--amber);text-underline-offset:3px}
+  dl.defs dt a:hover{color:var(--amber-d)}
   dl.defs dt .tag{font-size:.62rem;font-weight:600;background:var(--mist);color:var(--ink-2);
     padding:1px 7px;border-radius:999px;font-family:'Inter',sans-serif}
   dl.defs dd{font-size:.78rem;color:var(--ink-2);margin:2px 0 0}
@@ -637,25 +639,25 @@
           <dt>Evasión</dt>
           <dd>En TS de Destreza por mitad de daño: sin daño si éxito, mitad si fallas.</dd>
           <dt>Autorrestablecimiento</dt>
-          <dd>Al final de cada turno eliminas Asustado, Envenenado o Hechizado.</dd>
+          <dd>Al final de cada turno eliminas <a href="../reglas.html#asustado">Asustado</a>, <a href="../reglas.html#envenenado">Envenenado</a> o <a href="../reglas.html#hechizado">Hechizado</a>.</dd>
           <dt>Anillo de Acción Libre</dt>
-          <dd>Inmune a Paralizado, Apresado y ralentización mágica. Ignora terreno difícil.</dd>
+          <dd>Inmune a <a href="../reglas.html#paralizado">Paralizado</a>, <a href="../reglas.html#apresado">Apresado</a> y ralentización mágica. Ignora <a href="../reglas.html#terreno-dificil">terreno difícil</a>.</dd>
           <dt>Resistencias</dt>
-          <dd>Fuego (Canilleras de Escama de Dragón).</dd>
+          <dd><a href="../reglas.html#resistencia-vulnerabilidad-inmunidad">Resistencia</a> a Fuego (Canilleras de Escama de Dragón).</dd>
         </dl>
       </div>
 
       <div class="card">
         <h3>Golpe Aturdidor</h3>
         <p class="note" style="margin-top:0">1×/turno al impactar, gasta <strong>1 PC</strong>: el objetivo hace TS <strong>Constitución CD 17</strong>.</p>
-        <div class="callout" style="margin-top:10px"><b>Falla:</b> Aturdido hasta tu próximo turno. <b>Supera:</b> velocidad a la mitad + ventaja en el siguiente ataque contra él.</div>
+        <div class="callout" style="margin-top:10px"><b>Falla:</b> <a href="../reglas.html#aturdido" style="color:inherit;text-decoration-color:var(--amber-d)">Aturdido</a> hasta tu próximo turno. <b>Supera:</b> velocidad a la mitad + ventaja en el siguiente ataque contra él.</div>
       </div>
 
       <div class="card">
         <h3>Técnica de la Mano Abierta</h3>
         <p class="note" style="margin-top:0">Con cada golpe de <strong>Ráfaga de Golpes</strong>, elige un efecto:</p>
         <dl class="defs" style="margin-top:8px">
-          <dt>Derribar</dt><dd>TS Destreza CD 17 o Derribado.</dd>
+          <dt>Derribar</dt><dd>TS Destreza CD 17 o <a href="../reglas.html#derribado">Derribado</a>.</dd>
           <dt>Desconcertar</dt><dd>Sin ataques de oportunidad hasta su próximo turno.</dd>
           <dt>Empujar</dt><dd>TS Fuerza CD 17 o empujado 4,5 m.</dd>
         </dl>
@@ -663,37 +665,39 @@
 
       <div class="card">
         <h3>Estados que infliges o sufres</h3>
+        <div class="gh-note" style="font-size:.72rem;color:var(--ink-2);margin-bottom:11px">Cada estado enlaza a su definición oficial (PHB 2024) en <a href="../reglas.html#estados" style="color:var(--amber-d)">Reglas rápidas</a> — aquí queda solo lo propio de Darvin.</div>
         <dl class="defs">
-          <dt>Aturdido</dt>
-          <dd>Incapacitado: sin acciones ni reacciones, no puede moverse. Falla TS de Fuerza y Destreza. Los ataques contra él tienen ventaja.</dd>
-          <dt>Derribado <span class="tag">Prone</span></dt>
-          <dd>Solo gatea o gasta media velocidad en levantarse. Desventaja en sus ataques. Ataques c. a c. contra él (a 1,5 m) con ventaja; a distancia con desventaja.</dd>
-          <dt>Apresado <span class="tag">Restrained</span></dt>
-          <dd>Velocidad 0. Ataques contra él con ventaja; sus ataques con desventaja. Desventaja en TS de Destreza. <b>Darvin es inmune</b> (Anillo de Acción Libre).</dd>
-          <dt>Paralizado</dt>
-          <dd>Incapacitado, no se mueve ni habla. Falla TS de Fuerza y Destreza. Impactos c. a c. a 1,5 m son críticos automáticos. <b>Darvin es inmune</b>.</dd>
-          <dt>Hechizado · Asustado · Envenenado</dt>
-          <dd>Darvin los elimina al final de su turno (Autorrestablecimiento). Asustado y Envenenado dan desventaja en ataques; Hechizado impide atacar al causante.</dd>
-          <dt>Cegado</dt>
-          <dd>No ve y falla pruebas de vista. Sus ataques con desventaja; los ataques contra él, con ventaja.</dd>
+          <dt><a href="../reglas.html#aturdido">Aturdido</a></dt>
+          <dd>Lo inflige su Golpe Aturdidor si el objetivo falla la salvación.</dd>
+          <dt><a href="../reglas.html#derribado">Derribado</a></dt>
+          <dd>Puede infligirlo con la opción Derribar de la Técnica de la Mano Abierta.</dd>
+          <dt><a href="../reglas.html#apresado">Apresado</a></dt>
+          <dd><b>Darvin es inmune</b> (Anillo de Acción Libre).</dd>
+          <dt><a href="../reglas.html#paralizado">Paralizado</a></dt>
+          <dd><b>Darvin es inmune</b> (Anillo de Acción Libre).</dd>
+          <dt><a href="../reglas.html#hechizado">Hechizado</a> · <a href="../reglas.html#asustado">Asustado</a> · <a href="../reglas.html#envenenado">Envenenado</a></dt>
+          <dd>Darvin los elimina al final de su turno (Autorrestablecimiento).</dd>
+          <dt><a href="../reglas.html#cegado">Cegado</a></dt>
+          <dd>Sin rasgo que lo module — aplica la regla estándar.</dd>
         </dl>
       </div>
 
       <div class="card">
         <h3>Acciones y movimiento</h3>
+        <div class="gh-note" style="font-size:.72rem;color:var(--ink-2);margin-bottom:11px">Cada acción enlaza a su regla completa en <a href="../reglas.html#acciones" style="color:var(--amber-d)">Reglas rápidas</a>.</div>
         <dl class="defs">
-          <dt>Destrabarse <span class="tag">Disengage</span></dt>
-          <dd>Tu movimiento no provoca ataques de oportunidad. Darvin lo hace gratis como acción adicional (Defensa Paciente / Paso del Viento).</dd>
-          <dt>Esquivar <span class="tag">Dodge</span></dt>
-          <dd>Hasta tu próximo turno, los ataques contra ti tienen desventaja y tienes ventaja en TS de Destreza.</dd>
-          <dt>Correr <span class="tag">Dash</span></dt>
-          <dd>Ganas movimiento extra igual a tu velocidad este turno.</dd>
-          <dt>Ataque de oportunidad</dt>
-          <dd>Reacción que provocas cuando una criatura sale de tu alcance c. a c. sin Destrabarse.</dd>
-          <dt>Terreno difícil</dt>
-          <dd>Cada 1,5 m cuesta 1,5 m extra. Darvin lo ignora (Anillo de Acción Libre).</dd>
-          <dt>Inspiración Heroica</dt>
-          <dd>La ganas tras cada Descanso Largo. Gástala para repetir cualquier dado tras tirarlo; usas el nuevo resultado. Solo una a la vez.</dd>
+          <dt><a href="../reglas.html#destrabarse">Destrabarse</a></dt>
+          <dd>Darvin lo hace gratis como acción adicional (Defensa Paciente / Paso del Viento).</dd>
+          <dt><a href="../reglas.html#esquivar">Esquivar</a></dt>
+          <dd>Combinable con Destrabarse gastando 1 PC en Defensa Paciente.</dd>
+          <dt><a href="../reglas.html#correr">Correr</a></dt>
+          <dd>Gratis como acción adicional (Paso del Viento), o combinado con Destrabarse gastando 1 PC.</dd>
+          <dt><a href="../reglas.html#ataques-de-oportunidad">Ataque de oportunidad</a></dt>
+          <dd>Reacción que provoca cuando una criatura sale de su alcance sin Destrabarse.</dd>
+          <dt><a href="../reglas.html#terreno-dificil">Terreno difícil</a></dt>
+          <dd>Darvin lo ignora (Anillo de Acción Libre).</dd>
+          <dt><a href="../reglas.html#inspiracion-heroica">Inspiración Heroica</a></dt>
+          <dd>La ganas tras cada Descanso Largo (rasgo Ingenioso).</dd>
         </dl>
       </div>
   </div>
@@ -834,7 +838,7 @@
         <dt>Mejora de característica</dt>
         <dd>+1 a Fuerza o Destreza (máx 20). Darvin lo aplicó a <b>Destreza</b>.</dd>
         <dt>Velocidad de trepar</dt>
-        <dd>Ganas una velocidad de trepar igual a tu velocidad.</dd>
+        <dd>Ganas una <a href="../reglas.html#velocidad">velocidad</a> de trepar igual a tu velocidad.</dd>
         <dt>Levantarse ágil</dt>
         <dd>Cuando estés Derribado, levantarte solo te cuesta 5 pies de movimiento (en vez de la mitad de tu velocidad).</dd>
       </dl>
@@ -851,7 +855,7 @@
   </div>
 
   <div class="callout jade" style="margin-top:0;margin-bottom:18px">
-    <b>Criterio de sintonización</b> — Los objetos custom se asumen <b>sin sintonización</b> hasta que el GM lo confirme. Sintonización oficial usada: <b>3/3</b> (Amuleto de Salud, Brazales de Defensa, Anillo de Acción Libre).
+    <b>Criterio de sintonización</b> — Los objetos custom se asumen <b>sin <a href="../reglas.html#sintonizacion" style="color:inherit;text-decoration-color:var(--jade)">sintonización</a></b> hasta que el GM lo confirme. Sintonización oficial usada: <b>3/3</b> (Amuleto de Salud, Brazales de Defensa, Anillo de Acción Libre).
   </div>
 
   <div class="col-side-r">
@@ -881,7 +885,7 @@
         <h3>Desglose de CA</h3>
         <div id="breakdown"></div>
         <div class="att-row">
-          <span class="lbl">Sintonización</span>
+          <span class="lbl"><a href="../reglas.html#sintonizacion" style="color:inherit;text-decoration:none">Sintonización</a></span>
           <span class="att-dots"><span class="ad" id="at0"></span><span class="ad" id="at1"></span><span class="ad" id="at2"></span></span>
           <span id="atLabel" style="margin-left:auto;font-weight:600">3/3</span>
         </div>
