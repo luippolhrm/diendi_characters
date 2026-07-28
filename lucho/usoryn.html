@@ -257,6 +257,8 @@
   dl.defs dt{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.82rem;
     color:var(--ink);margin-top:11px;display:flex;align-items:center;gap:7px}
   dl.defs dt:first-child{margin-top:0}
+  dl.defs dt a{color:inherit;text-decoration:underline;text-decoration-color:var(--jade);text-underline-offset:3px}
+  dl.defs dt a:hover{color:var(--jade-d)}
   dl.defs dt .tag{font-size:.62rem;font-weight:600;background:var(--mist);color:var(--ink-2);
     padding:1px 7px;border-radius:999px;font-family:'Inter',sans-serif}
   dl.defs dd{font-size:.78rem;color:var(--ink-2);margin:2px 0 0}
@@ -645,7 +647,7 @@
     </div>
     <div class="leg">
       <span><span class="pip p"></span> Competencia</span>
-      <span><span class="pip e"></span> Pericia (Expertise)</span>
+      <span><span class="pip e"></span> <a href="../reglas.html#pericia" style="color:var(--jade-d)">Pericia (Expertise)</a></span>
       <span>● Salvación competente</span>
       <span>Salvaciones incluyen +1 de Anillo y +1 de Capa de Protección.</span>
     </div>
@@ -665,7 +667,7 @@
             <tr><td>Tirachinas <span style="opacity:.6">30/120</span></td><td class="c atk">+10</td><td>1d6+5 contundente</td><td><span class="badge">Vex</span></td></tr>
           </tbody>
         </table>
-        <p class="note"><strong>Arma elegida para Maestría (1/2).</strong> Sap en modos cuerpo a cuerpo · Vex en tirachinas, según el modo en uso.</p>
+        <p class="note"><strong>Arma elegida para <a href="../reglas.html#maestrias-de-armas" style="color:var(--jade-d)">Maestría</a> (1/2).</strong> Sap (Debilitar) en modos cuerpo a cuerpo · Vex (Molestar) en tirachinas, según el modo en uso.</p>
       </div>
 
       <div class="card">
@@ -714,27 +716,29 @@
 
       <div class="card">
         <h3>Maestrías de arma</h3>
+        <div class="note" style="margin:-4px 0 10px">Nombre oficial en español + el usado en la mesa. Detalle completo de las 8 en <a href="../reglas.html#maestrias-de-armas" style="color:var(--jade-d)">Reglas rápidas</a>.</div>
         <dl class="defs">
-          <dt>Vex <span class="tag">Hoopak (tirachinas) / Espada corta · activa</span></dt>
+          <dt>Molestar <span class="en">Vex</span> <span class="tag">Hoopak (tirachinas) / Espada corta · activa</span></dt>
           <dd>Si impactas, tu próximo ataque contra ese objetivo se hace con ventaja.</dd>
-          <dt>Sap <span class="tag">Hoopak (cuerpo a cuerpo) · activa</span></dt>
+          <dt>Debilitar <span class="en">Sap</span> <span class="tag">Hoopak (cuerpo a cuerpo) · activa</span></dt>
           <dd>Si impactas, el objetivo tiene desventaja en su próxima tirada de ataque antes de tu siguiente turno.</dd>
-          <dt>Slow <span class="tag">Honda · inactiva</span></dt>
+          <dt>Ralentizar <span class="en">Slow</span> <span class="tag">Honda · inactiva</span></dt>
           <dd>Si impactas y causas daño, reduces la velocidad del objetivo en 3 m hasta el inicio de tu próximo turno. No ocupa ninguna de las 2 elecciones de Maestría; intercambiable al terminar un descanso largo.</dd>
         </dl>
       </div>
 
       <div class="card">
         <h3>Acciones y concentración</h3>
+        <div class="note" style="margin:-4px 0 10px">Cada término enlaza a su regla completa en <a href="../reglas.html#acciones" style="color:var(--jade-d)">Reglas rápidas</a>.</div>
         <dl class="defs">
-          <dt>Acción principal</dt>
+          <dt><a href="../reglas.html#atacar">Acción principal</a></dt>
           <dd>Atacar (2 veces por Ataque Adicional), lanzar conjuro, usar herramienta, ayudar.</dd>
-          <dt>Acción adicional</dt>
+          <dt><a href="../reglas.html#accion-adicional">Acción adicional</a></dt>
           <dd>Marca del Cazador, Tormenta de Espinas o Golpe Apresador. Mover la marca si el objetivo cae.</dd>
-          <dt>Reacción</dt>
+          <dt><a href="../reglas.html#reaccion">Reacción</a></dt>
           <dd>Una por ronda; se recupera al inicio de tu turno.</dd>
-          <dt>Concentración</dt>
-          <dd>Solo un conjuro a la vez (Marca, Enmarañar, Golpe Apresador). Al recibir daño: salvación de Constitución CD = 10 o mitad del daño, lo mayor.</dd>
+          <dt><a href="../reglas.html#concentracion">Concentración</a></dt>
+          <dd>Solo un conjuro a la vez para Usoryn: Marca, Enmarañar o Golpe Apresador.</dd>
         </dl>
       </div>
     </div>
@@ -802,7 +806,7 @@
         <span><b>Componentes:</b> V, S</span>
         <span><b>Duración:</b> Conc., hasta 1 min</span>
       </div>
-      <p class="stext">Plantas que apresan brotan en un cuadrado de 6 m, volviéndolo terreno difícil. Cada criatura en el área (excepto tú) debe superar una salvación de Fuerza <strong>(CD 13)</strong> o quedar <strong>Apresada</strong>. Una criatura apresada puede usar su acción para una prueba de Fuerza (Atletismo) contra tu CD y liberarse.</p>
+      <p class="stext">Plantas que apresan brotan en un cuadrado de 6 m, volviéndolo <a href="../reglas.html#terreno-dificil" style="color:var(--jade-d)">terreno difícil</a>. Cada criatura en el área (excepto tú) debe superar una salvación de Fuerza <strong>(CD 13)</strong> o quedar <a href="../reglas.html#apresado" style="color:var(--jade-d)"><strong>Apresada</strong></a>. Una criatura apresada puede usar su acción para una prueba de Fuerza (Atletismo) contra tu CD y liberarse.</p>
     </div>
 
     <div class="spell">
@@ -837,7 +841,7 @@
         <span><b>Componentes:</b> V</span>
         <span><b>Duración:</b> Conc., hasta 1 min</span>
       </div>
-      <p class="stext">Enredaderas mágicas aferran al objetivo. Salvación de Fuerza <strong>(CD 13)</strong> (ventaja si es Grande o mayor). Si falla: <strong>Apresado</strong> y <strong>1d6 perforante</strong> al inicio de cada turno. Puede liberarse con una prueba de Fuerza (Atletismo) contra tu CD.</p>
+      <p class="stext">Enredaderas mágicas aferran al objetivo. Salvación de Fuerza <strong>(CD 13)</strong> (ventaja si es Grande o mayor). Si falla: <a href="../reglas.html#apresado" style="color:var(--jade-d)"><strong>Apresado</strong></a> y <strong>1d6 perforante</strong> al inicio de cada turno. Puede liberarse con una prueba de Fuerza (Atletismo) contra tu CD.</p>
       <div class="sup"><b>Espacio superior:</b> +1d6 por nivel (2d6/turno con Nv 2).</div>
     </div>
 
@@ -849,7 +853,7 @@
         <span><b>Componentes:</b> V, S, M</span>
         <span><b>Duración:</b> 1 hora</span>
       </div>
-      <p class="stext">La velocidad del objetivo tocado aumenta en <strong>3 m (10 ft)</strong> hasta que el conjuro termine. No requiere concentración.</p>
+      <p class="stext">La <a href="../reglas.html#velocidad" style="color:var(--jade-d)">velocidad</a> del objetivo tocado aumenta en <strong>3 m (10 ft)</strong> hasta que el conjuro termine. No requiere concentración.</p>
       <div class="sup"><b>Espacio superior:</b> +1 criatura adicional por cada nivel de espacio por encima de 1.</div>
     </div>
 
@@ -861,7 +865,7 @@
         <span><b>Componentes:</b> V, S</span>
         <span><b>Duración:</b> Conc., hasta 10 min</span>
       </div>
-      <p class="stext">Esfera de silencio absoluto de <strong>6 m de radio</strong>. Ningún sonido se crea dentro ni la atraviesa. Las criaturas dentro son inmunes al daño de trueno y quedan <strong>Ensordecidas</strong>. Impide lanzar conjuros con componente verbal dentro de la esfera.</p>
+      <p class="stext">Esfera de silencio absoluto de <strong>6 m de radio</strong>. Ningún sonido se crea dentro ni la atraviesa. Las criaturas dentro son inmunes al daño de trueno y quedan <a href="../reglas.html#ensordecido" style="color:var(--jade-d)"><strong>Ensordecidas</strong></a>. Impide lanzar conjuros con componente verbal dentro de la esfera.</p>
       <div class="sup"><b>Como ritual:</b> en 2024, cualquier conjuro preparado con la etiqueta Ritual puede lanzarse como ritual (+10 min de lanzamiento, sin gastar espacio de conjuro).</div>
     </div>
   </div>
@@ -1006,7 +1010,7 @@
         <h3>Desglose de CA</h3>
         <div id="breakdown"></div>
         <div class="attune">
-          <span class="lbl">Sintonización</span>
+          <span class="lbl"><a href="../reglas.html#sintonizacion" style="color:var(--jade-d);text-decoration:none">Sintonización</a></span>
           <span class="s" id="at0"></span><span class="s" id="at1"></span><span class="s" id="at2"></span>
           <span id="atLabel" style="margin-left:auto;font-weight:600">2/3</span>
         </div>
@@ -1037,6 +1041,7 @@
     <b>Componentes oficiales + herramientas competentes + recipiente = objeto ensamblado.</b> El ingenio está en el despliegue, no en inventar reglas. Arsenal 100% basado en PHB 2024 (fuente: transcripción Devir en Notion, Capítulo 6).
     Municiones para Hoopak, Honda/Honda Grande o lanzamiento a mano (nunca arcos ni ballestas). Origen:
     <span class="src make">fabricado</span> <span class="src buy">comprado</span> <span class="src todo">por conseguir</span>.
+    Las acciones "Utilizar" de esta sección siguen la <a href="../reglas.html#utilizar" style="color:var(--jade-d)">regla estándar</a> de la acción.
     <br><br>Este es el <b>recetario</b>: qué existe y qué hace cada munición. Las <b>cantidades que llevas ahora</b> viven en el morral colgante de <a href="#equipo" style="color:var(--jade-d)">Equipo</a>.
   </div>
 
