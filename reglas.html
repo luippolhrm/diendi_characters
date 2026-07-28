@@ -185,6 +185,7 @@ footer{
     <a href="#dano-y-curacion">Daño y curación</a>
     <a href="#exploracion">Exploración</a>
     <a href="#conjuros">Conjuros</a>
+    <a href="#equipo">Equipo</a>
     <a href="#ejemplos">Ejemplos</a>
   </div>
 </nav>
@@ -255,6 +256,12 @@ footer{
       <p>Se aplica a pruebas con d20 en habilidades, salvaciones o equipo donde tengas competencia, y a ataques y CD de conjuros. No se acumula: nunca se suma más de una vez a la misma tirada.</p>
     </div>
 
+    <div class="fcard" id="pericia">
+      <div class="fhead"><span class="fname">Pericia <span class="en">Expertise</span></span><span class="tag">fundamentos</span></div>
+      <p>Tu bonificador por competencia se <b>duplica</b> en cualquier prueba de característica que hagas con una habilidad en la que tengas pericia, salvo que otro rasgo ya lo duplique.</p>
+      <p>Solo se gana en una habilidad en la que ya tengas competencia, y no puedes tenerla más de una vez en la misma habilidad.</p>
+    </div>
+
     <div class="fcard" id="habilidades">
       <div class="fhead"><span class="fname">Habilidades</span><span class="tag">fundamentos</span></div>
       <table class="rule-table">
@@ -279,6 +286,17 @@ footer{
         <tr><td>Trato con animales</td><td>Sabiduría</td></tr>
       </table>
       <p>El DM puede permitir aplicar competencia a una característica distinta de la habitual si la situación lo justifica (ej. Fuerza (Intimidación) en vez de Carisma (Intimidación)).</p>
+    </div>
+
+    <div class="fcard" id="percepcion-pasiva">
+      <div class="fhead"><span class="fname">Percepción pasiva <span class="en">Passive Perception</span></span><span class="tag">fundamentos</span></div>
+      <p><b>10 + tu bonificador a las pruebas de Sabiduría (Percepción).</b> Si tienes ventaja en esas pruebas, suma 5; si tienes desventaja, resta 5.</p>
+      <p>El DM usa esta puntuación para determinar si te percatas de algo sin hacer una prueba adrede. Ejemplo: nivel 1, Sabiduría 15, competencia en Percepción → 10 + 2 + 2 = 14.</p>
+    </div>
+
+    <div class="fcard" id="redondear">
+      <div class="fhead"><span class="fname">Redondear hacia abajo <span class="en">Round Down</span></span><span class="tag">fundamentos</span></div>
+      <p>Siempre que dividas o multipliques un número en la partida, redondea <b>hacia abajo</b> si no es entero, incluso cuando la parte decimal sea 5 o más. Algunas reglas plantean excepciones e indican explícitamente redondear hacia arriba.</p>
     </div>
 
   </div>
@@ -508,7 +526,7 @@ footer{
 
 <section id="combate">
   <h2>Combate</h2>
-  <p class="section-note">Primera pasada: estructura del turno, movimiento y ataques. Combate montado y bajo el agua quedan para una segunda pasada, son reglas de nicho.</p>
+  <p class="section-note">Estructura del turno, movimiento, ataques y situaciones especiales (montado, bajo el agua).</p>
   <div class="grid">
 
     <div class="fcard" id="estructura-combate">
@@ -544,6 +562,19 @@ footer{
       <p><b>Dividir el movimiento.</b> Puedes repartirlo antes y después de cualquier acción, acción adicional o reacción del mismo turno.</p>
       <p><b>Tirarte al suelo.</b> Puedes adoptar el estado de derribado sin usar acción ni gastar velocidad, salvo que tu velocidad restante sea 0.</p>
       <p><b>Moverte alrededor de otras criaturas.</b> Puedes atravesar el espacio de un aliado, una criatura incapacitada, una Diminuta, o una con tamaño dos categorías por encima o por debajo del tuyo. El espacio de otra criatura es terreno difícil para ti, salvo que sea Diminuta o aliada. No puedes terminar tu movimiento voluntariamente en un espacio ocupado; si terminas ahí de todos modos, quedas derribado salvo que seas Diminuto o más grande que la otra criatura.</p>
+    </div>
+
+    <div class="fcard" id="velocidad">
+      <div class="fhead"><span class="fname">Velocidad <span class="en">Speed</span></span><span class="tag">combate</span></div>
+      <p>La distancia en metros que puedes recorrer al moverte en tu turno.</p>
+      <p><b>Velocidades especiales</b> (nadando, volando, trepando, excavando). Si tienes más de una, eliges cuál usar al moverte y puedes alternar entre ellas: resta la distancia ya recorrida a la nueva velocidad; lo que quede es lo que aún puedes moverte.</p>
+      <p><b>Cambios.</b> Si un efecto aumenta o reduce tu velocidad, todas tus velocidades especiales aumentan o se reducen en la misma cantidad durante el mismo periodo.</p>
+    </div>
+
+    <div class="fcard" id="terreno-dificil">
+      <div class="fhead"><span class="fname">Terreno difícil <span class="en">Difficult Terrain</span></span><span class="tag">combate</span></div>
+      <p>Cada metro de movimiento en terreno difícil cuesta 1 m adicional. No es acumulativo: un espacio es terreno difícil o no lo es.</p>
+      <p>Un espacio es terreno difícil si contiene: una criatura que no sea Diminuta ni aliada tuya · un mueble diseñado para criaturas de tu tamaño o superior · escombros, hielo, maleza o nieve espesa · líquido que llegue entre las espinillas y la cintura · una abertura estrecha para una criatura una categoría menor · una pendiente de 20 grados o más.</p>
     </div>
 
     <div class="fcard" id="tamano-criatura">
@@ -589,6 +620,21 @@ footer{
     <div class="fcard" id="ataques-cuerpo-a-cuerpo">
       <div class="fhead"><span class="fname">Ataques cuerpo a cuerpo</span><span class="tag">combate</span></div>
       <p>Alcanzas a un objetivo a tu alcance, normalmente 1,5 m, salvo que la criatura tenga un alcance mayor indicado en su descripción.</p>
+    </div>
+
+    <div class="fcard" id="ataque-sin-armas">
+      <div class="fhead"><span class="fname">Ataque sin armas <span class="en">Unarmed Strike</span></span><span class="tag">combate</span></div>
+      <p>Un puñetazo, patada, cabezazo u otro golpe enérgico contra un objetivo a 1,5 m o menos. Elige uno de estos efectos:</p>
+      <p><b>Daño.</b> Tirada de ataque con tu modificador por Fuerza + bonificador por competencia. Si aciertas, el objetivo sufre 1 + tu modificador por Fuerza de daño contundente.</p>
+      <p><b>Agarre.</b> El objetivo supera una salvación de Fuerza o Destreza (a su elección, CD 8 + tu mod. Fuerza + bonificador por competencia) o queda agarrado. Necesitas una mano libre y el objetivo puede ser como mucho una categoría de tamaño mayor que tú.</p>
+      <p><b>Empujón.</b> Misma salvación y CD; si falla, lo empujas 1,5 m o lo derribas. Mismo límite de tamaño.</p>
+    </div>
+
+    <div class="fcard" id="agarrar">
+      <div class="fhead"><span class="fname">Agarrar <span class="en">Grappling</span></span><span class="tag">combate</span></div>
+      <p>Agarrar a una criatura le impone el estado de <a href="#agarrado">agarrado</a>. Solo puedes agarrar a una criatura por mano (o por tentáculo, fauces u otra parte del cuerpo, según el perfil).</p>
+      <p><b>Escapar.</b> La criatura agarrada usa su acción para una prueba de Fuerza (Atletismo) o Destreza (Acrobacias) contra la CD de escape; si la supera, termina el estado.</p>
+      <p><b>Fin del agarre.</b> También termina si quien agarra queda incapacitado o si la distancia entre ambos supera el alcance del agarre. Quien agarra puede soltar en cualquier momento, sin acción.</p>
     </div>
 
     <div class="fcard" id="ataques-de-oportunidad">
@@ -690,6 +736,11 @@ footer{
       <p><b>Sacar 1 o 20.</b> Un 1 cuenta como dos fallos; un 20 te devuelve 1 PG.</p>
       <p><b>Daño con 0 PG.</b> Recibir cualquier daño con 0 PG cuenta como un fallo; si es un crítico, cuenta como dos. Si el daño iguala o supera tus PG máximos, mueres.</p>
       <p><b>Estabilizar.</b> Acción de ayudar con prueba de Sabiduría (Medicina) CD 10. Una criatura estable no tira más salvaciones contra muerte pero sigue inconsciente; si sufre daño, deja de estar estable. Sin curación, recupera 1 PG tras 1d4 horas.</p>
+    </div>
+
+    <div class="fcard" id="estable">
+      <div class="fhead"><span class="fname">Estable <span class="en">Stable</span></span><span class="tag">daño</span></div>
+      <p>Una criatura está estable si tiene 0 puntos de golpe pero no debe hacer tiradas de salvación contra muerte. Sigue con el estado de inconsciente. Si sufre daño, deja de estar estable y vuelve a tirar salvaciones contra muerte. Sin curación, recupera 1 PG tras 1d4 horas.</p>
     </div>
 
     <div class="fcard" id="noquear-a-una-criatura">
@@ -821,6 +872,27 @@ footer{
       <p>Una criatura u objeto que arda sufre 1d4 de daño de fuego al principio de cada uno de sus turnos. Como acción, puedes apagarlo adoptando el estado de derribado y rodando por el suelo. También se extingue si se moja, se sumerge o se ahoga.</p>
     </div>
 
+    <div class="fcard" id="trepar">
+      <div class="fhead"><span class="fname">Trepar <span class="en">Climbing</span></span><span class="tag">exploración</span></div>
+      <p>Cada metro de movimiento cuesta 1 m adicional (2 m adicionales en terreno difícil). Una velocidad trepando ignora este coste. A discreción del DM, trepar una superficie resbaladiza o con pocos agarres puede requerir Fuerza (Atletismo) CD 15.</p>
+    </div>
+
+    <div class="fcard" id="nadar">
+      <div class="fhead"><span class="fname">Nadar <span class="en">Swimming</span></span><span class="tag">exploración</span></div>
+      <p>Cada metro de movimiento cuesta 1 m adicional (2 m adicionales en terreno difícil). Una velocidad nadando ignora este coste. A discreción del DM, avanzar por aguas revueltas puede requerir Fuerza (Atletismo) CD 15.</p>
+    </div>
+
+    <div class="fcard" id="arrastrarse">
+      <div class="fhead"><span class="fname">Arrastrarse <span class="en">Crawling</span></span><span class="tag">exploración</span></div>
+      <p>Cada metro de movimiento cuesta 1 m adicional (2 m adicionales en terreno difícil).</p>
+    </div>
+
+    <div class="fcard" id="saltar">
+      <div class="fhead"><span class="fname">Saltar <span class="en">Jumping</span></span><span class="tag">exploración</span></div>
+      <p><b>Salto de longitud.</b> Hasta 30 cm × tu puntuación de Fuerza si recorres al menos 3 m antes de saltar; la mitad sin carrerilla. Cada metro saltado gasta 1 m de movimiento. Si aterrizas en terreno difícil: Destreza (Acrobacias) CD 10 o quedas derribado. Superar un obstáculo de hasta un cuarto de la distancia puede pedir Fuerza (Atletismo) CD 10.</p>
+      <p><b>Salto de altura.</b> Asciendes 90 cm + 30 cm × tu modificador por Fuerza (mínimo 0) con al menos 3 m de carrerilla; la mitad sin ella. Puedes estirar los brazos la mitad de tu altura por encima de ti.</p>
+    </div>
+
     <div class="fcard" id="viajar">
       <div class="fhead"><span class="fname">Ritmo de viaje</span><span class="tag">exploración</span></div>
       <table class="rule-table">
@@ -913,7 +985,15 @@ footer{
 
     <div class="fcard" id="duracion-conjuro">
       <div class="fhead"><span class="fname">Duración</span><span class="tag">conjuros</span></div>
-      <p><b>Concentración.</b> Sigue las reglas de concentración del glosario. <b>Instantáneo.</b> Efecto momentáneo, luego desaparece. <b>Periodo de tiempo.</b> Dura lo indicado (asaltos, minutos, horas); puedes terminarlo tú mismo sin acción si no estás incapacitado.</p>
+      <p><b>Concentración.</b> Sigue las reglas de <a href="#concentracion">concentración</a>. <b>Instantáneo.</b> Efecto momentáneo, luego desaparece. <b>Periodo de tiempo.</b> Dura lo indicado (asaltos, minutos, horas); puedes terminarlo tú mismo sin acción si no estás incapacitado.</p>
+    </div>
+
+    <div class="fcard" id="concentracion">
+      <div class="fhead"><span class="fname">Concentración <span class="en">Concentration</span></span><span class="tag">conjuros</span></div>
+      <p>Algunos conjuros y efectos requieren concentración para permanecer activos. Si el creador la pierde, el efecto concluye. Puedes dejar de concentrarte en cualquier momento, sin acción. La concentración se rompe por:</p>
+      <p><b>Otro efecto de concentración.</b> La pierdes en cuanto empiezas a lanzar otro conjuro o activas otro efecto que también requiera concentración.</p>
+      <p><b>Daño.</b> Si sufres daño: salvación de Constitución con CD 10 o la mitad del daño sufrido (la que sea mayor), hasta un máximo de 30.</p>
+      <p><b>Incapacitado o muerto.</b> La concentración termina si tienes el estado de incapacitado o mueres.</p>
     </div>
 
     <div class="fcard" id="efectos-conjuro">
@@ -922,6 +1002,73 @@ footer{
       <p><b>CD de salvación de conjuros = 8 + modificador por aptitud mágica + bonificador por competencia.</b></p>
       <p><b>Modificador de ataque de conjuros = modificador por aptitud mágica + bonificador por competencia.</b></p>
       <p><b>Combinar efectos.</b> Conjuros distintos se suman si sus duraciones se solapan. El mismo conjuro lanzado varias veces no se acumula — se aplica el efecto más potente, o el más reciente si son iguales.</p>
+    </div>
+
+    <div class="fcard" id="areas-de-efecto">
+      <div class="fhead"><span class="fname">Áreas de efecto <span class="en">Areas of Effect</span></span><span class="tag">conjuros</span></div>
+      <p>Toda área tiene un <b>punto de origen</b> desde el que surge la energía. Un lugar queda fuera del área si todas las líneas rectas desde el origen hasta él están bloqueadas por cobertura completa.</p>
+      <p><b>Cono.</b> Se extiende desde el origen; su ancho en cualquier punto es igual a la distancia a ese origen. Origen no incluido, salvo que el creador decida lo contrario.</p>
+      <p><b>Cilindro.</b> Origen en el centro de su base circular superior o inferior; se define por radio y altura. Origen incluido.</p>
+      <p><b>Esfera.</b> Se extiende del origen en todas direcciones hasta su radio. Origen incluido.</p>
+      <p><b>Emanación.</b> Se extiende desde una criatura u objeto en todas direcciones y se mueve con su origen (salvo efectos instantáneos o estáticos). Origen no incluido, salvo decisión del creador.</p>
+      <p><b>Línea.</b> Trayectoria recta con longitud y anchura definidas. Origen no incluido, salvo decisión del creador.</p>
+      <p><b>Cubo.</b> El manual lo lista como sexta forma, pero su definición aún no está transcrita en la fuente — pendiente de agregar.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="equipo">
+  <h2>Equipo</h2>
+  <p class="section-note">Reglas del sistema de equipo: propiedades y maestrías de armas, armaduras y objetos mágicos. Las estadísticas de cada arma u objeto concreto viven en la ficha del personaje que lo lleva.</p>
+  <div class="grid">
+
+    <div class="fcard" id="propiedades-de-armas">
+      <div class="fhead"><span class="fname">Propiedades de armas <span class="en">Weapon Properties</span></span><span class="tag">equipo</span></div>
+      <p><b>A dos manos (Two-Handed).</b> Requiere las dos manos.</p>
+      <p><b>Alcance (Range).</b> Dos números entre paréntesis: normal y largo, en metros. Más allá del normal, desventaja; más allá del largo, no puedes atacar.</p>
+      <p><b>Arrojadiza (Thrown).</b> Puedes lanzarla como ataque a distancia y desenvainarla como parte del ataque. Si es cuerpo a cuerpo, ataque y daño usan el mismo modificador que sus ataques cuerpo a cuerpo.</p>
+      <p><b>Gran alcance (Reach).</b> Tu alcance aumenta 1,5 m al atacar y para ataques de oportunidad con ella.</p>
+      <p><b>Ligera (Light).</b> Tras atacar con un arma ligera en la acción de atacar, puedes hacer un ataque extra como acción adicional con otra arma ligera; no sumas tu modificador al daño de ese extra salvo que sea negativo.</p>
+      <p><b>Munición (Ammunition).</b> Necesitas munición; extraerla es parte del ataque (mano libre para cargar armas de una mano). Tras un combate, 1 minuto recupera la mitad de la munición usada.</p>
+      <p><b>Pesada (Heavy).</b> Desventaja en las tiradas de ataque si tu Fuerza es menor que 13 (cuerpo a cuerpo) o tu Destreza menor que 13 (a distancia).</p>
+      <p><b>Recarga (Loading).</b> Solo una unidad de munición por acción, acción adicional o reacción, aunque pudieras hacer más ataques.</p>
+      <p><b>Sutil (Finesse).</b> Eliges Fuerza o Destreza para las tiradas de ataque y daño; el mismo modificador para ambas.</p>
+      <p><b>Versátil (Versatile).</b> A una o dos manos; entre paréntesis, el daño cuando se usa a dos manos.</p>
+    </div>
+
+    <div class="fcard" id="maestrias-de-armas">
+      <div class="fhead"><span class="fname">Maestrías de armas <span class="en">Weapon Mastery</span></span><span class="tag">equipo</span></div>
+      <p>Cada arma tiene una propiedad de maestría, utilizable solo si un rasgo te lo permite (como Maestría con armas).</p>
+      <p><b>Debilitar (Sap).</b> Si aciertas, la criatura tiene desventaja en su próxima tirada de ataque antes del principio de tu siguiente turno.</p>
+      <p><b>Derribar (Topple).</b> Si aciertas, puedes obligarla a una salvación de Constitución (CD 8 + modificador usado en el ataque + bonificador por competencia); si falla, queda derribada.</p>
+      <p><b>Empujar (Push).</b> Si aciertas, puedes empujarla hasta 3 m en línea recta si es Grande o más pequeña.</p>
+      <p><b>Hender (Cleave).</b> Si aciertas cuerpo a cuerpo, puedes atacar a una segunda criatura a 1,5 m o menos de la primera y a tu alcance; el daño no suma tu modificador salvo que sea negativo. Una vez por turno.</p>
+      <p><b>Mellar (Nick).</b> El ataque extra de la propiedad ligera puede hacerse como parte de la acción de atacar en vez de como acción adicional. Una vez por turno.</p>
+      <p><b>Molestar (Vex).</b> Si aciertas y causas daño, tienes ventaja en tu siguiente tirada de ataque contra esa criatura antes del final de tu siguiente turno.</p>
+      <p><b>Ralentizar (Slow).</b> Si aciertas y causas daño, puedes reducir su velocidad en 3 m hasta el principio de tu siguiente turno; varios ataques no reducen más de 3 m en total.</p>
+      <p><b>Rozar (Graze).</b> Si fallas, puedes causar daño igual al modificador por característica usado en la tirada; del mismo tipo que el arma.</p>
+    </div>
+
+    <div class="fcard" id="armaduras">
+      <div class="fhead"><span class="fname">Clase de armadura y entrenamiento <span class="en">Armor Class &amp; Training</span></span><span class="tag">equipo</span></div>
+      <p><b>CA base sin armadura = 10 + modificador por Destreza.</b> Si otra regla te da otro cálculo de CA base, eliges cuál usar — no se combinan.</p>
+      <p><b>Con armadura</b>, la CA base la fija la armadura: las ligeras suman tu Destreza completa, las medias suman Destreza hasta un máximo de +2, y las pesadas son un valor fijo. <b>Escudo:</b> +2 a la CA, solo con entrenamiento.</p>
+      <p><b>Sin entrenamiento</b> con la armadura puesta: desventaja en toda prueba con d20 que implique Fuerza o Destreza, y no puedes lanzar conjuros.</p>
+      <p><b>Solo un tipo.</b> No puedes llevar más de una armadura ni embrazar más de un escudo a la vez.</p>
+    </div>
+
+    <div class="fcard" id="identificar-objeto-magico">
+      <div class="fhead"><span class="fname">Identificar un objeto mágico <span class="en">Identifying</span></span><span class="tag">equipo</span></div>
+      <p>Con solo manipularlo percibes que tiene algo extraordinario, pero descubrir sus propiedades no es automático. El conjuro <i>identificar</i> es la vía más rápida. Alternativa: concéntrate en el objeto durante un descanso corto en contacto físico con él; al final, conoces sus propiedades y cómo usarlas (pero no si está maldito). Experimentar con el objeto también puede revelarlas.</p>
+    </div>
+
+    <div class="fcard" id="sintonizacion">
+      <div class="fhead"><span class="fname">Sintonización <span class="en">Attunement</span></span><span class="tag">equipo</span></div>
+      <p>Algunos objetos mágicos requieren formar este vínculo antes de usar sus propiedades mágicas; sin sintonizar, solo obtienes sus beneficios no mágicos.</p>
+      <p><b>Sintonizarse.</b> Un descanso corto concentrado solo en el objeto, en contacto físico (no puede ser el mismo descanso usado para identificarlo). Si el descanso se interrumpe, el intento falla.</p>
+      <p><b>Máximo 3.</b> No puedes estar sintonizado con más de tres objetos a la vez, ni con más de una copia del mismo objeto.</p>
+      <p><b>Terminar.</b> La sintonización acaba si dejas de cumplir los requisitos, si el objeto pasa 24 horas a más de 30 m de ti, si mueres o si otra criatura se sintoniza con él. También puedes terminarla voluntariamente con otro descanso corto concentrado en el objeto, salvo que esté maldito.</p>
     </div>
 
   </div>
@@ -962,7 +1109,7 @@ footer{
 </main>
 
 <footer>
-Reglas rápidas · Mesa de Lucho · D&amp;D 2024 · Fuente: PHB 2024 (Devir), Capítulo 1 y Apéndice C · v1 completa: Fundamentos, Estados, Acciones, Descansos, Combate, Daño y curación, Exploración, Reglas de conjuros, Ejemplos
+Reglas rápidas · Mesa de Lucho · D&amp;D 2024 · Fuente: PHB 2024 (Devir), Capítulos 1, 6 y 7 y Apéndice C · Secciones: Fundamentos, Estados, Acciones, Descansos, Combate, Daño y curación, Exploración, Reglas de conjuros, Equipo, Ejemplos
 </footer>
 
 <script>
