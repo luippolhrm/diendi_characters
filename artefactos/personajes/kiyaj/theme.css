@@ -1,0 +1,5 @@
+
+/* Paleta de Ki'yaj: violeta astral, oro, rubí, plata */
+:root{--bg:#F6F5FA;--surface:#FFFFFF;--ink:#17141D;--ink-2:#4A4560;--ink-3:#6E6880;--line:#E3E1EC;--line-2:#CFCCDE;--violet:#6C4BA8;--violet-d:#523789;--violet-soft:#EEE9F8;--gold:#B8933B;--gold-d:#8F6F24;--gold-soft:#F5EEDA;--ruby:#B0304A;--ruby-soft:#F8E4E9;--hero-1:#241A3A;--hero-2:#3B2A62;--hero-ink:#F4F0FB;--hero-mute:#C9BFE0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121019;--surface:#1B1826;--ink:#ECE9F4;--ink-2:#BDB7CE;--ink-3:#958FA8;--line:#2C283A;--line-2:#3C374D;--violet:#A98BE0;--violet-d:#C2AAF0;--violet-soft:#2A2240;--gold:#D9B45E;--gold-d:#E6C77E;--gold-soft:#2E2614;--ruby:#E0687F;--ruby-soft:#3A1A22;--hero-1:#17112A;--hero-2:#2A1E48}}
+:root[data-theme="dark"]{--bg:#121019;--surface:#1B1826;--ink:#ECE9F4;--ink-2:#BDB7CE;--ink-3:#958FA8;--line:#2C283A;--line-2:#3C374D;--violet:#A98BE0;--violet-d:#C2AAF0;--violet-soft:#2A2240;--gold:#D9B45E;--gold-d:#E6C77E;--gold-soft:#2E2614;--ruby:#E0687F;--ruby-soft:#3A1A22;--hero-1:#17112A;--hero-2:#2A1E48}

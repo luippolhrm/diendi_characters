@@ -1,0 +1,9 @@
+{
+  "cat": "consumible",
+  "equipped": false,
+  "kind": "gear",
+  "loc": "Mochila",
+  "name": "Velas",
+  "order": 11,
+  "qty": 10
+}

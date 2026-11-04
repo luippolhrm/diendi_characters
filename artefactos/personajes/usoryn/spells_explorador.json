@@ -1,0 +1,504 @@
+[
+ {
+  "id": "alarm",
+  "lvl": 1,
+  "n": "Alarma",
+  "en": "Alarm",
+  "tag": "ritual",
+  "src": [
+   "ritual"
+  ],
+  "tg": [
+   "other"
+  ],
+  "dur": "8 h",
+  "meta": "Nivel 1 · Abjuración · 1 minuto o ritual · 9 m (30 ft) · V, S, M (una campana e hilo de plata) · 8 horas",
+  "d": "Vigilas una puerta, ventana o zona de hasta un cubo de 6 m (20 ft) de lado. Durante 8 h, si una criatura toca o entra en la zona, te alerta; al lanzarlo designas qué criaturas no la activan. Mental: sonido en tu mente si estás a 1,5 km o menos (te despierta). Sonora: campanilla de 10 segundos audible a 18 m."
+ },
+ {
+  "id": "goodberry",
+  "lvl": 1,
+  "n": "Buenas bayas",
+  "en": "Goodberry",
+  "tag": "10 bayas · 1 PG",
+  "src": [],
+  "tg": [
+   "self",
+   "other"
+  ],
+  "dur": "24 h",
+  "meta": "Nivel 1 · Conjuración · Acción · Lanzador · V, S, M (una rama de muérdago) · 24 horas",
+  "d": "Aparecen 10 bayas mágicas en tu mano. Una criatura puede usar una acción adicional para comer una: recupera 1 PG y queda alimentada por 1 día. Las bayas no consumidas desaparecen a las 24 h."
+ },
+ {
+  "id": "cure",
+  "lvl": 1,
+  "n": "Curar heridas",
+  "en": "Cure Wounds",
+  "tag": "2d8+2",
+  "src": [],
+  "tg": [
+   "self",
+   "other"
+  ],
+  "meta": "Nivel 1 · Abjuración · Acción · Toque · V, S",
+  "d": "Una criatura que toques recupera 2d8 + 2 PG (tu modificador de Sabiduría).",
+  "selfHeal": "2d8+2",
+  "inst": "Tira 2d8+2.",
+  "up": "+2d8 de curación por cada nivel por encima de 1."
+ },
+ {
+  "id": "detectmagic",
+  "lvl": 1,
+  "n": "Detectar magia",
+  "en": "Detect Magic",
+  "tag": "ritual",
+  "src": [
+   "ritual"
+  ],
+  "tg": [
+   "self"
+  ],
+  "conc": 1,
+  "dur": "hasta 10 min",
+  "meta": "Nivel 1 · Adivinación · Acción o ritual · Lanzador · V, S · concentración hasta 10 min",
+  "d": "Percibes efectos mágicos a 9 m (30 ft) o menos de ti. Con una acción de magia ves un aura débil alrededor de objetos/criaturas visibles afectados por magia y, si viene de un conjuro, su escuela. No atraviesa 30 cm de piedra/tierra/madera, 2,5 cm de metal ni una lámina fina de plomo."
+ },
+ {
+  "id": "detectpoison",
+  "lvl": 1,
+  "n": "Detectar venenos y enfermedades",
+  "en": "Detect Poison and Disease",
+  "tag": "ritual",
+  "src": [
+   "ritual"
+  ],
+  "tg": [
+   "self"
+  ],
+  "conc": 1,
+  "dur": "hasta 10 min",
+  "meta": "Nivel 1 · Adivinación · Acción o ritual · Lanzador · V, S, M (una hoja de tejo) · concentración hasta 10 min",
+  "d": "Percibes la ubicación de venenos, criaturas venenosas y enfermedades mágicas a 9 m (30 ft) o menos, e identificas su tipo. No atraviesa 30 cm de piedra/tierra/madera, 2,5 cm de metal ni una lámina fina de plomo."
+ },
+ {
+  "id": "animalfriend",
+  "lvl": 1,
+  "n": "Encantar animal",
+  "en": "Animal Friendship",
+  "tag": "CD 13 Sab",
+  "src": [],
+  "tg": [
+   "other"
+  ],
+  "dur": "24 h",
+  "meta": "Nivel 1 · Encantamiento · Acción · 9 m (30 ft) · V, S, M (unas migajas de comida) · 24 horas",
+  "d": "Una bestia que veas salva Sabiduría CD 13 o queda Hechizada durante 24 h. Termina si tú o un aliado la dañáis.",
+  "up": "+1 bestia objetivo por cada nivel por encima de 1."
+ },
+ {
+  "id": "entangle",
+  "lvl": 1,
+  "n": "Enmarañar",
+  "en": "Entangle",
+  "tag": "CD 13 Fue",
+  "src": [],
+  "tg": [
+   "other"
+  ],
+  "conc": 1,
+  "dur": "hasta 1 min",
+  "meta": "Nivel 1 · Conjuración · Acción · 27 m (90 ft) · V, S · concentración hasta 1 min",
+  "d": "Plantas en un cuadrado de 6 m (20 ft) de lado: terreno difícil. Cada criatura en el área (excepto tú) salva Fuerza CD 13 o queda Apresada. Para liberarse: acción y prueba de Fuerza (Atletismo) contra tu CD 13."
+ },
+ {
+  "id": "ensnare",
+  "lvl": 1,
+  "n": "Golpe apresador",
+  "en": "Ensnaring Strike",
+  "tag": "CD 13 Fue · 1d6",
+  "src": [],
+  "tg": [
+   "other"
+  ],
+  "conc": 1,
+  "dur": "hasta 1 min",
+  "meta": "Nivel 1 · Conjuración · Acción adicional (tras acertar con un arma) · Lanzador · V · concentración hasta 1 min",
+  "d": "Al acertar con un arma, el objetivo salva Fuerza CD 13 (ventaja si es Grande o mayor) o queda Apresado; si la supera, el conjuro termina. Mientras esté Apresado sufre 1d6 perforante al inicio de cada uno de sus turnos. Él o una criatura a su alcance puede usar una acción y prueba de Fuerza (Atletismo) contra CD 13 para terminarlo.",
+  "up": "+1d6 de daño por cada nivel por encima de 1."
+ },
+ {
+  "id": "speakanimals",
+  "lvl": 1,
+  "n": "Hablar con los animales",
+  "en": "Speak with Animals",
+  "tag": "ritual",
+  "src": [
+   "ritual"
+  ],
+  "tg": [
+   "self"
+  ],
+  "dur": "10 min",
+  "meta": "Nivel 1 · Adivinación · Acción o ritual · Lanzador · V, S · 10 minutos",
+  "d": "Durante 10 min comprendes y te comunicas verbalmente con bestias y puedes usar con ellas la acción de Influir. Suelen informar de lugares y monstruos cercanos y lo que percibieron en el último día."
+ },
+ {
+  "id": "hm",
+  "lvl": 1,
+  "n": "Marca del cazador",
+  "en": "Hunter's Mark",
+  "tag": "+1d6 fuerza",
+  "src": [],
+  "tg": [
+   "other"
+  ],
+  "conc": 1,
+  "dur": "hasta 1 h",
+  "meta": "Nivel 1 · Adivinación · Acción adicional · 27 m (90 ft) · V · concentración hasta 1 hora",
+  "d": "Marcas a una criatura que veas: cada vez que la aciertes con una tirada de ataque infliges 1d6 de daño de fuerza adicional, y tienes ventaja en Sabiduría (Percepción o Supervivencia) para buscarla. Si cae a 0 PG, con una acción adicional transfieres la marca a otra criatura que veas.",
+  "up": "Con espacio de nivel 3-4 la concentración dura hasta 8 h; de nivel 5+ hasta 24 h."
+ },
+ {
+  "id": "fogcloud",
+  "lvl": 1,
+  "n": "Nube de oscurecimiento",
+  "en": "Fog Cloud",
+  "tag": "esfera 6 m",
+  "src": [],
+  "tg": [
+   "other"
+  ],
+  "conc": 1,
+  "dur": "hasta 1 h",
+  "meta": "Nivel 1 · Conjuración · Acción · 36 m (120 ft) · V, S · concentración hasta 1 hora",
+  "d": "Esfera de niebla de 6 m (20 ft) de radio centrada en un punto que elijas; el área queda muy oscura (muy oscurecida). Dura hasta 1 h o hasta que la disperse un viento fuerte (p. ej. Ráfaga de viento).",
+  "up": "+6 m de radio por cada nivel por encima de 1."
+ },
+ {
+  "id": "jump",
+  "lvl": 1,
+  "n": "Salto",
+  "en": "Jump",
+  "tag": "salto 9 m",
+  "src": [],
+  "tg": [
+   "self",
+   "other"
+  ],
+  "dur": "1 min",
+  "meta": "Nivel 1 · Transmutación · Acción adicional · Toque · V, S, M (la pata trasera de un saltamontes) · 1 minuto",
+  "d": "Una criatura voluntaria que toques puede, una vez por turno durante 1 min, saltar hasta 9 m (30 ft) gastando solo 3 m (10 ft) de movimiento.",
+  "up": "+1 criatura objetivo por cada nivel por encima de 1."
+ },
+ {
+  "id": "hail",
+  "lvl": 1,
+  "n": "Tormenta de espinas",
+  "en": "Hail of Thorns",
+  "tag": "1d10 · CD 13 Des",
+  "src": [],
+  "tg": [
+   "other"
+  ],
+  "meta": "Nivel 1 · Conjuración · Acción adicional (tras acertar con un arma a distancia) · Lanzador · V",
+  "d": "Al acertar con un arma a distancia, brota una lluvia de espinas: el objetivo y toda criatura a 1,5 m (5 ft) o menos de él salvan Destreza CD 13; sufren 1d10 perforante si fallan o la mitad si superan.",
+  "up": "+1d10 de daño por cada nivel por encima de 1.",
+  "note": "La descripción en Notion indica Duración: Instantáneo (sin concentración); se sigue la descripción. Verificar contra la tabla de la lista de clase si ahí figura con C."
+ },
+ {
+  "id": "longstrider",
+  "lvl": 1,
+  "n": "Zancada prodigiosa",
+  "en": "Longstrider",
+  "tag": "+3 m velocidad",
+  "src": [],
+  "tg": [
+   "self",
+   "other"
+  ],
+  "dur": "1 h",
+  "meta": "Nivel 1 · Transmutación · Acción · Toque · V, S, M (una pizca de tierra) · 1 hora",
+  "d": "Una criatura que toques aumenta su velocidad en 3 m (10 ft) durante 1 h.",
+  "up": "+1 criatura objetivo por cada nivel por encima de 1."
+ },
+ {
+  "id": "magicweapon",
+  "lvl": 2,
+  "n": "Arma mágica",
+  "en": "Magic Weapon",
+  "tag": "+1 ataque/daño",
+  "src": [],
+  "tg": [
+   "self",
+   "other"
+  ],
+  "dur": "1 h",
+  "meta": "Nivel 2 · Transmutación · Acción adicional · Toque · V, S · 1 hora",
+  "d": "Un arma no mágica que toques se vuelve mágica con +1 a tiradas de ataque y daño durante 1 h. Termina antes si lo vuelves a lanzar.",
+  "up": "+2 con espacio de nivel 3-5; +3 con espacio de nivel 6+."
+ },
+ {
+  "id": "aid",
+  "lvl": 2,
+  "n": "Auxilio",
+  "en": "Aid",
+  "tag": "+5 PG máx",
+  "src": [],
+  "tg": [
+   "self",
+   "other"
+  ],
+  "dur": "8 h",
+  "meta": "Nivel 2 · Abjuración · Acción · 9 m (30 ft) · V, S, M (una tira de tela blanca) · 8 horas",
+  "d": "Hasta 3 criaturas dentro del alcance aumentan sus PG máximos y actuales en 5 durante 8 h.",
+  "up": "+5 PG adicionales por cada nivel por encima de 2."
+ },
+ {
+  "id": "cordon",
+  "lvl": 2,
+  "n": "Cordón de flechas",
+  "en": "Cordon of Arrows",
+  "tag": "2d4 · CD 13 Des",
+  "src": [],
+  "tg": [
+   "other"
+  ],
+  "dur": "8 h",
+  "meta": "Nivel 2 · Transmutación · Acción · Toque · V, S, M (una trenza ornamental) · 8 horas",
+  "d": "Clavas hasta 4 flechas o virotes no mágicos en el suelo de tu espacio. Durante 8 h, cuando una criatura (no tú) entre por primera vez en un turno en un espacio a 9 m (30 ft) o menos o termine su turno ahí, un proyectil la ataca: salva Destreza CD 13 o sufre 2d4 perforante; el proyectil se destruye. Puedes designar criaturas a ignorar. Termina al agotarse la munición.",
+  "up": "+2 proyectiles por cada nivel por encima de 2."
+ },
+ {
+  "id": "spikegrowth",
+  "lvl": 2,
+  "n": "Crecimiento espinoso",
+  "en": "Spike Growth",
+  "tag": "2d4 por 1,5 m",
+  "src": [],
+  "tg": [
+   "other"
+  ],
+  "conc": 1,
+  "dur": "hasta 10 min",
+  "meta": "Nivel 2 · Transmutación · Acción · 45 m (150 ft) · V, S, M (siete espinas) · concentración hasta 10 min",
+  "d": "Esfera de 6 m (20 ft) de radio de espinas: terreno difícil, y toda criatura que entre o se desplace sufre 2d4 perforante por cada 1,5 m (5 ft) que avance. El terreno parece natural: quien no vio el lanzamiento necesita una acción de Buscar y superar Sabiduría (Percepción o Supervivencia) CD 13 para reconocerlo."
+ },
+ {
+  "id": "findtraps",
+  "lvl": 2,
+  "n": "Detectar trampas",
+  "en": "Find Traps",
+  "tag": "utilidad",
+  "src": [],
+  "tg": [
+   "self"
+  ],
+  "meta": "Nivel 2 · Adivinación · Acción · 36 m (120 ft) · V, S",
+  "d": "Detectas cualquier trampa dentro del alcance en tu línea de visión (objetos o mecanismos creados para dañar, incluidos conjuros como Alarma o Glifo custodio; no peligros naturales). Sabes que existe y la naturaleza general del peligro, pero no su ubicación."
+ },
+ {
+  "id": "summonbeast",
+  "lvl": 2,
+  "n": "Invocar bestia",
+  "en": "Summon Beast",
+  "tag": "espíritu bestial",
+  "src": [],
+  "tg": [
+   "other"
+  ],
+  "conc": 1,
+  "dur": "hasta 1 h",
+  "meta": "Nivel 2 · Conjuración · Acción · 27 m (90 ft) · V, S, M (pluma, pelaje y cola de pez en una bellota bañada en oro de 200 po+) · concentración hasta 1 hora",
+  "d": "Invocas un espíritu bestial (tierra, mar o aire) en un espacio libre que veas; es tu aliado, actúa justo después de ti y obedece tus órdenes verbales (sin acción); sin órdenes, Esquiva. Perfil: CA 13 (11 + nivel del conjuro), PG 20 (aire) o 30 (tierra/mar), Desgarro con tu bono de ataque de conjuros (+5), 1d8 + 4 + 2 perforante; Ataque múltiple: 1 ataque a nivel 2. Desaparece a 0 PG o al terminar.",
+  "up": "El nivel del espacio determina el nivel del conjuro en el perfil (CA, PG +5/nivel, daño y número de ataques)."
+ },
+ {
+  "id": "locateanimals",
+  "lvl": 2,
+  "n": "Localizar animales o plantas",
+  "en": "Locate Animals or Plants",
+  "tag": "ritual",
+  "src": [
+   "ritual"
+  ],
+  "tg": [
+   "self"
+  ],
+  "meta": "Nivel 2 · Adivinación · Acción o ritual · Lanzador · V, S, M (pelaje de un sabueso)",
+  "d": "Describe o nombra un tipo de bestia, criatura Planta o planta no mágica: conoces dirección y distancia a la más cercana a 7,5 km (5 millas) o menos, si existe."
+ },
+ {
+  "id": "locateobject",
+  "lvl": 2,
+  "n": "Localizar objeto",
+  "en": "Locate Object",
+  "tag": "utilidad",
+  "src": [],
+  "tg": [
+   "self"
+  ],
+  "conc": 1,
+  "dur": "hasta 10 min",
+  "meta": "Nivel 2 · Adivinación · Acción · Lanzador · V, S, M (una ramita con forma de horquilla) · concentración hasta 10 min",
+  "d": "Describe o nombra un objeto conocido: presientes su dirección si está a 300 m (1.000 ft) o menos, y la dirección de su movimiento. Puede ser un objeto específico que hayas visto de cerca (9 m) o el más cercano de un tipo. Lo bloquea cualquier grosor de plomo."
+ },
+ {
+  "id": "animalmsg",
+  "lvl": 2,
+  "n": "Mensajero animal",
+  "en": "Animal Messenger",
+  "tag": "ritual",
+  "src": [
+   "ritual"
+  ],
+  "tg": [
+   "other"
+  ],
+  "dur": "24 h",
+  "meta": "Nivel 2 · Encantamiento · Acción o ritual · 9 m (30 ft) · V, S, M (unas migajas de comida) · 24 horas",
+  "d": "Una bestia Diminuta que veas salva Carisma CD 13 (supera automáticamente si su VD no es 0) o lleva un mensaje de hasta 25 palabras a un lugar que hayas visitado y a un destinatario que describas. Recorre unos 37,5 km por 24 h (75 km volando). Si no llega antes de terminar, el mensaje se pierde y regresa.",
+  "up": "+48 h de duración por cada nivel por encima de 2."
+ },
+ {
+  "id": "passwithout",
+  "lvl": 2,
+  "n": "Pasar sin rastro",
+  "en": "Pass without Trace",
+  "tag": "+10 Sigilo",
+  "src": [],
+  "tg": [
+   "self",
+   "other"
+  ],
+  "conc": 1,
+  "dur": "hasta 1 h",
+  "meta": "Nivel 2 · Abjuración · Acción · Lanzador · V, S, M (cenizas de muérdago quemado) · concentración hasta 1 hora",
+  "d": "Emanación de 9 m (30 ft): tú y las criaturas que elijas dentro tenéis +10 a Destreza (Sigilo) y no dejáis huellas."
+ },
+ {
+  "id": "barkskin",
+  "lvl": 2,
+  "n": "Piel robliza",
+  "en": "Barkskin",
+  "tag": "CA mín 17",
+  "src": [],
+  "tg": [
+   "self",
+   "other"
+  ],
+  "dur": "1 h",
+  "meta": "Nivel 2 · Transmutación · Acción adicional · Toque · V, S, M (un puñado de corteza) · 1 hora",
+  "d": "Una criatura voluntaria que toques tiene CA mínima 17 durante 1 h."
+ },
+ {
+  "id": "enhance",
+  "lvl": 2,
+  "n": "Potenciar característica",
+  "en": "Enhance Ability",
+  "tag": "ventaja pruebas",
+  "src": [],
+  "tg": [
+   "self",
+   "other"
+  ],
+  "conc": 1,
+  "dur": "hasta 1 h",
+  "meta": "Nivel 2 · Transmutación · Acción · Toque · V, S, M (pelo de animal o una pluma) · concentración hasta 1 hora",
+  "d": "Una criatura que toques elige Fuerza, Destreza, Inteligencia, Sabiduría o Carisma: ventaja en las pruebas de esa característica durante 1 h.",
+  "up": "+1 criatura objetivo por cada nivel por encima de 2 (característica distinta por objetivo)."
+ },
+ {
+  "id": "protpoison",
+  "lvl": 2,
+  "n": "Protección contra veneno",
+  "en": "Protection from Poison",
+  "tag": "resist. veneno",
+  "src": [],
+  "tg": [
+   "self",
+   "other"
+  ],
+  "dur": "1 h",
+  "meta": "Nivel 2 · Abjuración · Acción · Toque · V, S · 1 hora",
+  "d": "Una criatura que toques deja de estar Envenenada y, durante 1 h, tiene ventaja en salvaciones contra el estado Envenenado y resistencia al daño de veneno."
+ },
+ {
+  "id": "gust",
+  "lvl": 2,
+  "n": "Ráfaga de viento",
+  "en": "Gust of Wind",
+  "tag": "CD 13 Fue",
+  "src": [],
+  "tg": [
+   "other"
+  ],
+  "conc": 1,
+  "dur": "hasta 1 min",
+  "meta": "Nivel 2 · Evocación · Acción · Lanzador · V, S, M (la semilla de una legumbre) · concentración hasta 1 min",
+  "d": "Línea de viento fuerte de 18 m (60 ft) de largo y 3 m (10 ft) de ancho desde ti. Cada criatura en la línea (y quien termine su turno en ella) salva Fuerza CD 13 o es empujada 4,5 m (15 ft). Acercarse a ti cuesta el doble de movimiento. Dispersa gas/vapor, apaga llamas desprotegidas (50 % las protegidas). Con una acción adicional cambias la dirección."
+ },
+ {
+  "id": "lesserresto",
+  "lvl": 2,
+  "n": "Restablecimiento menor",
+  "en": "Lesser Restoration",
+  "tag": "quita estado",
+  "src": [],
+  "tg": [
+   "self",
+   "other"
+  ],
+  "meta": "Nivel 2 · Abjuración · Acción adicional · Toque · V, S",
+  "d": "Una criatura que toques deja de tener uno de estos estados: Cegado, Ensordecido, Envenenado o Paralizado."
+ },
+ {
+  "id": "beastsense",
+  "lvl": 2,
+  "n": "Sentidos de la bestia",
+  "en": "Beast Sense",
+  "tag": "ritual",
+  "src": [
+   "ritual"
+  ],
+  "tg": [
+   "other"
+  ],
+  "conc": 1,
+  "dur": "hasta 1 h",
+  "meta": "Nivel 2 · Adivinación · Acción o ritual · Toque · S · concentración hasta 1 hora",
+  "d": "Tocas a una bestia voluntaria: durante 1 h puedes percibir a través de sus sentidos además de los tuyos, con sus sentidos especiales."
+ },
+ {
+  "id": "silence",
+  "lvl": 2,
+  "n": "Silencio",
+  "en": "Silence",
+  "tag": "ritual",
+  "src": [
+   "ritual"
+  ],
+  "tg": [
+   "other"
+  ],
+  "conc": 1,
+  "dur": "hasta 10 min",
+  "meta": "Nivel 2 · Ilusionismo · Acción o ritual · 36 m (120 ft) · V, S · concentración hasta 10 min",
+  "d": "Esfera de 6 m (20 ft) de radio sin sonido: nada suena ni atraviesa su borde. Dentro: inmunidad al daño de trueno (si está completamente dentro), las criaturas quedan Ensordecidas y no se pueden lanzar conjuros con componente verbal."
+ },
+ {
+  "id": "darkvision",
+  "lvl": 2,
+  "n": "Visión en la oscuridad",
+  "en": "Darkvision",
+  "tag": "visión osc. 45 m",
+  "src": [],
+  "tg": [
+   "self",
+   "other"
+  ],
+  "dur": "8 h",
+  "meta": "Nivel 2 · Transmutación · Acción · Toque · V, S, M (una zanahoria seca) · 8 horas",
+  "d": "Una criatura voluntaria que toques tiene visión en la oscuridad hasta 45 m (150 ft) durante 8 h."
+ }
+]

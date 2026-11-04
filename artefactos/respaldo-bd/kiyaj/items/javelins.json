@@ -1,0 +1,15 @@
+{
+  "dmg": "1d6",
+  "dmgType": "Perforante",
+  "equipped": false,
+  "hands": 1,
+  "kind": "weapon",
+  "mastery": "Ralentizar (Slow)",
+  "masteryActive": false,
+  "name": "Jabalina",
+  "note": "Simple · Arrojadiza 30/120 ft",
+  "order": 2,
+  "props": "Arrojadiza 30/120 ft",
+  "qty": 6,
+  "stackable": true
+}

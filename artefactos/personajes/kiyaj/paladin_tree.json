@@ -1,0 +1,760 @@
+{
+ "cls": "Paladín",
+ "tone": "gold",
+ "max": 20,
+ "sub": {
+  "at": 3,
+  "label": "Juramento sagrado",
+  "chosen": null,
+  "opts": [
+   {
+    "id": "devocion",
+    "n": "Juramento de entrega",
+    "en": "Oath of Devotion",
+    "tag": "Defiende los ideales de la justicia y el orden.",
+    "lv": {
+     "3": [
+      [
+       "Conjuros de juramento",
+       "Siempre preparados: nv 3 Escudo de fe, Protección contra el bien y el mal · nv 5 Auxilio, Zona de la verdad · nv 9 Disipar magia, Señal de esperanza · nv 13 Guardián de la fe, Libertad de movimiento · nv 17 Comunión, Golpe flamígero."
+      ],
+      [
+       "Arma sagrada",
+       "Al atacar, gasta un uso de Canalizar divinidad: durante 10 minutos sumas tu mod. de Carisma (mín. +1) a los ataques con un arma cuerpo a cuerpo y puedes hacer que inflija daño radiante. El arma emite luz brillante 6 m (20 ft) y tenue 6 m más."
+      ]
+     ],
+     "7": [
+      [
+       "Aura de entrega",
+       "Tú y tus aliados dentro de tu Aura de protección tenéis inmunidad al estado Hechizado."
+      ]
+     ],
+     "15": [
+      [
+       "Castigo protector",
+       "Siempre que lances Castigo divino, tú y tus aliados dentro del Aura de protección tenéis cobertura media hasta el inicio de tu siguiente turno."
+      ]
+     ],
+     "20": [
+      [
+       "Halo sagrado",
+       "Acción adicional, 10 minutos, 1/descanso largo (o gasta un espacio de nv 5): enemigos que inicien su turno en el aura reciben daño radiante = mod. CAR + bonif. competencia; el aura emite luz solar brillante; ventaja en salvaciones forzadas por infernales o muertos vivientes."
+      ]
+     ]
+    }
+   },
+   {
+    "id": "gloria",
+    "n": "Juramento de gloria",
+    "en": "Oath of Glory",
+    "tag": "Esfuérzate por alcanzar la cima del heroísmo.",
+    "lv": {
+     "3": [
+      [
+       "Conjuros de juramento",
+       "Siempre preparados: nv 3 Heroísmo, Saeta guía · nv 5 Arma mágica, Potenciar característica · nv 9 Acelerar, Protección contra energía · nv 13 Compulsión, Libertad de movimiento · nv 17 Conocer las leyendas, Presencia regia de Yolande."
+      ],
+      [
+       "Atleta sin parangón",
+       "Acción adicional, gasta un uso de Canalizar divinidad: durante 1 hora ventaja en Fuerza (Atletismo) y Destreza (Acrobacias) y tus saltos de longitud y altura aumentan 3 m (10 ft)."
+      ],
+      [
+       "Castigo inspirador",
+       "Justo tras lanzar Castigo divino, gasta un uso de Canalizar divinidad: reparte 2d8 + tu nivel de paladín en puntos de golpe temporales entre criaturas a 9 m (30 ft) o menos (puedes incluirte)."
+      ]
+     ],
+     "7": [
+      [
+       "Aura de celeridad",
+       "Tu velocidad aumenta 3 m (10 ft). Un aliado que entre en tu Aura de protección por primera vez en un turno o empiece su turno dentro gana +3 m de velocidad hasta el final de su próximo turno."
+      ]
+     ],
+     "15": [
+      [
+       "Defensa gloriosa",
+       "Reacción cuando un ataque acierta a ti o a una criatura visible a 3 m (10 ft) o menos: suma tu mod. CAR (mín. +1) a su CA; si el ataque falla, haces un ataque con arma contra el atacante si está en alcance. Usos = mod. CAR (mín. 1) por descanso largo."
+      ]
+     ],
+     "20": [
+      [
+       "Leyenda viviente",
+       "Acción adicional, 10 minutos, 1/descanso largo (o gasta un espacio de nv 5): ventaja en todas las pruebas de Carisma; una vez por turno conviertes un ataque con arma fallido en acierto; reacción para repetir una salvación fallida."
+      ]
+     ]
+    }
+   },
+   {
+    "id": "antiguos",
+    "n": "Juramento de los antiguos",
+    "en": "Oath of the Ancients",
+    "tag": "Preserva la vida y la luz en el mundo.",
+    "lv": {
+     "3": [
+      [
+       "Conjuros de juramento",
+       "Siempre preparados: nv 3 Golpe apresador, Hablar con los animales · nv 5 Paso brumoso, Rayo de luna · nv 9 Crecimiento vegetal, Protección contra energía · nv 13 Piel pétrea, Tormenta de hielo · nv 17 Comunión con la naturaleza, Paso arbóreo."
+      ],
+      [
+       "Ira de la naturaleza",
+       "Acción de magia, gasta un uso de Canalizar divinidad: criaturas de tu elección visibles a 4,5 m (15 ft) o menos hacen salvación de Fuerza o quedan Apresadas 1 minuto; repiten la salvación al final de cada uno de sus turnos."
+      ]
+     ],
+     "7": [
+      [
+       "Aura de salvaguarda",
+       "Tú y tus aliados dentro de tu Aura de protección tenéis resistencia al daño necrótico, psíquico y radiante."
+      ]
+     ],
+     "15": [
+      [
+       "Centinela imperecedero",
+       "Cuando tus PG bajan a 0 sin morir al instante, puedes quedarte con 1 PG y recuperar 3 × tu nivel de paladín; 1/descanso largo. Además no envejeces por medios mágicos ni de forma visible."
+      ]
+     ],
+     "20": [
+      [
+       "Campeón ancestral",
+       "Acción adicional, 1 minuto, 1/descanso largo (o gasta un espacio de nv 5): los conjuros de 1 acción se lanzan como acción adicional; enemigos en el aura tienen desventaja en salvaciones contra tus conjuros y Canalizar divinidad; recuperas 10 PG al inicio de cada turno."
+      ]
+     ]
+    }
+   },
+   {
+    "id": "venganza",
+    "n": "Juramento de venganza",
+    "en": "Oath of Vengeance",
+    "tag": "Castiga a los malhechores a toda costa.",
+    "lv": {
+     "3": [
+      [
+       "Conjuros de juramento",
+       "Siempre preparados: nv 3 Marca del cazador, Perdición · nv 5 Inmovilizar persona, Paso brumoso · nv 9 Acelerar, Protección contra energía · nv 13 Destierro, Puerta dimensional · nv 17 Escudriñar, Inmovilizar monstruo."
+      ],
+      [
+       "Voto de enemistad",
+       "Al atacar, gasta un uso de Canalizar divinidad contra una criatura visible a 9 m (30 ft) o menos: ventaja en tus tiradas de ataque contra ella durante 1 minuto o hasta que vuelvas a usar el rasgo. Si cae a 0 PG antes, puedes transferir el voto a otra criatura a 9 m o menos (sin acción)."
+      ]
+     ],
+     "7": [
+      [
+       "Vengador implacable",
+       "Cuando aciertas un ataque de oportunidad, puedes reducir la velocidad del objetivo a 0 hasta el final del turno actual y moverte hasta la mitad de tu velocidad como parte de la misma reacción, sin provocar ataques de oportunidad."
+      ]
+     ],
+     "15": [
+      [
+       "Espíritu vengativo",
+       "Justo después de que la criatura bajo tu Voto de enemistad acierte o falle una tirada de ataque, puedes usar tu reacción para hacer un ataque cuerpo a cuerpo contra ella si está en alcance."
+      ]
+     ],
+     "20": [
+      [
+       "Ángel vengador",
+       "Acción adicional, 10 minutos, 1/descanso largo (o gasta un espacio de nv 5): enemigos que inicien su turno en tu Aura de protección hacen salvación de Sabiduría o quedan Asustados 1 minuto o hasta recibir daño (ataques contra ellos con ventaja); te crecen alas espectrales con velocidad volando de 18 m (60 ft) y puedes levitar."
+      ]
+     ]
+    }
+   }
+  ]
+ },
+ "levels": {
+  "1": {
+   "f": [
+    [
+     "Imponer las manos",
+     "Reserva de curación de 5 × tu nivel de paladín que se recarga con un descanso largo. Acción adicional: tocas a una criatura (puedes ser tú) y restauras PG de la reserva. Puedes gastar 5 PG de la reserva para quitar el estado Envenenado (sin curar)."
+    ],
+    [
+     "Lanzamiento de conjuros",
+     "Lanzas conjuros de paladín con Carisma como aptitud mágica y un símbolo sagrado como canalizador. Empiezas con 2 conjuros preparados de nivel 1 (se recomiendan Castigo abrasador y Heroísmo); recuperas espacios con un descanso largo y puedes cambiar un conjuro preparado tras cada descanso largo."
+    ],
+    [
+     "Maestría con armas",
+     "Usas las propiedades de maestría de 2 tipos de armas con las que tengas competencia; puedes cambiarlos tras un descanso largo."
+    ]
+   ],
+   "sl": [
+    2
+   ],
+   "prep": 2,
+   "loh": 5
+  },
+  "2": {
+   "f": [
+    [
+     "Castigo de paladín",
+     "Siempre tienes Castigo divino preparado y puedes lanzarlo una vez sin gastar espacio de conjuro por descanso largo."
+    ],
+    [
+     "Estilo de combate",
+     "Obtienes una dote de Estilo de combate, o en su lugar Guerrero bendito: 2 trucos de clérigo (se recomiendan Guía y Llama sagrada) lanzados con Carisma; puedes cambiar uno al subir de nivel."
+    ]
+   ],
+   "sl": [
+    2
+   ],
+   "prep": 3,
+   "loh": 10
+  },
+  "3": {
+   "f": [
+    [
+     "Canalizar divinidad",
+     "2 usos; recuperas 1 con descanso corto y todos con descanso largo (3 usos a nivel 11). CD = CD de salvación de conjuros. Efecto inicial Sentidos divinos: acción adicional, durante 10 minutos conoces la ubicación y tipo de celestiales, infernales y muertos vivientes a 18 m (60 ft), y detectas lugares consagrados o profanados."
+    ],
+    [
+     "Subclase de paladín",
+     ""
+    ]
+   ],
+   "sl": [
+    3
+   ],
+   "prep": 4,
+   "loh": 15,
+   "branch": 1,
+   "subl": 3
+  },
+  "4": {
+   "f": [
+    [
+     "Mejora de característica",
+     "Dote Mejora de característica u otra dote para la que cumplas condiciones. Se repite en los niveles 8, 12 y 16."
+    ]
+   ],
+   "sl": [
+    3
+   ],
+   "prep": 5,
+   "loh": 20,
+   "asi": 1
+  },
+  "5": {
+   "f": [
+    [
+     "Ataque adicional",
+     "Cuando realizas la acción de atacar, haces 2 ataques en lugar de 1."
+    ],
+    [
+     "Corcel fiel",
+     "Siempre tienes Hallar corcel preparado y puedes lanzarlo una vez sin gastar espacio de conjuro por descanso largo."
+    ]
+   ],
+   "sl": [
+    4,
+    2
+   ],
+   "prep": 6,
+   "loh": 25
+  },
+  "6": {
+   "f": [
+    [
+     "Aura de protección",
+     "Emanación de 3 m (10 ft): tú y tus aliados dentro sumáis tu mod. de Carisma (mín. +1) a las tiradas de salvación. Inactiva si estás Incapacitado; una criatura solo se beneficia de un Aura de protección a la vez."
+    ]
+   ],
+   "sl": [
+    4,
+    2
+   ],
+   "prep": 6,
+   "loh": 30
+  },
+  "7": {
+   "f": [
+    [
+     "Rasgo de subclase",
+     ""
+    ]
+   ],
+   "sl": [
+    4,
+    3
+   ],
+   "prep": 7,
+   "loh": 35,
+   "subl": 7
+  },
+  "8": {
+   "f": [
+    [
+     "Mejora de característica",
+     "Dote Mejora de característica u otra dote para la que cumplas condiciones."
+    ]
+   ],
+   "sl": [
+    4,
+    3
+   ],
+   "prep": 7,
+   "loh": 40,
+   "asi": 1
+  },
+  "9": {
+   "f": [
+    [
+     "Abjurar de los enemigos",
+     "Acción de magia, gasta un uso de Canalizar divinidad: un número de criaturas visibles a 18 m (60 ft) igual a tu mod. CAR (mín. 1) hacen salvación de Sabiduría o quedan Asustadas 1 minuto o hasta recibir daño; mientras, en su turno solo pueden moverse, hacer una acción o una acción adicional (una de las tres)."
+    ]
+   ],
+   "sl": [
+    4,
+    3,
+    2
+   ],
+   "prep": 9,
+   "loh": 45
+  },
+  "10": {
+   "f": [
+    [
+     "Aura de coraje",
+     "Tú y tus aliados dentro de tu Aura de protección tenéis inmunidad al estado Asustado."
+    ]
+   ],
+   "sl": [
+    4,
+    3,
+    2
+   ],
+   "prep": 9,
+   "loh": 50
+  },
+  "11": {
+   "f": [
+    [
+     "Golpes radiantes",
+     "Cuando aciertas con un arma cuerpo a cuerpo o un ataque sin armas, el objetivo recibe 1d8 de daño radiante adicional."
+    ]
+   ],
+   "sl": [
+    4,
+    3,
+    3
+   ],
+   "prep": 10,
+   "loh": 55
+  },
+  "12": {
+   "f": [
+    [
+     "Mejora de característica",
+     "Dote Mejora de característica u otra dote para la que cumplas condiciones."
+    ]
+   ],
+   "sl": [
+    4,
+    3,
+    3
+   ],
+   "prep": 10,
+   "loh": 60,
+   "asi": 1
+  },
+  "13": {
+   "f": [],
+   "sl": [
+    4,
+    3,
+    3,
+    1
+   ],
+   "prep": 11,
+   "loh": 65
+  },
+  "14": {
+   "f": [
+    [
+     "Toque reparador",
+     "Al usar Imponer las manos puedes gastar 5 PG de la reserva por cada estado que elimines entre Asustado, Aturdido, Cegado, Ensordecido, Hechizado o Paralizado (esos puntos no curan)."
+    ]
+   ],
+   "sl": [
+    4,
+    3,
+    3,
+    1
+   ],
+   "prep": 11,
+   "loh": 70
+  },
+  "15": {
+   "f": [
+    [
+     "Rasgo de subclase",
+     ""
+    ]
+   ],
+   "sl": [
+    4,
+    3,
+    3,
+    2
+   ],
+   "prep": 12,
+   "loh": 75,
+   "subl": 15
+  },
+  "16": {
+   "f": [
+    [
+     "Mejora de característica",
+     "Dote Mejora de característica u otra dote para la que cumplas condiciones."
+    ]
+   ],
+   "sl": [
+    4,
+    3,
+    3,
+    2
+   ],
+   "prep": 12,
+   "loh": 80,
+   "asi": 1
+  },
+  "17": {
+   "f": [],
+   "sl": [
+    4,
+    3,
+    3,
+    3,
+    1
+   ],
+   "prep": 14,
+   "loh": 85
+  },
+  "18": {
+   "f": [
+    [
+     "Expansión de aura",
+     "Tu Aura de protección pasa a ser una emanación de 9 m (30 ft)."
+    ]
+   ],
+   "sl": [
+    4,
+    3,
+    3,
+    3,
+    1
+   ],
+   "prep": 14,
+   "loh": 90
+  },
+  "19": {
+   "f": [
+    [
+     "Don épico",
+     "Obtienes una dote de Don épico u otra dote para la que cumplas condiciones. Se recomienda Don de la visión verdadera."
+    ]
+   ],
+   "sl": [
+    4,
+    3,
+    3,
+    3,
+    2
+   ],
+   "prep": 15,
+   "loh": 95
+  },
+  "20": {
+   "f": [
+    [
+     "Rasgo de subclase",
+     ""
+    ]
+   ],
+   "sl": [
+    4,
+    3,
+    3,
+    3,
+    2
+   ],
+   "prep": 15,
+   "loh": 100,
+   "subl": 20
+  }
+ },
+ "spellList": {
+  "1": [
+   [
+    "Bendición",
+    "Bless"
+   ],
+   [
+    "Castigo abrasador",
+    "Searing Smite"
+   ],
+   [
+    "Castigo atronador",
+    "Thunderous Smite"
+   ],
+   [
+    "Castigo divino",
+    "Divine Smite"
+   ],
+   [
+    "Castigo furioso",
+    "Wrathful Smite"
+   ],
+   [
+    "Curar heridas",
+    "Cure Wounds"
+   ],
+   [
+    "Detectar el bien y el mal",
+    "Detect Evil and Good"
+   ],
+   [
+    "Detectar magia",
+    "Detect Magic"
+   ],
+   [
+    "Detectar venenos y enfermedades",
+    "Detect Poison and Disease"
+   ],
+   [
+    "Duelo forzado",
+    "Compelled Duel"
+   ],
+   [
+    "Escudo de fe",
+    "Shield of Faith"
+   ],
+   [
+    "Favor divino",
+    "Divine Favor"
+   ],
+   [
+    "Heroísmo",
+    "Heroism"
+   ],
+   [
+    "Orden imperiosa",
+    "Command"
+   ],
+   [
+    "Protección contra el bien y el mal",
+    "Protection from Evil and Good"
+   ],
+   [
+    "Purificar comida y bebida",
+    "Purify Food and Drink"
+   ]
+  ],
+  "2": [
+   [
+    "Arma mágica",
+    "Magic Weapon"
+   ],
+   [
+    "Auxilio",
+    "Aid"
+   ],
+   [
+    "Castigo brillante",
+    "Shining Smite"
+   ],
+   [
+    "Dulce descanso",
+    "Gentle Repose"
+   ],
+   [
+    "Hallar corcel",
+    "Find Steed"
+   ],
+   [
+    "Localizar objeto",
+    "Locate Object"
+   ],
+   [
+    "Plegaria de curación",
+    "Prayer of Healing"
+   ],
+   [
+    "Protección contra veneno",
+    "Protection from Poison"
+   ],
+   [
+    "Restablecimiento menor",
+    "Lesser Restoration"
+   ],
+   [
+    "Vínculo protector",
+    "Warding Bond"
+   ],
+   [
+    "Zona de la verdad",
+    "Zone of Truth"
+   ]
+  ],
+  "3": [
+   [
+    "Arma elemental",
+    "Elemental Weapon"
+   ],
+   [
+    "Aura de vitalidad",
+    "Aura of Vitality"
+   ],
+   [
+    "Castigo cegador",
+    "Blinding Smite"
+   ],
+   [
+    "Círculo mágico",
+    "Magic Circle"
+   ],
+   [
+    "Crear comida y agua",
+    "Create Food and Water"
+   ],
+   [
+    "Disipar magia",
+    "Dispel Magic"
+   ],
+   [
+    "Levantar maldición",
+    "Remove Curse"
+   ],
+   [
+    "Luz del día",
+    "Daylight"
+   ],
+   [
+    "Manto del cruzado",
+    "Crusader's Mantle"
+   ],
+   [
+    "Revivir",
+    "Revivify"
+   ]
+  ],
+  "4": [
+   [
+    "Aura de pureza",
+    "Aura of Purity"
+   ],
+   [
+    "Aura de vida",
+    "Aura of Life"
+   ],
+   [
+    "Castigo abrumador",
+    "Staggering Smite"
+   ],
+   [
+    "Destierro",
+    "Banishment"
+   ],
+   [
+    "Guarda contra la muerte",
+    "Death Ward"
+   ],
+   [
+    "Localizar criatura",
+    "Locate Creature"
+   ]
+  ],
+  "5": [
+   [
+    "Alzar a los muertos",
+    "Raise Dead"
+   ],
+   [
+    "Castigo desterrador",
+    "Banishing Smite"
+   ],
+   [
+    "Círculo de poder",
+    "Circle of Power"
+   ],
+   [
+    "Disipar el bien y el mal",
+    "Dispel Evil and Good"
+   ],
+   [
+    "Geas",
+    "Geas"
+   ],
+   [
+    "Invocar celestial",
+    "Summon Celestial"
+   ],
+   [
+    "Ola destructora",
+    "Destructive Wave"
+   ],
+   [
+    "Restablecimiento mayor",
+    "Greater Restoration"
+   ]
+  ]
+ },
+ "coreTraits": {
+  "Característica principal": "Fuerza y Carisma",
+  "Dado de puntos de golpe": "1d10 por nivel de Paladín",
+  "Competencias en tiradas de salvación": "Sabiduría y Carisma",
+  "Competencias en habilidades": "Elige dos: Atletismo, Intimidación, Medicina, Perspicacia, Persuasión o Religión",
+  "Competencias con armas": "Armas sencillas y marciales",
+  "Entrenamiento con armaduras": "Armaduras ligeras, medias y pesadas y escudos",
+  "Equipo inicial": "Elige A o B: (A) cota de malla, escudo, espada larga, 6 jabalinas, símbolo sagrado, paquete de sacerdote y 9 po, o (B) 150 po"
+ },
+ "multiclass": "Obtienes los siguientes atributos de la tabla \"Atributos básicos de paladín\": dado de puntos de golpe, competencia con armas marciales y entrenamiento con armaduras ligeras y medias y escudos. Obtienes los rasgos de nivel 1 de paladín, que se muestran en la tabla \"Rasgos de paladín\". Consulta las reglas de multiclase del capítulo 2 para determinar tus espacios de conjuro disponibles.",
+ "prepTable": [
+  2,
+  3,
+  4,
+  5,
+  6,
+  6,
+  7,
+  7,
+  9,
+  9,
+  10,
+  10,
+  11,
+  11,
+  12,
+  12,
+  14,
+  14,
+  15,
+  15
+ ],
+ "channelDivinity": [
+  0,
+  0,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  3,
+  3,
+  3,
+  3,
+  3,
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "notes": [
+  "Nombres en inglés de la lista de conjuros y de las subclases: la página de Notion solo trae español; el inglés es el nombre oficial PHB 2024 y está marcado como 'inglés no verificado en Notion'.",
+  "La traducción Devir llama a la subclase 'Juramento de entrega' (Oath of Devotion), no 'Juramento de devoción'. Se usa el nombre Devir; el id se mantiene como 'devocion' según el modelo pedido.",
+  "Los conjuros de juramento no traen nombre en inglés en Notion; se dejan solo en español dentro del resumen.",
+  "Niveles 13 y 17 no tienen rasgo de clase en la tabla (—): 'f' queda vacío, solo suben espacios/preparados.",
+  "'loh' = 5 × nivel, calculado a partir del texto de Imponer las manos ('cinco veces tu nivel de paladín'); la tabla de Notion no trae esa columna.",
+  "Se agregó 'channelDivinity' (usos de Canalizar divinidad por nivel, columna de la tabla de Notion) por si la hoja lo quiere mostrar; no estaba en el modelo pedido.",
+  "'subl':N se puso como clave del objeto de nivel (3, 7, 15, 20) junto a la entrada ['Rasgo de subclase',''] en 'f'."
+ ]
+}

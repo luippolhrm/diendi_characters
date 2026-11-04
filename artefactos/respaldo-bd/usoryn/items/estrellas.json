@@ -1,0 +1,10 @@
+{
+  "cat": "municion",
+  "equipped": false,
+  "kind": "gear",
+  "loc": "Morral colgante",
+  "name": "Estrellas de Fuego",
+  "note": "Fuego de alquimista",
+  "order": 2,
+  "qty": 6
+}

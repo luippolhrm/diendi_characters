@@ -1,0 +1,204 @@
+<nav class="idx" aria-label="Páginas de la hoja">
+  <div class="in">
+    <a href="#combate"><b>1</b> Combate</a>
+    <a href="#equipo"><b>2</b> Equipo<span class="wide"> y conjuros</span></a>
+    <a href="#rasgos"><b>3</b> Rasgos<span class="wide"> e historia</span></a>
+    <a href="#arbol"><b>4</b> Árbol</a>
+    <span class="sync" id="sync" role="status">Conectando…</span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="in">
+    <div class="herotop"><div><div class="eyebrow" id="cEyebrow"></div>
+    <h1 id="cName"></h1></div><img class="heroav" id="heroAv" alt="" hidden></div>
+    <div class="idrow" id="cId"></div>
+    <div class="restbar">
+      <button type="button" id="bShort">Descanso corto</button>
+      <button type="button" id="bLong">Descanso largo</button>
+      <button type="button" id="bInsp" aria-pressed="false">Inspiración heroica</button>
+    </div>
+  </div>
+</header>
+
+<main><div class="in">
+
+<!-- ============ PÁGINA 1 ============ -->
+<div class="pgbreak" id="combate"><span>Página 1 · Combate</span></div>
+<div class="p1">
+  <div class="a-stats stats">
+    <div class="sbox ac"><b class="num" id="sAC">–</b><span class="lbl">Clase de armadura</span><small id="sACn"></small></div>
+    <div class="sbox"><b class="num" id="sInit">–</b><span class="lbl">Iniciativa</span></div>
+    <div class="sbox"><b class="num" id="sSpd">–</b><span class="lbl">Velocidad</span><small id="sSpdn"></small></div>
+    <div class="sbox"><b class="num" id="sProf">–</b><span class="lbl">Competencia</span></div>
+    <div class="sbox"><b class="num" id="sPP">–</b><span class="lbl">Percepción pasiva</span></div>
+    <div class="sbox"><b class="num" id="sDC">–</b><span class="lbl">CD de conjuros</span><small id="sDCn"></small></div>
+  </div>
+
+  <section class="a-hp box" aria-labelledby="hHP">
+    <h2 id="hHP">Puntos de golpe <span class="lbl" id="hpMaxL"></span></h2>
+    <div class="hp">
+      <div class="hpnum num"><span id="hpCur">–</span><small id="hpMaxS"></small></div>
+      <div class="mute">Temporales: <span class="temp" id="hpTemp">0</span><br><span id="hpState">Cargando estado…</span></div>
+      <div class="bar"><i id="hpBar" style="width:0"></i></div>
+    </div>
+    <div class="hpctl">
+      <input id="hpAmt" type="number" inputmode="numeric" min="1" value="5" aria-label="Cantidad">
+      <button class="btn dmg" type="button" data-hp="dmg">Daño</button>
+      <button class="btn heal" type="button" data-hp="heal">Curar</button>
+      <button class="btn tmp" type="button" data-hp="temp">Temporales</button>
+    </div>
+    <div class="concq" id="concQ" hidden></div>
+    <div class="death" id="deathBox"></div>
+    <p class="note">El daño consume primero los temporales. Los temporales no se suman: la hoja deja el mayor. Duran hasta gastarse o hasta un descanso largo.</p>
+  </section>
+
+  <section class="a-atk box" aria-labelledby="hAtk">
+    <h2 id="hAtk">Ataques</h2>
+    <div id="atkBox" class="empty">Cargando armas equipadas…</div>
+    <div class="group">Daño adicional</div>
+    <div id="xdmgBox"></div>
+    <p class="note" id="mastNote"></p>
+  </section>
+
+  <section class="a-abil box" aria-labelledby="hAb">
+    <h2 id="hAb">Atributos</h2>
+    <div id="abMods" class="acrow"></div>
+    <div class="abil" id="abil"></div>
+    <p class="note">● competencia · ◆ pericia. <span id="saveNote"></span> <span id="stealthNote"></span></p>
+  </section>
+
+  <section class="a-res box" aria-labelledby="hRes">
+    <h2 id="hRes">Recursos <span class="lbl">relleno = disponible</span></h2>
+    <div class="res" id="resBox"></div>
+  </section>
+
+  <section class="a-fx box" aria-labelledby="hFx">
+    <h2 id="hFx">Efectos y estados <span class="lbl" id="fxCount"></span></h2>
+    <div class="conc" id="concBanner" hidden></div>
+    <div id="fxBox"><div class="empty">Cargando efectos…</div></div>
+    <div class="conds" id="condBox"></div>
+    <div class="track" style="border:0;padding:0"><div class="t"><b>Cansancio</b><span>−2 × nivel a pruebas con d20 · −5 ft por nivel · −1 por descanso largo</span></div>
+      <div class="stepper"><button type="button" data-exh="-1" aria-label="Bajar cansancio">−</button><output id="oExh" class="num">0</output><button type="button" data-exh="1" aria-label="Subir cansancio">+</button></div></div>
+    <div id="condDetail" class="conddet"></div>
+  </section>
+</div>
+
+<!-- ============ PÁGINA 2 ============ -->
+<div class="pgbreak" id="equipo"><span>Página 2 · Equipo y conjuros</span></div>
+<div class="p2">
+  <section class="box" aria-labelledby="hEq">
+    <h2 id="hEq">Equipado <span class="lbl" id="attNote">sintonización –/3</span></h2>
+    <div class="acrow" id="acBreak"></div>
+    <div class="slots" id="itemsBox"><div class="empty">Cargando equipo…</div></div>
+  </section>
+
+  <section class="box" aria-labelledby="hInv">
+    <h2 id="hInv">Inventario <span class="lbl" id="invCount"></span></h2>
+    <div class="conts" id="invBox"><div class="empty">Cargando inventario…</div></div>
+    <details class="addf">
+      <summary>+ Agregar objeto</summary>
+      <form class="f" id="gearForm" autocomplete="off">
+        <input id="gearName" placeholder="Objeto (cuerda, raciones…)" aria-label="Nombre del objeto" required>
+        <input id="gearQty" type="number" min="1" value="1" aria-label="Cantidad">
+        <select id="gearCat" aria-label="Categoría"><option value="equipo">Equipo</option><option value="consumible">Consumible</option><option value="municion">Munición</option><option value="herramienta">Herramienta</option><option value="valor">Objeto de valor</option></select>
+        <input id="gearLoc" list="locList" placeholder="Dónde (mochila…)" aria-label="Contenedor">
+        <datalist id="locList"></datalist>
+        <input id="gearNote" placeholder="Nota (opcional)" aria-label="Nota">
+        <button class="btn" type="submit">Agregar</button>
+      </form>
+      <p class="note">Armas, armaduras y objetos mágicos con efecto en los números se agregan conmigo en el chat. Un contenedor nuevo se crea escribiéndolo en "Dónde".</p>
+    </details>
+  </section>
+
+  <section class="box" aria-labelledby="hGold">
+    <h2 id="hGold">Monedas <span class="lbl">libro de movimientos</span></h2>
+    <div class="goldtop"><div class="hpnum num" id="gBal">–</div><span class="mute">po · saldo calculado</span></div>
+    <form class="f" id="goldForm" autocomplete="off">
+      <input id="gAmt" type="number" inputmode="decimal" min="0.01" step="0.01" placeholder="po" aria-label="Monto en po" required style="width:90px">
+      <input id="gConcept" placeholder="Concepto (botín, compra…)" aria-label="Concepto" required style="flex:1 1 160px">
+      <button class="btn heal" type="submit" data-dir="1">Ingreso</button>
+      <button class="btn dmg" type="submit" data-dir="-1">Gasto</button>
+    </form>
+    <p class="note">Conversión a po: pc 0,01 · pp 0,1 · pe 0,5 · ppt 10. Para corregir, se anula y queda visible.</p>
+    <div id="gList" class="ledger"><div class="empty">Cargando movimientos…</div></div>
+    <button type="button" class="btn ghost" id="gMore" hidden>Ver todos</button>
+  </section>
+
+  <section class="box" aria-labelledby="hSp">
+    <h2 id="hSp">Conjuros <span class="lbl" id="spL"></span></h2>
+    <div class="spslots" id="spSlots"></div>
+    <p class="note">Toca un conjuro para ver el detalle y lanzarlo. Si es a ti y tiene efecto en tus números, la hoja lo aplica. Uno de concentración reemplaza al anterior.</p>
+    <div id="spBox" class="spells"></div>
+  </section>
+
+  <section class="box" aria-labelledby="hGrim" id="grimsec">
+    <h2 id="hGrim">Grimorio del explorador <span class="lbl" id="grimCount"></span></h2>
+    <p class="note" id="grimRule"></p>
+    <div class="gfilters" id="grimFilters">
+      <input type="search" id="grimQ" placeholder="Buscar conjuro…" aria-label="Buscar conjuro">
+      <div class="gchips">
+        <button type="button" class="fchip" data-gf="all" aria-pressed="true">Todos</button>
+        <button type="button" class="fchip" data-gf="prep">Preparados</button>
+        <button type="button" class="fchip" data-gf="l1">Nivel 1</button>
+        <button type="button" class="fchip" data-gf="l2">Nivel 2</button>
+        <button type="button" class="fchip" data-gf="conc">Concentración</button>
+        <button type="button" class="fchip" data-gf="ritual">Ritual</button>
+        <button type="button" class="fchip" data-gf="noconc">Sin concentración</button>
+      </div>
+    </div>
+    <div id="grimSwap" class="gswap"></div>
+    <div id="grimBox" class="grim"></div>
+  </section>
+</div>
+
+<!-- ============ PÁGINA 3 ============ -->
+<div class="pgbreak" id="rasgos"><span>Página 3 · Rasgos e historia</span></div>
+<div class="p3">
+  <section class="box lusec" aria-labelledby="hLu">
+    <h2 id="hLu">Subir de nivel <span class="lbl">planificador</span></h2>
+    <div id="luBox"><div class="empty">Cargando…</div></div>
+  </section>
+  <section class="box featsec" aria-labelledby="hFeat">
+    <h2 id="hFeat">Rasgos <span class="lbl" id="featLvl"></span></h2>
+    <div id="featBox" class="feats"></div>
+  </section>
+  <section class="box profsec" aria-labelledby="hProf">
+    <h2 id="hProf">Competencias <span class="lbl">◆ = pericia</span></h2>
+    <div class="pfs" id="profBox"></div>
+  </section>
+  <section class="box recipes" aria-labelledby="hRec">
+    <h2 id="hRec">Recetario del artesano <span class="lbl">PHB cap. 6 · validado GM</span></h2>
+    <div id="recBox"></div>
+  </section>
+  <section class="box story" aria-labelledby="hStory">
+    <h2 id="hStory">Crónica</h2>
+    <div class="storygrid">
+      <figure class="portrait" id="portrait">
+        <div class="ph" id="portraitPh"><span class="lbl">Ilustración</span><span class="mute" id="portraitMsg">Cargando…</span></div>
+        <img id="portraitImg" alt="" hidden>
+        <div class="pacts" id="portraitActs" hidden>
+          <label class="btn" for="portraitFile" id="portraitBtn">Subir ilustración</label>
+          <input type="file" id="portraitFile" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+        </div>
+      </figure>
+      <div class="prose" id="storyBox"></div>
+    </div>
+  </section>
+  <div id="refBox" class="refs"></div>
+</div>
+
+<!-- ============ PÁGINA 4 ============ -->
+<div class="pgbreak" id="arbol"><span>Página 4 · Árbol de progresión</span></div>
+<section class="box treesec" aria-labelledby="hTree">
+  <h2 id="hTree">Árbol de progresión <span class="lbl" id="treeLvl"></span></h2>
+  <div class="tlegend"><span><i class="dot own"></i>Lo tienes</span><span><i class="dot nxt"></i>Próxima subida</span><span><i class="dot fut"></i>Futuro</span><span><i class="dot out"></i>Fuera de alcance (nivel 20)</span></div>
+  <div class="treewrap">
+    <div class="tree" id="treeBox"></div>
+    <aside class="tdet" id="treeDet" aria-live="polite"></aside>
+  </div>
+  <p class="note" id="treeNote"></p>
+</section>
+
+<footer id="cFooter"></footer>
+</div></main>

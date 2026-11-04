@@ -1,0 +1,35 @@
+{
+  "conc": null,
+  "conds": {},
+  "death": {
+    "f": 0,
+    "s": 0
+  },
+  "effects": [],
+  "exh": 0,
+  "hd": {
+    "d10": 0
+  },
+  "hp": 33,
+  "insp": false,
+  "langs": [],
+  "levels": [],
+  "prepared": null,
+  "res": {
+    "cd": 0,
+    "jumpTrait": 0,
+    "loh": 0,
+    "smiteFree": 0
+  },
+  "slots": {
+    "l1": 0
+  },
+  "swapFree": false,
+  "swapRem": false,
+  "swapUsed": false,
+  "temp": 4,
+  "toggles": {
+    "astralSkill": "Percepción",
+    "astralTool": "Herramientas de herrero"
+  }
+}

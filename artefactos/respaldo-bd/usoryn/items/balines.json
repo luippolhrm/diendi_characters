@@ -1,0 +1,9 @@
+{
+  "cat": "municion",
+  "equipped": false,
+  "kind": "gear",
+  "loc": "Morral colgante",
+  "name": "Balines comunes",
+  "order": 1,
+  "qty": 20
+}

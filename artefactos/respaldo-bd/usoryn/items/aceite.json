@@ -1,0 +1,9 @@
+{
+  "cat": "consumible",
+  "equipped": false,
+  "kind": "gear",
+  "loc": "Mochila",
+  "name": "Frascos de aceite",
+  "order": 9,
+  "qty": 6
+}
