@@ -1,0 +1,27 @@
+{
+  "conc": null,
+  "conds": {},
+  "effects": [],
+  "exh": 0,
+  "hd": {
+    "d10": 0,
+    "d8": 0
+  },
+  "hp": 39,
+  "insp": false,
+  "langs": [
+    "Primordial",
+    "Lenguaje de signos común"
+  ],
+  "res": {
+    "hmFree": 0
+  },
+  "slots": {
+    "l1": 0,
+    "l2": 0
+  },
+  "temp": 0,
+  "toggles": {
+    "prey": "colosos"
+  }
+}

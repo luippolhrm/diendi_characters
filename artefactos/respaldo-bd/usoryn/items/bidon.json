@@ -1,0 +1,10 @@
+{
+  "cat": "consumible",
+  "equipped": false,
+  "kind": "gear",
+  "loc": "Baúl en casa",
+  "name": "Bidón de fuego alquímico",
+  "note": "cargas",
+  "order": 18,
+  "qty": 10
+}

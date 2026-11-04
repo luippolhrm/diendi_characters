@@ -1,0 +1,13 @@
+{
+  "dmg": "1d8",
+  "dmgType": "Cortante",
+  "equipped": true,
+  "hands": 1,
+  "kind": "weapon",
+  "mastery": "Debilitar (Sap)",
+  "masteryActive": true,
+  "name": "Espada larga",
+  "note": "Marcial · Versátil",
+  "order": 1,
+  "versatile": "1d10"
+}

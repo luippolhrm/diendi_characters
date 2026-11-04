@@ -1,0 +1,361 @@
+[
+{
+"id": "bless",
+"lvl": 1,
+"n": "Bendición",
+"en": "Bless",
+"tag": "+1d4 atq/salv",
+"src": [],
+"tg": [
+"both",
+"other"
+],
+"conc": 1,
+"dur": "hasta 1 min",
+"meta": "Nivel 1 · Encantamiento · Acción · 9 m (30 ft) · V, S, M (un símbolo sagrado que valga al menos 5 po) · concentración hasta 1 min",
+"d": "Bendices hasta tres criaturas a 9 m (30 ft) o menos. Cada vez que un objetivo haga una tirada de ataque o de salvación antes de que termine el conjuro, suma 1d4 al resultado.",
+"up": "+1 criatura objetivo por cada nivel por encima de 1."
+},
+{
+"id": "searing",
+"lvl": 1,
+"n": "Castigo abrasador",
+"en": "Searing Smite",
+"tag": "+1d6 fuego/turno",
+"src": [],
+"tg": [
+"other"
+],
+"dur": "1 min",
+"meta": "Nivel 1 · Evocación · Acción adicional tras acertar con arma cuerpo a cuerpo o golpe sin armas · Lanzador · V · 1 min",
+"d": "El objetivo golpeado sufre 1d6 de daño de fuego adicional. Al principio de cada uno de sus turnos sufre 1d6 de daño de fuego y luego hace una salvación de Constitución (CD 14): si la falla el conjuro sigue, si la supera termina.",
+"inst": "Tira 1d6 de fuego extra ahora; 1d6 más al inicio de cada turno del objetivo hasta que supere la salvación CD 14.",
+"up": "Todo el daño aumenta en 1d6 por cada nivel por encima de 1."
+},
+{
+"id": "thunder",
+"lvl": 1,
+"n": "Castigo atronador",
+"en": "Thunderous Smite",
+"tag": "+2d6 trueno",
+"src": [],
+"tg": [
+"other"
+],
+"meta": "Nivel 1 · Evocación · Acción adicional tras acertar con arma cuerpo a cuerpo o golpe sin armas · Lanzador · V · instantáneo",
+"d": "El golpe resuena con un trueno audible a 90 m (300 ft) y el objetivo sufre 2d6 de daño de trueno adicional. Si es una criatura, debe superar una salvación de Fuerza (CD 14) o la empujas 3 m (10 ft) y queda Derribada (Prone).",
+"inst": "Tira 2d6 de trueno extra; el objetivo salva Fuerza CD 14 o es empujado 3 m y Derribado.",
+"up": "+1d6 de daño por cada nivel por encima de 1."
+},
+{
+"id": "smite",
+"lvl": 1,
+"n": "Castigo divino",
+"en": "Divine Smite",
+"tag": "+2d8 radiante",
+"src": [
+"smiteFree"
+],
+"tg": [
+"other"
+],
+"meta": "Nivel 1 · Evocación · Acción adicional tras acertar con arma cuerpo a cuerpo o golpe sin armas · Lanzador · V · instantáneo",
+"d": "El objetivo sufre 2d8 de daño radiante adicional del ataque. El daño aumenta en 1d8 si el objetivo es un infernal o un muerto viviente.",
+"inst": "Tira 2d8 de radiante extra (3d8 contra infernales y muertos vivientes).",
+"up": "+1d8 de daño por cada nivel por encima de 1."
+},
+{
+"id": "wrathful",
+"lvl": 1,
+"n": "Castigo furioso",
+"en": "Wrathful Smite",
+"tag": "+1d6 necro, Asustado",
+"src": [],
+"tg": [
+"other"
+],
+"dur": "1 min",
+"meta": "Nivel 1 · Nigromancia · Acción adicional tras acertar a una criatura con arma cuerpo a cuerpo o golpe sin armas · Lanzador · V · 1 min",
+"d": "El objetivo sufre 1d6 de daño necrótico adicional y debe superar una salvación de Sabiduría (CD 14) o queda Asustado (Frightened) hasta que termine el conjuro. Al final de cada uno de sus turnos repite la salvación y, si la supera, se libra.",
+"inst": "Tira 1d6 de necrótico extra; el objetivo salva Sabiduría CD 14 o queda Asustado hasta 1 min.",
+"up": "+1d6 de daño por cada nivel por encima de 1."
+},
+{
+"id": "cure",
+"lvl": 1,
+"n": "Curar heridas",
+"en": "Cure Wounds",
+"tag": "2d8+4",
+"src": [],
+"tg": [
+"self",
+"other"
+],
+"meta": "Nivel 1 · Abjuración · Acción · Toque · V, S · instantáneo",
+"d": "Una criatura que toques recupera 2d8 + 4 PG (tu modificador de Carisma).",
+"selfHeal": "2d8+4",
+"inst": "Tira 2d8+4.",
+"up": "+2d8 de curación por cada nivel por encima de 1."
+},
+{
+"id": "dge",
+"lvl": 1,
+"n": "Detectar el bien y el mal",
+"en": "Detect Evil and Good",
+"tag": "detecta 9 m",
+"src": [],
+"tg": [
+"self"
+],
+"conc": 1,
+"dur": "hasta 10 min",
+"meta": "Nivel 1 · Adivinación · Acción · Lanzador · V, S · concentración hasta 10 min",
+"d": "Mientras dure, percibes la ubicación de cualquier aberración, celestial, elemental, feérico, infernal o muerto viviente a 9 m (30 ft) o menos, y si hay un conjuro Consagrar (Hallow) activo y dónde. No atraviesa 30 cm (1 ft) de piedra, tierra o madera, 2,5 cm (1 in) de metal ni una lámina fina de plomo."
+},
+{
+"id": "dmagic",
+"lvl": 1,
+"n": "Detectar magia",
+"en": "Detect Magic",
+"tag": "ritual · 9 m",
+"src": [
+"ritual"
+],
+"tg": [
+"self"
+],
+"conc": 1,
+"dur": "hasta 10 min",
+"meta": "Nivel 1 · Adivinación · Acción o ritual · Lanzador · V, S · concentración hasta 10 min",
+"d": "Mientras dure, percibes la presencia de efectos mágicos a 9 m (30 ft) o menos. Si percibes alguno, puedes usar una acción de magia para ver un aura débil alrededor de cualquier objeto o criatura visible afectada y, si proviene de un conjuro, su escuela. No atraviesa 30 cm (1 ft) de piedra, tierra o madera, 2,5 cm (1 in) de metal ni una lámina fina de plomo."
+},
+{
+"id": "dpoison",
+"lvl": 1,
+"n": "Detectar venenos y enfermedades",
+"en": "Detect Poison and Disease",
+"tag": "ritual · 9 m",
+"src": [
+"ritual"
+],
+"tg": [
+"self"
+],
+"conc": 1,
+"dur": "hasta 10 min",
+"meta": "Nivel 1 · Adivinación · Acción o ritual · Lanzador · V, S, M (una hoja de tejo) · concentración hasta 10 min",
+"d": "Mientras dure, percibes la ubicación de venenos, criaturas venenosas y enfermedades mágicas a 9 m (30 ft) o menos, e identificas el tipo de cada uno. No atraviesa 30 cm (1 ft) de piedra, tierra o madera, 2,5 cm (1 in) de metal ni una lámina fina de plomo."
+},
+{
+"id": "duel",
+"lvl": 1,
+"n": "Duelo forzado",
+"en": "Compelled Duel",
+"tag": "salv Sab CD 14",
+"src": [],
+"tg": [
+"other"
+],
+"conc": 1,
+"dur": "hasta 1 min",
+"meta": "Nivel 1 · Encantamiento · Acción adicional · 9 m (30 ft) · V · concentración hasta 1 min",
+"d": "Una criatura que veas a 9 m (30 ft) o menos hace una salvación de Sabiduría (CD 14). Si falla, tiene desventaja en ataques contra criaturas que no seas tú y no puede moverse voluntariamente a más de 9 m (30 ft) de ti. Termina si atacas o lanzas un conjuro contra otro enemigo, si un aliado daña al objetivo o si acabas tu turno a más de 9 m de él."
+},
+{
+"id": "sof",
+"lvl": 1,
+"n": "Escudo de fe",
+"en": "Shield of Faith",
+"tag": "+2 CA",
+"src": [],
+"tg": [
+"self",
+"other"
+],
+"conc": 1,
+"dur": "hasta 10 min",
+"meta": "Nivel 1 · Abjuración · Acción adicional · 18 m (60 ft) · V, S, M (un pergamino de plegarias) · concentración hasta 10 min",
+"d": "Un campo titilante envuelve a una criatura de tu elección a 18 m (60 ft) o menos y le da +2 a la CA mientras dure."
+},
+{
+"id": "dfavor",
+"lvl": 1,
+"n": "Favor divino",
+"en": "Divine Favor",
+"tag": "+1d4 radiante",
+"src": [],
+"tg": [
+"self"
+],
+"dur": "1 min",
+"meta": "Nivel 1 · Transmutación · Acción adicional · Lanzador · V, S · 1 min",
+"d": "Mientras dure, tus ataques con armas infligen 1d4 de daño radiante adicional al acertar. Sin concentración."
+},
+{
+"id": "heroism",
+"lvl": 1,
+"n": "Heroísmo",
+"en": "Heroism",
+"tag": "inmune Asustado, 4 PGT",
+"src": [],
+"tg": [
+"self",
+"other"
+],
+"conc": 1,
+"dur": "hasta 1 min",
+"meta": "Nivel 1 · Encantamiento · Acción · Toque · V, S · concentración hasta 1 min",
+"d": "Una criatura voluntaria que toques es inmune al estado Asustado (Frightened) y gana 4 PG temporales (tu modificador de Carisma) al principio de cada uno de sus turnos mientras dure.",
+"up": "+1 criatura objetivo por cada nivel por encima de 1."
+},
+{
+"id": "command",
+"lvl": 1,
+"n": "Orden imperiosa",
+"en": "Command",
+"tag": "salv Sab CD 14",
+"src": [],
+"tg": [
+"other"
+],
+"meta": "Nivel 1 · Encantamiento · Acción · 18 m (60 ft) · V · instantáneo",
+"d": "Das una orden de una palabra a una criatura que veas a 18 m (60 ft) o menos; debe superar una salvación de Sabiduría (CD 14) u obedecer en su próximo turno. Órdenes: Acércate (viene hacia ti por la ruta más corta y acaba su turno si queda a 1,5 m/5 ft), Detente (no se mueve ni usa acciones), Huye (se aleja lo más rápido posible), Póstrate (queda Derribado y acaba su turno), Suelta (suelta lo que sujeta y acaba su turno).",
+"up": "+1 criatura afectada por cada nivel por encima de 1."
+},
+{
+"id": "pfge",
+"lvl": 1,
+"n": "Protección contra el bien y el mal",
+"en": "Protection from Evil and Good",
+"tag": "protección vs 6 tipos",
+"src": [],
+"tg": [
+"self",
+"other"
+],
+"conc": 1,
+"dur": "hasta 10 min",
+"meta": "Nivel 1 · Abjuración · Acción · Toque · V, S, M (un frasco de agua bendita que valga al menos 25 po, que se consume) · concentración hasta 10 min",
+"d": "Una criatura voluntaria que toques queda protegida contra aberraciones, celestiales, elementales, feéricos, infernales y muertos vivientes: esas criaturas tienen desventaja en ataques contra ella, no pueden poseerla ni dejarla Asustada (Frightened) o Hechizada (Charmed). Si ya está asustada, hechizada o poseída por una de ellas, tiene ventaja en las nuevas salvaciones contra ese efecto."
+},
+{
+"id": "purify",
+"lvl": 1,
+"n": "Purificar comida y bebida",
+"en": "Purify Food and Drink",
+"tag": "ritual · utilidad",
+"src": [
+"ritual"
+],
+"tg": [
+"other"
+],
+"meta": "Nivel 1 · Transmutación · Acción o ritual · 3 m (10 ft) · V, S · instantáneo",
+"d": "Eliminas el veneno y la podredumbre de toda la comida y bebida no mágicas en una esfera de 1,5 m (5 ft) de radio centrada en un punto a 3 m (10 ft) o menos."
+},
+{
+"id": "agathys",
+"lvl": 1,
+"n": "Armadura de Agathys",
+"en": "Armor of Agathys",
+"tag": "5 PG temp · 5 frío",
+"src": [],
+"tg": [
+"self"
+],
+"dur": "1 h",
+"meta": "Nivel 1 · Abjuración · Acción · Lanzador · V, S, M (una taza de agua) · 1 h",
+"d": "Ganas 5 PG temporales. Mientras te quede al menos 1 de ellos, cualquier criatura que te acierte con un ataque cuerpo a cuerpo sufre 5 de daño de frío.",
+"selfTemp": 5,
+"up": "+5 PG temporales y +5 de frío por nivel.",
+"note": "Conjuro de juramento de la Conquista (Xanathar's Guide, adaptado a 2024, validado por el GM). No está en la lista de paladín del PHB 2024; ficha del PHB 2024 pendiente de verificar en Notion."
+},
+{
+"id": "magehand",
+"lvl": 0,
+"n": "Mano de mago",
+"en": "Mage Hand",
+"tag": "a voluntad",
+"fixed": "Psiónica githyanki · Carisma · sin componentes",
+"lock": "Truco a voluntad: no gasta nada. La mano es invisible.",
+"src": [],
+"tg": [],
+"meta": "Truco · Conjuración · Acción · 9 m (30 ft) · 1 min",
+"d": "Una mano espectral invisible manipula objetos, abre puertas, guarda o saca cosas de un recipiente, hasta 5 kg (10 lb). Se mueve 9 m con una acción de magia."
+},
+{
+"id": "jump",
+"lvl": 1,
+"n": "Salto",
+"en": "Jump",
+"tag": "salto 9 m",
+"fixed": "Psiónica githyanki · Carisma · sin componentes",
+"src": [
+"jumpTrait"
+],
+"tg": [
+"self",
+"other"
+],
+"dur": "1 min",
+"meta": "Nivel 1 · Transmutación · Acción adicional · Toque · V, S, M (sin componentes si lo lanzas con Psiónica) · 1 min",
+"d": "Una criatura que toques salta 9 m (30 ft) en horizontal o 3 m (10 ft) en vertical gastando movimiento normal, una vez por turno.",
+"note": "Una vez gratis por descanso largo con Psiónica githyanki; también con un espacio de conjuro."
+},
+{
+"id": "sense",
+"lvl": 0,
+"n": "Sentidos divinos",
+"en": "Divine Sense",
+"tag": "detección 18 m",
+"fixed": "Canalizar divinidad · CD 14",
+"noSlot": true,
+"src": [
+"cd"
+],
+"tg": [
+"self"
+],
+"dur": "10 min o hasta quedar incapacitado",
+"meta": "Canalizar divinidad · Acción adicional · 18 m (60 ft) · 10 min",
+"d": "Durante 10 minutos, o hasta que quedes Incapacitado, conoces la ubicación y el tipo de cualquier celestial, infernal o muerto viviente a 18 m (60 ft), y detectas lugares u objetos consagrados o profanados."
+},
+{
+"id": "presence",
+"lvl": 0,
+"n": "Presencia conquistadora",
+"en": "Conquering Presence",
+"tag": "miedo en área",
+"fixed": "Canalizar divinidad · CD 14",
+"noSlot": true,
+"src": [
+"cd"
+],
+"tg": [
+"other"
+],
+"dur": "1 min",
+"meta": "Canalizar divinidad · Acción de magia · 9 m (30 ft) · 1 min",
+"d": "Cada criatura que elijas y puedas ver a 9 m (30 ft) hace una salvación de Sabiduría CD 14 o queda Asustada durante 1 minuto; repite la salvación al final de cada uno de sus turnos.",
+"note": "Juramento de la Conquista (Xanathar's Guide, adaptado a 2024, validado por el GM)."
+},
+{
+"id": "guided",
+"lvl": 0,
+"n": "Golpe guiado",
+"en": "Guided Strike",
+"tag": "+10 al ataque",
+"fixed": "Canalizar divinidad · CD 14",
+"noSlot": true,
+"src": [
+"cd"
+],
+"tg": [
+"self"
+],
+"meta": "Canalizar divinidad · al hacer una tirada de ataque, tras ver el dado",
+"d": "Sumas +10 a una tirada de ataque antes de saber si acierta.",
+"inst": "+10 a esta tirada de ataque.",
+"note": "Juramento de la Conquista (Xanathar's Guide, adaptado a 2024, validado por el GM)."
+}
+]

@@ -1,0 +1,44 @@
+{
+  "ab": "des",
+  "equipped": true,
+  "homebrew": true,
+  "kind": "weapon",
+  "masteryActive": true,
+  "modes": [
+    {
+      "dmg": "1d6",
+      "mastery": "Debilitar (Sap)",
+      "n": "lanza, 1 mano",
+      "type": "perforante"
+    },
+    {
+      "dmg": "1d8",
+      "mastery": "Debilitar (Sap)",
+      "n": "lanza, 2 manos",
+      "type": "perforante"
+    },
+    {
+      "dmg": "1d6",
+      "mastery": "Debilitar (Sap)",
+      "n": "bastón, 1 mano",
+      "type": "contundente"
+    },
+    {
+      "dmg": "1d8",
+      "mastery": "Debilitar (Sap)",
+      "n": "bastón, 2 manos",
+      "type": "contundente"
+    },
+    {
+      "dmg": "1d6",
+      "mastery": "Molestar (Vex)",
+      "n": "tirachinas",
+      "range": "30/120 ft",
+      "ranged": true,
+      "type": "contundente"
+    }
+  ],
+  "name": "Hoopak",
+  "note": "Arma personalizada · 5 modos",
+  "order": 1
+}

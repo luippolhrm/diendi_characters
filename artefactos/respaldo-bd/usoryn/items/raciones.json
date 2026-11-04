@@ -1,0 +1,10 @@
+{
+  "cat": "consumible",
+  "equipped": false,
+  "kind": "gear",
+  "loc": "Mochila",
+  "name": "Raciones",
+  "note": "días",
+  "order": 10,
+  "qty": 5
+}

@@ -1,0 +1,10 @@
+{
+  "acBase": 18,
+  "dexMax": 0,
+  "equipped": true,
+  "kind": "armor",
+  "name": "Armadura de Placas",
+  "note": "Pesada · CA 18, no suma Destreza · requiere FUE 15 ✔ · desventaja en Sigilo",
+  "order": 1,
+  "stealthDis": true
+}

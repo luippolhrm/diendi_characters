@@ -1,0 +1,12 @@
+{
+  "acBonus": 1,
+  "attune": true,
+  "attuned": true,
+  "equipped": true,
+  "kind": "ring",
+  "magic": true,
+  "name": "Anillo de Protección",
+  "note": "+1 CA y +1 a todas las salvaciones · requiere sintonización",
+  "order": 1,
+  "saveBonus": 1
+}

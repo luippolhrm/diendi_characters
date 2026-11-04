@@ -1,0 +1,10 @@
+{
+  "cat": "municion",
+  "equipped": false,
+  "homebrew": true,
+  "kind": "gear",
+  "loc": "Morral colgante",
+  "name": "Balines de plata",
+  "order": 3,
+  "qty": 2
+}

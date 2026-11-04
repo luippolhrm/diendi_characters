@@ -1,0 +1,13 @@
+{
+  "ab": "des",
+  "dmg": "1d4",
+  "dmgType": "contundente",
+  "equipped": true,
+  "kind": "weapon",
+  "mastery": "Ralentizar (Slow)",
+  "masteryActive": false,
+  "name": "Honda",
+  "order": 3,
+  "range": "30/120 ft",
+  "ranged": true
+}
