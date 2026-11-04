@@ -37,7 +37,7 @@ window.CHAR={
    {toggle:"prey"},
    {n:"Marca del Cazador",dice:"+1d6 fuerza",effect:"hm",cond:"cada acierto contra la criatura marcada (lánzala en Conjuros)"}],
  masterySlots:2,
- masteryText:{"Debilitar (Sap)":"el objetivo tiene desventaja en su próximo ataque","Molestar (Vex)":"ventaja en tu próximo ataque contra ese objetivo","Ralentizar (Slow)":"−3 m de velocidad al objetivo"},
+ masteryText:{"Debilitar (Sap)":"al acertar, el objetivo tiene desventaja en su próxima tirada de ataque antes del principio de tu siguiente turno","Molestar (Vex)":"al acertar y causar daño, tienes ventaja en tu siguiente tirada de ataque contra esa criatura antes del final de tu siguiente turno","Ralentizar (Slow)":"al acertar y causar daño, −3 m (10 ft) de velocidad hasta el principio de tu siguiente turno (no acumula más de 3 m entre varias armas)"},
  speedFx:[["longstrider",10]],
  condNotes:{asustado:"Valiente: ventaja en salvaciones para evitarlo o terminarlo"},
  shortRestMsg:"Descanso corto: gasta dados de golpe si los necesitas. Puedes cambiar El cazador y la presa.",
@@ -103,7 +103,7 @@ window.CHAR={
   {o:"Mediano",c:"Personaje",l:1,lt:"Especie",use:"Pasivo",n:"Agilidad de mediano",en:"Halfling Nimbleness",src:"PHB 2024",d:["Puedes moverte a través del espacio de cualquier criatura de tamaño superior al tuyo, sin detenerte ahí."]},
   {o:"Mediano",c:"Personaje",l:1,lt:"Especie",use:"Pasivo",n:"Sigiloso por naturaleza",en:"Naturally Stealthy",src:"PHB 2024",d:["Puedes esconderte incluso tras una criatura al menos una categoría de tamaño mayor que tú.","Pequeño, velocidad 9 m (30 ft)."]},
   {o:"Artesano",c:"Personaje",l:1,lt:"Origen",use:"Origen",n:"Trasfondo Artesano",en:"Artisan",src:"PHB 2024",d:["Habilidades: Investigación y Persuasión. Herramienta: herramientas de soplador de vidrio. Dote de origen: Fabricante."]},
-  {o:"Artesano",c:"Personaje",l:1,lt:"Origen",use:"1 / desc. largo",n:"Fabricante",en:"Crafter",src:"PHB 2024 · dote de origen",d:["Competencia con tres herramientas de artesano: alfarero, carpintero y herrero.","20 % de descuento al comprar objetos no mágicos.","Fabricación rápida: tras un descanso largo, fabricas un objeto de la tabla con herramientas en que seas competente (alfarero: jarro, lámpara; carpintero: antorcha, escalera; herrero: abrojos, bolas de metal, cubo, garfio de escalada, olla de hierro). Dura hasta tu siguiente descanso largo."]},
+  {o:"Artesano",c:"Personaje",l:1,lt:"Origen",use:"1 / desc. largo",n:"Fabricante",en:"Crafter",src:"PHB 2024 · dote de origen",d:["Competencia con tres herramientas de artesano: alfarero, carpintero y herrero.","20 % de descuento al comprar objetos no mágicos.","Fabricación rápida: tras un descanso largo, fabricas un objeto de la tabla si posees las herramientas de artesano asociadas y eres competente con ellas (alfarero: jarro, lámpara; carpintero: antorcha, escalera; herrero: abrojos, bolas de metal, cubo, garfio de escalada, olla de hierro). Dura hasta tu siguiente descanso largo."]},
  ],
  classOrder:["Pícaro","Explorador","Artífice"],
  speedByLevel:[["Explorador",6,10]],
@@ -145,12 +145,12 @@ window.CHAR={
  craft:{
   tools:["herrero","carpintero","alfarero","soplador de vidrio","ladrón"],
   rules:[["Herramienta","La que el Manual indica para el objeto, y ser competente. Quien te ayude, también."],["Materias primas","La mitad del precio de compra, redondeando hacia abajo. El GM decide si hay disponibles."],["Tiempo","Precio en po ÷ 10 = días de 8 horas, redondeando hacia arriba. No tienen que ser seguidos."],["Ayuda","Con otro personaje competente, el tiempo se divide entre los dos."]],
-  perks:[["Fabricación rápida","Tras cada descanso largo fabricas gratis abrojos, bolas de metal o un jarro (y otros útiles). Se deshace en el siguiente descanso largo."],["Descuento de Fabricante","20 % menos al comprar objetos no mágicos."]],
-  note:"🟡 Bajo 1 po, la mitad se calcula en la moneda menor (5 pp por unos abrojos de 1 po). Confírmalo con el GM. El tiempo de armar un ensamblado lo define el GM.",
+  perks:[["Fabricación rápida","Tras cada descanso largo fabricas gratis abrojos, bolas de metal o un jarro (y otros útiles) si llevas contigo las herramientas de artesano asociadas y eres competente. Se deshace en el siguiente descanso largo."],["Descuento de Fabricante","20 % menos al comprar objetos no mágicos."]],
+  note:"La mitad de 1 po son 5 pp exactos (cap. 6: mitad del precio, redondeando hacia abajo). El tiempo de armar un ensamblado lo define el GM; normalmente solo puede ayudarte otro personaje, salvo que el DM permita más.",
   groups:[["move","Control de movimiento"],["dmg","Daño y fuego"],["util","Utilidad"],["kit","Ensamblados y envases"]],
   items:[
-   {g:"move",n:"Abrojos",ic:"spikes",unit:"bolsa · 1 po",st:"craft",fast:1,inv:"Abrojos",eff:"Acción de utilizar: zona de 1,5 m a 1,5 m o menos. Quien entre salva Des CD 15 o sufre 1 perforante y queda con velocidad 0 hasta el inicio de su turno. 10 min para recogerlos.",tool:["herrero",1],mats:[["Materias primas","5 pp"]],time:"1 día"},
-   {g:"move",n:"Bolas de metal",ic:"balls",unit:"bolsa · 1 po",st:"craft",fast:1,inv:"Bolas de metal",eff:"Acción de utilizar: zona de 3 m a 3 m o menos. Quien entre salva Des CD 10 o queda Derribado. 10 min para recogerlas.",tool:["herrero",1],mats:[["Materias primas","5 pp"]],time:"1 día"},
+   {g:"move",n:"Abrojos",ic:"spikes",unit:"bolsa · 1 po",st:"craft",fast:1,inv:"Abrojos",eff:"Acción de utilizar: zona de 1,5 m a 1,5 m o menos. Quien entre por primera vez en un turno salva Des CD 15 o sufre 1 perforante y queda con velocidad 0 hasta el inicio de su turno. 10 min para recogerlos.",tool:["herrero",1],mats:[["Materias primas","5 pp"]],time:"1 día"},
+   {g:"move",n:"Bolas de metal",ic:"balls",unit:"bolsa · 1 po",st:"craft",fast:1,inv:"Bolas de metal",eff:"Acción de utilizar: zona cuadrada y plana de 3 m de lado a 3 m o menos. Quien entre por primera vez en un turno salva Des CD 10 o queda Derribado. 10 min para recogerlas.",tool:["herrero",1],mats:[["Materias primas","5 pp"]],time:"1 día"},
    {g:"move",n:"Red",ic:"net",unit:"1 po",st:"buy",inv:"Red",eff:"Sustituye un ataque, a 4,5 m o menos. Salvación Des CD 16 o Apresado; Enorme o mayor la supera sola. Liberarse: acción y Fuerza (Atletismo) CD 10. La red: CA 10, 5 PG.",tool:["tejedor",0],buy:["1 po","8 pp"]},
    {g:"move",n:"Boleadoras",ic:"bola",unit:"reskin de la Red",st:"gm",inv:"Boleadoras",eff:"Mismas reglas que la Red.",tool:["herrero",1],mats:[["2 bolas de metal","de tu fabricación"],["Cordel","compra 1 pp (tejedor ✘)"]],time:"El GM define"},
    {g:"move",n:"Honda Grande",ic:"sling",unit:"despliegue",st:"gm",inv:"Honda Grande",eff:"Lanza cargas de hasta 2 kg a 15/45 m con una acción completa. Cualquiera puede usarla.",tool:["carpintero",1],mats:[["2 estacas","de tu fabricación"],["Tira de cuero","compra (curtidor ✘)"]],time:"El GM define"},
@@ -279,19 +279,20 @@ window.CHAR={
  hitDice:[{id:"d10",die:10,max:4,label:"d10 · Paladín"}],
  toggles:[
   {id:"astralSkill",select:true,skill:true,n:"Conocimiento astral · habilidad",sub:"Githyanki (MotM) · competencia temporal hasta el próximo descanso largo · se marca ◐ en Atributos",options:[["Atletismo"],["Acrobacias"],["Juego de Manos"],["Sigilo"],["C. Arcano"],["Historia"],["Investigación"],["Naturaleza"],["Religión"],["Medicina"],["Percepción"],["Supervivencia"],["T. con Animales"],["Engaño"],["Interpretación"]].map(([n])=>({id:n,n}))},
-  {id:"astralTool",select:true,n:"Conocimiento astral · arma o herramienta",sub:"Githyanki (MotM) · competencia temporal hasta el próximo descanso largo",options:["Herramientas de herrero","Herramientas de carpintero","Herramientas de ladrón","Herramientas de alquimista","Útiles de calígrafo","Herramientas de cartógrafo","Herramientas de cocinero","Útiles de disfraz","Herramientas de joyero","Útiles de envenenador","Herramientas de navegante","Instrumento musical","Juego de cartas","Kit de herborista","Un tipo de arma"].map(n=>({id:n,n}))}
+  {id:"astralTool",select:true,n:"Conocimiento astral · arma o herramienta",sub:"Githyanki (MotM) · competencia temporal hasta el próximo descanso largo · nombres según PHB 2024 cap. 6",options:["Herramientas de herrero","Herramientas de albañil","Herramientas de alfarero","Herramientas de carpintero","Herramientas de cartógrafo","Herramientas de curtidor","Herramientas de ebanista","Herramientas de joyero","Herramientas de manitas","Herramientas de soplador de vidrio","Herramientas de tejedor","Herramientas de zapatero","Suministros de alquimista","Suministros de calígrafo","Suministros de cervecero","Suministros de pintor","Útiles de cocinero","Útiles de herborista","Útiles de envenenador","Útiles para disfrazarse","Útiles para falsificar","Herramientas de ladrón","Herramientas de navegante","Juego (naipes)","Juego (dados)","Juego (ajedrez dragón)","Juego (apuesta de los tres dragones)","Instrumento musical (un tipo)","Un tipo de arma"].map(n=>({id:n,n}))},
  ],
  extraDamage:[
   {n:"Atacante salvaje",dice:"relanza el dado del arma",cond:"1×/turno · al acertar con un arma, tiras dos veces los dados del arma y usas el resultado que quieras · regla de mesa: no relanza los dados de Castigo"}
  ],
  masterySlots:2,
- masteryText:{"Debilitar (Sap)":"el objetivo tiene desventaja en su próximo ataque antes de tu siguiente turno","Ralentizar (Slow)":"−3 m (10 ft) de velocidad al objetivo hasta el inicio de tu siguiente turno"},
+ masteryText:{"Debilitar (Sap)":"al acertar, el objetivo tiene desventaja en su próxima tirada de ataque antes del principio de tu siguiente turno","Ralentizar (Slow)":"al acertar y causar daño, −3 m (10 ft) de velocidad hasta el principio de tu siguiente turno (no acumula más de 3 m entre varias armas)"},
  selfAC:[["sof",2,"Escudo de fe"]],
  selfChips:[["agathys","Armadura de Agathys: 5 de frío a quien te acierte cuerpo a cuerpo mientras te queden PG temporales"],["heroism","Heroísmo: inmune a Asustado · +4 PG temp. al inicio de cada turno"]],
  condNotes:{},
  shortRestMsg:"Descanso corto: recuperas 1 uso de Canalizar divinidad y puedes gastar dados de golpe.",
  containers:["Sin asignar","Mochila","Bolsa de cinturón","Montura","Guardado"],
  containerNotes:{"Mochila":"hay que sacarlo","Bolsa de cinturón":"a mano · las monedas están en Oro","Montura":"en las alforjas","Guardado":"no lo cargo"},
+ langs:{slots:1,std:[["Dracónico","Dragones"],["Elfo","Elfos"],["Enano","Enanos"],["Gigante","Gigantes"],["Gnomo","Gnomos"],["Goblin","Trasgos"],["Lenguaje de signos común","Sigil"],["Mediano","Medianos"],["Orco","Orcos"]],rare:[]},
  classOrder:["Paladín"],
  classLevels:{"Paladín":4,"Personaje":4},
  feats:[
@@ -325,7 +326,7 @@ window.CHAR={
   {t:"Armaduras",ic:"armor",items:[["Ligeras, medias y pesadas","Paladín"],["Escudos","Paladín"]]},
   {t:"Armas",ic:"sword",items:[["Sencillas y marciales","Paladín"]]},
   {t:"Herramientas",ic:"tool",items:[["Juego de dados","Soldado"],["Herramienta temporal ◐","Conocimiento astral · se elige en Recursos"]]},
-  {t:"Idiomas",ic:"talk",items:[["Común",""],["Gith",""],["Dracónico",""]],note:"Según la hoja de GitHub. 🟡 Pendiente de verificar contra el cap. 2 (Común + 2) y el rasgo githyanki."}
+  {t:"Idiomas",ic:"talk",dyn:"langs",items:[["Común",""],["Dracónico",""],["Gith","Githyanki (MotM) · 🟡 validar con el GM"]],note:"Cap. 2: Común + 2 idiomas de la tabla estándar; Soldado no da idiomas. Gith viene de Githyanki (MotM, no PHB): 🟡 pendiente de validar con el GM. Si lo valida como idioma de especie, falta elegir 1 estándar (el cupo de abajo); si no, Gith se reemplaza y faltan 2."}
  ],
  story:{
   title:"Crónica de la Voluntad Inquebrantable",

@@ -23,19 +23,20 @@ window.CHAR={
  hitDice:[{id:"d10",die:10,max:4,label:"d10 · Paladín"}],
  toggles:[
   {id:"astralSkill",select:true,skill:true,n:"Conocimiento astral · habilidad",sub:"Githyanki (MotM) · competencia temporal hasta el próximo descanso largo · se marca ◐ en Atributos",options:[["Atletismo"],["Acrobacias"],["Juego de Manos"],["Sigilo"],["C. Arcano"],["Historia"],["Investigación"],["Naturaleza"],["Religión"],["Medicina"],["Percepción"],["Supervivencia"],["T. con Animales"],["Engaño"],["Interpretación"]].map(([n])=>({id:n,n}))},
-  {id:"astralTool",select:true,n:"Conocimiento astral · arma o herramienta",sub:"Githyanki (MotM) · competencia temporal hasta el próximo descanso largo",options:["Herramientas de herrero","Herramientas de carpintero","Herramientas de ladrón","Herramientas de alquimista","Útiles de calígrafo","Herramientas de cartógrafo","Herramientas de cocinero","Útiles de disfraz","Herramientas de joyero","Útiles de envenenador","Herramientas de navegante","Instrumento musical","Juego de cartas","Kit de herborista","Un tipo de arma"].map(n=>({id:n,n}))}
+  {id:"astralTool",select:true,n:"Conocimiento astral · arma o herramienta",sub:"Githyanki (MotM) · competencia temporal hasta el próximo descanso largo · nombres según PHB 2024 cap. 6",options:["Herramientas de herrero","Herramientas de albañil","Herramientas de alfarero","Herramientas de carpintero","Herramientas de cartógrafo","Herramientas de curtidor","Herramientas de ebanista","Herramientas de joyero","Herramientas de manitas","Herramientas de soplador de vidrio","Herramientas de tejedor","Herramientas de zapatero","Suministros de alquimista","Suministros de calígrafo","Suministros de cervecero","Suministros de pintor","Útiles de cocinero","Útiles de herborista","Útiles de envenenador","Útiles para disfrazarse","Útiles para falsificar","Herramientas de ladrón","Herramientas de navegante","Juego (naipes)","Juego (dados)","Juego (ajedrez dragón)","Juego (apuesta de los tres dragones)","Instrumento musical (un tipo)","Un tipo de arma"].map(n=>({id:n,n}))},
  ],
  extraDamage:[
   {n:"Atacante salvaje",dice:"relanza el dado del arma",cond:"1×/turno · al acertar con un arma, tiras dos veces los dados del arma y usas el resultado que quieras · regla de mesa: no relanza los dados de Castigo"}
  ],
  masterySlots:2,
- masteryText:{"Debilitar (Sap)":"el objetivo tiene desventaja en su próximo ataque antes de tu siguiente turno","Ralentizar (Slow)":"−3 m (10 ft) de velocidad al objetivo hasta el inicio de tu siguiente turno"},
+ masteryText:{"Debilitar (Sap)":"al acertar, el objetivo tiene desventaja en su próxima tirada de ataque antes del principio de tu siguiente turno","Ralentizar (Slow)":"al acertar y causar daño, −3 m (10 ft) de velocidad hasta el principio de tu siguiente turno (no acumula más de 3 m entre varias armas)"},
  selfAC:[["sof",2,"Escudo de fe"]],
  selfChips:[["agathys","Armadura de Agathys: 5 de frío a quien te acierte cuerpo a cuerpo mientras te queden PG temporales"],["heroism","Heroísmo: inmune a Asustado · +4 PG temp. al inicio de cada turno"]],
  condNotes:{},
  shortRestMsg:"Descanso corto: recuperas 1 uso de Canalizar divinidad y puedes gastar dados de golpe.",
  containers:["Sin asignar","Mochila","Bolsa de cinturón","Montura","Guardado"],
  containerNotes:{"Mochila":"hay que sacarlo","Bolsa de cinturón":"a mano · las monedas están en Oro","Montura":"en las alforjas","Guardado":"no lo cargo"},
+ langs:{slots:1,std:[["Dracónico","Dragones"],["Elfo","Elfos"],["Enano","Enanos"],["Gigante","Gigantes"],["Gnomo","Gnomos"],["Goblin","Trasgos"],["Lenguaje de signos común","Sigil"],["Mediano","Medianos"],["Orco","Orcos"]],rare:[]},
  classOrder:["Paladín"],
  classLevels:{"Paladín":4,"Personaje":4},
  feats:[
@@ -69,7 +70,7 @@ window.CHAR={
   {t:"Armaduras",ic:"armor",items:[["Ligeras, medias y pesadas","Paladín"],["Escudos","Paladín"]]},
   {t:"Armas",ic:"sword",items:[["Sencillas y marciales","Paladín"]]},
   {t:"Herramientas",ic:"tool",items:[["Juego de dados","Soldado"],["Herramienta temporal ◐","Conocimiento astral · se elige en Recursos"]]},
-  {t:"Idiomas",ic:"talk",items:[["Común",""],["Gith",""],["Dracónico",""]],note:"Según la hoja de GitHub. 🟡 Pendiente de verificar contra el cap. 2 (Común + 2) y el rasgo githyanki."}
+  {t:"Idiomas",ic:"talk",dyn:"langs",items:[["Común",""],["Dracónico",""],["Gith","Githyanki (MotM) · 🟡 validar con el GM"]],note:"Cap. 2: Común + 2 idiomas de la tabla estándar; Soldado no da idiomas. Gith viene de Githyanki (MotM, no PHB): 🟡 pendiente de validar con el GM. Si lo valida como idioma de especie, falta elegir 1 estándar (el cupo de abajo); si no, Gith se reemplaza y faltan 2."}
  ],
  story:{
   title:"Crónica de la Voluntad Inquebrantable",
