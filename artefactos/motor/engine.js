@@ -234,10 +234,14 @@ function renderAttacks(d){
   const head=chips.filter(Boolean).length?`<div class="acrow" style="margin-bottom:6px">${chips.filter(Boolean).join(" ")}</div>`:"";
   let rows="";
   ws.forEach(w=>weaponModes(w).forEach(m=>{
-    const ab=m.ab||w.ab||"des";
+    const fin=/sutil|finesse/i.test([m.type,w.dmgType,w.props,w.note].join(" "));
+    const ab=m.ab||w.ab||(m.ranged||w.ranged?"des":(fin&&M.des>M.fue?"des":"fue")); /* sin campo: cuerpo a cuerpo usa Fuerza */
     const atk=M[ab]+PROF+(m.ranged&&CFG.archery?2:0)-2*ml.ex+(w.atkBonus||0);
     const mast=w.masteryActive&&m.mastery?m.mastery:"";
-    rows+=`<tr><td>${esc(w.name)}${m.n?` <span class="mute">${esc(m.n)}</span>`:""}${(w.qty||1)>1?` <span class="mute num">×${w.qty}</span>`:""}</td><td class="n">${sg(atk)}</td><td class="n">${esc(m.dmg)}${sg(M[ab]+(w.dmgBonus||0))}</td><td class="note">${esc(m.type||"")}${m.range?" · "+esc(m.range):""}${mast?" · "+esc(mast):m.mastery?" · "+esc(m.mastery)+" (inactiva)":""}</td></tr>`;
+    let flat=0, extra=[];
+    (CFG.extraDamage||[]).forEach(x=>{if(!x.effect||!fxOn(x.effect))return;if(x.abOnly&&x.abOnly!==ab)return;if(x.meleeOnly&&(m.ranged||w.ranged))return;
+      if(x.flat)flat+=x.flat; if(x.addDice)extra.push(x.addDice);});
+    rows+=`<tr><td>${esc(w.name)}${m.n?` <span class="mute">${esc(m.n)}</span>`:""}${(w.qty||1)>1?` <span class="mute num">×${w.qty}</span>`:""}</td><td class="n">${sg(atk)}</td><td class="n">${esc(m.dmg)}${sg(M[ab]+(w.dmgBonus||0)+flat)}${extra.map(e=>" + "+esc(e)).join("")}</td><td class="note">${esc(m.type||"")}${m.range?" · "+esc(m.range):""}${mast?" · "+esc(mast):m.mastery?" · "+esc(m.mastery)+" (inactiva)":""}</td></tr>`;
   }));
   box.innerHTML=head+`<table><thead><tr><th>Arma</th><th>Atq</th><th>Daño</th><th>Notas</th></tr></thead><tbody>${rows}</tbody></table>`+(CFG.archery?`<p class="note" style="margin-top:6px">Ataques a distancia incluyen +2 de Tiro con arco.</p>`:"");
   renderXdmg();
@@ -335,17 +339,17 @@ function renderInv(){
 }
 
 /* ---------- escritura ---------- */
-let pending=null, writing=false, tmr=null;
+let pending=null, writing=false, tmr=null, dirty=false;
 function save(patch){
   if(!state) return; state={...state,...patch}; render();
   if(!db){setSync("Sin guardado: esta vista no puede escribir",true);return;}
-  pending=state; clearTimeout(tmr); tmr=setTimeout(flush,350);
+  dirty=true; pending=state; clearTimeout(tmr); tmr=setTimeout(flush,350);
 }
 async function flush(){
   if(writing||!pending) return; writing=true; const body=pending; pending=null;
   setSync("Guardando…");
   try{await stateRef.set(body); setSync("Guardado");}catch(e){handleWriteErr(e);}
-  writing=false; if(pending) flush();
+  writing=false; if(pending) flush(); else dirty=false;
 }
 async function setItem(i,patch){
   const others=(patch.equipped===true&&(i.kind==="armor"||i.kind==="shield"))?items.filter(x=>x!==i&&x.kind===i.kind&&x.equipped):[];
@@ -376,14 +380,17 @@ function srcInfo(k){
   const m=/^slot(\d)$/.exec(k);
   if(m){const sl=curSlots().find(x=>x.lvl==m[1]);const left=sl?sl.max-(s.slots["l"+sl.lvl]||0):0;return {l:`Espacio nv. ${m[1]} (${left} libres)`,ok:left>0};}
   if(k==="ritual") return {l:"Ritual (+10 min, sin espacio)",ok:true};
+  if(k==="free") return {l:"A voluntad (sin espacio)",ok:true};
   const r=CFG.resources.find(x=>x.id===k);
   if(r){const left=r.max-(s.res[r.id]||0);return {l:`${r.short||r.n} (${left} libres)`,ok:left>0,left};}
   return {l:k,ok:false};
 }
 function spSources(sp){
-  const out=[...(sp.src||[])];
+  const out=(sp.src||[]).filter(k=>k!=="ritual");
+  if(sp.lvl===0) return out.length?out:["free"]; /* los trucos nunca gastan espacios */
   if(!sp.noSlot) curSlots().filter(sl=>sl.lvl>=sp.lvl).forEach(sl=>out.push("slot"+sl.lvl));
-  return sp.lvl===0&&!sp.src?[]:out;
+  if((sp.src||[]).includes("ritual")) out.push("ritual"); /* el ritual va al final: en combate se usa espacio */
+  return out;
 }
 const spRows={};
 const G=CFG.grimoire||{always:[],prepDefault:[],prepTable:[],maxLvlTable:[]};
@@ -448,7 +455,8 @@ function cast(sp,src,tg,who,whoEl){
   const s=state, patch={}, msg=[];
   const m=/^slot(\d)$/.exec(src);
   if(m){patch.slots={...s.slots,["l"+m[1]]:(s.slots["l"+m[1]]||0)+1};}
-  else if(src!=="ritual") patch.res={...s.res,[src]:(s.res[src]||0)+(sp.cost||1)};
+  else if(src!=="ritual"&&src!=="free") patch.res={...s.res,[src]:(s.res[src]||0)+(sp.cost||1)};
+  if(sp.restores){patch.res={...(patch.res||s.res)};sp.restores.forEach(k=>patch.res[k]=0);const r=CFG.resources.filter(x=>sp.restores.includes(x.id)).map(x=>x.short||x.n);if(r.length)msg.push(`Recuperas ${r.join(" y ")} por completo.`);}
   let effects=[...(s.effects||[])], conc=s.conc||null;
   if(sp.conc&&conc){const old=effects.find(e=>e.id===conc);effects=effects.filter(e=>e.id!==conc);if(old)msg.push(`Termina ${old.n} (concentración).`);conc=null;}
   if(sp.dur){const id=String(Date.now());effects.push({id,sp:sp.id,n:sp.n,tg,who:tg==="self"?"":who,conc:!!sp.conc,dur:sp.dur});if(sp.conc)conc=id;}
@@ -954,7 +962,7 @@ renderStatic(); buildSpells(); renderFeats(); renderStory(); renderPortrait(); r
   stateRef=db.doc(NS+"sheet/state");
   const timer=setTimeout(()=>alive&&setSync("No se puede leer el estado todavía",true),10000);
   UNSUBS.push(stateRef.onSnapshot(snap=>{
-    if(snap.metadata.hasPendingWrites) return;
+    if(snap.metadata.hasPendingWrites||dirty) return; /* no pisar cambios locales aún sin confirmar */
     const prevL=JSON.stringify([lvls(),state&&state.sub]); state=norm(snap.exists?snap.data():{}); if(JSON.stringify([lvls(),state.sub])!==prevL){renderFeats();renderId();}
     if(!snap.metadata.fromCache){clearTimeout(timer);if(!$("sync").classList.contains("warn"))setSync("Guardado");}
     render();

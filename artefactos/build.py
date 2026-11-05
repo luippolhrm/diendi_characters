@@ -19,7 +19,8 @@ HUB_HTML = HUB_HTML.replace(
     "Hoja-artefacto · en juego", "Hoja interactiva · en juego").replace(
     ">Hoja-artefacto<", ">Hoja interactiva<").replace(
     "Toca una carta para abrir la hoja. Las hojas-artefacto guardan estado, equipo y oro; las de GitHub son el registro anterior hasta migrarlas.",
-    "Toca una carta para abrir la hoja aquí mismo; cada hoja tiene «← Mesa» para volver. Las interactivas guardan estado, equipo y oro; las de GitHub se abren aparte hasta migrarlas.")
+    "Toca una carta para abrir la hoja aquí mismo; el botón ← Mesa te trae de vuelta. Cada hoja guarda estado, equipo y oro.").replace(
+    "Hoja interactiva · en juego", "Hoja interactiva")
 HUB_HTML = HUB_HTML.replace('href="https://luippolhrm.github.io/diendi_characters/lucho/yevelda.html" target="_blank" rel="noopener"', 'href="#/yevelda"').replace('<a class="pc ext" href="#/yevelda"', '<a class="pc " href="#/yevelda"')
 HUB_HTML = HUB_HTML.replace('<span>Orca · Bárbara 1</span><span class="where">GitHub · por migrar</span>', '<span>Orca · Bárbara 1 · Soldado</span><span class="where">Hoja interactiva</span>')
 HUB_HTML = HUB_HTML.replace('href="https://luippolhrm.github.io/diendi_characters/lucho/auriana.html" target="_blank" rel="noopener"', 'href="#/auriana"').replace('<a class="pc ext" href="#/auriana"', '<a class="pc " href="#/auriana"')
@@ -32,6 +33,8 @@ assert HUB_HTML.count('href="#/') == 5 and HUB_HTML.count('por migrar') == 0
 SHEET_CSS = rd(U + "base.css") + rd(U + "sheet.css") + """
 .idx .home{font-weight:700;color:var(--ink);border-right:1px solid var(--line-2);padding-right:12px;margin-right:2px}
 @media (max-width:480px){.idx a{padding:6px 7px}.idx .home{padding-right:9px}}
+@media (max-width:420px){.idx a{padding:6px 5px}.idx a b{margin-right:2px}.idx .home{padding-right:6px}}
+@media (max-width:480px){.idx .sync{display:none}.idx .sync.warn{display:block;position:fixed;left:16px;right:16px;bottom:calc(12px + env(safe-area-inset-bottom,0px));max-width:none;white-space:normal;background:var(--surface);border:1px solid var(--ruby);border-radius:12px;padding:10px 12px;z-index:30;box-shadow:0 6px 20px rgba(0,0,0,.18)}}
 """
 BODY = rd(U + "body.html")
 ENG = rd(U + "engine.js").strip()

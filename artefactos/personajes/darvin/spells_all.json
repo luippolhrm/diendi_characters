@@ -126,7 +126,10 @@
 "meta": "Monje nv 2 · al tirar iniciativa · 1 por descanso largo",
 "d": "Recuperas todos los puntos de concentración gastados y 1d10 + 12 PG. Marca los puntos como disponibles en Recursos.",
 "selfHeal": "1d10+12",
-"inst": "Recupera los 12 puntos en Recursos y tira 1d10+12 PG."
+"inst": "Tira 1d10+12 y anótalo con Curar.",
+"restores": [
+"ki"
+]
 },
 {
 "id": "dragon",

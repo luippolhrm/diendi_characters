@@ -25,7 +25,7 @@ window.CHAR={
  hitDice:[{id:"d12",die:12,max:1,label:"d12 · Bárbara"}],
  toggles:[],
  extraDamage:[
-  {n:"Daño por furia",dice:"+2",effect:"rage",onNote:"Furia activa: +2 a cada ataque con Fuerza que cause daño",cond:"solo con la Furia activa · ataques que usen Fuerza (no el arco)"},
+  {n:"Daño por furia",dice:"+2",effect:"rage",flat:2,abOnly:"fue",onNote:"Furia activa: +2 a cada ataque con Fuerza que cause daño",cond:"solo con la Furia activa · ataques que usen Fuerza (no el arco)"},
   {n:"Atacante salvaje",dice:"relanza el dado del arma",cond:"1×/turno · al acertar con un arma, tiras dos veces los dados de daño del arma y usas el resultado que prefieras"},
   {n:"Ataque extra con arma ligera",dice:"1d6 sin +4",cond:"acción adicional tras atacar con un hacha de mano: otro ataque con la otra hacha de mano, sin sumar Fuerza al daño (sí el +2 de Furia)"}
  ],

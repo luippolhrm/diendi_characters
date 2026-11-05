@@ -21,12 +21,12 @@ window.CHAR={
   {id:"luck",n:"Puntos de suerte",short:"Afortunado",sub:"Afortunado · 4 (= competencia) · ventaja propia o desventaja a quien te ataca · descanso largo",max:4,reset:"long"},
   {id:"whole",n:"Plenitud de cuerpo",short:"Plenitud de cuerpo",sub:"Mano abierta · 5 usos (mod. Sab) · descanso largo",max:5,reset:"long"},
   {id:"metab",n:"Metabolismo asombroso",short:"Metabolismo asombroso",sub:"Al tirar iniciativa · 1 uso · descanso largo",max:1,reset:"long"},
-  {id:"blood",n:"Cargas de sangre",short:"Bastón ritual de sangre",sub:"Bastón ritual de sangre +1 · 3 cargas base · vuelven tras 1 hora (como descanso corto) · 🟡 objeto custom, GM",max:3,reset:"short",shortRecover:3}
+  {id:"blood",n:"Cargas de sangre",short:"Bastón ritual de sangre",sub:"Bastón ritual de sangre +1 · 3 cargas base · vuelven tras 1 hora (como descanso corto) · objeto custom entregado por el GM ✔",max:3,reset:"short",shortRecover:3}
  ],
  hitDice:[{id:"d8",die:8,max:12,label:"d8 · Monje"}],
  toggles:[],
  extraDamage:[
-  {n:"Rugido del Dragón",dice:"+1d4 fuego",effect:"dragon",onNote:"activo: +1d4 de fuego en cada ataque",cond:"solo activo (1 punto, 4 turnos) · 🟡 golpe homebrew, economía por confirmar con el GM"},
+  {n:"Rugido del Dragón",dice:"+1d4 fuego",effect:"dragon",addDice:"1d4 fuego",onNote:"activo: +1d4 de fuego en cada ataque (ya sumado en Ataques)",cond:"solo activo (1 punto, 4 turnos) · golpe entregado por el GM"},
   {n:"Golpes potenciados",dice:"tipo de daño",cond:"cada ataque sin armas: eliges daño contundente o de fuerza"}
  ],
  masterySlots:0,
