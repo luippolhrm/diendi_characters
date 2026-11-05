@@ -65,9 +65,9 @@ window.CHAR={
   {t:"Armaduras",ic:"armor",items:[["Ligeras y medias","Clériga"],["Pesadas","Orden divina: Protector"],["Escudos","Clériga"]]},
   {t:"Armas",ic:"sword",items:[["Sencillas","Clériga"],["Marciales","Orden divina: Protector"]]},
   {t:"Herramientas",ic:"tool",items:[["Útiles de herborista","Ermitaña · Int +2 · identificar planta CD 10 · fabrica pociones de curación (25 po, 1 día)"]]},
-  {t:"Idiomas",ic:"talk",dyn:"langs",items:[["Común",""],["Celestial",""]],note:"Cap. 2: Común + 2 idiomas de la tabla estándar. Celestial es inusual y ningún rasgo suyo lo otorga: 🟡 necesita que el GM lo valide. Si lo valida, elige 1 estándar; si no, Celestial se reemplaza y eliges 2."}
+  {t:"Idiomas",ic:"talk",dyn:"langs",items:[["Común",""],["Celestial","Aprobado por el GM ✔"]],note:"Cap. 2: Común + 2 idiomas. Celestial (inusual) lo aprobó el GM y ocupa uno; queda 1 estándar por elegir."}
  ],
- langs:{slots:2,std:[["Dracónico","Dragones"],["Elfo","Elfos"],["Enano","Enanos"],["Gigante","Gigantes"],["Gnomo","Gnomos"],["Goblin","Trasgos"],["Lenguaje de signos común","Sigil"],["Mediano","Medianos"],["Orco","Orcos"]],rare:[]},
+ langs:{slots:1,std:[["Dracónico","Dragones"],["Elfo","Elfos"],["Enano","Enanos"],["Gigante","Gigantes"],["Gnomo","Gnomos"],["Goblin","Trasgos"],["Lenguaje de signos común","Sigil"],["Mediano","Medianos"],["Orco","Orcos"]],rare:[]},
  story:{
   title:"Crónica de la Luz Naciente",
   portraitAlt:"Ilustración de Auriana Grandhe",

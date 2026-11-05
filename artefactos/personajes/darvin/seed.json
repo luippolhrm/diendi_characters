@@ -31,7 +31,7 @@
    "dmgType": "contundente · arma de monje (dado de Artes marciales)",
    "magic": true,
    "homebrew": true,
-   "note": "A la espalda · Balas y Drenaje de sangre en Técnicas · 🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "note": "A la espalda · Balas y Drenaje de sangre en Técnicas · objeto custom entregado por el GM ✔ · sin sintonización según la info del GM",
    "order": 2
   }
  },
@@ -45,7 +45,7 @@
    "equipped": true,
    "magic": true,
    "homebrew": true,
-   "note": "Cara · detecta vida a 18 m (60 ft), incluso oculta o invisible · 🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "note": "Cara · detecta vida a 18 m (60 ft), incluso oculta o invisible · objeto custom entregado por el GM ✔ · sin sintonización según la info del GM",
    "order": 1
   }
  },
@@ -74,7 +74,7 @@
    "equipped": true,
    "magic": true,
    "homebrew": true,
-   "note": "Cuerpo · +2 iniciativa (ya sumado) · lanzar Volar · esfera 4★ · 🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "note": "Cuerpo · +2 iniciativa (ya sumado) · lanzar Volar · esfera 4★ · objeto custom entregado por el GM ✔ · sin sintonización según la info del GM",
    "order": 3
   }
  },
@@ -88,7 +88,7 @@
    "equipped": true,
    "magic": true,
    "homebrew": true,
-   "note": "Pies · resistencia a fuego · 🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "note": "Pies · resistencia a fuego · objeto custom entregado por el GM ✔ · sin sintonización según la info del GM",
    "order": 4
   }
  },
@@ -189,7 +189,7 @@
    "dmg": "1d6",
    "dmgType": "arma de monje",
    "homebrew": true,
-   "note": "Su dado máximo es 1d6; con Artes marciales 1d10 solo son de sabor · 🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "note": "Su dado máximo es 1d6; con Artes marciales 1d10 solo son de sabor · objeto custom entregado por el GM ✔ · sin sintonización según la info del GM",
    "order": 4
   }
  },
@@ -209,7 +209,7 @@
    "dmgType": "contundente + 1d4 relámpago · alcance 3 m (10 ft)",
    "magic": true,
    "homebrew": true,
-   "note": "🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "note": "objeto custom entregado por el GM ✔ · sin sintonización según la info del GM",
    "order": 5
   }
  },
@@ -224,7 +224,7 @@
    "loc": "Reserva",
    "magic": true,
    "homebrew": true,
-   "note": "Resistencia a ácido · 🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "note": "Resistencia a ácido · objeto custom entregado por el GM ✔ · sin sintonización según la info del GM",
    "order": 6
   }
  },
@@ -239,7 +239,7 @@
    "loc": "Reserva",
    "magic": true,
    "homebrew": true,
-   "note": "Resistencia a frío · 🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "note": "Resistencia a frío · objeto custom entregado por el GM ✔ · sin sintonización según la info del GM",
    "order": 7
   }
  },
@@ -254,7 +254,7 @@
    "loc": "Prestado",
    "magic": true,
    "homebrew": true,
-   "note": "Prestado al personaje de Andy · invoca un ángel: 8d6 radiante en 6 m (20 ft), 1 por descanso largo · requiere sintonización · 🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "note": "Prestado al personaje de Andy · invoca un ángel: 8d6 radiante en 6 m (20 ft), 1 por descanso largo · objeto custom entregado por el GM ✔ · requiere sintonización",
    "order": 1
   }
  },

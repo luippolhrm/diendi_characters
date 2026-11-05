@@ -145,7 +145,7 @@
 "dur": "4 turnos",
 "meta": "Homebrew · 1 punto · 4 turnos",
 "d": "+1d4 de daño de fuego en cada ataque durante 4 turnos.",
-"note": "Golpe otorgado por el GM; economía exacta por confirmar.",
+"note": "Golpe entregado por el GM ✔",
 "cost": 1
 },
 {
@@ -186,7 +186,7 @@
 "meta": "Bastón ritual de sangre · 2 cargas · 9 m (30 ft)",
 "d": "Disparas sangre condensada: 8d8 de daño de fuerza a 9 m (30 ft).",
 "inst": "Tira 8d8 de fuerza.",
-"note": "Objeto custom: mecánica tal como estaba en la hoja anterior, pendiente de validación del GM."
+"note": "Objeto custom entregado por el GM ✔"
 },
 {
 "id": "drain",
@@ -206,6 +206,6 @@
 "dur": "1 h",
 "meta": "Bastón ritual de sangre · 3 cargas · 1 hora",
 "d": "Durante 1 hora recuperas 1d4 PG por cada golpe que aciertes.",
-"note": "Objeto custom, pendiente de validación del GM."
+"note": "Objeto custom entregado por el GM ✔"
 }
 ]

@@ -36,7 +36,7 @@ window.CHAR={
  shortRestMsg:"Descanso corto: recuperas 1 uso de Canalizar divinidad y puedes gastar dados de golpe.",
  containers:["Sin asignar","Mochila","Bolsa de cinturón","Montura","Guardado"],
  containerNotes:{"Mochila":"hay que sacarlo","Bolsa de cinturón":"a mano · las monedas están en Oro","Montura":"en las alforjas","Guardado":"no lo cargo"},
- langs:{slots:1,std:[["Dracónico","Dragones"],["Elfo","Elfos"],["Enano","Enanos"],["Gigante","Gigantes"],["Gnomo","Gnomos"],["Goblin","Trasgos"],["Lenguaje de signos común","Sigil"],["Mediano","Medianos"],["Orco","Orcos"]],rare:[]},
+ langs:{slots:0,std:[["Dracónico","Dragones"],["Elfo","Elfos"],["Enano","Enanos"],["Gigante","Gigantes"],["Gnomo","Gnomos"],["Goblin","Trasgos"],["Lenguaje de signos común","Sigil"],["Mediano","Medianos"],["Orco","Orcos"]],rare:[]},
  classOrder:["Paladín"],
  classLevels:{"Paladín":4,"Personaje":4},
  feats:[
@@ -70,7 +70,7 @@ window.CHAR={
   {t:"Armaduras",ic:"armor",items:[["Ligeras, medias y pesadas","Paladín"],["Escudos","Paladín"]]},
   {t:"Armas",ic:"sword",items:[["Sencillas y marciales","Paladín"]]},
   {t:"Herramientas",ic:"tool",items:[["Juego de dados","Soldado"],["Herramienta temporal ◐","Conocimiento astral · se elige en Recursos"]]},
-  {t:"Idiomas",ic:"talk",dyn:"langs",items:[["Común",""],["Dracónico",""],["Gith","🟡 requiere aprobación del GM"]],note:"PHB 2024 cap. 2: Común + 2 idiomas estándar; Soldado no da idiomas. El githyanki de MotM (p. 18) no da Gith automático: da Común + 1 idioma acordado con el DM. Gith no está en el PHB 2024, así que ocupa el segundo cupo solo si el GM lo aprueba; si no, ese cupo se elige de la lista estándar."}
+  {t:"Idiomas",ic:"talk",dyn:"langs",items:[["Común",""],["Dracónico",""],["Gith","Aprobado por el GM ✔"]],note:"PHB 2024 cap. 2: Común + 2 idiomas estándar; Soldado no da idiomas. El githyanki de MotM (p. 18) no da Gith automático: da Común + 1 idioma acordado con el DM. Gith no está en el PHB 2024: el GM lo aprobó y ocupa el segundo cupo. Idiomas completos."}
  ],
  story:{
   title:"Crónica de la Voluntad Inquebrantable",
