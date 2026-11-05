@@ -1,0 +1,5 @@
+
+/* Paleta de Yevelda: niebla y oso — gris frío, cobre, musgo */
+:root{--bg:#F2F3F1;--surface:#FBFBFA;--line:#DDE0DB;--line-2:#C6CBC3;--violet:#5E6E5A;--violet-d:#44523F;--violet-soft:#E6ECE3;--gold:#B4713A;--gold-d:#8A5328;--gold-soft:#F5E8DC;--ruby:#A33C3C;--ruby-soft:#F6E1E1;--hero-1:#2B2F2C;--hero-2:#4E5A4C;--hero-ink:#F3F4EF;--hero-mute:#C4CBBF}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15181A;--surface:#1E2224;--line:#2E3437;--line-2:#3E4649;--violet:#9FB89A;--violet-d:#BFD4BA;--violet-soft:#263129;--gold:#D9A06A;--gold-d:#E8B98A;--gold-soft:#332519;--ruby:#E07A7A;--ruby-soft:#3A1F1F;--hero-1:#171A19;--hero-2:#303A2F}}
+:root[data-theme="dark"]{--bg:#15181A;--surface:#1E2224;--line:#2E3437;--line-2:#3E4649;--violet:#9FB89A;--violet-d:#BFD4BA;--violet-soft:#263129;--gold:#D9A06A;--gold-d:#E8B98A;--gold-soft:#332519;--ruby:#E07A7A;--ruby-soft:#3A1F1F;--hero-1:#171A19;--hero-2:#303A2F}

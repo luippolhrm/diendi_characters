@@ -1,0 +1,345 @@
+[
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "hachon",
+  "data": {
+   "name": "Hacha a dos manos",
+   "kind": "weapon",
+   "equipped": true,
+   "masteryActive": true,
+   "ab": "fue",
+   "hands": 2,
+   "dmg": "1d12",
+   "dmgType": "cortante · pesada, a dos manos",
+   "mastery": "Hender (Cleave)",
+   "note": "Marcial · la herencia del campamento",
+   "order": 1
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "hachas",
+  "data": {
+   "name": "Hacha de mano",
+   "kind": "weapon",
+   "equipped": false,
+   "loc": "Cinturón",
+   "masteryActive": true,
+   "ab": "fue",
+   "hands": 1,
+   "qty": 4,
+   "stackable": true,
+   "dmg": "1d6",
+   "dmgType": "cortante · ligera",
+   "ranged": false,
+   "range": "arrojadiza 6/18 m (20/60 ft)",
+   "mastery": "Molestar (Vex)",
+   "note": "Plan B: una en cada puño (ataque extra como acción adicional)",
+   "order": 2
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "jabalinas",
+  "data": {
+   "name": "Jabalina de Vashka",
+   "kind": "weapon",
+   "equipped": false,
+   "loc": "Espalda",
+   "masteryActive": false,
+   "ab": "fue",
+   "hands": 1,
+   "qty": 4,
+   "stackable": true,
+   "dmg": "1d6",
+   "dmgType": "perforante",
+   "range": "arrojadiza 9/36 m (30/120 ft)",
+   "mastery": "Ralentizar (Slow)",
+   "note": "Las cuatro de su madre",
+   "order": 3
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "lanza",
+  "data": {
+   "name": "Lanza",
+   "kind": "weapon",
+   "equipped": false,
+   "loc": "Espalda",
+   "masteryActive": false,
+   "ab": "fue",
+   "hands": 1,
+   "dmg": "1d6",
+   "dmgType": "perforante",
+   "versatile": "1d8",
+   "range": "arrojadiza 6/18 m (20/60 ft)",
+   "mastery": "Debilitar (Sap)",
+   "note": "Soldado · equipo A",
+   "order": 4
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "arco",
+  "data": {
+   "name": "Arco corto",
+   "kind": "weapon",
+   "equipped": false,
+   "loc": "Espalda",
+   "masteryActive": false,
+   "ab": "des",
+   "hands": 2,
+   "dmg": "1d6",
+   "dmgType": "perforante · a dos manos",
+   "ranged": true,
+   "range": "munición 24/96 m (80/320 ft)",
+   "mastery": "Molestar (Vex)",
+   "note": "Usa Destreza: sin daño de Furia · no entra en Maestría (solo cuerpo a cuerpo)",
+   "order": 5
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "ropa-oso",
+  "data": {
+   "name": "Ropa de viaje de piel de oso",
+   "kind": "cloak",
+   "equipped": true,
+   "locked": true,
+   "note": "Sin propiedades mecánicas (GM) · una mortaja que camina",
+   "order": 1
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "flechas",
+  "data": {
+   "name": "Flechas",
+   "kind": "gear",
+   "cat": "municion",
+   "loc": "Espalda",
+   "equipped": false,
+   "qty": 20,
+   "note": "En la aljaba",
+   "order": 1
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "aljaba",
+  "data": {
+   "name": "Aljaba",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Espalda",
+   "equipped": false,
+   "order": 2
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "sanador",
+  "data": {
+   "name": "Útiles de sanador",
+   "kind": "gear",
+   "cat": "consumible",
+   "loc": "Mochila",
+   "equipped": false,
+   "qty": 10,
+   "note": "10 usos · acción de utilizar: estabiliza a 0 PG sin prueba",
+   "order": 3
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "naipes",
+  "data": {
+   "name": "Juego de naipes",
+   "kind": "gear",
+   "cat": "herramienta",
+   "loc": "Mochila",
+   "equipped": false,
+   "note": "«Imbatible»",
+   "order": 4
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "antorchas",
+  "data": {
+   "name": "Antorchas",
+   "kind": "gear",
+   "cat": "consumible",
+   "loc": "Mochila",
+   "equipped": false,
+   "qty": 10,
+   "order": 5
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "cantimplora",
+  "data": {
+   "name": "Cantimplora",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Mochila",
+   "equipped": false,
+   "order": 6
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "cuerda",
+  "data": {
+   "name": "Cuerda",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Mochila",
+   "equipped": false,
+   "order": 7
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "aceite",
+  "data": {
+   "name": "Frascos de aceite",
+   "kind": "gear",
+   "cat": "consumible",
+   "loc": "Mochila",
+   "equipped": false,
+   "qty": 2,
+   "order": 8
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "petate",
+  "data": {
+   "name": "Petate",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Mochila",
+   "equipped": false,
+   "order": 9
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "raciones",
+  "data": {
+   "name": "Raciones",
+   "kind": "gear",
+   "cat": "consumible",
+   "loc": "Mochila",
+   "equipped": false,
+   "qty": 10,
+   "note": "días",
+   "order": 10
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "yesquero",
+  "data": {
+   "name": "Yesquero",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Mochila",
+   "equipped": false,
+   "order": 11
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/items",
+  "doc_id": "ropas",
+  "data": {
+   "name": "Ropas de viaje",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Mochila",
+   "equipped": false,
+   "note": "Soldado · equipo A · de repuesto",
+   "order": 12
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/gold",
+  "doc_id": "inicial-barbara",
+  "data": {
+   "amt": 15,
+   "at": "2026-11-04T18:00:00",
+   "concept": "Equipo inicial Bárbara, opción A",
+   "n": 1,
+   "void": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/gold",
+  "doc_id": "inicial-soldado",
+  "data": {
+   "amt": 14,
+   "at": "2026-11-04T18:00:01",
+   "concept": "Equipo inicial Soldado, opción A",
+   "n": 2,
+   "void": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/yevelda/sheet",
+  "doc_id": "state",
+  "data": {
+   "levels": [],
+   "langs": [],
+   "sub": {},
+   "prepared": null,
+   "swapUsed": false,
+   "swapRem": false,
+   "swapFree": false,
+   "hp": 15,
+   "temp": 0,
+   "hd": {
+    "d12": 0
+   },
+   "slots": {},
+   "res": {
+    "rage": 0,
+    "adren": 0,
+    "endure": 0
+   },
+   "insp": false,
+   "effects": [],
+   "conc": null,
+   "conds": {},
+   "exh": 0,
+   "toggles": {},
+   "death": {
+    "s": 0,
+    "f": 0
+   }
+  }
+ }
+]

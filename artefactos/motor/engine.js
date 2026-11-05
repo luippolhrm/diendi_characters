@@ -45,6 +45,7 @@ function derive(){
   const shield=items.find(i=>i.kind==="shield"&&i.equipped);
   const parts=[];
   if(armor) parts.push([armor.name,armor.acBase+(armor.dexMax==null?M.des:Math.min(M.des,armor.dexMax))]);
+  else if(CFG.unarmored){parts.push([CFG.unarmored.label||"Defensa sin armadura",10+M.des+(CFG.unarmored.add||[]).reduce((a,k)=>a+M[k],0)]);}
   else parts.push(["Sin armadura (10 + Des)",10+M.des]);
   if(shield) parts.push([shield.name,shield.acBonus||2]);
   items.filter(i=>i.kind!=="shield"&&i.kind!=="armor"&&active(i)&&i.acBonus).forEach(i=>parts.push([i.name,i.acBonus]));
@@ -111,8 +112,11 @@ function renderStatic(){
   renderId();
   $("sProf").textContent=sg(PROF);
   $("sInit").textContent=sg(M.des+(CFG.initBonus||0));
-  $("sDC").textContent=CFG.casting.dc; $("sDCn").textContent=`ataque ${sg(CFG.casting.atk)} · ${ABN[CFG.casting.ab]}`;
-  $("spL").textContent=`CD ${CFG.casting.dc} · ataque ${sg(CFG.casting.atk)} · ${ABN[CFG.casting.ab]}`;
+  if(CFG.casting){$("sDC").textContent=CFG.casting.dc; $("sDCn").textContent=`ataque ${sg(CFG.casting.atk)} · ${ABN[CFG.casting.ab]}`;
+  $("spL").textContent=`CD ${CFG.casting.dc} · ataque ${sg(CFG.casting.atk)} · ${ABN[CFG.casting.ab]}`;}
+  else{const sb=$("sDC").closest(".sbox"); if(sb){sb.hidden=true; sb.parentElement.classList.add("five");} $("spSlots").hidden=true; const g=$("grimsec"); if(g) g.hidden=true; $("spL").textContent=CFG.spellsLabel||"";}
+  if(CFG.spellsTitle) $("hSp").firstChild.textContent=CFG.spellsTitle+" ";
+  if(CFG.spellsNote!=null){const n=$("spBox").previousElementSibling; if(n&&n.classList.contains("note")) n.textContent=CFG.spellsNote;}
   $("cFooter").textContent=CFG.footer;
   renderProfs();
   $("refBox").innerHTML=CFG.refs||"";
@@ -242,7 +246,7 @@ function renderXdmg(){
   (CFG.extraDamage||[]).forEach(x=>{
     let on=true, name=x.n, note=x.cond, dice=x.dice;
     if(x.toggle){const t=CFG.toggles.find(t=>t.id===x.toggle);const o=t.options.find(o=>o.id===(state?state.toggles[t.id]:t.options[0].id));name=o.n;note=o.cond;dice=o.dice||"";}
-    if(x.effect){const e=fxOn(x.effect);on=!!e;note=e?`activa sobre ${e.who||"el objetivo"}`:x.cond;}
+    if(x.effect){const e=fxOn(x.effect);on=!!e;note=e?(x.onNote||`activa sobre ${e.who||"el objetivo"}`):x.cond;}
     box.insertAdjacentHTML("beforeend",`<div class="fxi"><b>${esc(name)} ${dice?`<span class="chip${on?"":" gold"}">${esc(dice)}</span>`:""}</b><span class="note">${on?"":"inactiva"}</span><small>${esc(note)}</small></div>`);
   });
 }
@@ -391,10 +395,10 @@ function spellRows(){
   const out=[];
   const alw=G.always.map(spById).filter(Boolean);
   if(alw.length){out.push({g:G.alwaysLabel||"Siempre preparados"});out.push(...alw);}
-  const pr=prepList().map(spById).filter(Boolean).sort((a,b)=>a.lvl-b.lvl||a.n.localeCompare(b.n,"es"));
+  if(CFG.grimoire){const pr=prepList().map(spById).filter(Boolean).sort((a,b)=>a.lvl-b.lvl||a.n.localeCompare(b.n,"es"));
   out.push({g:`Preparados · ${pr.length}/${prepMax()} · se eligen en el Grimorio`});
   if(!pr.length) out.push({g:"Ninguno preparado todavía."});
-  out.push(...pr);
+  out.push(...pr);}
   const fixed=[...new Set(CFG.spells.filter(s=>s.fixed).map(s=>s.fixed))];
   fixed.forEach(g=>{out.push({g});out.push(...CFG.spells.filter(s=>s.fixed===g));});
   return out;
@@ -647,7 +651,7 @@ let gFilter="all", gQ="";
 document.querySelectorAll("[data-gf]").forEach(b=>b.addEventListener("click",()=>{gFilter=b.dataset.gf;document.querySelectorAll("[data-gf]").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));renderGrimoire();}));
 const gq=$("grimQ"); if(gq) gq.addEventListener("input",()=>{gQ=gq.value.trim().toLowerCase();renderGrimoire();});
 function renderGrimoire(){
-  const box=$("grimBox"); if(!box||!CFG.grimoire) return;
+  const box=$("grimBox"); if(!box||!CFG.grimoire){const g=$("grimsec"); if(g) g.hidden=true; return;}
   const prep=prepList(), max=prepMax(), maxLvl=prepMaxLvl();
   const used=state?!!state.swapUsed:false, free=state?!!state.swapFree:false, rem=state?!!state.swapRem:false;
   $("grimCount").textContent=`${prep.length}/${max} preparados · conjuros hasta nivel ${maxLvl}`;
@@ -770,7 +774,7 @@ function renderTree(){
       let subLines="";
       if(chAt&&base.length) subLines=`<small class="tsl1"><i>${esc(ch.n)}</i> ${esc(chAt.join(" · "))}</small>`;
       else if(optAt.length) subLines=optAt.map(o=>`<small class="tsl1 alt"><i>${esc(o.n)}</i> ${esc(o.lv[L].map(x=>x[0]).join(" · "))}</small>`).join("");
-      const tag=lv.sa?`Furtivo ${lv.sa}`:lv.art?`Planes ${lv.art.plans} · prep. ${lv.art.prep}`:lv.loh?`Manos ${lv.loh} · espacios ${(lv.sl||[]).join("/")}`:lv.sl?`Espacios ${lv.sl.join("/")}`:"";
+      const tag=lv.sa?`Furtivo ${lv.sa}`:lv.art?`Planes ${lv.art.plans} · prep. ${lv.art.prep}`:lv.rages?`Furias ${lv.rages} · +${lv.rageDmg}`:lv.loh?`Manos ${lv.loh} · espacios ${(lv.sl||[]).join("/")}`:lv.sl?`Espacios ${lv.sl.join("/")}`:"";
       const li=document.createElement("li"); li.className=`tn ${st}${sel?" sel":""}${lv.asi?" asi":""}${lv.branch?" br":""}`;
       li.innerHTML=`<button type="button" aria-pressed="${sel}"><span class="dot">${L}</span><span class="tx"><b>${esc(title)}</b>${base.length>1?`<small>+ ${esc(base.slice(1).join(" · "))}</small>`:""}${subLines}${tag?`<small class="tg">${esc(tag)}</small>`:""}</span></button>`;
       li.querySelector("button").onclick=()=>{tSel=[col.cls,L];renderTree();openTreeDet();};
@@ -809,7 +813,7 @@ function renderTreeDet(){
       <div class="tpick">${locked?`<p class="note">${fixed?"Subclase fija de este personaje.":`Ya estás en ${esc(cls)} ${col.sub.at} o más: para cambiarla, lo vemos en el chat.`}</p>`:o.id===chId?`<span class="chip adv">✓ Elegida para ${esc(cls)} ${col.sub.at}</span><button type="button" class="btn ghost" id="tUnpick">Quitar elección</button>`:`<button type="button" class="btn go" id="tPick">Elegir ${esc(o.n)}</button><span class="note">Queda reservada: sus rasgos se activan en la hoja al subir a ${esc(cls)} ${col.sub.at}.</span>`}</div></div>`;
     }
   }
-  const meta=[]; if(lv.art){meta.push(`Planes ${lv.art.plans} · Objetos ${lv.art.items}`);meta.push(`Trucos ${lv.art.cantrips} · Preparados ${lv.art.prep}`);} if(lv.sa) meta.push(`Ataque furtivo ${lv.sa}`); if(lv.fe) meta.push(`Marca gratis ${lv.fe} veces`); if(lv.prep) meta.push(`Preparados ${lv.prep}`); if(lv.loh) meta.push(`Imponer las manos ${lv.loh}`); if(lv.cd) meta.push(`Canalizar ×${lv.cd}`); if(lv.sl) meta.push(`Espacios ${lv.sl.map((n,i)=>`${n}×nv${i+1}`).join(" · ")}`);
+  const meta=[]; if(lv.art){meta.push(`Planes ${lv.art.plans} · Objetos ${lv.art.items}`);meta.push(`Trucos ${lv.art.cantrips} · Preparados ${lv.art.prep}`);} if(lv.sa) meta.push(`Ataque furtivo ${lv.sa}`); if(lv.fe) meta.push(`Marca gratis ${lv.fe} veces`); if(lv.rages) meta.push(`Furias ${lv.rages} · daño +${lv.rageDmg}`); if(lv.mastery) meta.push(`Maestría ${lv.mastery} armas`); if(lv.prep) meta.push(`Preparados ${lv.prep}`); if(lv.loh) meta.push(`Imponer las manos ${lv.loh}`); if(lv.cd) meta.push(`Canalizar ×${lv.cd}`); if(lv.sl) meta.push(`Espacios ${lv.sl.map((n,i)=>`${n}×nv${i+1}`).join(" · ")}`);
   if(meta.length) h+=`<div class="acrow">${meta.map(m=>`<span>${esc(m)}</span>`).join("")}</div>`;
   if(st==="nxt"){
     const can=CFG.levelUp&&(CFG.levelUp.defs[cls]||{})[L];

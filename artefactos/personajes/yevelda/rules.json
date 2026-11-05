@@ -1,0 +1,234 @@
+{
+ "_meta": {
+  "fuente": "📖 Manual del Jugador D&D 2024 (Notion, transcripción PHB 2024 Devir)",
+  "paginas": {
+   "Bárbaro": "3a162efd-3d4a-816e-932c-c1e4467faa3c",
+   "Cap. 2 Creación de personajes": "3a162efd-3d4a-81c1-8366-fc54bd12afc3",
+   "Cap. 4 Orígenes": "3a262efd-3d4a-816f-b335-f2fc5f7c5631",
+   "Cap. 5 Dotes": "3a262efd-3d4a-810b-ba92-f08bd06d1fb1",
+   "Cap. 6 Equipo": "3a362efd-3d4a-81a3-9719-d43b86bedcea"
+  },
+  "tipo_texto": "literal salvo donde se marca 'resumen'",
+  "fecha_consulta": "2026-11-04"
+ },
+ "barbaro": {
+  "nivel1": {
+   "Furia": {
+    "tipo": "literal",
+    "texto": "Puedes imbuirte de un poder primigenio llamado furia, que te otorga una fuerza y resistencia extraordinarias. Puedes dejarte llevar por ella como acción adicional si no llevas puesta una armadura pesada.\n\nPuedes dejarte llevar por la furia tantas veces como se indica para tu nivel de bárbaro en la columna \"N.º de furias\" de la tabla \"Rasgos de bárbaro\". Recuperas uno de los usos gastados tras finalizar un descanso corto y todos tras finalizar un descanso largo.\n\nMientras estés enfurecido, usa las siguientes reglas.\n\nResistencia al daño. Tienes resistencia al daño contundente, cortante y perforante.\n\nDaño por furia. Cuando llevas a cabo un ataque que use la Fuerza (ya sea con un arma o un ataque sin armas) y causas daño al objetivo, obtienes un bonificador al daño que aumenta conforme subes de nivel de bárbaro, como se muestra en la columna \"Daño por furia\" de la tabla \"Rasgos de bárbaro\".\n\nVentaja en Fuerza. Tienes ventaja en las pruebas de Fuerza y en las tiradas de salvación de Fuerza.\n\nSin concentración ni conjuros. No puedes mantener la concentración ni lanzar conjuros.\n\nDuración. La furia dura hasta el final de tu siguiente turno y termina antes si te pones una armadura pesada o recibes el estado de incapacitado. Si la furia sigue activa en tu siguiente turno, puedes prolongarla otro asalto de una de las siguientes formas:\n- Haces una tirada de ataque contra un enemigo.\n- Obligas a un enemigo a hacer una tirada de salvación.\n- Empleas una acción adicional para prolongar tu furia.\n\nCada vez que prolongues la furia, durará hasta el final de tu siguiente turno. Puedes mantener una furia hasta 10 minutos.",
+    "nivel1_valores": {
+     "usos": 2,
+     "daño_por_furia": "+2"
+    }
+   },
+   "Defensa sin armadura": {
+    "tipo": "literal",
+    "texto": "Mientras no lleves armadura alguna, tu clase de armadura base será igual a 10 más tus modificadores por Destreza y Constitución. Obtienes este beneficio aunque lleves un escudo."
+   },
+   "Maestría con armas": {
+    "tipo": "literal",
+    "texto": "Tu entrenamiento con armas te permite utilizar las propiedades de maestría con dos tipos de armas cuerpo a cuerpo sencillas o marciales de tu elección, como las hachas a dos manos y las hachas de mano. Tras finalizar un descanso largo, puedes llevar a cabo ejercicios con armas y cambiar una de dichas elecciones.\n\nCuando alcances ciertos niveles de bárbaro, adquirirás la capacidad de usar las propiedades de maestría con más tipos de armas, como se muestra en la columna \"Maestría con armas\" de la tabla \"Rasgos de bárbaro\".",
+    "nota": "El texto dice 'armas cuerpo a cuerpo'; un arco corto no entraría en esta elección según la transcripción."
+   }
+  },
+  "nivel2": {
+   "Ataque temerario": {
+    "tipo": "literal",
+    "texto": "Puedes abandonar por completo tu defensa para atacar con una mayor fiereza. Cuando vayas a realizar la primera tirada de ataque de tu turno, puedes decidir atacar temerariamente. Si lo haces, tendrás ventaja en las tiradas de ataque que utilicen la Fuerza hasta el principio de tu siguiente turno, pero las tiradas de ataque contra ti también tendrán ventaja durante ese tiempo."
+   },
+   "Sentir el peligro": {
+    "tipo": "literal",
+    "nombre_devir": "Sentir el peligro",
+    "texto": "Eres capaz de percibir de forma casi sobrenatural cuándo las cosas no son como deberían. Gracias a ello, se te da bien evitar el peligro. Tienes ventaja en las tiradas de salvación de Destreza salvo que tengas el estado de incapacitado."
+   }
+  },
+  "nivel3": {
+   "Conocimiento primigenio": {
+    "tipo": "literal",
+    "nombre_devir": "Conocimiento primigenio",
+    "texto": "Ganas competencia en otra habilidad de tu elección de la lista de habilidades disponibles para los bárbaros en el nivel 1.\n\nAdemás, mientras estés enfurecido, puedes canalizar el poder primigenio cuando intentes determinadas tareas. Siempre que hagas una prueba de característica con una de las siguientes habilidades, podrás hacerla como una prueba de Fuerza incluso si normalmente utiliza otra característica: Acrobacias, Intimidación, Percepción, Sigilo o Supervivencia. Cuando utilizas esta capacidad, tu Fuerza representa el poder primigenio que fluye por ti y agudiza tu agilidad, porte y sentidos.",
+    "habilidades_elegibles": [
+     "Atletismo",
+     "Intimidación",
+     "Naturaleza",
+     "Percepción",
+     "Supervivencia",
+     "Trato con animales"
+    ],
+    "habilidades_como_fuerza_enfurecido": [
+     "Acrobacias",
+     "Intimidación",
+     "Percepción",
+     "Sigilo",
+     "Supervivencia"
+    ]
+   }
+  },
+  "atributos_basicos": {
+   "Característica principal": "Fuerza",
+   "Dado de puntos de golpe": "1d12 por nivel de bárbaro",
+   "Competencias en tiradas de salvación": "Fuerza y Constitución",
+   "Competencias en habilidades": "Elige dos: Atletismo, Intimidación, Naturaleza, Percepción, Supervivencia o Trato con animales",
+   "Competencias con armas": "Armas sencillas y marciales",
+   "Entrenamiento con armaduras": "Armaduras ligeras y medias y escudos",
+   "Equipo inicial": "Elige A o B: (A) hacha a dos manos, 4 hachas de mano, paquete de explorador y 15 po, o (B) 75 po"
+  }
+ },
+ "especie_orco": {
+  "tipo": "literal",
+  "intro": "Los orcos deben su creación a Gruumsh, un dios poderoso que vagaba por los amplios espacios abiertos del Plano Material. Gruumsh concedió dones a sus hijos para ayudarles a recorrer grandes llanuras, extensas cavernas y mares turbulentos para enfrentarse a los monstruos que en ellos acechaban. Incluso aunque se consagren a otros dioses, los orcos conservan los dones de Gruumsh: la resistencia, la determinación y la capacidad de ver en la oscuridad.\n\nPor lo general, los orcos son altos y fornidos. Su piel es de color gris y tienen orejas muy puntiagudas y unos colmillos inferiores prominentes. A los orcos jóvenes de algunos mundos se les habla de los grandes viajes y penurias de sus antepasados. Muchos de estos orcos, inspirados por esos relatos, se preguntan cuándo convocará Gruumsh para igualar las hazañas heroicas de antaño y demostrar que son merecedores de su favor. Otros orcos, sin embargo, prefieren dejar atrás esas historias y labrar su propio camino.",
+  "Tipo de criatura": "humanoide",
+  "Tamaño": "Mediano (entre 1,8 y 2,1 m de altura)",
+  "Velocidad": "9 m (30 ft)",
+  "rasgos": {
+   "Aguante incansable": "Cuando tus puntos de golpe se reducen a 0 pero no mueres inmediatamente, puedes recuperar 1 punto de golpe. Cuando uses este atributo, no podrás volver a hacerlo hasta que finalices un descanso largo.",
+   "Descarga de adrenalina": "Puedes llevar a cabo la acción de correr como acción adicional. Cuando lo hagas, obtendrás una cantidad de puntos de golpe temporales igual a tu bonificador por competencia.\n\nPuedes usar este atributo una cantidad de veces igual a tu bonificador por competencia y recuperas todos los usos tras finalizar un descanso corto o largo.",
+   "Visión en la oscuridad": "Tienes visión en la oscuridad hasta 36 m (120 ft)."
+  },
+  "esperanza_de_vida": "No se indica excepción para los orcos; aplica la general del capítulo: unos 80 años.",
+  "notas": [
+   "Nombre Devir en Notion: 'Descarga de adrenalina' (no 'Subidón de adrenalina').",
+   "La página de Notion NO contiene ninguna sección de 'Herencia mixta' ni de semiorco; no hay nada que copiar. Las especies 2024 son solo las diez listadas (aasimar, dracónido, elfo, enano, gnomo, goliat, humano, mediano, orco, tiefling)."
+  ]
+ },
+ "trasfondo_soldado": {
+  "tipo": "literal",
+  "Puntuaciones de característica": "Fuerza, Destreza, Constitución",
+  "Dote": "Atacante salvaje (consulta el capítulo 5)",
+  "Competencias en habilidades": "Atletismo e Intimidación",
+  "Competencia con herramientas": "elige un tipo de juego (consulta el capítulo 6)",
+  "Equipo": {
+   "opcion_A": "lanza, arco corto, 20 flechas, aljaba, juego (el mismo que arriba), útiles de sanador, ropas de viaje y 14 po",
+   "opcion_B": "50 po"
+  },
+  "relato": "Comenzaste a entrenarte para la guerra nada más llegar a la edad adulta y tienes pocos recuerdos preciados de tu vida anterior a tomar las armas. Luchar es parte de tu identidad y a veces realizas sin darte cuenta los primeros ejercicios básicos de combate que aprendiste. En algún momento, sacaste partido a tu entrenamiento en el campo de batalla y protegiste el reino.",
+  "regla_puntuaciones": "El trasfondo indica tres puntuaciones de característica de tu personaje. Aumenta una de ellas en 2 y otra en 1, o aumenta las tres en 1. Estos aumentos no pueden hacer que una puntuación sea superior a 20."
+ },
+ "dote_atacante_salvaje": {
+  "tipo": "literal",
+  "categoria": "Dote de origen",
+  "texto": "Te has preparado para asestar golpes especialmente dañinos. Una vez por turno, cuando aciertes a un objetivo con un arma, podrás tirar dos veces los dados de daño del arma y usar el resultado que prefieras contra el objetivo."
+ },
+ "equipo": {
+  "maestria": {
+   "tipo": "literal",
+   "Hender": "Si aciertas a una criatura con una tirada de ataque cuerpo a cuerpo con esta arma, puedes hacer una tirada de ataque cuerpo a cuerpo con el arma contra una segunda criatura que se encuentre a 1,5 m o menos de la primera y que también esté a tu alcance. Si aciertas, la segunda criatura sufrirá el daño del arma, pero no sumarás tu modificador por característica a ese daño salvo que el modificador sea negativo. Solo puedes hacer este ataque extra una vez por turno.",
+   "Molestar": "Si aciertas a una criatura con esta arma y le causas daño, tendrás ventaja en tu siguiente tirada de ataque contra esa criatura antes del final de tu siguiente turno.",
+   "Ralentizar": "Si aciertas a una criatura con esta arma y le causas daño, puedes reducir su velocidad en 3 m hasta el principio de tu siguiente turno. Si la criatura sufre más de un ataque con armas que tengan esta propiedad, la reducción de su velocidad no superará los 3 m.",
+   "Debilitar": "Si aciertas a una criatura con esta arma, tendrá desventaja en su próxima tirada de ataque antes del principio de tu siguiente turno.",
+   "regla_general": "Todas las armas tienen una propiedad de maestría que solo pueden utilizar los personajes que tengan un rasgo que les permita usar la propiedad, como Maestría con armas."
+  },
+  "armas": {
+   "tipo": "literal (filas de la tabla 'Armas')",
+   "columnas": [
+    "Nombre",
+    "Daño",
+    "Propiedades",
+    "Maestría",
+    "Peso",
+    "Precio"
+   ],
+   "Hacha a dos manos": {
+    "categoria": "Armas cuerpo a cuerpo marciales",
+    "dano": "1d12 cortante",
+    "propiedades": "A dos manos, pesada",
+    "maestria": "Hender",
+    "peso": "3,5 kg",
+    "precio": "30 po"
+   },
+   "Hacha de mano": {
+    "categoria": "Armas cuerpo a cuerpo sencillas",
+    "dano": "1d6 cortante",
+    "propiedades": "Arrojadiza (alcance 6/18), ligera",
+    "maestria": "Molestar",
+    "peso": "1 kg",
+    "precio": "5 po"
+   },
+   "Jabalina": {
+    "categoria": "Armas cuerpo a cuerpo sencillas",
+    "dano": "1d6 perforante",
+    "propiedades": "Arrojadiza (alcance 9/36)",
+    "maestria": "Ralentizar",
+    "peso": "1 kg",
+    "precio": "5 pp"
+   },
+   "Lanza": {
+    "categoria": "Armas cuerpo a cuerpo sencillas",
+    "dano": "1d6 perforante",
+    "propiedades": "Arrojadiza (alcance 6/18), versátil (1d8)",
+    "maestria": "Debilitar",
+    "peso": "1,5 kg",
+    "precio": "1 po"
+   },
+   "Arco corto": {
+    "categoria": "Armas a distancia sencillas",
+    "dano": "1d6 perforante",
+    "propiedades": "A dos manos, munición (alcance 24/96; flecha)",
+    "maestria": "Molestar",
+    "peso": "1 kg",
+    "precio": "25 po"
+   }
+  },
+  "propiedades_armas": {
+   "tipo": "literal",
+   "A dos manos": "Estas armas requieren el uso de las dos manos.",
+   "Alcance": "El alcance de un arma a distancia aparece entre paréntesis después de las propiedades \"arrojadiza\" o \"munición\". El alcance muestra dos números: el primero es el alcance normal y el segundo es el alcance largo, ambos indicados en metros. Cuando ataques a un objetivo que esté más allá del alcance normal, tendrás desventaja en la tirada de ataque, y no podrás atacar a un objetivo que esté más allá del alcance largo.",
+   "Arrojadiza": "Si un arma tiene esta propiedad, puedes lanzarla para realizar un ataque a distancia y puedes desenvainar esa arma como parte del ataque. Si se trata de un arma cuerpo a cuerpo, las tiradas de ataque y de daño usan el mismo modificador por característica que usas para hacer ataques cuerpo a cuerpo con esa arma.",
+   "Ligera": "Cuando lleves a cabo la acción de atacar en tu turno y ataques con un arma ligera, podrás hacer un ataque extra como acción adicional más adelante en el mismo turno. Ese ataque extra debe hacerse con otra arma ligera y no sumarás tu modificador por característica al daño del ataque extra salvo que el modificador sea negativo. (texto parcial: la transcripción sigue con un ejemplo)",
+   "Munición": "Solo puedes realizar un ataque a distancia usando un arma con esta propiedad si tienes munición para ella. El tipo de munición necesaria se especifica junto con el alcance del arma. Cada ataque gasta una unidad de munición. Extraer la munición forma parte del ataque (necesitas una mano libre para cargar un arma de una mano). Tras un combate, puedes dedicar 1 minuto a recuperar la mitad de la munición (redondeada hacia abajo) que hayas usado en él.",
+   "Pesada": "Tendrás desventaja en las tiradas de ataque con un arma pesada si es un arma cuerpo a cuerpo y tu puntuación de Fuerza no llega a 13 o si es un arma a distancia y tu puntuación de Destreza no llega a 13.",
+   "Versátil": "Estas armas pueden utilizarse con una o dos manos. Tras esta propiedad aparece entre paréntesis un valor de daño. El arma causa ese daño cuando se usa a dos manos para hacer un ataque cuerpo a cuerpo."
+  },
+  "municion": {
+   "tipo": "literal",
+   "Flechas": {
+    "cantidad": 20,
+    "recipiente": "Aljaba",
+    "peso": "0,5 kg",
+    "precio": "1 po"
+   },
+   "Aljaba": {
+    "precio": "1 po",
+    "peso": "0,5 kg",
+    "texto": "En una aljaba caben hasta 20 flechas."
+   },
+   "texto_general": "Las armas que tienen la propiedad de munición requieren munición. La descripción del arma especifica el tipo de munición que utiliza. La tabla \"Munición\" indica los diferentes tipos y la cantidad que obtienes cuando los compras. También incluye el objeto que se usa normalmente para almacenar cada tipo, que debe comprarse por separado."
+  },
+  "utiles_de_sanador": {
+   "tipo": "literal",
+   "precio": "5 po",
+   "peso": "1,5 kg",
+   "texto": "Los útiles de sanador tienen diez usos. Como acción de utilizar, puedes gastar uno de ellos para estabilizar a una criatura inconsciente que tenga 0 puntos de golpe sin necesidad de hacer una prueba de Sabiduría (Medicina).",
+   "nota": "Devir lo llama 'útiles de sanador' (no 'kit de sanador')."
+  },
+  "juego_naipes": {
+   "tipo": "literal (entrada 'Juego' de herramientas)",
+   "caracteristica": "Sabiduría",
+   "peso": "—",
+   "utilizar": "distinguir si alguien hace trampas (CD 10) o ganar la partida (CD 20)",
+   "variantes": "ajedrez dragón (1 po), apuesta de los tres dragones (1 po), dados (1 pp), naipes (5 pp)",
+   "naipes_precio": "5 pp"
+  },
+  "equipo_inicial_barbaro_A": {
+   "tipo": "literal",
+   "texto": "hacha a dos manos, 4 hachas de mano, paquete de explorador y 15 po",
+   "Paquete de explorador": {
+    "precio": "10 po",
+    "texto": "Un paquete de explorador contiene los siguientes objetos: 10 antorchas, cantimplora, cuerda, 2 frascos de aceite, mochila, petate, raciones para 10 días y yesquero."
+   }
+  }
+ },
+ "cap2_puntos_de_golpe": {
+  "tipo": "literal (citas breves)",
+  "nivel1": "Tu clase y modificador por Constitución determinan tus puntos de golpe máximos en el nivel 1, como se muestra en la tabla \"Puntos de golpe en el nivel 1 por clase\". — Bárbaro: 12 + modificador por Con",
+  "subir_de_nivel": "Ajustar los puntos de golpe y los dados de golpe. Cada vez que subas un nivel, obtendrás un dado de golpe adicional. Tira ese dado, suma tu modificador por Constitución al resultado y añade el total (mínimo de 1) a tus puntos de golpe máximos. En vez de tirar, puedes utilizar el valor establecido que se muestra en la tabla \"Puntos de golpe establecidos por clase\".",
+  "valor_establecido_barbaro": "7 + modificador por Con",
+  "nota": "Encontrado en la sección 'Subir de nivel' de la página del capítulo 2 (paso 2), no bajo un encabezado propio 'Puntos de golpe'."
+ },
+ "notas": [
+  "Nombres Devir que difieren del encargo: 'Sentir el peligro', 'Conocimiento primigenio', 'Descarga de adrenalina', 'útiles de sanador'. Se usan los de Notion.",
+  "Nombres en inglés no están en Notion para ningún elemento; no se incluyen aquí.",
+  "Unidades: la transcripción está solo en metros; los pies entre paréntesis en Velocidad y Visión en la oscuridad son conversión propia (9 m = 30 ft, 36 m = 120 ft).",
+  "No encontrado: sección 'Herencia mixta'/semiorco en Cap. 4 (no existe en la página)."
+ ]
+}

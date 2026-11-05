@@ -426,3 +426,5 @@ details.ref{border:1.5px solid var(--line-2);border-radius:10px}
 
 .tpick{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-top:4px}
 .ttab.pick{border-color:var(--good);color:var(--good)}
+
+@media (min-width:760px){.stats.five{grid-template-columns:repeat(5,minmax(0,1fr))}}

@@ -20,7 +20,9 @@ HUB_HTML = HUB_HTML.replace(
     ">Hoja-artefacto<", ">Hoja interactiva<").replace(
     "Toca una carta para abrir la hoja. Las hojas-artefacto guardan estado, equipo y oro; las de GitHub son el registro anterior hasta migrarlas.",
     "Toca una carta para abrir la hoja aquí mismo; cada hoja tiene «← Mesa» para volver. Las interactivas guardan estado, equipo y oro; las de GitHub se abren aparte hasta migrarlas.")
-assert HUB_HTML.count('href="#/') == 2
+HUB_HTML = HUB_HTML.replace('href="https://luippolhrm.github.io/diendi_characters/lucho/yevelda.html" target="_blank" rel="noopener"', 'href="#/yevelda"').replace('<a class="pc ext" href="#/yevelda"', '<a class="pc " href="#/yevelda"')
+HUB_HTML = HUB_HTML.replace('<span>Orca · Bárbara 1</span><span class="where">GitHub · por migrar</span>', '<span>Orca · Bárbara 1 · Soldado</span><span class="where">Hoja interactiva</span>')
+assert HUB_HTML.count('href="#/') == 3 and 'por migrar</span></a>' in HUB_HTML
 
 # ---------- sheets ----------
 SHEET_CSS = rd(U + "base.css") + rd(U + "sheet.css") + """
@@ -36,6 +38,7 @@ chars = {
     "usoryn": {"cfg": rd(UC + "cfg.js") + "\n" + rd(UC + "tree.js"), "css": "", "body": BODY},
     "kiyaj": {"cfg": rd(K + "cfg.js") + "\n" + rd(K + "tree.js"), "css": rd(K + "theme.css"),
               "body": BODY.replace("Grimorio del explorador", "Grimorio del paladín")},
+    "yevelda": {"cfg": rd(HERE + "/personajes/yevelda/cfg.js") + "\n" + rd(HERE + "/personajes/yevelda/tree.js"), "css": rd(HERE + "/personajes/yevelda/theme.css"), "body": BODY},
 }
 ch_js = ",\n".join(
     f'{k}:{{css:{js(v["css"])},body:{js(v["body"])},cfg:function(){{\n{v["cfg"]}\n}}}}' for k, v in chars.items())

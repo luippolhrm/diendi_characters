@@ -1,0 +1,424 @@
+{
+ "cls": "Bárbaro",
+ "tone": "ruby",
+ "max": 20,
+ "sub": {
+  "at": 3,
+  "label": "Senda primaria",
+  "chosen": null,
+  "opts": [
+   {
+    "id": "berserker",
+    "n": "Senda del berserker",
+    "en": "Path of the Berserker",
+    "tag": "Canaliza la furia en una violencia indómita.",
+    "lv": {
+     "3": [
+      [
+       "Frenesí",
+       "Si usas Ataque temerario enfurecido, el primer objetivo que aciertes en tu turno con un ataque basado en Fuerza sufre daño adicional: tantos d6 como tu bonificación de daño por furia (2d6 en nv 1–8, 3d6 nv 9–15, 4d6 nv 16+), del mismo tipo que el arma."
+      ]
+     ],
+     "6": [
+      [
+       "Furia irracional",
+       "Inmunidad a los estados Asustado y Hechizado mientras estés enfurecido; si ya los tienes al enfurecerte, terminan."
+      ]
+     ],
+     "10": [
+      [
+       "Represalia",
+       "Cuando recibas daño de una criatura a 1,5 m (5 ft) o menos, reacción: un ataque cuerpo a cuerpo contra ella con arma o ataque sin armas."
+      ]
+     ],
+     "14": [
+      [
+       "Presencia intimidante",
+       "Acción adicional: cada criatura de tu elección en una emanación de 9 m (30 ft) hace salvación de Sabiduría (CD 8 + mod. Fuerza + bonif. competencia) o queda Asustada 1 minuto (repite la salvación al final de cada uno de sus turnos). 1 uso por descanso largo, o gasta un uso de Furia (sin acción) para recuperarlo."
+      ]
+     ]
+    }
+   },
+   {
+    "id": "corazon_salvaje",
+    "n": "Senda del corazón salvaje",
+    "en": "Path of the Wild Heart",
+    "tag": "Camina en comunión con el mundo animal.",
+    "lv": {
+     "3": [
+      [
+       "Furia de lo salvaje",
+       "Al enfurecerte eliges una opción: Águila (puedes hacer Destrabarse y Correr como parte de esa acción adicional, y luego como acción adicional mientras dure), Lobo (tus aliados tienen ventaja en ataques contra enemigos a 1,5 m (5 ft) o menos de ti) u Oso (resistencia a todo el daño salvo fuerza, necrótico, psíquico y radiante)."
+      ],
+      [
+       "Portavoz de los animales",
+       "Puedes lanzar Hablar con los animales y Sentidos de la bestia solo como rituales. Sabiduría es tu aptitud mágica."
+      ]
+     ],
+     "6": [
+      [
+       "Aspecto de lo salvaje",
+       "Eliges una opción, cambiable tras un descanso largo: Búho (visión en la oscuridad 18 m (60 ft), o +18 m si ya la tienes), Pantera (velocidad trepando igual a tu velocidad) o Salmón (velocidad nadando igual a tu velocidad)."
+      ]
+     ],
+     "10": [
+      [
+       "Hablante de la naturaleza",
+       "Puedes lanzar Comunión con la naturaleza solo como ritual. Sabiduría es tu aptitud mágica."
+      ]
+     ],
+     "14": [
+      [
+       "Poder de lo salvaje",
+       "Al enfurecerte eliges una opción: Carnero (al acertar un ataque cuerpo a cuerpo a una criatura Grande o menor puedes dejarla Derribada), Halcón (velocidad volando igual a tu velocidad si no llevas armadura) o León (enemigos a 1,5 m (5 ft) o menos tienen desventaja en ataques contra otros objetivos que no seas tú u otro bárbaro con esta opción)."
+      ]
+     ]
+    }
+   },
+   {
+    "id": "arbol_mundo",
+    "n": "Senda del Árbol del Mundo",
+    "en": "Path of the World Tree",
+    "tag": "Localiza las raíces y las ramas del multiverso.",
+    "lv": {
+     "3": [
+      [
+       "Vitalidad del árbol",
+       "Oleada de vitalidad: al enfurecerte ganas PG temporales iguales a tu nivel de bárbaro. Fuerza revitalizante: al inicio de cada turno enfurecido, otra criatura a 3 m (10 ft) o menos gana PG temporales = tantos d6 como tu bonificación de daño por furia; desaparecen al terminar la furia."
+      ]
+     ],
+     "6": [
+      [
+       "Ramas del árbol",
+       "Reacción cuando una criatura visible empieza su turno a 9 m (30 ft) o menos mientras estás enfurecido: salvación de Fuerza (CD 8 + mod. Fuerza + bonif. competencia) o se teletransporta a un espacio libre visible a 1,5 m (5 ft) de ti (o el más cercano); luego puedes reducir su velocidad a 0 hasta el final del turno actual."
+      ]
+     ],
+     "10": [
+      [
+       "Raíces apaleadoras",
+       "En tu turno, +3 m (10 ft) de alcance con armas cuerpo a cuerpo pesadas o versátiles. Al acertar con una de ellas puedes activar la maestría Derribar o Empujar además de otra propiedad de maestría distinta de esa arma."
+      ]
+     ],
+     "14": [
+      [
+       "Viajar por el árbol",
+       "Al enfurecerte y como acción adicional mientras dure: teletransporte de hasta 18 m (60 ft) a un espacio libre visible. Una vez por furia, el alcance sube a 45 m (150 ft) y puedes llevar hasta 6 criaturas voluntarias a 3 m (10 ft) o menos, que aparecen a 3 m (10 ft) o menos de tu destino."
+      ]
+     ]
+    }
+   },
+   {
+    "id": "fanatico",
+    "n": "Senda del fanático",
+    "en": "Path of the Zealot",
+    "tag": "Expresa tu furia en una eufórica unión con una divinidad.",
+    "lv": {
+     "3": [
+      [
+       "Furia divina",
+       "En cada turno enfurecido, la primera criatura que aciertes con arma o ataque sin armas sufre 1d6 + la mitad de tu nivel de bárbaro (redondeando hacia abajo) de daño adicional necrótico o radiante (eliges cada vez)."
+      ],
+      [
+       "Guerrero de los dioses",
+       "Reserva de 4d12 para curarte: acción adicional, gastas dados, los tiras y recuperas esos PG. Se recarga con descanso largo. La reserva sube a 5 dados en nv 6, 6 en nv 12 y 7 en nv 17."
+      ]
+     ],
+     "6": [
+      [
+       "Foco fanático",
+       "Una vez por furia, si fallas una salvación puedes repetirla con un bonificador igual a tu bonificación de daño por furia; usas el nuevo resultado."
+      ]
+     ],
+     "10": [
+      [
+       "Presencia ferviente",
+       "Acción adicional: hasta 10 criaturas de tu elección a 18 m (60 ft) o menos ganan ventaja en tiradas de ataque y salvación hasta el inicio de tu siguiente turno. 1 uso por descanso largo, o gasta un uso de Furia (sin acción) para recuperarlo."
+      ]
+     ],
+     "14": [
+      [
+       "Furia de los dioses",
+       "Al enfurecerte, forma de guerrero divino durante 1 minuto o hasta llegar a 0 PG (1 uso por descanso largo): resistencia a daño necrótico, psíquico y radiante; velocidad volando igual a tu velocidad y puedes levitar; reacción cuando una criatura a 9 m (30 ft) o menos vaya a caer a 0 PG: gastas un uso de Furia y sus PG pasan a ser igual a tu nivel de bárbaro."
+      ]
+     ]
+    }
+   }
+  ]
+ },
+ "levels": {
+  "1": {
+   "f": [
+    [
+     "Defensa sin armadura",
+     "Sin armadura, tu CA base = 10 + mod. Destreza + mod. Constitución. Funciona aunque lleves escudo."
+    ],
+    [
+     "Furia",
+     "Acción adicional (sin armadura pesada). Mientras dura: resistencia a daño contundente, cortante y perforante; +2 al daño de ataques con Fuerza (sube por nivel, columna Daño por furia); ventaja en pruebas y salvaciones de Fuerza; no puedes concentrarte ni lanzar conjuros. Dura hasta el final de tu siguiente turno; se prolonga un asalto si atacas, obligas a un enemigo a salvar o usas acción adicional; máximo 10 minutos. Termina si te pones armadura pesada o quedas Incapacitado. 2 usos; recuperas 1 con descanso corto y todos con descanso largo."
+    ],
+    [
+     "Maestría con armas",
+     "Usas las propiedades de maestría de 2 tipos de armas cuerpo a cuerpo sencillas o marciales (p. ej. hacha a dos manos y hacha de mano). Tras un descanso largo puedes cambiar una elección."
+    ]
+   ],
+   "rages": 2,
+   "rageDmg": 2,
+   "mastery": 2
+  },
+  "2": {
+   "f": [
+    [
+     "Ataque temerario",
+     "Al hacer la primera tirada de ataque de tu turno puedes atacar temerariamente: ventaja en las tiradas de ataque con Fuerza hasta el inicio de tu siguiente turno, pero las tiradas de ataque contra ti también tienen ventaja."
+    ],
+    [
+     "Sentir el peligro",
+     "Ventaja en las tiradas de salvación de Destreza salvo que tengas el estado Incapacitado."
+    ]
+   ],
+   "rages": 2,
+   "rageDmg": 2,
+   "mastery": 2
+  },
+  "3": {
+   "f": [
+    [
+     "Conocimiento primigenio",
+     "Competencia en una habilidad más de la lista de bárbaro (Atletismo, Intimidación, Naturaleza, Percepción, Supervivencia o Trato con animales). Enfurecido, puedes hacer pruebas de Acrobacias, Intimidación, Percepción, Sigilo o Supervivencia como pruebas de Fuerza."
+    ],
+    [
+     "Subclase de bárbaro",
+     ""
+    ]
+   ],
+   "rages": 3,
+   "rageDmg": 2,
+   "mastery": 2,
+   "branch": 1,
+   "subl": 3
+  },
+  "4": {
+   "f": [
+    [
+     "Mejora de característica",
+     "Dote Mejora de característica u otra dote para la que cumplas condiciones. Se repite en los niveles 8, 12 y 16."
+    ]
+   ],
+   "rages": 3,
+   "rageDmg": 2,
+   "mastery": 3,
+   "asi": 1
+  },
+  "5": {
+   "f": [
+    [
+     "Ataque adicional",
+     "Cuando lleves a cabo la acción de atacar en tu turno, haces 2 ataques en lugar de 1."
+    ],
+    [
+     "Movimiento rápido",
+     "Tu velocidad aumenta 3 m (10 ft) si no llevas armadura pesada."
+    ]
+   ],
+   "rages": 3,
+   "rageDmg": 2,
+   "mastery": 3
+  },
+  "6": {
+   "f": [
+    [
+     "Rasgo de subclase",
+     ""
+    ]
+   ],
+   "rages": 4,
+   "rageDmg": 2,
+   "mastery": 3,
+   "subl": 6
+  },
+  "7": {
+   "f": [
+    [
+     "Instinto salvaje",
+     "Ventaja en las tiradas de iniciativa."
+    ],
+    [
+     "Salto instintivo",
+     "Como parte de la acción adicional de enfurecerte, puedes moverte hasta la mitad de tu velocidad."
+    ]
+   ],
+   "rages": 4,
+   "rageDmg": 2,
+   "mastery": 3
+  },
+  "8": {
+   "f": [
+    [
+     "Mejora de característica",
+     "Dote Mejora de característica u otra dote para la que cumplas condiciones. Se repite en los niveles 8, 12 y 16."
+    ]
+   ],
+   "rages": 4,
+   "rageDmg": 2,
+   "mastery": 3,
+   "asi": 1
+  },
+  "9": {
+   "f": [
+    [
+     "Golpe brutal",
+     "Si usas Ataque temerario, puedes renunciar a la ventaja en una tirada de ataque basada en Fuerza (que no tenga desventaja). Si acierta: 1d10 de daño adicional del mismo tipo + un efecto: Golpe enérgico (empujas al objetivo 4,5 m (15 ft) en línea recta y puedes moverte hasta la mitad de tu velocidad hacia él sin provocar ataques de oportunidad) o Golpe ralentizador (su velocidad se reduce 4,5 m (15 ft) hasta el inicio de tu siguiente turno; solo el más reciente cuenta)."
+    ]
+   ],
+   "rages": 4,
+   "rageDmg": 3,
+   "mastery": 3
+  },
+  "10": {
+   "f": [
+    [
+     "Rasgo de subclase",
+     ""
+    ]
+   ],
+   "rages": 4,
+   "rageDmg": 3,
+   "mastery": 4,
+   "subl": 10
+  },
+  "11": {
+   "f": [
+    [
+     "Furia implacable",
+     "Si tus PG bajan a 0 enfurecido (sin morir en el acto), salvación de Constitución CD 10: si la superas, tus PG pasan a ser el doble de tu nivel de bárbaro. Cada uso posterior sube la CD en 5; vuelve a 10 tras un descanso corto o largo."
+    ]
+   ],
+   "rages": 4,
+   "rageDmg": 3,
+   "mastery": 4
+  },
+  "12": {
+   "f": [
+    [
+     "Mejora de característica",
+     "Dote Mejora de característica u otra dote para la que cumplas condiciones. Se repite en los niveles 8, 12 y 16."
+    ]
+   ],
+   "rages": 5,
+   "rageDmg": 3,
+   "mastery": 4,
+   "asi": 1
+  },
+  "13": {
+   "f": [
+    [
+     "Golpe brutal mejorado",
+     "Nuevas opciones de Golpe brutal: Golpe abrumador (el objetivo tiene desventaja en su siguiente salvación y no puede hacer ataques de oportunidad hasta el inicio de tu siguiente turno) y Golpe desgarrador (la próxima tirada de ataque de otra criatura contra el objetivo antes de tu siguiente turno gana +5; solo un bonificador por tirada)."
+    ]
+   ],
+   "rages": 5,
+   "rageDmg": 3,
+   "mastery": 4
+  },
+  "14": {
+   "f": [
+    [
+     "Rasgo de subclase",
+     ""
+    ]
+   ],
+   "rages": 5,
+   "rageDmg": 3,
+   "mastery": 4,
+   "subl": 14
+  },
+  "15": {
+   "f": [
+    [
+     "Furia persistente",
+     "Al tirar iniciativa puedes recuperar todos los usos de Furia (1 vez por descanso largo). Tu furia dura 10 minutos sin necesidad de prolongarla; solo termina si quedas Inconsciente (no solo Incapacitado) o te pones armadura pesada."
+    ]
+   ],
+   "rages": 5,
+   "rageDmg": 3,
+   "mastery": 4
+  },
+  "16": {
+   "f": [
+    [
+     "Mejora de característica",
+     "Dote Mejora de característica u otra dote para la que cumplas condiciones. Se repite en los niveles 8, 12 y 16."
+    ]
+   ],
+   "rages": 5,
+   "rageDmg": 4,
+   "mastery": 4,
+   "asi": 1
+  },
+  "17": {
+   "f": [
+    [
+     "Golpe brutal mejorado",
+     "El daño adicional de Golpe brutal sube a 2d10 y puedes aplicar 2 efectos diferentes de Golpe brutal en cada uso."
+    ]
+   ],
+   "rages": 6,
+   "rageDmg": 4,
+   "mastery": 4
+  },
+  "18": {
+   "f": [
+    [
+     "Poderío indómito",
+     "Si el resultado de una prueba o salvación de Fuerza es menor que tu puntuación de Fuerza, puedes usar la puntuación en su lugar."
+    ]
+   ],
+   "rages": 6,
+   "rageDmg": 4,
+   "mastery": 4
+  },
+  "19": {
+   "f": [
+    [
+     "Don épico",
+     "Dote de don épico u otra dote para la que cumplas condiciones. Se recomienda Don del ataque imparable."
+    ]
+   ],
+   "rages": 6,
+   "rageDmg": 4,
+   "mastery": 4
+  },
+  "20": {
+   "f": [
+    [
+     "Campeón primordial",
+     "Tus puntuaciones de Fuerza y Constitución aumentan en 4, hasta un máximo de 25."
+    ]
+   ],
+   "rages": 6,
+   "rageDmg": 4,
+   "mastery": 4
+  }
+ },
+ "coreTraits": {
+  "Característica principal": "Fuerza",
+  "Dado de puntos de golpe": "1d12 por nivel de bárbaro",
+  "Competencias en tiradas de salvación": "Fuerza y Constitución",
+  "Competencias en habilidades": "Elige dos: Atletismo, Intimidación, Naturaleza, Percepción, Supervivencia o Trato con animales",
+  "Competencias con armas": "Armas sencillas y marciales",
+  "Entrenamiento con armaduras": "Armaduras ligeras y medias y escudos",
+  "Equipo inicial": "Elige A o B: (A) hacha a dos manos, 4 hachas de mano, paquete de explorador y 15 po, o (B) 75 po"
+ },
+ "multiclass": "Obtienes los siguientes atributos de la tabla \"Atributos básicos de bárbaro\": dado de puntos de golpe, competencia con armas marciales y entrenamiento con escudos. Obtienes los rasgos de nivel 1 de bárbaro, que se muestran en la tabla \"Rasgos de bárbaro\".",
+ "notes": [
+  "Fuente: página Notion 🪓 Bárbaro (transcripción PHB 2024 Devir, pp. 51–56), editada 2026-07-19. Estado en Notion: clase completa, niveles 1–20 y 4 subclases.",
+  "Nombres en inglés de las sendas ('en'): la página solo trae español; el inglés es el nombre oficial PHB 2024 y NO está verificado en Notion.",
+  "Nombres Devir según Notion que difieren de los usados en el encargo: 'Sentir el peligro' (no 'Sentido del peligro'), 'Conocimiento primigenio' (no 'Conocimiento primario'). Se usan los de Notion.",
+  "Todos los niveles 1–20 traen al menos un rasgo en la tabla; no hay niveles sin rasgo. Niveles 6, 10 y 14 solo traen 'Rasgo de subclase'.",
+  "Columnas 'rages' (N.º de furias), 'rageDmg' (Daño por furia) y 'mastery' (Maestría con armas) copiadas tal cual de la tabla de Notion.",
+  "Golpe brutal mejorado aparece dos veces en la tabla (nv 13 y nv 17) con contenido distinto; se mantiene el nombre duplicado tal como lo trae Notion.",
+  "Para Yevelda (Orca, nivel 1) la subclase sigue ⏳ pendiente: 'chosen' queda en null.",
+  "Senda del corazón salvaje: los conjuros (Hablar con los animales, Sentidos de la bestia, Comunión con la naturaleza) no traen nombre en inglés en Notion.",
+  "La CD de la salvación de Furia implacable (nv 11) y la mención 'sin morir inmediatamente' están resumidas; el texto literal está en la página."
+ ]
+}
