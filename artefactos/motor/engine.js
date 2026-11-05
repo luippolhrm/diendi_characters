@@ -112,8 +112,9 @@ function renderStatic(){
   renderId();
   $("sProf").textContent=sg(PROF);
   $("sInit").textContent=sg(M.des+(CFG.initBonus||0));
-  if(CFG.casting){$("sDC").textContent=CFG.casting.dc; $("sDCn").textContent=`ataque ${sg(CFG.casting.atk)} · ${ABN[CFG.casting.ab]}`;
-  $("spL").textContent=`CD ${CFG.casting.dc} · ataque ${sg(CFG.casting.atk)} · ${ABN[CFG.casting.ab]}`;}
+  if(CFG.casting){const at=CFG.casting.atk==null?"":`ataque ${sg(CFG.casting.atk)} · `;$("sDC").textContent=CFG.casting.dc; $("sDCn").textContent=`${at}${ABN[CFG.casting.ab]}`;
+  $("spL").textContent=`CD ${CFG.casting.dc} · ${at}${ABN[CFG.casting.ab]}`;
+  if(CFG.casting.label){const l=$("sDC").parentElement.querySelector(".lbl"); if(l) l.textContent=CFG.casting.label;}}
   else{const sb=$("sDC").closest(".sbox"); if(sb){sb.hidden=true; sb.parentElement.classList.add("five");} $("spSlots").hidden=true; const g=$("grimsec"); if(g) g.hidden=true; $("spL").textContent=CFG.spellsLabel||"";}
   if(CFG.spellsTitle) $("hSp").firstChild.textContent=CFG.spellsTitle+" ";
   if(CFG.spellsNote!=null){const n=$("spBox").previousElementSibling; if(n&&n.classList.contains("note")) n.textContent=CFG.spellsNote;}
@@ -376,7 +377,7 @@ function srcInfo(k){
   if(m){const sl=curSlots().find(x=>x.lvl==m[1]);const left=sl?sl.max-(s.slots["l"+sl.lvl]||0):0;return {l:`Espacio nv. ${m[1]} (${left} libres)`,ok:left>0};}
   if(k==="ritual") return {l:"Ritual (+10 min, sin espacio)",ok:true};
   const r=CFG.resources.find(x=>x.id===k);
-  if(r){const left=r.max-s.res[r.id];return {l:`${r.short||r.n} (${left} libres)`,ok:left>0};}
+  if(r){const left=r.max-(s.res[r.id]||0);return {l:`${r.short||r.n} (${left} libres)`,ok:left>0,left};}
   return {l:k,ok:false};
 }
 function spSources(sp){
@@ -433,9 +434,10 @@ function updateSpells(){
   Object.values(spRows).forEach(({src,go,sp})=>{
     const keep=src.value; src.innerHTML="";
     const list=spSources(sp);
-    list.forEach(k=>{const i=srcInfo(k);const o=new Option(i.l,k);o.disabled=!i.ok;src.add(o);});
-    const firstOk=list.find(k=>srcInfo(k).ok);
-    src.value=(keep&&list.includes(keep)&&srcInfo(keep).ok)?keep:(firstOk||list[0]||"");
+    const okFor=k=>{const i=srcInfo(k);return i.ok&&(i.left==null||i.left>=(sp.cost||1));};
+    list.forEach(k=>{const i=srcInfo(k);const o=new Option(sp.cost>1&&i.left!=null?i.l.replace(" libres)",` libres · cuesta ${sp.cost})`):i.l,k);o.disabled=!okFor(k);src.add(o);});
+    const firstOk=list.find(okFor);
+    src.value=(keep&&list.includes(keep)&&okFor(keep))?keep:(firstOk||list[0]||"");
     const incap=condFlags().incap;
     go.disabled=!state||!firstOk||incap;
     go.title=incap?"Incapacitado: no puedes actuar":!firstOk?"Sin recursos":"";
@@ -446,7 +448,7 @@ function cast(sp,src,tg,who,whoEl){
   const s=state, patch={}, msg=[];
   const m=/^slot(\d)$/.exec(src);
   if(m){patch.slots={...s.slots,["l"+m[1]]:(s.slots["l"+m[1]]||0)+1};}
-  else if(src!=="ritual") patch.res={...s.res,[src]:s.res[src]+1};
+  else if(src!=="ritual") patch.res={...s.res,[src]:(s.res[src]||0)+(sp.cost||1)};
   let effects=[...(s.effects||[])], conc=s.conc||null;
   if(sp.conc&&conc){const old=effects.find(e=>e.id===conc);effects=effects.filter(e=>e.id!==conc);if(old)msg.push(`Termina ${old.n} (concentración).`);conc=null;}
   if(sp.dur){const id=String(Date.now());effects.push({id,sp:sp.id,n:sp.n,tg,who:tg==="self"?"":who,conc:!!sp.conc,dur:sp.dur});if(sp.conc)conc=id;}
