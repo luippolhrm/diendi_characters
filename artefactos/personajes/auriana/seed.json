@@ -1,0 +1,298 @@
+[
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "cota",
+  "data": {
+   "name": "Cota de malla",
+   "kind": "armor",
+   "equipped": true,
+   "acBase": 16,
+   "dexMax": 0,
+   "stealthDis": true,
+   "note": "Pesada · CA 16, no suma Destreza · Fue 13 ✔ (sin reducción de velocidad) · desventaja en Sigilo · 10 min ponérsela",
+   "order": 1
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "cavalier",
+  "data": {
+   "name": "Shield of the Cavalier +1",
+   "kind": "shield",
+   "equipped": true,
+   "magic": true,
+   "homebrew": true,
+   "acBonus": 3,
+   "note": "Escudo +2 y +1 mágico · no requiere sintonización · objeto no core, validado por el GM",
+   "order": 1
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "cavalier-golpe",
+  "data": {
+   "name": "Golpe con Shield of the Cavalier",
+   "kind": "weapon",
+   "equipped": true,
+   "masteryActive": false,
+   "ab": "fue",
+   "dmg": "1d6+1",
+   "dmgType": "contundente · mágico",
+   "note": "Empuja 3 m (10 ft); derriba si el objetivo es Pequeño o menor · GM",
+   "order": 1
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "maza",
+  "data": {
+   "name": "Maza",
+   "kind": "weapon",
+   "equipped": true,
+   "masteryActive": false,
+   "ab": "fue",
+   "dmg": "1d6",
+   "dmgType": "contundente",
+   "mastery": "Debilitar (Sap)",
+   "note": "Sencilla · sin Maestría con armas (la clériga no tiene el rasgo)",
+   "order": 2
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "simbolo",
+  "data": {
+   "name": "Símbolo sagrado · medallón del fénix",
+   "kind": "focus",
+   "equipped": true,
+   "locked": true,
+   "note": "Amuleto de plata con un fénix · canalizador divino · llave espiritual narrativa",
+   "order": 1
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "sanador",
+  "data": {
+   "name": "Útiles de sanador",
+   "kind": "gear",
+   "cat": "consumible",
+   "loc": "Cinturón",
+   "equipped": false,
+   "qty": 10,
+   "note": "10 usos · estabiliza a 0 PG sin prueba · los consume Médico de batalla",
+   "order": 1
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "herborista",
+  "data": {
+   "name": "Útiles de herborista",
+   "kind": "gear",
+   "cat": "herramienta",
+   "loc": "Cinturón",
+   "equipped": false,
+   "note": "Int +2 · identificar planta CD 10 · fabrica antitoxina, poción de curación, útiles de sanador, vela",
+   "order": 2
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "pocion",
+  "data": {
+   "name": "Poción de curación",
+   "kind": "gear",
+   "cat": "consumible",
+   "loc": "Cinturón",
+   "equipped": false,
+   "qty": 1,
+   "note": "Acción adicional: 2d4 + 2 PG · beberla o dársela a alguien a 1,5 m · no es conjuro (sin Discípulo)",
+   "order": 3
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "antitoxina",
+  "data": {
+   "name": "Antitoxina",
+   "kind": "gear",
+   "cat": "consumible",
+   "loc": "Cinturón",
+   "equipped": false,
+   "qty": 1,
+   "note": "Acción adicional: ventaja en salvaciones contra Envenenado 1 h",
+   "order": 4
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "aguabendita",
+  "data": {
+   "name": "Agua bendita",
+   "kind": "gear",
+   "cat": "consumible",
+   "loc": "Mochila",
+   "equipped": false,
+   "qty": 1,
+   "note": "Paquete de sacerdote",
+   "order": 5
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "lampara",
+  "data": {
+   "name": "Lámpara",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Mochila",
+   "equipped": false,
+   "order": 6
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "manta",
+  "data": {
+   "name": "Manta",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Mochila",
+   "equipped": false,
+   "order": 7
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "mochila",
+  "data": {
+   "name": "Mochila",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Mochila",
+   "equipped": false,
+   "note": "Paquete de sacerdote",
+   "order": 0
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "raciones",
+  "data": {
+   "name": "Raciones",
+   "kind": "gear",
+   "cat": "consumible",
+   "loc": "Mochila",
+   "equipped": false,
+   "qty": 7,
+   "note": "días",
+   "order": 8
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "tunica",
+  "data": {
+   "name": "Túnica",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Mochila",
+   "equipped": false,
+   "order": 9
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "yesquero",
+  "data": {
+   "name": "Yesquero",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Mochila",
+   "equipped": false,
+   "order": 10
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "hierbas",
+  "data": {
+   "name": "Hierbas de su madre",
+   "kind": "gear",
+   "cat": "valor",
+   "loc": "Mochila",
+   "equipped": false,
+   "note": "Narrativo",
+   "order": 11
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/gold",
+  "doc_id": "saldo-github",
+  "data": {
+   "amt": 73,
+   "at": "2026-11-05T12:00:00",
+   "concept": "Saldo de campaña (hoja GitHub)",
+   "n": 1,
+   "void": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/sheet",
+  "doc_id": "state",
+  "data": {
+   "levels": [],
+   "langs": [],
+   "sub": {},
+   "prepared": null,
+   "cantrips": null,
+   "swapUsed": false,
+   "swapRem": false,
+   "swapFree": false,
+   "hp": 23,
+   "temp": 0,
+   "hd": {
+    "d8": 0
+   },
+   "slots": {
+    "l1": 0,
+    "l2": 0
+   },
+   "res": {
+    "cd": 0,
+    "hands": 0,
+    "revel": 0
+   },
+   "insp": false,
+   "effects": [],
+   "conc": null,
+   "conds": {},
+   "exh": 0,
+   "toggles": {},
+   "death": {
+    "s": 0,
+    "f": 0
+   }
+  }
+ }
+]

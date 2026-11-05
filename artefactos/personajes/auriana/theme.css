@@ -1,0 +1,5 @@
+
+/* Paleta de Auriana: alba — marfil, oro, rosa y violeta pálido */
+:root{--bg:#FBF6F0;--surface:#FFFDFA;--line:#EDE2D6;--line-2:#DCCBB8;--violet:#8A5FA8;--violet-d:#6D4788;--violet-soft:#F1E8F6;--gold:#C9962E;--gold-d:#9A7020;--gold-soft:#F8EDD3;--ruby:#C25A6E;--ruby-soft:#F9E3E8;--hero-1:#3A2A4A;--hero-2:#8A5FA8;--hero-ink:#FFF7EC;--hero-mute:#E3D1EA}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17131B;--surface:#211B27;--line:#33293B;--line-2:#45384F;--violet:#C9A6E6;--violet-d:#DDC2F2;--violet-soft:#30233C;--gold:#E2B860;--gold-d:#EFCB84;--gold-soft:#332814;--ruby:#E8889B;--ruby-soft:#3A1F26;--hero-1:#1C1424;--hero-2:#4E3566}}
+:root[data-theme="dark"]{--bg:#17131B;--surface:#211B27;--line:#33293B;--line-2:#45384F;--violet:#C9A6E6;--violet-d:#DDC2F2;--violet-soft:#30233C;--gold:#E2B860;--gold-d:#EFCB84;--gold-soft:#332814;--ruby:#E8889B;--ruby-soft:#3A1F26;--hero-1:#1C1424;--hero-2:#4E3566}

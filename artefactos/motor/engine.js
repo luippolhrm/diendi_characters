@@ -11,7 +11,7 @@ const M={}; CFG.abilities.forEach(([k,,s])=>M[k]=mod(s));
 const ABN={}; CFG.abilities.forEach(([k,n])=>ABN[k]=n);
 
 /* ---------- estado ---------- */
-const DEFAULT={levels:[],langs:[],sub:{},prepared:null,swapUsed:false,swapRem:false,swapFree:false,hp:HP_BASE,temp:0,hd:{},slots:{},res:{},insp:false,effects:[],conc:null,conds:{},exh:0,toggles:{},death:{s:0,f:0}};
+const DEFAULT={levels:[],langs:[],sub:{},prepared:null,cantrips:null,swapUsed:false,swapRem:false,swapFree:false,hp:HP_BASE,temp:0,hd:{},slots:{},res:{},insp:false,effects:[],conc:null,conds:{},exh:0,toggles:{},death:{s:0,f:0}};
 CFG.hitDice.forEach(h=>DEFAULT.hd[h.id]=0);
 const lvls=()=>(state&&state.levels)||[];
 const hpMax=()=>HP_BASE+lvls().reduce((a,l)=>a+(l.hp||0),0);
@@ -388,6 +388,8 @@ const spRows={};
 const G=CFG.grimoire||{always:[],prepDefault:[],prepTable:[],maxLvlTable:[]};
 const prepList=()=>(state&&Array.isArray(state.prepared))?state.prepared:G.prepDefault;
 const prepMax=()=>{const L=clsLvl(G.cls);return L>0?(G.prepTable[L-1]||0):0;};
+const cantList=()=>(state&&Array.isArray(state.cantrips))?state.cantrips:(G.cantripDefault||[]);
+const cantMax=()=>{const L=clsLvl(G.cls);return G.cantripTable&&L>0?(G.cantripTable[L-1]||0):0;};
 const prepMaxLvl=()=>{const L=clsLvl(G.cls);return L>0?(G.maxLvlTable[L-1]||1):1;};
 const spById=id=>CFG.spells.find(s=>s.id===id);
 let spKey="";
@@ -395,6 +397,7 @@ function spellRows(){
   const out=[];
   const alw=G.always.map(spById).filter(Boolean);
   if(alw.length){out.push({g:G.alwaysLabel||"Siempre preparados"});out.push(...alw);}
+  if(CFG.grimoire&&G.cantripTable){const ct=cantList().map(spById).filter(Boolean).sort((a,b)=>a.n.localeCompare(b.n,"es"));out.push({g:`Trucos · ${ct.length}/${cantMax()} · a voluntad`});out.push(...ct);}
   if(CFG.grimoire){const pr=prepList().map(spById).filter(Boolean).sort((a,b)=>a.lvl-b.lvl||a.n.localeCompare(b.n,"es"));
   out.push({g:`Preparados · ${pr.length}/${prepMax()} · se eligen en el Grimorio`});
   if(!pr.length) out.push({g:"Ninguno preparado todavía."});
@@ -451,6 +454,7 @@ function cast(sp,src,tg,who,whoEl){
   if(sp.selfHeal&&tg==="self"){msg.push(`Tira ${sp.selfHeal} y anótalo con Curar.`);$("hpAmt").focus();}
   else if(sp.inst) msg.push(sp.inst);
   if(m&&+m[1]>sp.lvl&&sp.up) msg.push("Nivel superior: "+sp.up);
+  if(m&&sp.heals&&CFG.healBonus) msg.push(`${CFG.healBonus.label}: +${CFG.healBonus.base+(CFG.healBonus.perSlot?+m[1]:0)} PG más.`);
   patch.effects=effects; patch.conc=conc;
   save(patch); if(whoEl) whoEl.value="";
   flash(`${sp.n}${tg==="self"?" a ti":who?" a "+who:""}. `+msg.join(" "));
@@ -654,7 +658,7 @@ function renderGrimoire(){
   const box=$("grimBox"); if(!box||!CFG.grimoire){const g=$("grimsec"); if(g) g.hidden=true; return;}
   const prep=prepList(), max=prepMax(), maxLvl=prepMaxLvl();
   const used=state?!!state.swapUsed:false, free=state?!!state.swapFree:false, rem=state?!!state.swapRem:false;
-  $("grimCount").textContent=`${prep.length}/${max} preparados · conjuros hasta nivel ${maxLvl}`;
+  $("grimCount").textContent=`${prep.length}/${max} preparados${G.cantripTable?` · ${cantList().length}/${cantMax()} trucos`:""} · conjuros hasta nivel ${maxLvl}`;
   $("grimRule").textContent=G.rule; if(G.title) $("hGrim").firstChild.textContent=G.title+" ";
   const sw=$("grimSwap");
   const canAdd=id=>{if(prep.includes(id)||G.always.includes(id)) return false; if(prep.length>=max) return false; if(free) return true; if(!rem&&prep.length<max) return true; return !used;};
@@ -662,8 +666,8 @@ function renderGrimoire(){
   if(state&&!free){const b=document.createElement("button");b.type="button";b.className="btn ghost";b.textContent="El GM lo permitió";b.title="Permite más cambios hasta el próximo descanso largo";b.onclick=()=>save({swapFree:true});sw.appendChild(b);}
   const q=gQ;
   const list=CFG.spells.filter(s=>!s.g&&!s.fixed&&!G.always.includes(s.id)).filter(s=>{
-    if(gFilter==="prep") return prep.includes(s.id);
-    if(gFilter==="l1") return s.lvl===1; if(gFilter==="l2") return s.lvl===2;
+    if(gFilter==="prep") return prep.includes(s.id)||cantList().includes(s.id);
+    if(gFilter==="l0") return s.lvl===0; if(gFilter==="l1") return s.lvl===1; if(gFilter==="l2") return s.lvl===2;
     if(gFilter==="conc") return !!s.conc; if(gFilter==="noconc") return !s.conc;
     if(gFilter==="ritual") return (s.src||[]).includes("ritual");
     return true;
@@ -673,12 +677,19 @@ function renderGrimoire(){
   if(!list.length){box.innerHTML=`<div class="empty">Ningún conjuro con ese filtro.</div>`;return;}
   let lastLvl=null, col=null;
   list.forEach(s=>{
-    if(s.lvl!==lastLvl){lastLvl=s.lvl;box.insertAdjacentHTML("beforeend",`<div class="spg group">Nivel ${s.lvl}${s.lvl>maxLvl?" · aún sin espacios":""}</div>`);col=document.createElement("div");col.className="gcols";box.appendChild(col);}
-    const on=prep.includes(s.id), d=document.createElement("details"); d.className="gi"+(on?" on":"")+(s.lvl>maxLvl?" lock":"");
+    if(s.lvl!==lastLvl){lastLvl=s.lvl;box.insertAdjacentHTML("beforeend",`<div class="spg group">${s.lvl===0?`Trucos · ${cantList().length}/${cantMax()} conocidos`:`Nivel ${s.lvl}${s.lvl>maxLvl?" · aún sin espacios":""}`}</div>`);col=document.createElement("div");col.className="gcols";box.appendChild(col);}
+    const isC=s.lvl===0, cl=cantList();
+    const on=isC?cl.includes(s.id):prep.includes(s.id), d=document.createElement("details"); d.className="gi"+(on?" on":"")+(!isC&&s.lvl>maxLvl?" lock":"");
     const flags=[s.conc?"Concentración":"",(s.src||[]).includes("ritual")?"Ritual":""].filter(Boolean);
     d.innerHTML=`<summary><span class="gtop"><b>${esc(s.n)}</b>${on?'<span class="gbadge">Preparado</span>':""}</span><span class="en">${esc(s.en)}</span><span class="gmeta"><span class="gtag">${esc(s.tag||"")}</span>${flags.map(f=>`<span class="gflag">${f}</span>`).join("")}</span></summary><div class="more"><div class="meta">${esc(s.meta||"")}</div><p>${esc(s.d||"")}</p>${s.up?`<p class="up"><b>Nivel superior.</b> ${esc(s.up)}</p>`:""}${s.note?`<p class="note">🟡 ${esc(s.note)}</p>`:""}${s.gap?`<p class="note">⏳ Ficha pendiente: no está en la transcripción de Notion.</p>`:""}</div>`;
     const more=d.querySelector(".more"), row=document.createElement("div"); row.className="cast";
     const b=document.createElement("button"); b.type="button";
+    if(isC){
+      if(on){b.className="btn ghost";b.textContent="Quitar truco";b.onclick=()=>save({cantrips:cl.filter(x=>x!==s.id)});}
+      else{b.className="btn go";b.textContent="Aprender truco";const ok=cl.length<cantMax();b.disabled=!state||!ok;b.title=ok?"":"Ya conoces todos tus trucos: quita uno primero";
+        b.onclick=()=>save({cantrips:[...cl,s.id]});}
+      row.appendChild(b); row.insertAdjacentHTML("beforeend",`<span class="note">${esc(G.cantripRule||"Los trucos se cambian solo al subir de nivel.")}</span>`); more.appendChild(row); col.appendChild(d); return;
+    }
     if(on){b.className="btn ghost";b.textContent="Quitar";b.onclick=()=>save({prepared:prep.filter(x=>x!==s.id),swapRem:true});}
     else{b.className="btn go";b.textContent="Preparar";const ok=canAdd(s.id)&&s.lvl<=maxLvl;b.disabled=!state||!ok;
       b.title=!state?"":s.lvl>maxLvl?"Sin espacios de ese nivel":prep.length>=max?"Quita uno primero":(!ok?"Ya usaste el cambio de este descanso largo":"");
@@ -813,7 +824,7 @@ function renderTreeDet(){
       <div class="tpick">${locked?`<p class="note">${fixed?"Subclase fija de este personaje.":`Ya estás en ${esc(cls)} ${col.sub.at} o más: para cambiarla, lo vemos en el chat.`}</p>`:o.id===chId?`<span class="chip adv">✓ Elegida para ${esc(cls)} ${col.sub.at}</span><button type="button" class="btn ghost" id="tUnpick">Quitar elección</button>`:`<button type="button" class="btn go" id="tPick">Elegir ${esc(o.n)}</button><span class="note">Queda reservada: sus rasgos se activan en la hoja al subir a ${esc(cls)} ${col.sub.at}.</span>`}</div></div>`;
     }
   }
-  const meta=[]; if(lv.art){meta.push(`Planes ${lv.art.plans} · Objetos ${lv.art.items}`);meta.push(`Trucos ${lv.art.cantrips} · Preparados ${lv.art.prep}`);} if(lv.sa) meta.push(`Ataque furtivo ${lv.sa}`); if(lv.fe) meta.push(`Marca gratis ${lv.fe} veces`); if(lv.rages) meta.push(`Furias ${lv.rages} · daño +${lv.rageDmg}`); if(lv.mastery) meta.push(`Maestría ${lv.mastery} armas`); if(lv.prep) meta.push(`Preparados ${lv.prep}`); if(lv.loh) meta.push(`Imponer las manos ${lv.loh}`); if(lv.cd) meta.push(`Canalizar ×${lv.cd}`); if(lv.sl) meta.push(`Espacios ${lv.sl.map((n,i)=>`${n}×nv${i+1}`).join(" · ")}`);
+  const meta=[]; if(lv.art){meta.push(`Planes ${lv.art.plans} · Objetos ${lv.art.items}`);meta.push(`Trucos ${lv.art.cantrips} · Preparados ${lv.art.prep}`);} if(lv.sa) meta.push(`Ataque furtivo ${lv.sa}`); if(lv.fe) meta.push(`Marca gratis ${lv.fe} veces`); if(lv.rages) meta.push(`Furias ${lv.rages} · daño +${lv.rageDmg}`); if(lv.mastery) meta.push(`Maestría ${lv.mastery} armas`); if(lv.cantrips) meta.push(`Trucos ${lv.cantrips}`); if(lv.prep) meta.push(`Preparados ${lv.prep}`); if(lv.loh) meta.push(`Imponer las manos ${lv.loh}`); if(lv.cd) meta.push(`Canalizar ×${lv.cd}`); if(lv.sl) meta.push(`Espacios ${lv.sl.map((n,i)=>`${n}×nv${i+1}`).join(" · ")}`);
   if(meta.length) h+=`<div class="acrow">${meta.map(m=>`<span>${esc(m)}</span>`).join("")}</div>`;
   if(st==="nxt"){
     const can=CFG.levelUp&&(CFG.levelUp.defs[cls]||{})[L];
