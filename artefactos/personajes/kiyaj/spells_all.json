@@ -264,11 +264,11 @@
 "self"
 ],
 "dur": "1 h",
-"meta": "Nivel 1 · Abjuración · Acción · Lanzador · V, S, M (una taza de agua) · 1 h",
-"d": "Ganas 5 PG temporales. Mientras te quede al menos 1 de ellos, cualquier criatura que te acierte con un ataque cuerpo a cuerpo sufre 5 de daño de frío.",
+"meta": "Nivel 1 · Abjuración · Acción adicional · Lanzador · V, S, M (un trozo de vidrio azul) · 1 h",
+"d": "Ganas 5 PG temporales. Si una criatura te acierta con un ataque cuerpo a cuerpo antes de que termine, sufre 5 de daño de frío. Termina antes si te quedas sin PG temporales.",
 "selfTemp": 5,
 "up": "+5 PG temporales y +5 de frío por nivel.",
-"note": "Conjuro de juramento de la Conquista (Xanathar's Guide, adaptado a 2024, validado por el GM). No está en la lista de paladín del PHB 2024; ficha del PHB 2024 pendiente de verificar en Notion."
+"note": "Conjuro de juramento de la Conquista (Xanathar ES pág. 56). Ficha del PHB 2024 cap. 7 (lista de brujo) ✔"
 },
 {
 "id": "magehand",
