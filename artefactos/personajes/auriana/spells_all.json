@@ -268,7 +268,7 @@
 "other"
 ],
 "meta": "Nivel 1 · Encantamiento · Acción · 18 m (60 ft) · V · instantáneo",
-"d": "Das una orden de una palabra a una criatura que veas a 18 m (60 ft) o menos. Debe superar una salvación de Sabiduría CD 13 u obedecer en su próximo turno: Acércate (viene hacia ti por la ruta más corta), Detente (no se mueve ni usa acciones), Huye (se aleja de ti lo más rápido posible), Póstrate (queda Derribado y termina su turno) o Suelta (suelta lo que sujeta y termina su turno).",
+"d": "Das una orden de una palabra a una criatura que veas a 18 m (60 ft) o menos. Debe superar una salvación de Sabiduría CD 13 u obedecer en su próximo turno: Acércate (viene hacia ti por la ruta más corta y su turno acaba si queda a 1,5 m o menos de ti), Detente (no se mueve ni usa acciones), Huye (se aleja de ti lo más rápido posible), Póstrate (queda Derribado y termina su turno) o Suelta (suelta lo que sujeta y termina su turno).",
 "up": "+1 criatura afectada por cada nivel por encima de 1."
 },
 {

@@ -661,9 +661,9 @@ function renderGrimoire(){
   $("grimCount").textContent=`${prep.length}/${max} preparados${G.cantripTable?` · ${cantList().length}/${cantMax()} trucos`:""} · conjuros hasta nivel ${maxLvl}`;
   $("grimRule").textContent=G.rule; if(G.title) $("hGrim").firstChild.textContent=G.title+" ";
   const sw=$("grimSwap");
-  const canAdd=id=>{if(prep.includes(id)||G.always.includes(id)) return false; if(prep.length>=max) return false; if(free) return true; if(!rem&&prep.length<max) return true; return !used;};
-  sw.innerHTML=`<span class="${used&&!free?"warn":""}">${free?"Cambio libre autorizado por el GM hasta el próximo descanso largo.":used?"Ya usaste tu cambio de este descanso largo.":prep.length<max?(rem?"Quitaste uno: prepara otro para completar tu cambio de este descanso largo.":"Tienes cupo libre: puedes preparar sin gastar el cambio."):"Puedes cambiar 1 conjuro hasta el próximo descanso largo."}</span>`;
-  if(state&&!free){const b=document.createElement("button");b.type="button";b.className="btn ghost";b.textContent="El GM lo permitió";b.title="Permite más cambios hasta el próximo descanso largo";b.onclick=()=>save({swapFree:true});sw.appendChild(b);}
+  const canAdd=id=>{if(prep.includes(id)||G.always.includes(id)) return false; if(prep.length>=max) return false; if(free||G.swapAll) return true; if(!rem&&prep.length<max) return true; return !used;};
+  sw.innerHTML=`<span class="${used&&!free&&!G.swapAll?"warn":""}">${G.swapAll?"Puedes cambiar los conjuros preparados que quieras tras cada descanso largo.":free?"Cambio libre autorizado por el GM hasta el próximo descanso largo.":used?"Ya usaste tu cambio de este descanso largo.":prep.length<max?(rem?"Quitaste uno: prepara otro para completar tu cambio de este descanso largo.":"Tienes cupo libre: puedes preparar sin gastar el cambio."):"Puedes cambiar 1 conjuro hasta el próximo descanso largo."}</span>`;
+  if(state&&!free&&!G.swapAll){const b=document.createElement("button");b.type="button";b.className="btn ghost";b.textContent="El GM lo permitió";b.title="Permite más cambios hasta el próximo descanso largo";b.onclick=()=>save({swapFree:true});sw.appendChild(b);}
   const q=gQ;
   const list=CFG.spells.filter(s=>!s.g&&!s.fixed&&!G.always.includes(s.id)).filter(s=>{
     if(gFilter==="prep") return prep.includes(s.id)||cantList().includes(s.id);
@@ -693,7 +693,7 @@ function renderGrimoire(){
     if(on){b.className="btn ghost";b.textContent="Quitar";b.onclick=()=>save({prepared:prep.filter(x=>x!==s.id),swapRem:true});}
     else{b.className="btn go";b.textContent="Preparar";const ok=canAdd(s.id)&&s.lvl<=maxLvl;b.disabled=!state||!ok;
       b.title=!state?"":s.lvl>maxLvl?"Sin espacios de ese nivel":prep.length>=max?"Quita uno primero":(!ok?"Ya usaste el cambio de este descanso largo":"");
-      b.onclick=()=>{const countsSwap=rem||prep.length>=max;save({prepared:[...prep,s.id],swapUsed:(used||(countsSwap&&!free))});};}
+      b.onclick=()=>{const countsSwap=rem||prep.length>=max;save({prepared:[...prep,s.id],swapUsed:(used||(countsSwap&&!free&&!G.swapAll))});};}
     row.appendChild(b); if(b.disabled&&b.title) row.insertAdjacentHTML("beforeend",`<span class="note">${esc(b.title)}</span>`); more.appendChild(row); col.appendChild(d);
   });
 }
