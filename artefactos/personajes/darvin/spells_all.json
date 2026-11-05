@@ -115,7 +115,7 @@
 "n": "Metabolismo asombroso",
 "en": "Uncanny Metabolism",
 "tag": "recupera concentración",
-"fixed": "Guerrero de la mano abierta",
+"fixed": "Concentración de monje · CD 17",
 "noSlot": true,
 "src": [
 "metab"
@@ -123,7 +123,7 @@
 "tg": [
 "self"
 ],
-"meta": "Monje · al tirar iniciativa · 1 por descanso largo",
+"meta": "Monje nv 2 · al tirar iniciativa · 1 por descanso largo",
 "d": "Recuperas todos los puntos de concentración gastados y 1d10 + 12 PG. Marca los puntos como disponibles en Recursos.",
 "selfHeal": "1d10+12",
 "inst": "Recupera los 12 puntos en Recursos y tira 1d10+12 PG."
@@ -145,7 +145,8 @@
 "dur": "4 turnos",
 "meta": "Homebrew · 1 punto · 4 turnos",
 "d": "+1d4 de daño de fuego en cada ataque durante 4 turnos.",
-"note": "Golpe otorgado por el GM; economía exacta por confirmar."
+"note": "Golpe otorgado por el GM; economía exacta por confirmar.",
+"cost": 1
 },
 {
 "id": "far",

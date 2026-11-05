@@ -32,7 +32,7 @@ window.CHAR={
  masterySlots:0,
  masteryText:{},
  selfChips:[["dragon","Rugido del Dragón: +1d4 de fuego por ataque"],["drain","Drenaje de sangre: recuperas 1d4 PG por golpe"]],
- condNotes:{asustado:"Autorrestablecimiento: puedes quitártelo al final de tu turno.",envenenado:"Autorrestablecimiento: puedes quitártelo al final de tu turno.",hechizado:"Autorrestablecimiento: puedes quitártelo al final de tu turno.",paralizado:"Anillo de acción libre (DMG, no verificado): según la hoja anterior, inmune.",apresado:"Anillo de acción libre (DMG, no verificado): según la hoja anterior, inmune."},
+ condNotes:{asustado:"Autorrestablecimiento: al final de tu turno puedes quitarte uno de estos estados (Asustado, Envenenado o Hechizado).",envenenado:"Autorrestablecimiento: al final de tu turno puedes quitarte uno de estos estados (Asustado, Envenenado o Hechizado).",hechizado:"Autorrestablecimiento: al final de tu turno puedes quitarte uno de estos estados (Asustado, Envenenado o Hechizado).",paralizado:"Anillo de acción libre (DMG, no verificado): según la hoja anterior, inmune.",apresado:"Anillo de acción libre (DMG, no verificado): según la hoja anterior, inmune."},
  shortRestMsg:"Descanso corto: recuperas los 12 puntos de concentración y las cargas de sangre; puedes gastar dados de golpe.",
  containers:["Sin asignar","Cinturón","Reserva","Equipaje en Ruperto","Prestado"],
  containerNotes:{"Cinturón":"a mano · sin gastar acción","Reserva":"objetos mágicos no equipados","Equipaje en Ruperto":"suministros de campamento · no lo carga Darvin","Prestado":"en manos de otro personaje"},
