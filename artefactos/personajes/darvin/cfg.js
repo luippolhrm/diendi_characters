@@ -80,9 +80,9 @@ window.CHAR={
   {t:"Armaduras",ic:"armor",items:[["Ninguna","Monje"]]},
   {t:"Armas",ic:"sword",items:[["Sencillas","Monje"],["Marciales con propiedad ligera","Monje"]]},
   {t:"Herramientas",ic:"tool",items:[["Herramientas de ladrón","Vagabundo"],["Flauta (instrumento musical)","Monje"]]},
-  {t:"Idiomas",ic:"talk",dyn:"langs",items:[["Común",""],["Elfo",""]],note:"Cap. 2: Común + 2 idiomas de la tabla estándar. La hoja anterior registraba solo Común y Élfico (Elfo en Devir): falta 1 por elegir."}
+  {t:"Idiomas",ic:"talk",dyn:"langs",items:[["Común",""],["Elfo",""],["Dracónico","Elegido en la migración 2024"]],note:"Cap. 2: Común + 2 idiomas de la tabla estándar. Idiomas completos."}
  ],
- langs:{slots:1,std:[["Dracónico","Dragones"],["Enano","Enanos"],["Gigante","Gigantes"],["Gnomo","Gnomos"],["Goblin","Trasgos"],["Lenguaje de signos común","Sigil"],["Mediano","Medianos"],["Orco","Orcos"]],rare:[]},
+ langs:{slots:0,std:[["Dracónico","Dragones"],["Enano","Enanos"],["Gigante","Gigantes"],["Gnomo","Gnomos"],["Goblin","Trasgos"],["Lenguaje de signos común","Sigil"],["Mediano","Medianos"],["Orco","Orcos"]],rare:[]},
  story:{
   title:"Crónica de Darvin Norris",
   portraitAlt:"Ilustración de Darvin Norris",

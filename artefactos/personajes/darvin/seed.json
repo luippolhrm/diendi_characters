@@ -332,11 +332,12 @@
   "collection": "c/darvin/items",
   "doc_id": "linterna",
   "data": {
-   "name": "Linterna",
+   "name": "Linterna sorda",
    "kind": "gear",
    "cat": "equipo",
    "loc": "Equipaje en Ruperto",
    "equipped": false,
+   "note": "Quema aceite: luz brillante en radio de 9 m y tenue 9 m más · acción adicional: tapa/destapa (tapada, solo luz tenue de 1,5 m) · PHB 2024 cap. 6",
    "order": 4
   }
  },
@@ -415,6 +416,20 @@
     "s": 0,
     "f": 0
    }
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "linterna-buey",
+  "data": {
+   "name": "Linterna de ojo de buey",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Equipaje en Ruperto",
+   "equipped": false,
+   "note": "Quema aceite: luz brillante en cono de 18 m y tenue 18 m más · PHB 2024 cap. 6",
+   "order": 5
   }
  }
 ]
