@@ -29,6 +29,34 @@ HUB_HTML = HUB_HTML.replace('href="https://luippolhrm.github.io/diendi_character
 HUB_HTML = HUB_HTML.replace('<span>Humano · Monje 12 · Guerrero de la Mano Abierta</span><span class="where">GitHub · por migrar</span>', '<span>Humano · Monje 12 · Guerrero de la mano abierta</span><span class="where">Hoja interactiva</span>')
 assert HUB_HTML.count('href="#/') == 5 and HUB_HTML.count('por migrar') == 0
 
+# ---------- vista de reglas (#/reglas) y portada liviana ----------
+import sys; sys.path.insert(0, M)
+import reglas_build
+RULES_HTML, _ncat = reglas_build.build(hub)
+RULES_CSS = reglas_build.CSS
+i0 = HUB_HTML.index('<section id="reglas"'); i1 = HUB_HTML.index('</main>')
+CATS = [("fundamentos","Fundamentos"),("estados","Estados"),("acciones","Acciones"),("combate","Combate"),("dano-y-curacion","Daño y curación"),("exploracion","Exploración"),("conjuros","Conjuros"),("descansos","Descansos"),("equipo","Equipo"),("ejemplos","Ejemplos")]
+HUB_HTML = HUB_HTML[:i0] + """<section id="reglas"><h2>Reglas rápidas</h2>
+  <p class="section-note">Más de cien reglas del Manual del Jugador 2024, ordenadas por tema y con buscador. Pensadas para resolver una duda en plena partida.</p>
+  <a class="rcta" href="#/reglas"><span><b>Abrir reglas rápidas</b><small>Estados, acciones, combate, conjuros y más</small></span><span class="go" aria-hidden="true">→</span></a>
+  <div class="rquick">""" + "".join(f'<a href="#/reglas" data-goto="{k}">{v}</a>' for k, v in CATS) + """</div>
+</section>
+""" + HUB_HTML[i1:]
+HUB_HTML = HUB_HTML.replace("Fuente de todas las reglas de esta página.", "Fuente de las reglas rápidas.")
+HUB_HTML = re.sub(r'<div class="links" id="navLinks">.*?</div>', '<div class="links" id="navLinks"><a href="#personajes">Personajes</a><a href="#/reglas">Reglas rápidas</a></div>', HUB_HTML, flags=re.S)
+HUB_CSS += """
+.rcta{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--lr-tinta);color:#FFF3D6;border-radius:var(--r);padding:18px 20px;text-decoration:none;box-shadow:var(--shadow);transition:transform .15s}
+.rcta:hover{transform:translateY(-2px)}
+.rcta b{display:block;font-family:var(--display);font-weight:800;font-size:19px}
+.rcta small{display:block;color:#E9DDC4;font-size:13px;margin-top:2px}
+.rcta .go{flex:none;width:40px;height:40px;border-radius:50%;background:var(--lr-amarillo);color:#1B2A4A;display:grid;place-items:center;font-weight:800;font-size:20px}
+.rquick{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.rquick a{font-size:13px;font-weight:600;text-decoration:none;color:var(--ink-2);background:var(--card-bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
+.rquick a:hover{border-color:var(--lr-amarillo);color:var(--ink)}
+.rcta:focus-visible,.rquick a:focus-visible{outline:2px solid var(--lr-amarillo);outline-offset:2px}
+"""
+assert '<section id="estados"' not in HUB_HTML
+
 # ---------- sheets ----------
 SHEET_CSS = rd(U + "base.css") + rd(U + "sheet.css") + """
 .idx .home{font-weight:700;color:var(--ink);border-right:1px solid var(--line-2);padding-right:12px;margin-right:2px}
@@ -63,6 +91,8 @@ page = f'''<title>Mesa de Lucho</title>
 const HUB_CSS={js(HUB_CSS)};
 const HUB_HTML={js(HUB_HTML)};
 const SHEET_CSS={js(SHEET_CSS)};
+const RULES_CSS={js(RULES_CSS)};
+const RULES_HTML={js(RULES_HTML)};
 const CH={{
 {ch_js}
 }};
@@ -70,35 +100,25 @@ const SHEET=function(){{
 {ENG_BODY}
 }};
 function HUB(){{
-  let obs=null;
-  const links=document.querySelectorAll('#navLinks a');
-  const sections=Array.prototype.map.call(links,a=>document.getElementById(a.getAttribute('href').slice(1)));
-  if('IntersectionObserver' in window){{
-    obs=new IntersectionObserver(entries=>{{entries.forEach(e=>{{if(e.isIntersecting){{links.forEach(a=>a.classList.remove('active'));const i=sections.indexOf(e.target);if(i>-1)links[i].classList.add('active');}}}});}},{{rootMargin:'-20% 0px -70% 0px'}});
-    sections.forEach(s=>{{if(s)obs.observe(s);}});
-  }}
-  const q=document.getElementById('q'),qn=document.getElementById('qn');
-  const cards=Array.prototype.slice.call(document.querySelectorAll('.fcard,.example-card'));
-  const secs=Array.prototype.slice.call(document.querySelectorAll('main > section')).filter(s=>s.id!=='personajes'&&s.id!=='reglas');
-  const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');
-  q.addEventListener('input',()=>{{
-    const t=norm(q.value.trim());let n=0;
-    cards.forEach(c=>{{const ok=!t||norm(c.textContent).indexOf(t)>-1;c.hidden=!ok;if(ok)n++;}});
-    secs.forEach(s=>{{s.hidden=!Array.prototype.some.call(s.querySelectorAll('.fcard,.example-card'),c=>!c.hidden);}});
-    qn.textContent=t?(n+' resultado'+(n===1?'':'s')):'';
-  }});
-  return ()=>{{if(obs)obs.disconnect();}};
+  document.querySelectorAll('[data-goto]').forEach(a=>a.addEventListener('click',()=>{{try{{localStorage.setItem('mesa-reglas-cat',a.dataset.goto);}}catch(_){{}}}}));
+  return ()=>{{}};
 }}
+{reglas_build.JS}
 const css=document.getElementById('appcss'), app=document.getElementById('app');
 let cur=null, teardown=null;
 function go(id,push){{
-  if(!CH[id]) id="";
+  if(!CH[id]&&id!=="reglas") id="";
   if(id===cur) return;
   cur=id;
   if(teardown){{try{{teardown();}}catch(_){{}} teardown=null;}}
   if(push){{try{{history.replaceState(null,"",id?"#/"+id:"#/");}}catch(_){{}}}}
   window.scrollTo(0,0);
-  if(id){{
+  if(id==="reglas"){{
+    css.textContent=HUB_CSS+RULES_CSS;
+    app.innerHTML='<div class="rview">'+RULES_HTML+'</div>';
+    document.title="Reglas rápidas · Mesa de Lucho";
+    teardown=RULES();
+  }}else if(id){{
     const c=CH[id];
     css.textContent=SHEET_CSS+c.css;
     app.innerHTML=c.body;
@@ -118,6 +138,7 @@ document.addEventListener("click",e=>{{
   const h=a.getAttribute("href");
   e.preventDefault();
   if(h.indexOf("#/")===0){{go(h.slice(2),true);return;}}
+  if(cur==="reglas"&&window.__rulesJump&&window.__rulesJump(h.slice(1))) return;
   const t=document.getElementById(h.slice(1)); if(t) t.scrollIntoView({{behavior:"smooth",block:"start"}});
 }});
 window.addEventListener("hashchange",()=>{{const m=location.hash.match(/^#\\/(\\w*)/);if(m)go(m[1],false);}});
