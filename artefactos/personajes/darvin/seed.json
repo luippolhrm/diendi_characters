@@ -60,7 +60,7 @@
    "magic": true,
    "attune": true,
    "attuned": true,
-   "note": "Constitución = 19 · Objeto mágico del DMG · DMG 2024 aún no transcrito, efecto según la hoja anterior",
+   "note": "Raro · sintonización · Tu Constitución es 19 mientras lo llevas; sin efecto si ya tienes 19 o más · DMG 2024 (D&D Beyond) ✔",
    "order": 2
   }
  },
@@ -104,7 +104,7 @@
    "attune": true,
    "attuned": true,
    "acBonus": 2,
-   "note": "+2 CA sin armadura ni escudo · Objeto mágico del DMG · DMG 2024 aún no transcrito, efecto según la hoja anterior",
+   "note": "Raro · sintonización · +2 CA si no llevas armadura ni escudo · DMG 2024 (D&D Beyond) ✔ · cuentan como tu único par de brazales",
    "order": 5
   }
  },
@@ -119,7 +119,7 @@
    "magic": true,
    "attune": true,
    "attuned": true,
-   "note": "Inmune a Paralizado y Apresado; ignora terreno difícil y ralentización mágica (según hoja anterior) · Objeto mágico del DMG · DMG 2024 aún no transcrito, efecto según la hoja anterior",
+   "note": "Raro · sintonización · El terreno difícil no te cuesta movimiento extra; la magia no puede reducir tus velocidades ni darte Paralizado o Apresado (no protege de causas no mágicas) · DMG 2024 (D&D Beyond) ✔",
    "order": 6
   }
  },
@@ -137,7 +137,7 @@
    "attuned": false,
    "acBonus": 1,
    "saveBonus": 1,
-   "note": "+1 CA y +1 salvaciones · Objeto mágico del DMG · DMG 2024 aún no transcrito, efecto según la hoja anterior",
+   "note": "Infrecuente · sintonización · +1 CA y +1 a salvaciones · DMG 2024 (D&D Beyond) ✔",
    "order": 1
   }
  },
@@ -156,7 +156,7 @@
    "attuned": false,
    "acBonus": 1,
    "saveBonus": 1,
-   "note": "+1 CA y +1 salvaciones · ×2, pero no se pueden sintonizar dos copias · Objeto mágico del DMG · DMG 2024 aún no transcrito, efecto según la hoja anterior",
+   "note": "Raro · sintonización · +1 CA y +1 a salvaciones · ×2, pero solo puedes sintonizarte con una copia (PHB cap. 6) · DMG 2024 (D&D Beyond) ✔",
    "order": 2
   }
  },
@@ -172,7 +172,7 @@
    "magic": true,
    "attune": true,
    "attuned": false,
-   "note": "+2 Fuerza (máx. 20) · Objeto mágico del DMG · DMG 2024 aún no transcrito, efecto según la hoja anterior",
+   "note": "Muy raro · sintonización · +2 Fuerza (máx. 20) mientras orbita tu cabeza; lanzarla al aire es acción Mágica · DMG 2024 (D&D Beyond) ✔",
    "order": 3
   }
  },
@@ -269,7 +269,7 @@
    "loc": "Cinturón",
    "equipped": false,
    "qty": 1,
-   "note": "Objeto mágico del DMG (no está en el cap. 6 del PHB) · cantidad de curación sin verificar",
+   "note": "Raro · recuperas 8d4 + 8 PG · DMG 2024 (D&D Beyond) ✔",
    "order": 1
   }
  },
