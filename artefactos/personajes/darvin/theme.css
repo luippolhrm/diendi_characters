@@ -1,0 +1,5 @@
+
+/* Paleta de Darvin: brasa y dragón — carbón, ámbar, rojo fuego */
+:root{--bg:#F7F3EF;--surface:#FFFCF9;--line:#E8DDD3;--line-2:#D5C4B4;--violet:#B8462A;--violet-d:#923720;--violet-soft:#F8E5DD;--gold:#D08A1E;--gold-d:#A06612;--gold-soft:#FBEBCF;--ruby:#A7322E;--ruby-soft:#F7E0DE;--hero-1:#1E1715;--hero-2:#5A2A1C;--hero-ink:#FFF5EC;--hero-mute:#E5C9B8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161210;--surface:#211A17;--line:#34291F;--line-2:#473829;--violet:#F08A62;--violet-d:#F7A988;--violet-soft:#3A2018;--gold:#E8A84A;--gold-d:#F2C072;--gold-soft:#352611;--ruby:#E77A72;--ruby-soft:#3A1E1C;--hero-1:#120D0B;--hero-2:#3D1C13}}
+:root[data-theme="dark"]{--bg:#161210;--surface:#211A17;--line:#34291F;--line-2:#473829;--violet:#F08A62;--violet-d:#F7A988;--violet-soft:#3A2018;--gold:#E8A84A;--gold-d:#F2C072;--gold-soft:#352611;--ruby:#E77A72;--ruby-soft:#3A1E1C;--hero-1:#120D0B;--hero-2:#3D1C13}

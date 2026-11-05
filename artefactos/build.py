@@ -24,7 +24,9 @@ HUB_HTML = HUB_HTML.replace('href="https://luippolhrm.github.io/diendi_character
 HUB_HTML = HUB_HTML.replace('<span>Orca · Bárbara 1</span><span class="where">GitHub · por migrar</span>', '<span>Orca · Bárbara 1 · Soldado</span><span class="where">Hoja interactiva</span>')
 HUB_HTML = HUB_HTML.replace('href="https://luippolhrm.github.io/diendi_characters/lucho/auriana.html" target="_blank" rel="noopener"', 'href="#/auriana"').replace('<a class="pc ext" href="#/auriana"', '<a class="pc " href="#/auriana"')
 HUB_HTML = HUB_HTML.replace('<span>Aasimar · Clériga 3 · Dominio de la Vida</span><span class="where">GitHub · por migrar</span>', '<span>Aasimar · Clériga 3 · Dominio de la vida</span><span class="where">Hoja interactiva</span>')
-assert HUB_HTML.count('href="#/') == 4 and HUB_HTML.count('por migrar') == 1
+HUB_HTML = HUB_HTML.replace('href="https://luippolhrm.github.io/diendi_characters/lucho/darvin.html" target="_blank" rel="noopener"', 'href="#/darvin"').replace('<a class="pc ext" href="#/darvin"', '<a class="pc " href="#/darvin"')
+HUB_HTML = HUB_HTML.replace('<span>Humano · Monje 12 · Guerrero de la Mano Abierta</span><span class="where">GitHub · por migrar</span>', '<span>Humano · Monje 12 · Guerrero de la mano abierta</span><span class="where">Hoja interactiva</span>')
+assert HUB_HTML.count('href="#/') == 5 and HUB_HTML.count('por migrar') == 0
 
 # ---------- sheets ----------
 SHEET_CSS = rd(U + "base.css") + rd(U + "sheet.css") + """
@@ -41,6 +43,7 @@ chars = {
     "kiyaj": {"cfg": rd(K + "cfg.js") + "\n" + rd(K + "tree.js"), "css": rd(K + "theme.css"),
               "body": BODY.replace("Grimorio del explorador", "Grimorio del paladín")},
     "auriana": {"cfg": rd(HERE + "/personajes/auriana/cfg.js") + "\n" + rd(HERE + "/personajes/auriana/tree.js"), "css": rd(HERE + "/personajes/auriana/theme.css"), "body": BODY.replace("Grimorio del explorador", "Grimorio de la clériga")},
+    "darvin": {"cfg": rd(HERE + "/personajes/darvin/cfg.js") + "\n" + rd(HERE + "/personajes/darvin/tree.js"), "css": rd(HERE + "/personajes/darvin/theme.css"), "body": BODY},
     "yevelda": {"cfg": rd(HERE + "/personajes/yevelda/cfg.js") + "\n" + rd(HERE + "/personajes/yevelda/tree.js"), "css": rd(HERE + "/personajes/yevelda/theme.css"), "body": BODY},
 }
 ch_js = ",\n".join(

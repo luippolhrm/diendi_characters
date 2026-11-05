@@ -235,9 +235,9 @@ function renderAttacks(d){
   let rows="";
   ws.forEach(w=>weaponModes(w).forEach(m=>{
     const ab=m.ab||w.ab||"des";
-    const atk=M[ab]+PROF+(m.ranged&&CFG.archery?2:0)-2*ml.ex;
+    const atk=M[ab]+PROF+(m.ranged&&CFG.archery?2:0)-2*ml.ex+(w.atkBonus||0);
     const mast=w.masteryActive&&m.mastery?m.mastery:"";
-    rows+=`<tr><td>${esc(w.name)}${m.n?` <span class="mute">${esc(m.n)}</span>`:""}${(w.qty||1)>1?` <span class="mute num">×${w.qty}</span>`:""}</td><td class="n">${sg(atk)}</td><td class="n">${esc(m.dmg)}${sg(M[ab])}</td><td class="note">${esc(m.type||"")}${m.range?" · "+esc(m.range):""}${mast?" · "+esc(mast):m.mastery?" · "+esc(m.mastery)+" (inactiva)":""}</td></tr>`;
+    rows+=`<tr><td>${esc(w.name)}${m.n?` <span class="mute">${esc(m.n)}</span>`:""}${(w.qty||1)>1?` <span class="mute num">×${w.qty}</span>`:""}</td><td class="n">${sg(atk)}</td><td class="n">${esc(m.dmg)}${sg(M[ab]+(w.dmgBonus||0))}</td><td class="note">${esc(m.type||"")}${m.range?" · "+esc(m.range):""}${mast?" · "+esc(mast):m.mastery?" · "+esc(m.mastery)+" (inactiva)":""}</td></tr>`;
   }));
   box.innerHTML=head+`<table><thead><tr><th>Arma</th><th>Atq</th><th>Daño</th><th>Notas</th></tr></thead><tbody>${rows}</tbody></table>`+(CFG.archery?`<p class="note" style="margin-top:6px">Ataques a distancia incluyen +2 de Tiro con arco.</p>`:"");
   renderXdmg();
@@ -787,7 +787,7 @@ function renderTree(){
       let subLines="";
       if(chAt&&base.length) subLines=`<small class="tsl1"><i>${esc(ch.n)}</i> ${esc(chAt.join(" · "))}</small>`;
       else if(optAt.length) subLines=optAt.map(o=>`<small class="tsl1 alt"><i>${esc(o.n)}</i> ${esc(o.lv[L].map(x=>x[0]).join(" · "))}</small>`).join("");
-      const tag=lv.sa?`Furtivo ${lv.sa}`:lv.art?`Planes ${lv.art.plans} · prep. ${lv.art.prep}`:lv.rages?`Furias ${lv.rages} · +${lv.rageDmg}`:lv.loh?`Manos ${lv.loh} · espacios ${(lv.sl||[]).join("/")}`:lv.sl?`Espacios ${lv.sl.join("/")}`:"";
+      const tag=lv.sa?`Furtivo ${lv.sa}`:lv.art?`Planes ${lv.art.plans} · prep. ${lv.art.prep}`:lv.ma?`A.M. ${lv.ma} · conc. ${lv.focus||0}`:lv.rages?`Furias ${lv.rages} · +${lv.rageDmg}`:lv.loh?`Manos ${lv.loh} · espacios ${(lv.sl||[]).join("/")}`:lv.sl?`Espacios ${lv.sl.join("/")}`:"";
       const li=document.createElement("li"); li.className=`tn ${st}${sel?" sel":""}${lv.asi?" asi":""}${lv.branch?" br":""}`;
       li.innerHTML=`<button type="button" aria-pressed="${sel}"><span class="dot">${L}</span><span class="tx"><b>${esc(title)}</b>${base.length>1?`<small>+ ${esc(base.slice(1).join(" · "))}</small>`:""}${subLines}${tag?`<small class="tg">${esc(tag)}</small>`:""}</span></button>`;
       li.querySelector("button").onclick=()=>{tSel=[col.cls,L];renderTree();openTreeDet();};
@@ -826,7 +826,7 @@ function renderTreeDet(){
       <div class="tpick">${locked?`<p class="note">${fixed?"Subclase fija de este personaje.":`Ya estás en ${esc(cls)} ${col.sub.at} o más: para cambiarla, lo vemos en el chat.`}</p>`:o.id===chId?`<span class="chip adv">✓ Elegida para ${esc(cls)} ${col.sub.at}</span><button type="button" class="btn ghost" id="tUnpick">Quitar elección</button>`:`<button type="button" class="btn go" id="tPick">Elegir ${esc(o.n)}</button><span class="note">Queda reservada: sus rasgos se activan en la hoja al subir a ${esc(cls)} ${col.sub.at}.</span>`}</div></div>`;
     }
   }
-  const meta=[]; if(lv.art){meta.push(`Planes ${lv.art.plans} · Objetos ${lv.art.items}`);meta.push(`Trucos ${lv.art.cantrips} · Preparados ${lv.art.prep}`);} if(lv.sa) meta.push(`Ataque furtivo ${lv.sa}`); if(lv.fe) meta.push(`Marca gratis ${lv.fe} veces`); if(lv.rages) meta.push(`Furias ${lv.rages} · daño +${lv.rageDmg}`); if(lv.mastery) meta.push(`Maestría ${lv.mastery} armas`); if(lv.cantrips) meta.push(`Trucos ${lv.cantrips}`); if(lv.prep) meta.push(`Preparados ${lv.prep}`); if(lv.loh) meta.push(`Imponer las manos ${lv.loh}`); if(lv.cd) meta.push(`Canalizar ×${lv.cd}`); if(lv.sl) meta.push(`Espacios ${lv.sl.map((n,i)=>`${n}×nv${i+1}`).join(" · ")}`);
+  const meta=[]; if(lv.art){meta.push(`Planes ${lv.art.plans} · Objetos ${lv.art.items}`);meta.push(`Trucos ${lv.art.cantrips} · Preparados ${lv.art.prep}`);} if(lv.sa) meta.push(`Ataque furtivo ${lv.sa}`); if(lv.fe) meta.push(`Marca gratis ${lv.fe} veces`); if(lv.rages) meta.push(`Furias ${lv.rages} · daño +${lv.rageDmg}`); if(lv.mastery) meta.push(`Maestría ${lv.mastery} armas`); if(lv.ma) meta.push(`Artes marciales ${lv.ma}`); if(lv.focus) meta.push(`Concentración ${lv.focus}`); if(lv.move&&lv.move!=="—") meta.push(`Movimiento ${lv.move}`); if(lv.cantrips) meta.push(`Trucos ${lv.cantrips}`); if(lv.prep) meta.push(`Preparados ${lv.prep}`); if(lv.loh) meta.push(`Imponer las manos ${lv.loh}`); if(lv.cd) meta.push(`Canalizar ×${lv.cd}`); if(lv.sl) meta.push(`Espacios ${lv.sl.map((n,i)=>`${n}×nv${i+1}`).join(" · ")}`);
   if(meta.length) h+=`<div class="acrow">${meta.map(m=>`<span>${esc(m)}</span>`).join("")}</div>`;
   if(st==="nxt"){
     const can=CFG.levelUp&&(CFG.levelUp.defs[cls]||{})[L];

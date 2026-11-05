@@ -1,0 +1,420 @@
+[
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "puno",
+  "data": {
+   "name": "Golpe sin armas",
+   "kind": "weapon",
+   "equipped": true,
+   "masteryActive": false,
+   "ab": "des",
+   "dmg": "1d10",
+   "dmgType": "contundente o fuerza (Golpes potenciados)",
+   "note": "Dado de Artes marciales 1d10",
+   "order": 1
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "baston-sangre",
+  "data": {
+   "name": "Bastón ritual de sangre +1",
+   "kind": "weapon",
+   "equipped": true,
+   "masteryActive": false,
+   "ab": "des",
+   "atkBonus": 1,
+   "dmgBonus": 1,
+   "dmg": "1d10",
+   "dmgType": "contundente · arma de monje (dado de Artes marciales)",
+   "magic": true,
+   "homebrew": true,
+   "note": "A la espalda · Balas y Drenaje de sangre en Técnicas · 🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "order": 2
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "venda",
+  "data": {
+   "name": "Venda de la Vida",
+   "kind": "neck",
+   "equipped": true,
+   "magic": true,
+   "homebrew": true,
+   "note": "Cara · detecta vida a 18 m (60 ft), incluso oculta o invisible · 🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "order": 1
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "amuleto-salud",
+  "data": {
+   "name": "Amuleto de salud",
+   "kind": "neck",
+   "equipped": true,
+   "magic": true,
+   "attune": true,
+   "attuned": true,
+   "note": "Constitución = 19 · Objeto mágico del DMG · DMG 2024 aún no transcrito, efecto según la hoja anterior",
+   "order": 2
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "traje-tortuga",
+  "data": {
+   "name": "Traje de la Tortuga",
+   "kind": "cloak",
+   "equipped": true,
+   "magic": true,
+   "homebrew": true,
+   "note": "Cuerpo · +2 iniciativa (ya sumado) · lanzar Volar · esfera 4★ · 🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "order": 3
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "canilleras",
+  "data": {
+   "name": "Canilleras de escama de dragón",
+   "kind": "gear",
+   "equipped": true,
+   "magic": true,
+   "homebrew": true,
+   "note": "Pies · resistencia a fuego · 🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "order": 4
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "brazales",
+  "data": {
+   "name": "Brazales de defensa",
+   "kind": "ring",
+   "equipped": true,
+   "magic": true,
+   "attune": true,
+   "attuned": true,
+   "acBonus": 2,
+   "note": "+2 CA sin armadura ni escudo · Objeto mágico del DMG · DMG 2024 aún no transcrito, efecto según la hoja anterior",
+   "order": 5
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "anillo-accion",
+  "data": {
+   "name": "Anillo de acción libre",
+   "kind": "ring",
+   "equipped": true,
+   "magic": true,
+   "attune": true,
+   "attuned": true,
+   "note": "Inmune a Paralizado y Apresado; ignora terreno difícil y ralentización mágica (según hoja anterior) · Objeto mágico del DMG · DMG 2024 aún no transcrito, efecto según la hoja anterior",
+   "order": 6
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "capa-proteccion",
+  "data": {
+   "name": "Capa de protección",
+   "kind": "cloak",
+   "equipped": false,
+   "loc": "Reserva",
+   "magic": true,
+   "attune": true,
+   "attuned": false,
+   "acBonus": 1,
+   "saveBonus": 1,
+   "note": "+1 CA y +1 salvaciones · Objeto mágico del DMG · DMG 2024 aún no transcrito, efecto según la hoja anterior",
+   "order": 1
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "anillo-proteccion",
+  "data": {
+   "name": "Anillo de protección",
+   "kind": "ring",
+   "equipped": false,
+   "loc": "Reserva",
+   "qty": 2,
+   "magic": true,
+   "attune": true,
+   "attuned": false,
+   "acBonus": 1,
+   "saveBonus": 1,
+   "note": "+1 CA y +1 salvaciones · ×2, pero no se pueden sintonizar dos copias · Objeto mágico del DMG · DMG 2024 aún no transcrito, efecto según la hoja anterior",
+   "order": 2
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "ioun",
+  "data": {
+   "name": "Piedra Ioun (Fuerza)",
+   "kind": "neck",
+   "equipped": false,
+   "loc": "Reserva",
+   "magic": true,
+   "attune": true,
+   "attuned": false,
+   "note": "+2 Fuerza (máx. 20) · Objeto mágico del DMG · DMG 2024 aún no transcrito, efecto según la hoja anterior",
+   "order": 3
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "manoplas",
+  "data": {
+   "name": "Manoplas de mithril",
+   "kind": "weapon",
+   "equipped": false,
+   "loc": "Reserva",
+   "ab": "des",
+   "dmg": "1d6",
+   "dmgType": "arma de monje",
+   "homebrew": true,
+   "note": "Su dado máximo es 1d6; con Artes marciales 1d10 solo son de sabor · 🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "order": 4
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "baston-dragon",
+  "data": {
+   "name": "Bastón del Dragón +1",
+   "kind": "weapon",
+   "equipped": false,
+   "loc": "Reserva",
+   "ab": "des",
+   "atkBonus": 1,
+   "dmgBonus": 1,
+   "dmg": "1d10",
+   "dmgType": "contundente + 1d4 relámpago · alcance 3 m (10 ft)",
+   "magic": true,
+   "homebrew": true,
+   "note": "🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "order": 5
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "brazaletes-escama",
+  "data": {
+   "name": "Brazaletes de escama de dragón",
+   "kind": "gear",
+   "equipped": false,
+   "loc": "Reserva",
+   "magic": true,
+   "homebrew": true,
+   "note": "Resistencia a ácido · 🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "order": 6
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "guantes-escama",
+  "data": {
+   "name": "Guantes de escama de dragón blanco",
+   "kind": "gear",
+   "equipped": false,
+   "loc": "Reserva",
+   "magic": true,
+   "homebrew": true,
+   "note": "Resistencia a frío · 🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "order": 7
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "collar-sanilla",
+  "data": {
+   "name": "Collar de Sanilla",
+   "kind": "gear",
+   "equipped": false,
+   "loc": "Prestado",
+   "magic": true,
+   "homebrew": true,
+   "note": "Prestado al personaje de Andy · invoca un ángel: 8d6 radiante en 6 m (20 ft), 1 por descanso largo · requiere sintonización · 🟡 objeto custom: sintonización y efecto por confirmar con el GM",
+   "order": 1
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "pocion-superior",
+  "data": {
+   "name": "Poción de curación superior",
+   "kind": "gear",
+   "cat": "consumible",
+   "loc": "Cinturón",
+   "equipped": false,
+   "qty": 1,
+   "note": "Objeto mágico del DMG (no está en el cap. 6 del PHB) · cantidad de curación sin verificar",
+   "order": 1
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "herr-ladron",
+  "data": {
+   "name": "Herramientas de ladrón",
+   "kind": "gear",
+   "cat": "herramienta",
+   "loc": "Cinturón",
+   "equipped": false,
+   "note": "Des · forzar cerradura o desarmar trampa CD 15",
+   "order": 2
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "raciones",
+  "data": {
+   "name": "Raciones",
+   "kind": "gear",
+   "cat": "consumible",
+   "loc": "Equipaje en Ruperto",
+   "equipped": false,
+   "note": "días",
+   "order": 1
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "cuerda",
+  "data": {
+   "name": "Cuerda",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Equipaje en Ruperto",
+   "equipped": false,
+   "order": 2
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "cantimplora",
+  "data": {
+   "name": "Cantimplora",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Equipaje en Ruperto",
+   "equipped": false,
+   "order": 3
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "linterna",
+  "data": {
+   "name": "Linterna",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Equipaje en Ruperto",
+   "equipped": false,
+   "order": 4
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "yesquero",
+  "data": {
+   "name": "Yesquero",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Equipaje en Ruperto",
+   "equipped": false,
+   "order": 5
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/items",
+  "doc_id": "flauta",
+  "data": {
+   "name": "Flauta",
+   "kind": "gear",
+   "cat": "herramienta",
+   "loc": "Equipaje en Ruperto",
+   "equipped": false,
+   "note": "Instrumento musical · competencia de Monje",
+   "order": 6
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/gold",
+  "doc_id": "saldo-github",
+  "data": {
+   "amt": 299095,
+   "at": "2026-11-05T12:30:00",
+   "concept": "Saldo de campaña (hoja GitHub): 29.909 pp + 5 po",
+   "n": 1,
+   "void": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/darvin/sheet",
+  "doc_id": "state",
+  "data": {
+   "levels": [],
+   "langs": [],
+   "sub": {},
+   "prepared": null,
+   "cantrips": null,
+   "swapUsed": false,
+   "swapRem": false,
+   "swapFree": false,
+   "hp": 149,
+   "temp": 0,
+   "hd": {
+    "d8": 0
+   },
+   "slots": {},
+   "res": {
+    "ki": 0,
+    "luck": 0,
+    "whole": 0,
+    "metab": 0,
+    "blood": 0
+   },
+   "insp": false,
+   "effects": [],
+   "conc": null,
+   "conds": {},
+   "exh": 0,
+   "toggles": {},
+   "death": {
+    "s": 0,
+    "f": 0
+   }
+  }
+ }
+]
