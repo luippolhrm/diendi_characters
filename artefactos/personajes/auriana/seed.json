@@ -159,7 +159,9 @@
    "cat": "equipo",
    "loc": "Mochila",
    "equipped": false,
-   "order": 6
+   "order": 6,
+   "qty": 2,
+   "note": "Una del paquete de sacerdote y otra del Ermitaño (PHB 2024) · luz brillante 4,5 m y tenue 9 m más"
   }
  },
  {
@@ -293,6 +295,109 @@
     "s": 0,
     "f": 0
    }
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "camisa-malla",
+  "data": {
+   "name": "Camisa de malla",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Guardado",
+   "equipped": false,
+   "note": "Equipo inicial del clérigo 2024 (actualización de manual) · armadura media: CA 13 + Des (máx. 2) · 10 kg · de repuesto, usa la cota de malla",
+   "order": 20
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "escudo",
+  "data": {
+   "name": "Escudo",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Guardado",
+   "equipped": false,
+   "note": "Equipo inicial del clérigo 2024 (actualización de manual) · +2 CA · 3 kg · de repuesto, usa el Shield of the Cavalier",
+   "order": 21
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "baston",
+  "data": {
+   "name": "Bastón",
+   "kind": "weapon",
+   "loc": "Mochila",
+   "equipped": false,
+   "masteryActive": false,
+   "ab": "fue",
+   "dmg": "1d6",
+   "dmgType": "contundente · versátil (1d8)",
+   "mastery": "Derribar (Topple)",
+   "note": "Equipo del Ermitaño 2024 (actualización de manual) · sencilla · 2 kg",
+   "order": 22
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "aceite",
+  "data": {
+   "name": "Aceite (frasco)",
+   "kind": "gear",
+   "cat": "consumible",
+   "loc": "Mochila",
+   "equipped": false,
+   "qty": 3,
+   "note": "Equipo del Ermitaño 2024 · combustible para la lámpara o para empapar una criatura, objeto o espacio",
+   "order": 23
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "libro",
+  "data": {
+   "name": "Libro (de filosofía)",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Mochila",
+   "equipped": false,
+   "note": "Equipo del Ermitaño 2024 · un libro veraz de no ficción da +5 a pruebas de Int sobre su materia",
+   "order": 24
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "petate",
+  "data": {
+   "name": "Petate",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Mochila",
+   "equipped": false,
+   "note": "Equipo del Ermitaño 2024 · superas automáticamente las salvaciones contra frío extremo mientras duermes en él",
+   "order": 25
+  }
+ },
+ {
+  "op": "set",
+  "collection": "c/auriana/items",
+  "doc_id": "ropas-viaje",
+  "data": {
+   "name": "Ropas de viaje",
+   "kind": "gear",
+   "cat": "equipo",
+   "loc": "Mochila",
+   "equipped": false,
+   "note": "Equipo del Ermitaño 2024",
+   "order": 26
   }
  }
 ]
