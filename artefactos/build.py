@@ -45,7 +45,7 @@ HUB_HTML = HUB_HTML[:i0] + """<section id="reglas"><h2>Reglas rápidas</h2>
 HUB_HTML = HUB_HTML.replace("Fuente de todas las reglas de esta página.", "Fuente de las reglas rápidas.")
 _eb = '<span>Capítulo 1, la clase Artífice, en Notion.</span></a>'
 assert HUB_HTML.count(_eb) == 1
-HUB_HTML = HUB_HTML.replace(_eb, _eb + '\n    <a href="https://app.notion.com/p/40f62efd3d4a8181a74dc95ab9d53172" target="_blank" rel="noopener"><b>📚 Otros libros</b><span>DMG 2024, Monsters of the Multiverse y Xanathar: una sección por libro en Notion con lo que usan los personajes.</span></a>')
+HUB_HTML = HUB_HTML.replace(_eb, _eb + '\n    <a href="https://app.notion.com/p/41062efd3d4a81ad8cc4e89465c7318e" target="_blank" rel="noopener"><b>📖 Dungeon Master&#39;s Guide 2024</b><span>Objetos mágicos que usan los personajes, en Notion.</span></a>\n    <a href="https://app.notion.com/p/41062efd3d4a81328915c97dac7ce2e3" target="_blank" rel="noopener"><b>📖 Monsters of the Multiverse</b><span>Especie githyanki (Ki&#39;yaj), en Notion.</span></a>\n    <a href="https://app.notion.com/p/41062efd3d4a81eea40af25f6b499cf2" target="_blank" rel="noopener"><b>📖 Guía de Xanathar para todo</b><span>Juramento de la Conquista (Ki&#39;yaj), en Notion.</span></a>')
 HUB_HTML = re.sub(r'<div class="links" id="navLinks">.*?</div>', '<div class="links" id="navLinks"><a href="#personajes">Personajes</a><a href="#/reglas">Reglas rápidas</a></div>', HUB_HTML, flags=re.S)
 HUB_CSS += """
 .rcta{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--lr-tinta);color:#FFF3D6;border-radius:var(--r);padding:18px 20px;text-decoration:none;box-shadow:var(--shadow);transition:transform .15s}
