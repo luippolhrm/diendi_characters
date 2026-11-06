@@ -29,6 +29,31 @@ HUB_HTML = HUB_HTML.replace('href="https://luippolhrm.github.io/diendi_character
 HUB_HTML = HUB_HTML.replace('<span>Humano · Monje 12 · Guerrero de la Mano Abierta</span><span class="where">GitHub · por migrar</span>', '<span>Humano · Monje 12 · Guerrero de la mano abierta</span><span class="where">Hoja interactiva</span>')
 assert HUB_HTML.count('href="#/') == 5 and HUB_HTML.count('por migrar') == 0
 
+# ---------- cartas de personaje: mínimas (nombre, clase, nivel) ----------
+PCS = [("usoryn","U","#CFE9DC","Usoryn Bravoviento","Explorador 5 / Pícaro 1",6),
+       ("kiyaj","K","#E4DAF5","Ki&#39;yaj","Paladín 4",4),
+       ("darvin","D","#F3D6C2","Darvin Norris","Monje 12",12),
+       ("auriana","A","#F8E3B5","Auriana Grandhe","Clériga 3",3),
+       ("yevelda","Y","#F1C9CC","Yevelda","Bárbara 1",1)]
+_c0 = HUB_HTML.index('<div class="chars">'); _c1 = HUB_HTML.index('<div class="refs"', _c0)
+HUB_HTML = HUB_HTML[:_c0] + '<div class="chars">' + "".join(
+    f'<a class="pc" href="#/{i}"><span class="av" style="background:{c}">{l}</span><span class="tx"><b>{n}</b><span>{k}</span></span><span class="lv" aria-label="Nivel {v}"><small>nv</small>{v}</span></a>'
+    for i, l, c, n, k, v in PCS) + '</div>\n  <h3 class="subh">Fuentes</h3>\n  ' + HUB_HTML[_c1:]
+HUB_HTML = re.sub(r'(<section id="personajes"><h2>Personajes</h2>)\s*<p class="section-note">.*?</p>', r'\1', HUB_HTML, flags=re.S)
+HUB_CSS += """
+.chars{grid-template-columns:repeat(auto-fill,minmax(250px,1fr));margin-top:14px}
+.pc{grid-template-columns:auto minmax(0,1fr) auto;gap:12px;padding:12px 14px}
+.pc .av{grid-row:auto;width:42px;height:42px;font-size:18px}
+.pc .tx{display:grid;gap:1px;min-width:0}
+.pc .tx b{font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pc .tx span{font-size:13px;color:var(--ink-2)}
+.pc .lv{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line-2);font-family:var(--display);font-weight:800;font-size:18px;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.pc .lv small{font-family:var(--body);font-weight:600;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:-6px}
+.pc:hover .lv{border-color:var(--lr-amarillo)}
+.subh{font-family:var(--display);font-weight:700;font-size:15px;color:var(--ink-2);margin:26px 0 10px}
+.refs{margin-top:0!important}
+"""
+
 # ---------- vista de reglas (#/reglas) y portada liviana ----------
 import sys; sys.path.insert(0, M)
 import reglas_build
