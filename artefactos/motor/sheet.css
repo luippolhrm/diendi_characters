@@ -128,7 +128,9 @@ details.ref{border:1.5px solid var(--line-2);border-radius:10px}
 }
 [hidden]{display:none!important}
 .slots{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
-.sl p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sl{display:flex;flex-direction:column}
+.sl p{display:block;overflow:visible;line-height:1.4;overflow-wrap:anywhere}
+.sl .acts{margin-top:auto;padding-top:4px}
 @media (max-width:600px){.sl{padding:7px 8px}.sl b{font-size:13px}.sl .btn.ghost{padding:4px 6px}}
 .track.tg{grid-template-columns:minmax(0,1fr)}
 .track.tg .ftabs{justify-content:flex-start}
