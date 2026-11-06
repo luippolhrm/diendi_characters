@@ -45,7 +45,7 @@ HUB_HTML = HUB_HTML[:i0] + """<section id="reglas"><h2>Reglas rápidas</h2>
 HUB_HTML = HUB_HTML.replace("Fuente de todas las reglas de esta página.", "Fuente de las reglas rápidas.")
 _eb = '<span>Capítulo 1, la clase Artífice, en Notion.</span></a>'
 assert HUB_HTML.count(_eb) == 1
-HUB_HTML = HUB_HTML.replace(_eb, _eb + '\n    <a href="https://app.notion.com/p/40f62efd3d4a8181a74dc95ab9d53172" target="_blank" rel="noopener"><b>📚 Reglas fuera del PHB</b><span>DMG 2024, Monsters of the Multiverse y Xanathar: lo que usan los personajes, resumido en Notion con libro y página.</span></a>')
+HUB_HTML = HUB_HTML.replace(_eb, _eb + '\n    <a href="https://app.notion.com/p/40f62efd3d4a8181a74dc95ab9d53172" target="_blank" rel="noopener"><b>📚 Otros libros</b><span>DMG 2024, Monsters of the Multiverse y Xanathar: una sección por libro en Notion con lo que usan los personajes.</span></a>')
 HUB_HTML = re.sub(r'<div class="links" id="navLinks">.*?</div>', '<div class="links" id="navLinks"><a href="#personajes">Personajes</a><a href="#/reglas">Reglas rápidas</a></div>', HUB_HTML, flags=re.S)
 HUB_CSS += """
 .rcta{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--lr-tinta);color:#FFF3D6;border-radius:var(--r);padding:18px 20px;text-decoration:none;box-shadow:var(--shadow);transition:transform .15s}
